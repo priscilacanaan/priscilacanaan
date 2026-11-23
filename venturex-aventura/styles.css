@@ -71,7 +71,8 @@ img{max-width:100%}
 .rotator{position:relative;display:inline-grid;font-style:italic;color:var(--coral)}
 .rotator b{grid-area:1/1;font-weight:400;opacity:0;transform:translateY(40%) rotate(4deg);transition:opacity .5s,transform .6s var(--ease)}
 .rotator b.is-on{opacity:1;transform:none}
-.rotator b.is-out{opacity:0;transform:translateY(-40%) rotate(-4deg)}
+.rotator b.is-out{opacity:0;transform:translateY(-40%) rotate(-4deg);transition:opacity .15s,transform .4s var(--ease)}
+.rotator b.is-on{transition-delay:.12s}
 .hero-sub{position:relative;max-width:520px;font-size:1.15rem;line-height:1.55;margin:2rem 0 2.2rem}
 .hero-cta{position:relative;display:flex;flex-wrap:wrap;gap:1rem}
 .hero-badge{position:absolute;right:8vw;bottom:10vh;width:150px;height:150px;display:grid;place-items:center}
@@ -253,3 +254,16 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
 .footer-awards span{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.5rem 1rem;font-size:.85rem}
 .footer-awards span::first-letter{color:var(--coral)}
 .address a{border-bottom:2px solid var(--black)}
+
+/* real photos */
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);z-index:1}
+.card:hover .photo img{transform:scale(1.08)}
+.photo.has-img::after{display:none}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:1rem}
+.g{position:relative;overflow:hidden;border-radius:24px;background:linear-gradient(135deg,#1c1c1c,#ff5a00);margin:0}
+.g1{grid-column:span 2;grid-row:span 2}.g4{grid-column:span 2}
+.g img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
+.g:hover img{transform:scale(1.07)}
+.g figcaption{position:absolute;left:1rem;bottom:1rem;font-size:.72rem;letter-spacing:.08em;background:rgba(255,255,255,.9);color:#0a0a0a;padding:.35rem .7rem;border-radius:999px}
+.g.has-img figcaption{display:none}
+@media(max-width:800px){.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.g1{grid-column:span 2}}
