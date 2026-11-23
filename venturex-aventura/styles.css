@@ -237,3 +237,19 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
 .hero-badge text{fill:var(--coral)}
 .qmark{color:var(--coral)}
 .stat strong{font-family:var(--sans);font-weight:700;letter-spacing:-.05em}
+
+/* awards */
+.award-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1000px){.award-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.award-row{grid-template-columns:1fr}}
+.award{border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:2rem 1.5rem;text-align:center;display:flex;flex-direction:column;gap:.4rem;align-items:center;transition:border-color .3s,transform .4s var(--ease),background .3s}
+.award:hover{border-color:var(--coral);transform:translateY(-6px);background:rgba(255,90,0,.06)}
+.laurel{font-size:1.6rem;color:var(--coral);width:64px;height:64px;display:grid;place-items:center;border-radius:50%;border:2px dashed var(--coral);margin-bottom:.6rem;animation:sway 4s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(-8deg) scale(1.08)}}
+.award strong{font-size:1.25rem;letter-spacing:-.02em}
+.award small{opacity:.6}
+.award b{margin-top:.6rem;font-family:var(--serif);font-weight:400;font-style:italic;color:var(--coral);font-size:1.3rem}
+.footer-awards{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.footer-awards span{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.5rem 1rem;font-size:.85rem}
+.footer-awards span::first-letter{color:var(--coral)}
+.address a{border-bottom:2px solid var(--black)}

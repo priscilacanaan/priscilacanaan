@@ -7,7 +7,8 @@ Animações: título que sobe, palavra que gira, sol com parallax, faixa rolando
 contadores, cards 3D, botões magnéticos, linha do tempo horizontal, preços que trocam mensal/anual.
 
 ## Antes de publicar, trocar
-- Endereço e telefone (marcados no rodapé do formulário)
+- Telefone (786-952-6744, achado em matéria antiga — confirmar)
+- Lista de prêmios e logos oficiais
 - Preços (são exemplos)
 - Números da seção de estatísticas
 - Fotos reais do espaço nos cards (hoje são gradientes com etiqueta "Photo: ...")

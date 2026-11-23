@@ -250,6 +250,22 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
 .qmark{color:var(--coral)}
 .stat strong{font-family:var(--sans);font-weight:700;letter-spacing:-.05em}
 
+/* awards */
+.award-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1000px){.award-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.award-row{grid-template-columns:1fr}}
+.award{border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:2rem 1.5rem;text-align:center;display:flex;flex-direction:column;gap:.4rem;align-items:center;transition:border-color .3s,transform .4s var(--ease),background .3s}
+.award:hover{border-color:var(--coral);transform:translateY(-6px);background:rgba(255,90,0,.06)}
+.laurel{font-size:1.6rem;color:var(--coral);width:64px;height:64px;display:grid;place-items:center;border-radius:50%;border:2px dashed var(--coral);margin-bottom:.6rem;animation:sway 4s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(-8deg) scale(1.08)}}
+.award strong{font-size:1.25rem;letter-spacing:-.02em}
+.award small{opacity:.6}
+.award b{margin-top:.6rem;font-family:var(--serif);font-weight:400;font-style:italic;color:var(--coral);font-size:1.3rem}
+.footer-awards{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.footer-awards span{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.5rem 1rem;font-size:.85rem}
+.footer-awards span::first-letter{color:var(--coral)}
+.address a{border-bottom:2px solid var(--black)}
+
 </style>
 </head>
 <body>
@@ -313,7 +329,7 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
   <div class="stats">
     <div class="stat reveal"><strong data-count="24">0</strong><span>/7 member access</span></div>
     <div class="stat reveal"><strong data-count="5">0</strong><span> min to Aventura Mall</span></div>
-    <div class="stat reveal"><strong data-count="1">0</strong><span> GB fiber Wi-Fi</span></div>
+    <div class="stat reveal"><strong data-count="18">0</strong><span>K sq ft of workspace</span></div>
     <div class="stat reveal"><strong data-count="100">0</strong><span>% month-to-month options</span></div>
   </div>
   <p class="note">* Confirm figures with the location before going live.</p>
@@ -349,7 +365,7 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
       <div class="card-body">
         <span class="tag">By the hour</span>
         <h3>Meeting Rooms</h3>
-        <p>Screens, whiteboards and a room that makes the client say "nice place." Book in seconds.</p>
+        <p>Like the Golden Beach Room for 10 — screens, whiteboards and a room that makes the client say "nice place."</p>
         <a href="#tour" class="link">Book a room →</a>
       </div>
     </article>
@@ -470,6 +486,22 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
   </div>
 </section>
 
+
+<!-- AWARDS -->
+<section class="awards">
+  <div class="section-head">
+    <p class="eyebrow">06 — Recognition</p>
+    <h2>Award-winning <em>brand.</em></h2>
+  </div>
+  <div class="award-row">
+    <div class="award reveal"><span class="laurel">★</span><strong>Franchise 500</strong><small>Entrepreneur Magazine</small><b>2020 – 2025</b></div>
+    <div class="award reveal"><span class="laurel">★</span><strong>Fastest-Growing Companies</strong><small>South Florida Business Journal</small><b>2019 · 2020</b></div>
+    <div class="award reveal"><span class="laurel">★</span><strong>Inc. 5000</strong><small>Fastest-growing coworking concept</small><b>2019</b></div>
+    <div class="award reveal"><span class="laurel">★</span><strong>Global Workspace Association</strong><small>Member</small><b>Since 2019</b></div>
+  </div>
+  <p class="note">* Confirm the list with VentureX and swap in the official award logos.</p>
+</section>
+
 <!-- CTA / TOUR -->
 <section id="tour" class="tour">
   <div class="tour-bg" aria-hidden="true"></div>
@@ -486,7 +518,7 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
       <button class="btn magnetic" type="submit">Book my tour →</button>
       <p class="sent-msg">Thanks! We'll reach out shortly. ☀</p>
     </form>
-    <p class="address reveal">VentureX Aventura · Aventura, FL · <span class="todo">[confirm address & phone]</span></p>
+    <p class="address reveal">18851 NE 29th Ave, Suite 200 · Aventura, FL 33180 · <a href="tel:+17869526744">786-952-6744</a> <span class="todo">[confirm phone]</span></p>
   </div>
 </section>
 
@@ -494,6 +526,9 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
 
 <footer class="footer">
   <div class="footer-big">Venture<span>X</span></div>
+  <div class="footer-awards">
+    <span>★ Entrepreneur Franchise 500</span><span>★ SFBJ Fastest-Growing</span><span>★ Inc. 5000</span><span>★ GWA Member</span>
+  </div>
   <div class="footer-row">
     <span>© 2026 VentureX Aventura</span>
     <span>Coworking · Private Offices · Meeting Rooms · Virtual Office</span>
