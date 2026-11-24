@@ -165,6 +165,11 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .rot b.on{opacity:1;visibility:visible}
 
 .thumb-ph{display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--teal),var(--coral));font-family:var(--display);font-weight:700;font-size:1.8rem;color:#fff;letter-spacing:-.02em}
+.nav-r{display:flex;align-items:center;gap:.8rem}
+.lang{display:flex;gap:.2rem;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--ink2)}
+.lang button{border:0;background:none;color:var(--mut);font:600 .75rem var(--sans);padding:.4rem .7rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.lang button.is-on{background:var(--paper);color:var(--ink)}
+@media(max-width:960px){.nav-r .btn{display:none}}
 
 </style>
 </head>
@@ -175,126 +180,129 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 <header class="nav" id="nav">
   <a href="#topo" class="logo">priscila<span>.</span>canaan</a>
   <nav class="links">
-    <a href="#servicos" data-s="servicos">Serviços</a><a href="#portfolio" data-s="portfolio">Portfólio</a><a href="#sobre" data-s="sobre">Sobre</a><a href="#contato" data-s="contato">Contato</a>
+    <a href="#servicos" data-s="servicos" data-i="n_serv">Serviços</a><a href="#portfolio" data-s="portfolio" data-i="n_port">Portfólio</a><a href="#sobre" data-s="sobre" data-i="n_sobre">Sobre</a><a href="#contato" data-s="contato" data-i="n_cont">Contato</a>
   </nav>
-  <a href="#contato" class="btn btn-sm">Vamos conversar</a>
+  <div class="nav-r">
+    <div class="lang" role="group" aria-label="Idioma"><button data-lang="pt" class="is-on">PT</button><button data-lang="en">EN</button><button data-lang="es">ES</button></div>
+    <a href="#contato" class="btn btn-sm" data-i="n_btn">Vamos conversar</a>
+  </div>
 </header>
 
 <main id="topo">
 
 <section class="hero">
-  <p class="eyebrow reveal">Estúdio · IA · Web · Mídia</p>
+  <p class="eyebrow reveal" data-i="eyebrow">Estúdio · IA · Web · Mídia</p>
   <h1 class="title">
-    <span class="ln"><span>Automações que</span></span>
-    <span class="ln"><span>trabalham <span class="rot"><b class="on">por você.</b><b>sem cansar.</b><b>24 horas.</b></span></span></span>
+    <span class="ln"><span data-i="t1">Automações que</span></span>
+    <span class="ln"><span><span data-i="t2">trabalham</span> <span class="rot"><b class="on" data-i="r1">por você.</b><b data-i="r2">sem cansar.</b><b data-i="r3">24 horas.</b></span></span></span>
   </h1>
-  <p class="lead reveal">Eu crio automações com inteligência artificial, sites que vendem e conteúdos que contam a sua história. Tudo pensado para o seu negócio funcionar melhor, todo dia.</p>
+  <p class="lead reveal" data-i="lead">Eu crio automações com inteligência artificial, sites que vendem e conteúdos que contam a sua história. Tudo pensado para o seu negócio funcionar melhor, todo dia.</p>
   <div class="cta reveal">
-    <a href="#contato" class="btn">Quero um projeto <span>→</span></a>
-    <a href="#portfolio" class="btn btn-line">Ver portfólio</a>
+    <a href="#contato" class="btn"><span data-i="cta1">Quero um projeto</span> <span>→</span></a>
+    <a href="#portfolio" class="btn btn-line" data-i="cta2">Ver portfólio</a>
   </div>
   <div class="scroll" aria-hidden="true"><span></span></div>
 </section>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Automação com IA</span><i>◆</i><span>Websites</span><i>◆</i><span>Mídia e conteúdo</span><i>◆</i><span>Atendimento com IA</span><i>◆</i><span>Landing pages</span><i>◆</i><span>Vídeo e identidade</span><i>◆</i>
-    <span>Automação com IA</span><i>◆</i><span>Websites</span><i>◆</i><span>Mídia e conteúdo</span><i>◆</i><span>Atendimento com IA</span><i>◆</i><span>Landing pages</span><i>◆</i><span>Vídeo e identidade</span><i>◆</i>
+    <span data-i="m1">Automação com IA</span><i>◆</i><span data-i="m2">Websites</span><i>◆</i><span data-i="m3">Mídia e conteúdo</span><i>◆</i><span data-i="m4">Atendimento com IA</span><i>◆</i><span data-i="m5">Landing pages</span><i>◆</i><span data-i="m6">Vídeo e identidade</span><i>◆</i>
+    <span data-i="m1">Automação com IA</span><i>◆</i><span data-i="m2">Websites</span><i>◆</i><span data-i="m3">Mídia e conteúdo</span><i>◆</i><span data-i="m4">Atendimento com IA</span><i>◆</i><span data-i="m5">Landing pages</span><i>◆</i><span data-i="m6">Vídeo e identidade</span><i>◆</i>
   </div>
 </div>
 
 <section class="stats">
-  <div class="stat reveal"><b data-count="8">0</b><span>projetos no portfólio</span></div>
-  <div class="stat reveal"><b data-count="3">0</b><span>frentes de trabalho</span></div>
-  <div class="stat reveal"><b data-count="3">0</b><span>idiomas nos projetos</span></div>
-  <div class="stat reveal"><b>100%</b><span>sites responsivos</span></div>
+  <div class="stat reveal"><b data-count="8">0</b><span data-i="s1">projetos no portfólio</span></div>
+  <div class="stat reveal"><b data-count="3">0</b><span data-i="s2">frentes de trabalho</span></div>
+  <div class="stat reveal"><b data-count="3">0</b><span data-i="s3">idiomas nos projetos</span></div>
+  <div class="stat reveal"><b>100%</b><span data-i="s4">sites responsivos</span></div>
 </section>
 
 <section id="servicos" class="servicos">
   <div class="head reveal">
-    <p class="kicker">Serviços</p>
-    <h2>Três frentes, <em>uma só visão.</em></h2>
+    <p class="kicker" data-i="k_serv">Serviços</p>
+    <h2 data-i="t_serv">Três frentes, <em>uma só visão.</em></h2>
   </div>
   <div class="svc-grid">
     <article class="svc reveal">
       <span class="svc-n">01</span>
-      <h3>Automações com IA</h3>
-      <p>Fluxos que atendem, organizam e respondem por você. Menos tarefa repetitiva, mais tempo para o que importa.</p>
-      <ul><li>Atendimento automatizado</li><li>Integração de sistemas</li><li>Relatórios e fluxos</li></ul>
+      <h3 data-i="sv1">Automações com IA</h3>
+      <p data-i="svp1">Fluxos que atendem, organizam e respondem por você. Menos tarefa repetitiva, mais tempo para o que importa.</p>
+      <ul><li data-i="svl1">Atendimento automatizado</li><li data-i="svl2">Integração de sistemas</li><li data-i="svl3">Relatórios e fluxos</li></ul>
     </article>
     <article class="svc reveal">
       <span class="svc-n">02</span>
-      <h3>Websites</h3>
-      <p>Sites rápidos, bonitos e pensados para converter. Do institucional à landing page de campanha.</p>
-      <ul><li>Sites institucionais</li><li>Landing pages</li><li>Mobile first</li></ul>
+      <h3 data-i="sv2">Websites</h3>
+      <p data-i="svp2">Sites rápidos, bonitos e pensados para converter. Do institucional à landing page de campanha.</p>
+      <ul><li data-i="svl4">Sites institucionais</li><li data-i="svl5">Landing pages</li><li data-i="svl6">Mobile first</li></ul>
     </article>
     <article class="svc reveal">
       <span class="svc-n">03</span>
-      <h3>Mídia</h3>
-      <p>Conteúdo visual e em vídeo que traduz a sua marca, com uma identidade consistente em todos os canais.</p>
-      <ul><li>Vídeo e motion</li><li>Identidade visual</li><li>Conteúdo para redes</li></ul>
+      <h3 data-i="sv3">Mídia</h3>
+      <p data-i="svp3">Conteúdo visual e em vídeo que traduz a sua marca, com uma identidade consistente em todos os canais.</p>
+      <ul><li data-i="svl7">Vídeo e motion</li><li data-i="svl8">Identidade visual</li><li data-i="svl9">Conteúdo para redes</li></ul>
     </article>
   </div>
 </section>
 
 <section id="portfolio" class="portfolio">
   <div class="head reveal">
-    <p class="kicker">Portfólio</p>
-    <h2>Projetos <em>feitos.</em></h2>
+    <p class="kicker" data-i="k_port">Portfólio</p>
+    <h2 data-i="t_port">Projetos <em>feitos.</em></h2>
   </div>
   <div class="filters reveal">
-    <button class="f is-on" data-f="todos">Todos</button>
-    <button class="f" data-f="web">Websites</button>
-    <button class="f" data-f="ia">Automação e IA</button>
-    <button class="f" data-f="midia">Mídia</button>
+    <button class="f is-on" data-f="todos" data-i="f_all">Todos</button>
+    <button class="f" data-f="web" data-i="f_web">Websites</button>
+    <button class="f" data-f="ia" data-i="f_ia">Automação e IA</button>
+    <button class="f" data-f="midia" data-i="f_midia">Mídia</button>
   </div>
   <div class="grid">
     <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/venturex-aventura/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/venturex.jpg" alt="Site VentureX Aventura" loading="lazy" /></div>
-      <div class="info"><span class="tag">Website · Coworking</span><h3>VentureX Aventura</h3><p>Site de coworking em preto e amarelo, com animações e versão em espanhol.</p></div>
+      <div class="thumb"><img src="fotos/venturex.jpg" alt="VentureX Aventura" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_venturex">Website · Coworking</span><h3>VentureX Aventura</h3><p data-i="d_venturex">Site de coworking em preto e amarelo, com animações e versão em espanhol.</p></div>
     </a>
     <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/pangostoso/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/pangostoso.jpg" alt="Site PanGostoso" loading="lazy" /></div>
-      <div class="info"><span class="tag">Website · Indústria</span><h3>PanGostoso</h3><p>Site de indústria de panificação em Belém, com forno animado e linha regional.</p></div>
+      <div class="thumb"><img src="fotos/pangostoso.jpg" alt="PanGostoso" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_pan">Website · Indústria</span><h3>PanGostoso</h3><p data-i="d_pan">Site de indústria de panificação em Belém, com forno animado e linha regional.</p></div>
     </a>
     <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/turnberry-backbone/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/turnberry.jpg" alt="Site Backbone Business Services" loading="lazy" /></div>
-      <div class="info"><span class="tag">Website · Serviços</span><h3>Backbone Business Services</h3><p>Escritório de contabilidade e serviços em três idiomas, com contagem de prazos.</p></div>
+      <div class="thumb"><img src="fotos/turnberry.jpg" alt="Backbone Business Services" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_turn">Website · Serviços</span><h3>Backbone Business Services</h3><p data-i="d_turn">Escritório de contabilidade e serviços em três idiomas, com contagem de prazos.</p></div>
     </a>
     <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/bestfit-umarizal/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/bestfit.jpg" alt="Site Best Fit Academia" loading="lazy" /></div>
-      <div class="info"><span class="tag">Website · Academia</span><h3>Best Fit Academia</h3><p>Site de academia com planos, quadro de aulas e agendamento pelo WhatsApp.</p></div>
+      <div class="thumb"><img src="fotos/bestfit.jpg" alt="Best Fit Academia" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_bf">Website · Academia</span><h3>Best Fit Academia</h3><p data-i="d_bf">Site de academia com planos, quadro de aulas e agendamento pelo WhatsApp.</p></div>
     </a>
     <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/manoella-neuropsico/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/manoella.jpg" alt="Site Manoella Canaan" loading="lazy" /></div>
-      <div class="info"><span class="tag">Website · Psicologia</span><h3>Manoella Canaan</h3><p>Site de psicóloga com atendimento, avaliação neuropsicológica e contato.</p></div>
+      <div class="thumb"><img src="fotos/manoella.jpg" alt="Manoella Canaan" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_mano">Website · Psicologia</span><h3>Manoella Canaan</h3><p data-i="d_mano">Site de psicóloga com atendimento, avaliação neuropsicológica e contato.</p></div>
     </a>
     <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/dbt-amazonia/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/dbt.jpg" alt="Site DBT Amazônia" loading="lazy" /></div>
-      <div class="info"><span class="tag">Website · Curso</span><h3>DBT Amazônia</h3><p>Site de curso de treino de habilidades DBT, com identidade em verde e rosa.</p></div>
+      <div class="thumb"><img src="fotos/dbt.jpg" alt="DBT Amazônia" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_dbt">Website · Curso</span><h3>DBT Amazônia</h3><p data-i="d_dbt">Site de curso de treino de habilidades DBT, com identidade em verde e rosa.</p></div>
+    </a>
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/ana-catarina/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/ana-catarina.jpg" alt="Ana Catarina" loading="lazy" style="object-position:center 30%" /></div>
+      <div class="info"><span class="tag" data-i="tg_ana">Website · Filosofia e IA</span><h3>Ana Catarina</h3><p data-i="d_ana">Site de filósofa residente do AI Collective, em português, inglês e francês.</p></div>
     </a>
     <a class="card reveal" data-cat="web" href="https://exploderideas-plum.vercel.app/index.html" target="_blank" rel="noopener">
       <div class="thumb thumb-ph"><span>Explode Ideas</span></div>
-      <div class="info"><span class="tag">Projeto · Ideias</span><h3>Explode Ideas</h3><p>[Descrição do projeto: confirmar com a Priscila.]</p></div>
-    </a>
-    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/ana-catarina/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/ana-catarina.jpg" alt="Site de Ana Catarina" loading="lazy" style="object-position:center 30%" /></div>
-      <div class="info"><span class="tag">Website · Filosofia e IA</span><h3>Ana Catarina</h3><p>Site de filósofa residente do AI Collective, em português, inglês e francês.</p></div>
+      <div class="info"><span class="tag" data-i="tg_exp">Projeto · Ideias</span><h3>Explode Ideas</h3><p data-i="d_exp">[Descrição do projeto: confirmar com a Priscila.]</p></div>
     </a>
   </div>
-  <p class="note reveal">Os projetos estão em versão de apresentação. Os dados de contato e os textos de cada cliente são confirmados antes da publicação.</p>
+  <p class="note reveal" data-i="note">Os projetos estão em versão de apresentação. Os dados de contato e os textos de cada cliente são confirmados antes da publicação.</p>
 </section>
 
 <section id="sobre" class="sobre">
   <div class="sobre-grid">
     <div class="reveal">
-      <p class="kicker">Sobre</p>
-      <h2>Tecnologia com <em>cara humana.</em></h2>
-      <p>Trabalho com o que faz a diferença no dia a dia do seu negócio: automatizar o que é repetitivo, criar presença digital que converte e contar a sua história com qualidade.</p>
-      <p>Cada projeto começa entendendo a rotina de quem usa. Só depois eu escolho a ferramenta.</p>
+      <p class="kicker" data-i="k_sobre">Sobre</p>
+      <h2 data-i="t_sobre">Tecnologia com <em>cara humana.</em></h2>
+      <p data-i="p_sobre1">Trabalho com o que faz a diferença no dia a dia do seu negócio: automatizar o que é repetitivo, criar presença digital que converte e contar a sua história com qualidade.</p>
+      <p data-i="p_sobre2">Cada projeto começa entendendo a rotina de quem usa. Só depois eu escolho a ferramenta.</p>
     </div>
     <div class="sobre-stack reveal">
-      <span>Automação</span><span>IA generativa</span><span>Sites responsivos</span><span>Vídeo</span><span>Identidade visual</span><span>Integrações</span>
+      <span data-i="st1">Automação</span><span data-i="st2">IA generativa</span><span data-i="st3">Sites responsivos</span><span data-i="st4">Vídeo</span><span data-i="st5">Identidade visual</span><span data-i="st6">Integrações</span>
     </div>
   </div>
 </section>
@@ -302,25 +310,25 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 <section id="contato" class="contato">
   <div class="contato-card reveal">
     <div>
-      <p class="kicker light">Contato</p>
-      <h2>Vamos criar <em>algo juntas?</em></h2>
-      <p>Conte sobre o seu projeto. Respondo para combinar uma conversa.</p>
+      <p class="kicker light" data-i="k_cont">Contato</p>
+      <h2 data-i="t_cont">Vamos criar <em>algo juntas?</em></h2>
+      <p data-i="p_cont">Conte sobre o seu projeto. Respondo para combinar uma conversa.</p>
       <ul class="info info-list">
-        <li><small>E-mail</small>[contato@exemplo.com]</li>
+        <li><small data-i="l_mail">E-mail</small>[contato@exemplo.com]</li>
         <li><small>WhatsApp</small><a href="https://wa.me/[55DDDNUMERO]" target="_blank" rel="noopener">[(00) 00000-0000]</a></li>
         <li><small>Instagram</small>[@instagram]</li>
       </ul>
     </div>
     <form class="form" id="form">
-      <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="E-mail" required />
+      <input type="text" placeholder="Seu nome" data-ph="f_name" required />
+      <input type="email" placeholder="E-mail" data-ph="f_mail" required />
       <select required>
-        <option value="">O que você precisa?</option>
-        <option>Automação com IA</option><option>Website</option><option>Mídia e conteúdo</option><option>Mais de uma frente</option>
+        <option value="" data-i="o_0">O que você precisa?</option>
+        <option data-i="o_1">Automação com IA</option><option data-i="o_2">Website</option><option data-i="o_3">Mídia e conteúdo</option><option data-i="o_4">Mais de uma frente</option>
       </select>
-      <textarea rows="3" placeholder="Conte um pouco sobre o projeto"></textarea>
-      <button class="btn" type="submit">Enviar →</button>
-      <p class="ok">Recebido! Respondo em breve.</p>
+      <textarea rows="3" placeholder="Conte um pouco sobre o projeto" data-ph="f_msg"></textarea>
+      <button class="btn" type="submit" data-i="f_btn">Enviar →</button>
+      <p class="ok" data-i="f_ok">Recebido! Respondo em breve.</p>
     </form>
   </div>
 </section>
@@ -328,10 +336,79 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 </main>
 
 <footer class="footer">
-  <span>© 2026 Priscila Canaan · Estúdio de automações com IA, websites e mídia</span>
-  <span><a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos de Uso</a> · <a href="#topo">Topo ↑</a></span>
+  <span data-i="foot">© 2026 Priscila Canaan · Estúdio de automações com IA, websites e mídia</span>
+  <span><a href="privacidade.html" data-i="fl_priv">Privacidade</a> · <a href="termos.html" data-i="fl_terms">Termos de Uso</a> · <a href="#topo" data-i="fl_top">Topo ↑</a></span>
 </footer>
 
+<script>
+/* PT is the source text in index.html. EN and ES below. */
+window.I18N = {
+en:{
+n_serv:"Services",n_port:"Portfolio",n_sobre:"About",n_cont:"Contact",n_btn:"Let's talk",
+eyebrow:"Studio · AI · Web · Media",t1:"Automations that",t2:"work",r1:"for you.",r2:"without getting tired.",r3:"24 hours.",
+lead:"I build AI-powered automations, websites that sell and content that tells your story. Everything designed so your business works better, every day.",
+cta1:"Start a project",cta2:"See the portfolio",
+m1:"AI automation",m2:"Websites",m3:"Media and content",m4:"AI customer service",m5:"Landing pages",m6:"Video and identity",
+s1:"projects in the portfolio",s2:"fronts of work",s3:"languages in the projects",s4:"responsive websites",
+k_serv:"Services",t_serv:"Three fronts, <em>one vision.</em>",
+sv1:"AI automation",svp1:"Flows that answer, organize and respond for you. Less repetitive work, more time for what matters.",svl1:"Automated customer service",svl2:"System integrations",svl3:"Reports and workflows",
+sv2:"Websites",svp2:"Fast, beautiful sites designed to convert. From corporate sites to campaign landing pages.",svl4:"Corporate websites",svl5:"Landing pages",svl6:"Mobile first",
+sv3:"Media",svp3:"Visual and video content that translates your brand, with a consistent identity across every channel.",svl7:"Video and motion",svl8:"Visual identity",svl9:"Social content",
+k_port:"Portfolio",t_port:"Projects <em>delivered.</em>",
+f_all:"All",f_web:"Websites",f_ia:"AI and automation",f_midia:"Media",
+tg_venturex:"Website · Coworking",d_venturex:"Coworking site in black and yellow, with animations and a Spanish version.",
+tg_pan:"Website · Manufacturer",d_pan:"Website for a bakery manufacturer in Belém, with an animated oven and a regional product line.",
+tg_turn:"Website · Services",d_turn:"Accounting and business services firm in three languages, with deadline countdowns.",
+tg_bf:"Website · Gym",d_bf:"Gym website with plans, class schedule and booking through WhatsApp.",
+tg_mano:"Website · Psychology",d_mano:"Psychologist's website with services, neuropsychological assessment and contact.",
+tg_dbt:"Website · Course",d_dbt:"Website for a DBT skills training course, with a green and pink identity.",
+tg_ana:"Website · Philosophy and AI",d_ana:"Website for the resident philosopher of the AI Collective, in Portuguese, English and French.",
+tg_exp:"Project · Ideas",d_exp:"[Project description: to be confirmed with Priscila.]",
+note:"The projects are in presentation version. Contact details and each client's text are confirmed before publishing.",
+k_sobre:"About",t_sobre:"Technology with <em>a human face.</em>",
+p_sobre1:"I work on what makes a difference in your business day to day: automating what is repetitive, building a digital presence that converts and telling your story with quality.",
+p_sobre2:"Every project starts by understanding the routine of the people who use it. Only then do I choose the tool.",
+st1:"Automation",st2:"Generative AI",st3:"Responsive sites",st4:"Video",st5:"Visual identity",st6:"Integrations",
+k_cont:"Contact",t_cont:"Let's build <em>something together?</em>",p_cont:"Tell me about your project. I'll reply to arrange a conversation.",
+l_mail:"E-mail",f_name:"Your name",f_mail:"E-mail",f_msg:"Tell me a bit about the project",
+o_0:"What do you need?",o_1:"AI automation",o_2:"Website",o_3:"Media and content",o_4:"More than one front",
+f_btn:"Send →",f_ok:"Received! I'll reply soon.",
+foot:"© 2026 Priscila Canaan · AI automation, websites and media studio",fl_priv:"Privacy",fl_terms:"Terms of Use",fl_top:"Top ↑"
+},
+es:{
+n_serv:"Servicios",n_port:"Portafolio",n_sobre:"Sobre mí",n_cont:"Contacto",n_btn:"Hablemos",
+eyebrow:"Estudio · IA · Web · Medios",t1:"Automatizaciones que",t2:"trabajan",r1:"por ti.",r2:"sin cansarse.",r3:"las 24 horas.",
+lead:"Creo automatizaciones con inteligencia artificial, sitios web que venden y contenidos que cuentan tu historia. Todo pensado para que tu negocio funcione mejor, todos los días.",
+cta1:"Quiero un proyecto",cta2:"Ver portafolio",
+m1:"Automatización con IA",m2:"Sitios web",m3:"Medios y contenido",m4:"Atención con IA",m5:"Landing pages",m6:"Video e identidad",
+s1:"proyectos en el portafolio",s2:"frentes de trabajo",s3:"idiomas en los proyectos",s4:"sitios web adaptables",
+k_serv:"Servicios",t_serv:"Tres frentes, <em>una sola visión.</em>",
+sv1:"Automatización con IA",svp1:"Flujos que atienden, organizan y responden por ti. Menos tareas repetitivas, más tiempo para lo que importa.",svl1:"Atención automatizada",svl2:"Integración de sistemas",svl3:"Informes y flujos",
+sv2:"Sitios web",svp2:"Sitios rápidos, bonitos y pensados para convertir. Desde sitios institucionales hasta landing pages de campaña.",svl4:"Sitios institucionales",svl5:"Landing pages",svl6:"Mobile first",
+sv3:"Medios",svp3:"Contenido visual y en video que traduce tu marca, con una identidad coherente en todos los canales.",svl7:"Video y motion",svl8:"Identidad visual",svl9:"Contenido para redes",
+k_port:"Portafolio",t_port:"Proyectos <em>realizados.</em>",
+f_all:"Todos",f_web:"Sitios web",f_ia:"IA y automatización",f_midia:"Medios",
+tg_venturex:"Sitio web · Coworking",d_venturex:"Sitio de coworking en negro y amarillo, con animaciones y versión en español.",
+tg_pan:"Sitio web · Industria",d_pan:"Sitio de una industria de panificación en Belém, con horno animado y línea regional.",
+tg_turn:"Sitio web · Servicios",d_turn:"Sitio de una firma de contabilidad y servicios en tres idiomas, con cuenta regresiva de plazos.",
+tg_bf:"Sitio web · Gimnasio",d_bf:"Sitio de gimnasio con planes, horario de clases y reservas por WhatsApp.",
+tg_mano:"Sitio web · Psicología",d_mano:"Sitio de psicóloga con atención, evaluación neuropsicológica y contacto.",
+tg_dbt:"Sitio web · Curso",d_dbt:"Sitio de un curso de entrenamiento de habilidades DBT, con identidad en verde y rosa.",
+tg_ana:"Sitio web · Filosofía e IA",d_ana:"Sitio de la filósofa residente del AI Collective, en portugués, inglés y francés.",
+tg_exp:"Proyecto · Ideas",d_exp:"[Descripción del proyecto: confirmar con Priscila.]",
+note:"Los proyectos están en versión de presentación. Los datos de contacto y los textos de cada cliente se confirman antes de publicar.",
+k_sobre:"Sobre mí",t_sobre:"Tecnología con <em>rostro humano.</em>",
+p_sobre1:"Trabajo en lo que marca la diferencia en el día a día de tu negocio: automatizar lo repetitivo, crear una presencia digital que convierta y contar tu historia con calidad.",
+p_sobre2:"Cada proyecto empieza entendiendo la rutina de quien lo usa. Solo después elijo la herramienta.",
+st1:"Automatización",st2:"IA generativa",st3:"Sitios adaptables",st4:"Video",st5:"Identidad visual",st6:"Integraciones",
+k_cont:"Contacto",t_cont:"¿Creamos <em>algo juntas?</em>",p_cont:"Cuéntame sobre tu proyecto. Respondo para coordinar una conversación.",
+l_mail:"Correo",f_name:"Tu nombre",f_mail:"Correo",f_msg:"Cuéntame un poco sobre el proyecto",
+o_0:"¿Qué necesitas?",o_1:"Automatización con IA",o_2:"Sitio web",o_3:"Medios y contenido",o_4:"Más de un frente",
+f_btn:"Enviar →",f_ok:"¡Recibido! Te respondo pronto.",
+foot:"© 2026 Priscila Canaan · Estudio de automatización con IA, sitios web y medios",fl_priv:"Privacidad",fl_terms:"Términos de uso",fl_top:"Arriba ↑"
+}};
+
+</script>
 <script>
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
@@ -373,6 +450,24 @@ if (!reduce) addEventListener('mousemove', e => { glow.style.transform = `transl
 document.querySelectorAll('.svc').forEach(s => s.addEventListener('mousemove', e => { const r = s.getBoundingClientRect(); s.style.setProperty('--mx', (e.clientX - r.left) + 'px'); s.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
 
 document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+/* ---------- idioma: PT (fonte), EN, ES ---------- */
+const srcTxt = new Map();
+document.querySelectorAll('[data-i]').forEach(el => srcTxt.set(el, el.innerHTML));
+document.querySelectorAll('[data-ph]').forEach(el => srcTxt.set(el, el.placeholder));
+function setLang(l) {
+  const d = (window.I18N && I18N[l]) || {};
+  document.querySelectorAll('[data-i]').forEach(el => { const k = el.dataset.i; el.innerHTML = (l === 'pt' || !d[k]) ? srcTxt.get(el) : d[k]; });
+  document.querySelectorAll('[data-ph]').forEach(el => { const k = el.dataset.ph; el.placeholder = (l === 'pt' || !d[k]) ? srcTxt.get(el) : d[k]; });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === l));
+  document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;
+  document.title = l === 'pt' ? 'Priscila Canaan — Automações com IA, websites e mídia' : l === 'en' ? 'Priscila Canaan — AI automation, websites and media' : 'Priscila Canaan — Automatización con IA, sitios web y medios';
+  try { localStorage.setItem('pc-lang', l); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+let savedL = null; try { savedL = localStorage.getItem('pc-lang'); } catch (e) {}
+const navL = (navigator.language || 'pt').slice(0, 2);
+setLang(new URLSearchParams(location.search).get('lang') || savedL || (['en', 'es'].includes(navL) ? navL : 'pt'));
 
 </script>
 </body>

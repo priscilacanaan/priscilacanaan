@@ -38,3 +38,21 @@ if (!reduce) addEventListener('mousemove', e => { glow.style.transform = `transl
 document.querySelectorAll('.svc').forEach(s => s.addEventListener('mousemove', e => { const r = s.getBoundingClientRect(); s.style.setProperty('--mx', (e.clientX - r.left) + 'px'); s.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
 
 document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+/* ---------- idioma: PT (fonte), EN, ES ---------- */
+const srcTxt = new Map();
+document.querySelectorAll('[data-i]').forEach(el => srcTxt.set(el, el.innerHTML));
+document.querySelectorAll('[data-ph]').forEach(el => srcTxt.set(el, el.placeholder));
+function setLang(l) {
+  const d = (window.I18N && I18N[l]) || {};
+  document.querySelectorAll('[data-i]').forEach(el => { const k = el.dataset.i; el.innerHTML = (l === 'pt' || !d[k]) ? srcTxt.get(el) : d[k]; });
+  document.querySelectorAll('[data-ph]').forEach(el => { const k = el.dataset.ph; el.placeholder = (l === 'pt' || !d[k]) ? srcTxt.get(el) : d[k]; });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === l));
+  document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;
+  document.title = l === 'pt' ? 'Priscila Canaan — Automações com IA, websites e mídia' : l === 'en' ? 'Priscila Canaan — AI automation, websites and media' : 'Priscila Canaan — Automatización con IA, sitios web y medios';
+  try { localStorage.setItem('pc-lang', l); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+let savedL = null; try { savedL = localStorage.getItem('pc-lang'); } catch (e) {}
+const navL = (navigator.language || 'pt').slice(0, 2);
+setLang(new URLSearchParams(location.search).get('lang') || savedL || (['en', 'es'].includes(navL) ? navL : 'pt'));

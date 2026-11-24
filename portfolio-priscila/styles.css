@@ -153,3 +153,8 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .rot b.on{opacity:1;visibility:visible}
 
 .thumb-ph{display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--teal),var(--coral));font-family:var(--display);font-weight:700;font-size:1.8rem;color:#fff;letter-spacing:-.02em}
+.nav-r{display:flex;align-items:center;gap:.8rem}
+.lang{display:flex;gap:.2rem;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--ink2)}
+.lang button{border:0;background:none;color:var(--mut);font:600 .75rem var(--sans);padding:.4rem .7rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.lang button.is-on{background:var(--paper);color:var(--ink)}
+@media(max-width:960px){.nav-r .btn{display:none}}
