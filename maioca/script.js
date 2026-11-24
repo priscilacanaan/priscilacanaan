@@ -54,3 +54,9 @@ if(mSec){
   addEventListener('scroll',()=>requestAnimationFrame(paintMonte),{passive:true});
   paintMonte();
 }
+
+/* product photos: gentle parallax tilt */
+if(!reduce) document.querySelectorAll('.gal figure, .gal2 figure').forEach(f=>{
+  f.addEventListener('mousemove',e=>{const r=f.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;f.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;});
+  f.addEventListener('mouseleave',()=>f.style.transform='');
+});

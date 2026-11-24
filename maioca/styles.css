@@ -292,3 +292,22 @@ body{background:#F3E6D2}
 .mb3{bottom:62%;width:38%}
 .m-drip{top:40%;height:70px}
 .m-conf{transform:translateY(-10px)}
+
+/* ===== editorial look (inspired by the reference, Maioca content) ===== */
+.head.ed{display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end;max-width:none}
+.head.ed .lead{margin:0;max-width:380px;justify-self:end;font-size:1.05rem;padding-bottom:.6rem}
+@media(max-width:860px){.head.ed{grid-template-columns:1fr}.head.ed .lead{justify-self:start}}
+.head.ed h2{font-size:clamp(2.8rem,6.4vw,5.6rem)}
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:860px){.info-strip{grid-template-columns:1fr}}
+.info-card{background:var(--white);border-radius:24px;padding:1.6rem 1.8rem;box-shadow:0 6px 0 var(--pink2);display:grid;gap:.3rem}
+.info-card small{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;color:var(--pink);font-weight:700}
+.info-card b{font-family:var(--display);font-size:1.4rem;color:var(--berry)}
+.info-card span{color:var(--mut);font-size:.95rem}
+/* product photos: caption slides up, image breathes */
+.gal figure,.gal2 figure{cursor:pointer}
+.gal figcaption,.gal2 figcaption{transform:translateY(160%);transition:transform .5s var(--bounce)}
+.gal figure:hover figcaption,.gal2 figure:hover figcaption{transform:translateY(0)}
+.gal figure::after,.gal2 figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(92,10,54,.45));opacity:0;transition:opacity .5s}
+.gal figure:hover::after,.gal2 figure:hover::after{opacity:1}
+.gal figcaption,.gal2 figcaption{z-index:2}
