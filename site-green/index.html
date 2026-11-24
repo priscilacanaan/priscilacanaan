@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Eletrônica · Conserto de TV, lavadora e micro-ondas em Belém</title>
+<meta name="description" content="Green Eletrônica em Belém: serviço autorizado LG, Philips Walita, AOC e Midea. Conserto de TV, lavadora, micro-ondas, eletroportáteis e climatização. Peças e acessórios originais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   DADOS DA LOJA — confira e altere aqui (também no script, no fim)
+   Cores da marca: --verde (fachada) e --verde-escuro
+   ===================================================================== */
+:root{
+  --verde:#138a43; --verde-escuro:#0b5e2d; --verde-claro:#e8f5ec;
+  --tinta:#16211b; --suave:#5b6b61; --linha:#dbe5de; --branco:#fff;
+  --zap:#25d366;
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font:16px/1.6 Inter,system-ui,sans-serif;color:var(--tinta);background:var(--branco);overflow-x:clip}
+h1,h2,h3{font-family:Montserrat,Inter,sans-serif;line-height:1.1;margin:0 0 .5em;text-wrap:balance}
+h2{font-size:clamp(28px,4vw,40px);color:var(--verde-escuro)}
+h3{font-size:19px}
+a{color:inherit}
+img{max-width:100%;display:block}
+.cont{max-width:1180px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding:clamp(48px,7vw,96px) 0}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:16px;font-family:inherit}
+.btn-zap{background:var(--zap);color:#06381c}
+.btn-zap:hover{filter:brightness(1.05)}
+.btn-linha{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7)}
+.btn-linha:hover{background:rgba(255,255,255,.12)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd54a;outline-offset:2px}
+.ico{width:22px;height:22px;flex:none}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--linha)}
+.topo .cont{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.topo img{height:52px;width:auto}
+.menu{display:flex;gap:26px;font-weight:500}
+.menu a{text-decoration:none;color:var(--suave)}
+.menu a:hover{color:var(--verde)}
+.topo .btn{min-height:44px;padding:10px 18px}
+@media(max-width:860px){.menu{display:none}}
+@media(max-width:420px){.topo .btn span{display:none}.topo .btn{padding:10px 13px}}
+
+/* capa */
+.capa{background:var(--verde);color:#fff;position:relative;overflow:hidden}
+.capa::after{content:"";position:absolute;right:-180px;top:-180px;width:520px;height:520px;border-radius:50%;border:70px solid rgba(255,255,255,.07)}
+.capa .cont{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(36px,6vw,72px);padding-bottom:clamp(36px,6vw,72px);position:relative;z-index:1}
+.selo{display:inline-block;background:rgba(255,255,255,.15);padding:6px 14px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px}
+.capa h1{font-size:clamp(34px,5.2vw,56px);font-weight:800}
+.capa p.sub{font-size:clamp(17px,1.6vw,20px);opacity:.92;max-width:34em;margin:0 0 26px}
+.capa .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.foto-capa{border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);aspect-ratio:1/1;background:#0b5e2d}
+.foto-capa img{width:100%;height:100%;object-fit:cover}
+@media(max-width:760px){.capa .cont{grid-template-columns:1fr}.foto-capa{aspect-ratio:4/3}}
+
+/* faixa de marcas */
+.marcas{background:var(--verde-escuro);color:#fff}
+.marcas .cont{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 28px;padding-top:18px;padding-bottom:18px}
+.marcas small{opacity:.8;font-size:14px}
+.marcas b{font-family:Montserrat,sans-serif;font-size:19px;letter-spacing:.5px}
+
+/* serviços */
+.intro{max-width:44em;color:var(--suave);font-size:18px;margin:0 0 36px}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:18px}
+.card{border:1px solid var(--linha);border-radius:18px;padding:24px;background:#fff;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(19,138,67,.12)}
+.card svg{width:44px;height:44px;color:var(--verde);margin-bottom:12px}
+.card p{margin:0;color:var(--suave)}
+
+/* autorizada */
+.aut{background:var(--verde-claro)}
+.aut .cont{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.aut ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.aut li{display:flex;gap:12px;align-items:flex-start}
+.aut li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:50%;background:var(--verde) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E") center/14px no-repeat}
+.foto-balcao{border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.15)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{background:#fff;border:1px solid var(--linha);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px;color:var(--verde-escuro)}
+@media(max-width:760px){.aut .cont{grid-template-columns:1fr}}
+
+/* como funciona */
+.passos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:p}
+.passo{position:relative;padding:26px 22px 22px;border-radius:18px;background:#fff;border:1px solid var(--linha)}
+.passo .n{width:44px;height:44px;border-radius:50%;background:var(--verde);color:#fff;font:800 19px Montserrat,sans-serif;display:grid;place-items:center;margin-bottom:14px}
+.passo p{margin:0;color:var(--suave)}
+@media(max-width:900px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.passos{grid-template-columns:1fr}}
+
+/* orçamento */
+.orc{background:var(--verde);color:#fff}
+.orc .cont{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.orc h2{color:#fff}
+.orc .intro{color:rgba(255,255,255,.88)}
+form{background:#fff;color:var(--tinta);border-radius:22px;padding:clamp(20px,3vw,32px);display:grid;gap:14px;box-shadow:0 24px 60px rgba(0,0,0,.2)}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-weight:600;font-size:14px;display:block;margin-bottom:6px}
+input,select,textarea{width:100%;font:16px Inter,sans-serif;padding:12px 14px;border:1px solid var(--linha);border-radius:12px;background:#fff;color:var(--tinta)}
+textarea{min-height:100px;resize:vertical}
+.erro{color:#b3261e;font-size:14px;min-height:1em;margin:0}
+form .btn{justify-content:center;width:100%}
+.contatos{display:grid;gap:14px;margin-top:8px}
+.contato{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.1);border-radius:16px;padding:16px}
+.contato svg{width:26px;height:26px;flex:none;margin-top:2px}
+.contato b{display:block}
+.contato a{text-decoration:none}
+.contato a:hover{text-decoration:underline}
+@media(max-width:820px){.orc .cont{grid-template-columns:1fr}}
+@media(max-width:480px){.duas{grid-template-columns:1fr}}
+
+/* perguntas */
+details{border-bottom:1px solid var(--linha);padding:18px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-size:24px;line-height:1;color:var(--verde)}
+details[open] summary::after{content:"–"}
+details p{color:var(--suave);margin:10px 0 0;max-width:52em}
+
+/* rodapé */
+footer{background:var(--tinta);color:#cfd8d2;padding:40px 0 90px;font-size:15px}
+footer .cont{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+footer img{height:44px;background:#fff;border-radius:10px;padding:4px 8px}
+
+/* botão flutuante */
+.flutua{position:fixed;right:18px;bottom:18px;z-index:30;width:60px;height:60px;border-radius:50%;background:var(--zap);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.flutua svg{width:32px;height:32px;color:#fff}
+@media(prefers-reduced-motion:no-preference){.flutua{animation:pulso 2.6s ease-in-out infinite}}
+@keyframes pulso{0%,100%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 10px 24px rgba(0,0,0,.25),0 0 0 14px rgba(37,211,102,0)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ícones reutilizáveis -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+</svg>
+
+<header class="topo">
+  <div class="cont">
+    <a href="#inicio" aria-label="Green Eletrônica, início"><img src="img/logo.png" alt="Green Eletrônica" width="120" height="52"></a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#autorizada">Autorizada</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#orcamento">Orçamento</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a class="btn btn-zap js-zap" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-zap"/></svg><span>Chamar no WhatsApp</span></a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- CAPA -->
+  <section class="capa">
+    <div class="cont">
+      <div>
+        <span class="selo">Serviço autorizado em Belém</span>
+        <h1>Seu aparelho consertado por quem entende da marca</h1>
+        <p class="sub">Conserto de TV, lavadora, micro-ondas, eletroportáteis e ar-condicionado. Peças e acessórios originais LG, Philips Walita, AOC, Samsung, Midea e TCL.</p>
+        <div class="acoes">
+          <a class="btn btn-zap js-zap" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-zap"/></svg>Pedir orçamento</a>
+          <a class="btn btn-linha" href="#servicos">Ver serviços</a>
+        </div>
+      </div>
+      <div class="foto-capa"><img src="img/fachada.jpg" alt="Fachada da loja Green Eletrônica, com as marcas LG, Philips Walita, AOC e Midea" width="615" height="620"></div>
+    </div>
+  </section>
+
+  <!-- MARCAS -->
+  <div class="marcas" aria-label="Marcas atendidas">
+    <div class="cont">
+      <small>Serviço autorizado</small>
+      <b>LG</b><b>PHILIPS WALITA</b><b>AOC</b><b>MIDEA</b>
+      <small>· Especializado</small><b>SAMSUNG</b>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section class="band" id="servicos">
+    <div class="cont">
+      <h2>O que a Green conserta</h2>
+      <p class="intro">Do diagnóstico à entrega, com técnicos especializados e peças originais. Traga o seu aparelho ou chame no WhatsApp para tirar dúvidas.</p>
+      <div class="grade" id="gradeServicos"></div>
+    </div>
+  </section>
+
+  <!-- AUTORIZADA -->
+  <section class="band aut" id="autorizada">
+    <div class="cont">
+      <div class="foto-balcao"><img src="img/balcao.jpg" alt="Balcão de atendimento da Green Eletrônica, com a área de entrada de equipamentos" width="893" height="711" loading="lazy"></div>
+      <div>
+        <h2>Por que escolher uma autorizada</h2>
+        <p class="intro" style="margin-bottom:0">A Green é serviço autorizado das principais marcas. Isso faz diferença no resultado do conserto.</p>
+        <ul>
+          <li><span><b>Peças originais</b> do fabricante, com procedência.</span></li>
+          <li><span><b>Técnicos treinados</b> nos procedimentos de cada marca.</span></li>
+          <li><span><b>Atendimento de garantia</b> dos fabricantes autorizados.</span></li>
+          <li><span><b>Balcão com senha</b> para entrada e retirada de equipamentos, sem confusão.</span></li>
+        </ul>
+        <h3 style="margin-top:28px">Peças e acessórios à venda</h3>
+        <div class="chips"><span class="chip">LG</span><span class="chip">Philips</span><span class="chip">Walita</span><span class="chip">AOC</span><span class="chip">Samsung</span><span class="chip">Midea</span><span class="chip">TCL</span></div>
+        <p style="color:var(--suave);margin-top:14px">Controles remotos, peças de reposição e acessórios. Pergunte pelo modelo do seu aparelho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="band" id="como-funciona">
+    <div class="cont">
+      <h2>Como funciona</h2>
+      <p class="intro">Simples, do começo ao fim.</p>
+      <div class="passos">
+        <div class="passo"><div class="n">1</div><h3>Fale com a gente</h3><p>Conte pelo WhatsApp qual é o aparelho e o defeito.</p></div>
+        <div class="passo"><div class="n">2</div><h3>Traga o aparelho</h3><p>Retire a senha e deixe o equipamento na entrada.</p></div>
+        <div class="passo"><div class="n">3</div><h3>Aprove o orçamento</h3><p>Avaliamos o aparelho e passamos o valor antes de consertar.</p></div>
+        <div class="passo"><div class="n">4</div><h3>Retire consertado</h3><p>Avisamos quando estiver pronto para você buscar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORÇAMENTO -->
+  <section class="band orc" id="orcamento">
+    <div class="cont">
+      <div>
+        <h2>Peça seu orçamento</h2>
+        <p class="intro">Preencha e a mensagem já sai pronta no WhatsApp da Green.</p>
+        <div class="contatos">
+          <div class="contato"><svg><use href="#i-zap"/></svg><div><b>WhatsApp</b><a class="js-zap" href="#" target="_blank" rel="noopener" id="txtZap"></a></div></div>
+          <div class="contato"><svg><use href="#i-tel"/></svg><div><b>Telefone</b><a id="txtFixo" href="#"></a></div></div>
+          <div class="contato"><svg><use href="#i-pin"/></svg><div><b>Endereço</b><a id="txtEnd" href="#" target="_blank" rel="noopener"></a></div></div>
+          <div class="contato"><svg><use href="#i-insta"/></svg><div><b>Instagram</b><a href="https://www.instagram.com/greeneletronicabelem/" target="_blank" rel="noopener">@greeneletronicabelem</a></div></div>
+        </div>
+      </div>
+      <form id="formOrc" novalidate>
+        <div class="duas">
+          <div><label for="fNome">Seu nome</label><input id="fNome" autocomplete="name" required></div>
+          <div><label for="fBairro">Bairro</label><input id="fBairro" autocomplete="address-level3"></div>
+        </div>
+        <div class="duas">
+          <div><label for="fAparelho">Aparelho</label>
+            <select id="fAparelho" required>
+              <option value="">Selecione</option>
+              <option>TV</option><option>Lavadora</option><option>Micro-ondas</option>
+              <option>Ar-condicionado</option><option>Eletroportátil</option><option>Monitor / informática</option>
+              <option>Compra de peça ou acessório</option><option>Outro</option>
+            </select></div>
+          <div><label for="fMarca">Marca</label>
+            <select id="fMarca">
+              <option value="">Selecione</option>
+              <option>LG</option><option>Philips</option><option>Walita</option><option>AOC</option>
+              <option>Samsung</option><option>Midea</option><option>TCL</option><option>Outra</option>
+            </select></div>
+        </div>
+        <div><label for="fModelo">Modelo (se souber)</label><input id="fModelo" placeholder="Fica na etiqueta atrás do aparelho"></div>
+        <div><label for="fDefeito">O que está acontecendo?</label><textarea id="fDefeito" required placeholder="Ex.: a TV liga, mas fica sem imagem"></textarea></div>
+        <p class="erro" id="fErro" role="alert"></p>
+        <button class="btn btn-zap" type="submit"><svg class="ico"><use href="#i-zap"/></svg>Enviar pelo WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- DÚVIDAS -->
+  <section class="band" id="duvidas">
+    <div class="cont" style="max-width:900px">
+      <h2>Dúvidas frequentes</h2>
+      <details><summary>Vocês atendem aparelhos na garantia?</summary><p>Sim, para as marcas em que a Green é serviço autorizado: LG, Philips Walita, AOC e Midea. Traga a nota fiscal da compra.</p></details>
+      <details><summary>Consertam aparelhos de outras marcas?</summary><p>Sim. A Green também tem serviço especializado Samsung e atende outras marcas. Chame no WhatsApp e informe o aparelho e o modelo.</p></details>
+      <details><summary>Preciso pagar para fazer o orçamento?</summary><p>Consulte as condições de orçamento pelo WhatsApp antes de trazer o aparelho.</p></details>
+      <details><summary>Vendem peças e controles remotos?</summary><p>Sim, peças e acessórios originais LG, Philips, AOC, Walita, Samsung, Midea e TCL. Informe o modelo do aparelho para verificarmos.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="cont">
+    <img src="img/logo.png" alt="Green Eletrônica" width="100" height="44">
+    <div>Green Eletrônica · Belém, PA<br><span id="rodEnd"></span></div>
+    <div>© <span id="ano"></span> Green Eletrônica</div>
+  </div>
+</footer>
+
+<a class="flutua js-zap" href="#" target="_blank" rel="noopener" aria-label="Falar com a Green no WhatsApp"><svg><use href="#i-zap"/></svg></a>
+
+<script>
+{
+  /* ===== DADOS DA LOJA: confira antes de publicar ===== */
+  const LOJA = {
+    whatsapp: "5591982490105",            // (91) 98249-0105, da fachada
+    whatsappTexto: "(91) 98249-0105",
+    fixo: "559132419915",                 // (91) 3241-9915, CONFIRMAR
+    fixoTexto: "(91) 3241-9915",
+    endereco: "Tv. Quatorze de Março, 912 - Umarizal, Belém - PA", // CONFIRMAR
+    mensagem: "Olá, Green Eletrônica! Vim pelo site e gostaria de um orçamento."
+  };
+
+  const SERVICOS = [
+    ["TV", "Conserto de TVs LED, LCD, Smart e 4K: imagem, som, placa, fonte e tela.", '<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/>'],
+    ["Lavadoras", "Lavadoras e lava e seca: não centrifuga, vaza, não liga ou faz barulho.", '<rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M8 6h.01M11 6h.01"/>'],
+    ["Micro-ondas", "Não esquenta, não liga, faz faísca ou o prato não gira.", '<rect x="2" y="5" width="20" height="14" rx="2"/><rect x="5" y="8" width="10" height="8" rx="1"/><path d="M18 9v.01M18 12v.01M18 15v.01"/>'],
+    ["Eletroportáteis", "Liquidificadores, cafeteiras, airfryers e outros portáteis Philips Walita.", '<path d="M7 3h10l-1 7H8z"/><path d="M8 10l-1 9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l-1-9"/>'],
+    ["Climatização", "Ar-condicionado: não gela, pinga água, faz barulho ou não liga.", '<rect x="2" y="4" width="20" height="9" rx="2"/><path d="M6 17c0 1.5 1 2 1 3M12 16c0 2 1 2.5 1 4M18 17c0 1.5-1 2-1 3"/>'],
+    ["Informática", "Monitores e equipamentos de informática, incluindo a linha AOC.", '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M10 16l-1 4M14 16l1 4"/>'],
+  ];
+
+  const $ = id => document.getElementById(id);
+  const zapLink = txt => `https://wa.me/${LOJA.whatsapp}?text=${encodeURIComponent(txt)}`;
+
+  document.querySelectorAll(".js-zap").forEach(a => a.href = zapLink(LOJA.mensagem));
+  $("txtZap").textContent = LOJA.whatsappTexto;
+  $("txtFixo").textContent = LOJA.fixoTexto; $("txtFixo").href = "tel:+" + LOJA.fixo;
+  $("txtEnd").textContent = LOJA.endereco;
+  $("txtEnd").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Green Eletrônica, " + LOJA.endereco);
+  $("rodEnd").textContent = LOJA.endereco;
+  $("ano").textContent = new Date().getFullYear();
+
+  $("gradeServicos").innerHTML = SERVICOS.map(([t, d, ic]) => `
+    <article class="card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg>
+      <h3>${t}</h3><p>${d}</p>
+    </article>`).join("");
+
+  $("formOrc").addEventListener("submit", e => {
+    e.preventDefault();
+    const v = id => $(id).value.trim();
+    if (!v("fNome") || !v("fAparelho") || !v("fDefeito")) {
+      $("fErro").textContent = "Preencha seu nome, o aparelho e o que está acontecendo.";
+      return;
+    }
+    $("fErro").textContent = "";
+    const linhas = [
+      "Olá, Green Eletrônica! Gostaria de um orçamento.", "",
+      `*Nome:* ${v("fNome")}`,
+      v("fBairro") && `*Bairro:* ${v("fBairro")}`,
+      `*Aparelho:* ${v("fAparelho")}`,
+      v("fMarca") && `*Marca:* ${v("fMarca")}`,
+      v("fModelo") && `*Modelo:* ${v("fModelo")}`,
+      `*Defeito:* ${v("fDefeito")}`
+    ].filter(Boolean);
+    window.open(zapLink(linhas.join("\n")), "_blank", "noopener");
+  });
+}
+</script>
+</body>
+</html>
