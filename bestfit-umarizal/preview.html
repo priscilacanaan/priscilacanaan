@@ -252,6 +252,41 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
 .row span:not(:first-child):empty{background:transparent}
 
 
+/* ===== depoimento ===== */
+.depo{padding-top:3rem;padding-bottom:4rem}
+.depo .kicker{margin-bottom:1.6rem}
+.depo-card{position:relative;max-width:880px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:2.6rem 2.6rem 2.2rem;overflow:hidden;transition:transform .4s var(--ease),border-color .3s}
+.depo-card:hover{border-color:var(--lime);transform:translateY(-6px)}
+.depo-card::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(247,192,1,.12) 50%,transparent 70%);transform:translateX(-100%);transition:transform 1.2s var(--ease);pointer-events:none}
+.depo-card:hover::before{transform:translateX(100%)}
+.depo-flag{position:absolute;top:1rem;right:1rem;background:var(--lime);color:#000;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.35rem .6rem;border-radius:4px}
+.depo-q{font-family:var(--display);font-size:6rem;line-height:.6;color:var(--lime);display:block;height:2.4rem}
+.depo-txt{font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.5;font-weight:500;color:#eee}
+.depo-who{display:flex;align-items:center;gap:1rem;margin-top:1.6rem}
+.depo-who .av{width:52px;height:52px;border-radius:50%;background:var(--lime);color:#000;display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;flex:none}
+.depo-who b{display:block;font-size:1.05rem}
+.depo-who small{color:var(--mut)}
+.depo-stars{display:flex;gap:.2rem;margin-top:1.2rem;color:var(--lime);font-size:1.2rem}
+.depo-stars i{font-style:normal;animation:star 2.4s ease-in-out infinite}
+.depo-stars i:nth-child(2){animation-delay:.15s}.depo-stars i:nth-child(3){animation-delay:.3s}.depo-stars i:nth-child(4){animation-delay:.45s}.depo-stars i:nth-child(5){animation-delay:.6s}
+@keyframes star{50%{transform:scale(1.35) rotate(12deg)}}
+
+/* ===== hero rotating word ===== */
+.rot-out{display:inline-grid;vertical-align:top;color:transparent;-webkit-text-stroke:2px var(--lime)}
+.rot-out b{grid-area:1/1;font-weight:400;opacity:0;transform:translateY(60%);transition:opacity .4s,transform .6s var(--ease)}
+.rot-out b.on{opacity:1;transform:none}
+.rot-out b.out{opacity:0;transform:translateY(-60%);transition:opacity .25s,transform .35s var(--ease)}
+
+/* ===== parallax photo ===== */
+.hero-photo{will-change:transform}
+
+/* ===== title hover shine ===== */
+h2{background:linear-gradient(90deg,#f2f2ee 0%,#f2f2ee 40%,var(--lime) 50%,#f2f2ee 60%,#f2f2ee 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;background-position:100% 0;transition:background-position 1.4s var(--ease)}
+h2.in-view{background-position:0 0}
+h2 em{-webkit-text-fill-color:var(--lime)}
+.aula-card h2{background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:#000;color:#000}
+.aula-card h2 em{-webkit-text-fill-color:#000;color:#000}
+
 </style>
 </head>
 <body>
@@ -273,7 +308,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
   <p class="kicker reveal">Academia · Umarizal · Belém – PA</p>
   <h1 class="hero-title">
     <span class="ln"><span>SEU TREINO</span></span>
-    <span class="ln"><span>SEM <em class="outline">DESCULPA</em></span></span>
+    <span class="ln"><span>SEM <span class="rot-out"><b class="on">DESCULPA</b><b>ENROLAÇÃO</b><b>DESISTIR</b></span></span></span>
   </h1>
   <p class="hero-sub reveal">Musculação, aulas coletivas e acompanhamento de perto para você sair do “vou começar segunda” e começar de verdade.</p>
   <div class="hero-cta reveal">
@@ -415,9 +450,15 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
   <p class="note">Condições comerciais podem mudar. Consulte a promoção vigente antes de matricular.</p>
 </section>
 
-<section class="quote reveal">
-  <blockquote>“[Depoimento real de um aluno: o que mudou, em quanto tempo e por que escolheu a Best Fit.]”</blockquote>
-  <p class="who">— [Nome do aluno] · aluno há [X] meses</p>
+<section class="depo">
+  <p class="kicker">Quem treina conta</p>
+  <div class="depo-card reveal">
+    <span class="depo-flag">EXEMPLO · trocar pelo depoimento real</span>
+    <span class="depo-q">“</span>
+    <blockquote class="depo-txt">Cheguei aqui sem saber por onde começar. Hoje venho quase todo dia, a equipe me acompanha de perto e eu sinto a diferença no corpo e na disposição.</blockquote>
+    <div class="depo-who"><span class="av">[N]</span><div><b>[Nome do aluno]</b><small>aluno há [X] meses · [modalidade]</small></div></div>
+    <div class="depo-stars" aria-label="5 de 5 estrelas"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
+  </div>
 </section>
 
 <section id="aula" class="aula">
@@ -542,6 +583,34 @@ if(af) af.addEventListener('submit',e=>{
   window.open('https://api.whatsapp.com/send?phone=5591980484544&text='+encodeURIComponent(texto),'_blank');
   af.classList.add('sent');
 });
+
+/* ===== dinâmico ===== */
+/* rotating outline word in hero */
+const ro=[...document.querySelectorAll('.rot-out b')]; let roi=0;
+if(!reduce && ro.length) setInterval(()=>{
+  const cur=ro[roi]; cur.classList.remove('on'); cur.classList.add('out');
+  setTimeout(()=>cur.classList.remove('out'),400);
+  roi=(roi+1)%ro.length; ro[roi].classList.add('on');
+},2600);
+
+/* hero photo parallax */
+const hp=document.querySelector('.hero-photo');
+if(hp && !reduce) addEventListener('scroll',()=>{ hp.style.transform=`translateY(${scrollY*.25}px) scale(1.08)`; },{passive:true});
+
+/* scroll-speed marquee */
+const mqT=document.querySelector('.track');
+if(mqT && !reduce){
+  let x=0,v=0,last=scrollY;
+  addEventListener('scroll',()=>{ v+=(scrollY-last)*.4; last=scrollY; },{passive:true});
+  (function loop(){ v*=.92; x-=1.2+Math.min(Math.abs(v),40); if(-x>mqT.scrollWidth/2) x+=mqT.scrollWidth/2; mqT.style.transform=`translateX(${x}px)`; requestAnimationFrame(loop); })();
+}
+
+/* section titles shine in when visible */
+const hio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); hio.unobserve(e.target); } }),{threshold:.5});
+document.querySelectorAll('h2').forEach(el=>hio.observe(el));
+
+/* stagger reveal in grids */
+document.querySelectorAll('.cards, .plans, .gal-grid').forEach(g=>[...g.children].forEach((el,i)=>el.style.transitionDelay=(i*90)+'ms'));
 
 </script>
 </body>
