@@ -70,6 +70,7 @@
     .trilho div,.selo,.logo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.12.1/dist/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <header>
@@ -112,6 +113,7 @@
         </select>
       </div>
       <div><label for="consultora">Consultor(a) responsável</label><input id="consultora"></div>
+      <div><label for="emailEnvio">E-mail para receber o resultado</label><input id="emailEnvio" type="email" placeholder="ex.: e-mail do(a) consultor(a)"></div>
     </div>
     <label style="font-weight:400;display:flex;gap:8px;align-items:flex-start;margin-top:16px">
       <input id="lgpd" type="checkbox" style="width:auto;margin-top:4px">
@@ -343,7 +345,7 @@ $("btnComecar").onclick = () => {
   if(!nome||!email||!cargo){ $("erroInicio").textContent="Preencha nome, e-mail e cargo para continuar."; return; }
   if(!/^\S+@\S+\.\S+$/.test(email)){ $("erroInicio").textContent="Confira o e-mail digitado."; return; }
   if(!$("lgpd").checked){ $("erroInicio").textContent="É preciso autorizar o uso dos dados para continuar."; return; }
-  candidato={nome,email,cargo,empresa:$("empresa").value.trim(),objetivo:$("objetivo").value,consultora:$("consultora").value.trim(),data:new Date().toLocaleDateString("pt-BR")};
+  candidato={nome,email,cargo,empresa:$("empresa").value.trim(),objetivo:$("objetivo").value,consultora:$("consultora").value.trim(),emailEnvio:$("emailEnvio").value.trim(),data:new Date().toLocaleDateString("pt-BR")};
   $("telaInicio").classList.add("oculto"); $("telaPerguntas").classList.remove("oculto");
   mostrar();
 };
@@ -406,11 +408,13 @@ function resultado(){
       <h3>Como se comunicar com esse estilo</h3>${lista(PERFIS[k].comunicar)}
     </div>`;
 
-  $("telaResultado").innerHTML=`
+  $("telaResultado").innerHTML=`<div id="relatorioPDF">
+    <div class="so-pdf" style="display:none;margin-bottom:18px;border-radius:14px;overflow:hidden">${document.querySelector("header").outerHTML}</div>
     <div class="cartao">
       <h2>Relatório de Perfil Comportamental DISC</h2>
       <table class="dados">
         <tr><td><strong>Nome</strong></td><td>${esc(candidato.nome)}</td></tr>
+        <tr><td><strong>E-mail</strong></td><td>${esc(candidato.email)}</td></tr>
         <tr><td><strong>Cargo / vaga</strong></td><td>${esc(candidato.cargo)}</td></tr>
         ${candidato.empresa?`<tr><td><strong>Empresa / área</strong></td><td>${esc(candidato.empresa)}</td></tr>`:""}
         <tr><td><strong>Objetivo</strong></td><td>${esc(candidato.objetivo)}</td></tr>
@@ -443,9 +447,22 @@ function resultado(){
       <p class="aviso">Fator menos intenso: <strong>${rank[3]} · ${PERFIS[rank[3]].nome}</strong> (${pct[rank[3]]}%). Use este relatório como apoio à entrevista, nunca como critério único de decisão.</p>
     </div>
 
-    <div class="acoes nao-imprimir">
-      <button class="btn sec" onclick="copiar('csv',this)">Copiar respostas (para Excel)</button>
-      <button class="btn" onclick="copiar('rel',this)">Copiar relatório</button>
+    </div>
+    <div class="acoes nao-imprimir" data-html2canvas-ignore="true">
+      <button class="btn" onclick="baixarPDF(this)">Baixar PDF</button>
+      <button class="btn sec" onclick="abrirEmail()">Enviar por e-mail</button>
+      <button class="btn sec" onclick="baixarCSV(this)">Baixar respostas (Excel)</button>
+    </div>
+    <div id="caixaEmail" class="cartao oculto nao-imprimir" data-html2canvas-ignore="true">
+      <h2>Enviar resultado por e-mail</h2>
+      <label for="emailPara">Enviar para</label>
+      <input id="emailPara" type="email" placeholder="nome@empresa.com.br">
+      <p class="aviso">1) Clique em <strong>Baixar PDF</strong> acima. 2) Clique em <strong>Abrir meu e-mail</strong>: a mensagem já vem com o resumo. 3) Anexe o PDF e envie.</p>
+      <div class="acoes" style="justify-content:flex-start">
+        <a id="linkEmail" class="btn" style="text-decoration:none" href="#">Abrir meu e-mail</a>
+        <button class="btn sec" onclick="copiarResumo(this)">Copiar resumo</button>
+      </div>
+      <p class="aviso" id="emailInfo"></p>
     </div>`;
   window._res={bruto,pct,codigo};
   $("telaPerguntas").classList.add("oculto"); $("telaResultado").classList.remove("oculto");
@@ -470,25 +487,73 @@ function perguntasEntrevista(k){
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 
-function copiar(tipo,btn){
-  const c=candidato, r=window._res;
-  const txt = tipo==='csv'
-    ? [["Nome","E-mail","Cargo","Empresa","Objetivo","Consultor(a)","Data","Perfil","D%","I%","S%","C%"],
-       [c.nome,c.email,c.cargo,c.empresa,c.objetivo,c.consultora,c.data,r.codigo,r.pct.D,r.pct.I,r.pct.S,r.pct.C]].map(l=>l.join("\t")).join("\n")
-    : $("telaResultado").innerText.replace(/Copiar respostas.*$/s,"").trim();
-  const ok=()=>{const t=btn.textContent;btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent=t,2000);};
-  const falha=()=>{btn.textContent="Não deu para copiar: selecione o texto e copie à mão";};
-  try{ navigator.clipboard.writeText(txt).then(ok,falha); }catch(e){ falha(); }
+/* ---------- salvar arquivo (PDF / planilha) ---------- */
+async function salvarArquivo(nome, blob){
+  if(window.claude && typeof window.claude.use==="function"){
+    const d = await window.claude.use("downloads");
+    if(!d) throw {code:"unavailable"};
+    return d.save({filename:nome, data:blob});
+  }
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=nome;
+  document.body.appendChild(a); a.click(); a.remove();
 }
-function baixarCSV(){
+function nomeArq(ext){ return `DISC_${candidato.nome.replace(/[^\p{L}\p{N}]+/gu,"_")}.${ext}`; }
+function avisoErro(btn,txtOrig,e){
+  const msg = e && e.code==="declined" ? "Download cancelado" : "Não foi possível baixar aqui";
+  btn.textContent=msg; setTimeout(()=>{btn.textContent=txtOrig;btn.disabled=false;},2500);
+}
+async function baixarPDF(btn){
+  const orig=btn.textContent; btn.disabled=true; btn.textContent="Gerando PDF...";
+  try{
+    if(typeof html2pdf!=="function") throw {code:"semlib"};
+    const topo=document.querySelector(".so-pdf"); topo.style.display="block";
+    const blob = await html2pdf().set({
+      margin:[8,8,10,8], image:{type:"jpeg",quality:0.95},
+      html2canvas:{scale:2,useCORS:true,backgroundColor:"#ffffff"},
+      jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},
+      pagebreak:{mode:["css","avoid-all"]}
+    }).from($("relatorioPDF")).outputPdf("blob");
+    topo.style.display="none";
+    await salvarArquivo(nomeArq("pdf"), blob);
+    btn.textContent="PDF baixado ✓"; setTimeout(()=>{btn.textContent=orig;btn.disabled=false;},2500);
+  }catch(e){ const t=document.querySelector(".so-pdf"); if(t) t.style.display="none"; avisoErro(btn,orig,e); }
+}
+function resumoTexto(){
+  const c=candidato, r=window._res, P=PERFIS[r.codigo[0]];
+  return [`Resultado da Avaliação DISC`,``,
+    `Nome: ${c.nome}`,`E-mail: ${c.email}`,`Cargo/vaga: ${c.cargo}`,
+    c.empresa?`Empresa/área: ${c.empresa}`:null,`Objetivo: ${c.objetivo}`,`Data: ${c.data}`,``,
+    `Perfil predominante: ${r.codigo} (${r.codigo.split("").map(k=>PERFIS[k].nome).join(" + ")})`,
+    `D · Dominância: ${r.pct.D}%`,`I · Influência: ${r.pct.I}%`,`S · Estabilidade: ${r.pct.S}%`,`C · Conformidade: ${r.pct.C}%`,``,
+    P.resumo,``,`O relatório completo segue em PDF anexo.`].filter(x=>x!==null).join("\n");
+}
+function atualizaLink(){
+  const para=$("emailPara").value.trim();
+  const assunto=`Resultado DISC - ${candidato.nome}`;
+  $("linkEmail").href=`mailto:${encodeURIComponent(para)}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTexto())}`;
+  $("emailInfo").textContent = para ? `Se o seu e-mail não abrir, copie o resumo e envie para: ${para}` : "Se o seu e-mail não abrir, copie o resumo e cole numa mensagem.";
+}
+function abrirEmail(){
+  const cx=$("caixaEmail"); cx.classList.remove("oculto");
+  if(!$("emailPara").value) $("emailPara").value=candidato.emailEnvio||"";
+  $("emailPara").oninput=atualizaLink; atualizaLink();
+  cx.scrollIntoView({behavior:"smooth"});
+}
+function copiarResumo(btn){
+  const ok=()=>{btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent="Copiar resumo",2000);};
+  const falha=()=>{btn.textContent="Selecione e copie à mão";};
+  try{ navigator.clipboard.writeText(resumoTexto()).then(ok,falha); }catch(e){ falha(); }
+}
+function baixarCSV(btn){
   const c=candidato, r=window._res;
   const linhas=[["Nome","E-mail","Cargo","Empresa","Objetivo","Consultor(a)","Data","Perfil","D%","I%","S%","C%"],
     [c.nome,c.email,c.cargo,c.empresa,c.objetivo,c.consultora,c.data,r.codigo,r.pct.D,r.pct.I,r.pct.S,r.pct.C],[],
     ["Situação","Mais","Menos"], ...respostas.map((x,i)=>[PERGUNTAS[i].t,PERGUNTAS[i].o[x.mais],PERGUNTAS[i].o[x.menos]])];
   const csv="﻿"+linhas.map(l=>l.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(";")).join("\n");
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
-  a.download=`DISC_${c.nome.replace(/\s+/g,"_")}.csv`; a.click();
+  const orig=btn.textContent;
+  salvarArquivo(nomeArq("csv"), new Blob([csv],{type:"text/csv"})).then(
+    ()=>{btn.textContent="Baixado ✓";setTimeout(()=>btn.textContent=orig,2500);},
+    e=>avisoErro(btn,orig,e));
 }
 </script>
 </body>
