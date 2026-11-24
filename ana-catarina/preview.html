@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F4F1EC" />
+<title>Ana Catarina — Filósofa residente, AI Collective</title>
+<meta name="description" content="Ana Catarina, filósofa residente do AI Collective. Pensamento crítico sobre inteligência artificial, ética e sociedade." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#F4F1EC;--ink:#1D1B19;--ink2:#2A2723;--paper:#FBFAF7;--mut:#6E665E;--line:#DCD5CB;--accent:#9C5B3B;--sans:"Instrument Sans",system-ui,sans-serif;--serif:"Newsreader",Georgia,serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:clamp(3rem,7vw,6.4rem)}
+h2{font-size:clamp(2.4rem,4.8vw,3.8rem)}
+h3{font-size:1.7rem;margin-bottom:.5rem}
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:90}
+.progress span{display:block;height:100%;background:var(--accent);transform-origin:left;transform:scaleX(var(--sp,0))}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.2rem 6vw;transition:background .4s,box-shadow .4s}
+.nav.solid{background:rgba(244,241,236,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.logo{font-family:var(--serif);font-size:1.5rem}
+.links{display:flex;gap:2rem;font-size:.92rem}
+.links a{position:relative;color:var(--mut);transition:color .3s}
+.links a:hover,.links a.active{color:var(--ink)}
+.links a::after{content:"";position:absolute;left:0;bottom:-5px;height:1px;width:100%;background:var(--accent);transform:scaleX(0);transition:transform .4s var(--ease)}
+.links a.active::after,.links a:hover::after{transform:scaleX(1)}
+@media(max-width:900px){.links{display:none}}
+.lang{display:flex;gap:.2rem;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--paper)}
+.lang button{border:0;background:none;font:500 .8rem var(--sans);padding:.4rem .75rem;border-radius:999px;cursor:pointer;color:var(--mut);transition:background .3s,color .3s}
+.lang button.is-on{background:var(--ink);color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--paper);font:500 .95rem var(--sans);padding:.95rem 1.5rem;border-radius:999px;border:0;cursor:pointer;transition:transform .3s var(--ease),background .3s}
+.btn:hover{transform:translateY(-2px);background:var(--accent)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+section{padding:7rem 6vw;position:relative}
+.kicker{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:1.2rem}
+.head{margin-bottom:3rem;max-width:760px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:9rem;position:relative;overflow:hidden}
+.eyebrow{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:2rem}
+.hero h1 em{display:inline-block;animation:fadeEm 1.6s .6s var(--ease) both}
+@keyframes fadeEm{from{opacity:0;transform:translateY(12px)}}
+.lead{font-size:1.2rem;color:var(--mut);max-width:620px;margin:2rem 0 2.6rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.ring{position:absolute;right:-10vw;top:12%;width:min(620px,70vw);aspect-ratio:1;pointer-events:none}
+.ring span{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line);animation:spin 40s linear infinite}
+.ring span:nth-child(2){inset:12%;border-style:dashed;animation-duration:60s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* sobre */
+.sobre-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:5rem;align-items:start}
+@media(max-width:900px){.sobre-grid{grid-template-columns:1fr}}
+.sobre-grid p{color:var(--mut);margin-bottom:1rem;max-width:620px}
+.facts{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:2rem;display:grid;gap:1.2rem}
+.facts div{border-bottom:1px solid var(--line);padding-bottom:1rem}
+.facts div:last-child{border-bottom:0;padding-bottom:0}
+.facts dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.facts dd{font-family:var(--serif);font-size:1.25rem;margin-top:.2rem}
+.facts a{text-decoration:underline;text-underline-offset:3px}
+
+/* trabalho */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:2.2rem;transition:transform .5s var(--ease),border-color .4s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.n{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.1rem}
+.card p{color:var(--mut);margin-top:.6rem}
+
+/* pensamento */
+.pensamento{background:var(--ink);color:var(--paper);text-align:center}
+.pensamento blockquote{max-width:900px;margin:auto}
+.qm{font-family:var(--serif);font-size:8rem;line-height:.6;color:var(--accent);display:block;height:3rem}
+.pensamento p{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.25;font-style:italic}
+
+/* contato */
+.contato-card{display:grid;grid-template-columns:1fr 1fr;gap:4rem;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:3.5rem;max-width:1100px;margin:auto}
+@media(max-width:860px){.contato-card{grid-template-columns:1fr;padding:2.2rem}}
+.contato-card p{color:var(--mut);margin-top:.6rem}
+.info{list-style:none;margin-top:1.8rem;display:grid;gap:.9rem}
+.info small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.form{display:grid;gap:.8rem}
+.form input,.form textarea{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:14px;background:var(--bg);font:400 1rem var(--sans);color:var(--ink);transition:border-color .3s,box-shadow .3s}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(156,91,59,.12)}
+.form .btn{justify-content:center}
+.ok{display:none;font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--accent)}
+.form.sent>*:not(.ok){display:none}
+.form.sent .ok{display:block}
+.footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding:2.5rem 6vw;color:var(--mut);font-size:.88rem;border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.sobre-grid{grid-template-columns:.7fr 1.2fr .8fr}
+@media(max-width:1100px){.sobre-grid{grid-template-columns:1fr 1fr}.portrait{grid-column:1/-1;max-width:360px}}
+@media(max-width:700px){.sobre-grid{grid-template-columns:1fr}}
+.portrait{position:relative;border-radius:200px 200px 22px 22px;overflow:hidden;aspect-ratio:3/4;background:var(--line);margin:0}
+.portrait img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.portrait:hover img{transform:scale(1.04)}
+.portrait figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--paper);font-size:.8rem;padding:.35rem .8rem;border-radius:999px}
+.portrait.empty img{display:none}
+.portrait.empty::after{content:"Foto a enviar";position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-family:var(--serif);font-style:italic}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo">Ana <em>Catarina</em></a>
+  <nav class="links">
+    <a href="#sobre" data-i="n_sobre">Sobre</a><a href="#trabalho" data-i="n_trabalho">Trabalho</a><a href="#pensamento" data-i="n_pensamento">Pensamento</a><a href="#contato" data-i="n_contato">Contato</a>
+  </nav>
+  <div class="lang" role="group" aria-label="Idioma">
+    <button data-lang="pt" class="is-on">PT</button><button data-lang="en">EN</button><button data-lang="fr">FR</button>
+  </div>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <p class="eyebrow reveal" data-i="h_eyebrow">Filósofa residente · AI Collective</p>
+  <h1 class="reveal"><span data-i="h_1">Pensar a inteligência artificial</span> <em data-i="h_2">com cuidado.</em></h1>
+  <p class="lead reveal" data-i="h_lead">Ana Catarina é filósofa residente do AI Collective. Seu trabalho examina o que a IA faz com a linguagem, o conhecimento, a ética e a vida em comum.</p>
+  <div class="cta reveal"><a href="#contato" class="btn" data-i="h_cta">Convidar para conversar →</a><a href="#trabalho" class="btn btn-line" data-i="h_cta2">Ver o trabalho</a></div>
+  <div class="ring" aria-hidden="true"><span></span><span></span></div>
+</section>
+
+<section id="sobre" class="sobre">
+  <div class="sobre-grid">
+    <figure class="portrait reveal"><img src="fotos/ana-catarina.jpg" alt="Ana Catarina" onerror="this.parentElement.classList.add('empty')" /><figcaption>Ana Catarina</figcaption></figure>
+    <div class="reveal">
+      <p class="kicker" data-i="k_sobre">Sobre</p>
+      <h2 data-i="t_sobre">Filosofia que <em>sai do papel.</em></h2>
+      <p data-i="p_sobre1">[Biografia: formação, instituição, área de pesquisa e a trajetória até o AI Collective. Texto a confirmar com a própria Ana Catarina.]</p>
+      <p data-i="p_sobre2">A filosofia, para ela, é uma prática: fazer perguntas difíceis em conversas abertas, dentro e fora da academia.</p>
+    </div>
+    <dl class="facts reveal">
+      <div><dt data-i="f_role">Papel</dt><dd data-i="f_role_v">Filósofa residente, AI Collective</dd></div>
+      <div><dt data-i="f_area">Áreas</dt><dd data-i="f_area_v">Ética da IA · Filosofia da linguagem · Epistemologia</dd></div>
+      <div><dt data-i="f_formacao">Formação</dt><dd>[Formação e instituição]</dd></div>
+      <div><dt data-i="f_lattes">Currículo</dt><dd><a href="http://lattes.cnpq.br/6485258455018753" target="_blank" rel="noopener">Lattes (CNPq)</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="trabalho" class="trabalho">
+  <div class="head reveal">
+    <p class="kicker" data-i="k_trab">Trabalho</p>
+    <h2 data-i="t_trab">Três frentes de <em>conversa.</em></h2>
+  </div>
+  <div class="cards">
+    <article class="card reveal"><span class="n">01</span><h3 data-i="c1_t">Conversas públicas</h3><p data-i="c1_p">Encontros e debates com a comunidade do AI Collective sobre temas de IA e sociedade.</p></article>
+    <article class="card reveal"><span class="n">02</span><h3 data-i="c2_t">Pesquisa</h3><p data-i="c2_p">[Linhas de pesquisa e publicações a confirmar com o Lattes.]</p></article>
+    <article class="card reveal"><span class="n">03</span><h3 data-i="c3_t">Consultoria e palestras</h3><p data-i="c3_p">Palestras e consultas sobre ética, linguagem e uso responsável de IA em organizações e escolas.</p></article>
+  </div>
+</section>
+
+<section id="pensamento" class="pensamento">
+  <blockquote class="reveal">
+    <span class="qm">“</span>
+    <p data-i="q">[Frase própria da Ana Catarina, a confirmar.]</p>
+  </blockquote>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-card reveal">
+    <div>
+      <p class="kicker" data-i="k_contato">Contato</p>
+      <h2 data-i="t_contato">Vamos <em>conversar?</em></h2>
+      <p data-i="p_contato">Para convites, palestras e conversas. Escreva em português, inglês ou francês.</p>
+      <ul class="info">
+        <li><small data-i="l_email">E-mail</small>[contato@exemplo.com]</li>
+        <li><small>Lattes</small><a href="http://lattes.cnpq.br/6485258455018753" target="_blank" rel="noopener">lattes.cnpq.br/6485258455018753</a></li>
+      </ul>
+    </div>
+    <form class="form" id="form">
+      <input type="text" placeholder="Nome" data-ph="f_nome" required />
+      <input type="email" placeholder="E-mail" data-ph="f_email" required />
+      <textarea rows="4" placeholder="Mensagem" data-ph="f_msg"></textarea>
+      <button class="btn" type="submit" data-i="f_btn">Enviar →</button>
+      <p class="ok" data-i="f_ok">Obrigada! Respondo em breve.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Ana Catarina</span>
+  <span><a href="#topo" data-i="f_top">Topo ↑</a></span>
+</footer>
+
+<script>
+/* Textos em PT (padrão), EN e FR. Ajustar aqui. */
+window.I18N = {
+pt:{},
+en:{
+n_sobre:"About",n_trabalho:"Work",n_pensamento:"Thinking",n_contato:"Contact",
+h_eyebrow:"Resident Philosopher · AI Collective",h_1:"Thinking about artificial intelligence",h_2:"with care.",
+h_lead:"Ana Catarina is the resident philosopher at the AI Collective. Her work examines what AI does to language, knowledge, ethics and common life.",
+h_cta:"Invite her to talk →",h_cta2:"See the work",
+k_sobre:"About",t_sobre:"Philosophy that <em>leaves the page.</em>",
+p_sobre1:"[Biography: education, institution, research area and path to the AI Collective. To be confirmed with Ana Catarina.]",
+p_sobre2:"For her, philosophy is a practice: asking hard questions in open conversations, inside and outside academia.",
+f_role:"Role",f_role_v:"Resident Philosopher, AI Collective",f_area:"Areas",f_area_v:"AI ethics · Philosophy of language · Epistemology",f_formacao:"Education",f_lattes:"CV",
+k_trab:"Work",t_trab:"Three fronts of <em>conversation.</em>",
+c1_t:"Public conversations",c1_p:"Talks and debates with the AI Collective community on AI and society.",
+c2_t:"Research",c2_p:"[Research lines and publications to be confirmed from the Lattes CV.]",
+c3_t:"Consulting and talks",c3_p:"Talks and consulting on ethics, language and responsible use of AI in organizations and schools.",
+q:"[Ana Catarina's own phrase, to be confirmed.]",
+k_contato:"Contact",t_contato:"Let's <em>talk?</em>",p_contato:"For invitations, talks and conversations. Write in Portuguese, English or French.",
+l_email:"E-mail",f_nome:"Name",f_email:"E-mail",f_msg:"Message",f_btn:"Send →",f_ok:"Thank you! I will reply soon.",f_top:"Top ↑"
+},
+fr:{
+n_sobre:"À propos",n_trabalho:"Travail",n_pensamento:"Pensée",n_contato:"Contact",
+h_eyebrow:"Philosophe en résidence · AI Collective",h_1:"Penser l'intelligence artificielle",h_2:"avec soin.",
+h_lead:"Ana Catarina est philosophe en résidence au AI Collective. Son travail examine ce que l'IA fait au langage, au savoir, à l'éthique et à la vie commune.",
+h_cta:"L'inviter à parler →",h_cta2:"Voir le travail",
+k_sobre:"À propos",t_sobre:"Une philosophie qui <em>sort du papier.</em>",
+p_sobre1:"[Biographie : formation, institution, domaine de recherche et parcours jusqu'au AI Collective. À confirmer avec Ana Catarina.]",
+p_sobre2:"Pour elle, la philosophie est une pratique : poser des questions difficiles dans des conversations ouvertes, dedans comme dehors de l'université.",
+f_role:"Rôle",f_role_v:"Philosophe en résidence, AI Collective",f_area:"Domaines",f_area_v:"Éthique de l'IA · Philosophie du langage · Épistémologie",f_formacao:"Formation",f_lattes:"CV",
+k_trab:"Travail",t_trab:"Trois axes de <em>conversation.</em>",
+c1_t:"Conversations publiques",c1_p:"Rencontres et débats avec la communauté du AI Collective sur l'IA et la société.",
+c2_t:"Recherche",c2_p:"[Axes de recherche et publications à confirmer depuis le CV Lattes.]",
+c3_t:"Conseil et conférences",c3_p:"Conférences et conseil sur l'éthique, le langage et l'usage responsable de l'IA dans les organisations et les écoles.",
+q:"[Phrase propre à Ana Catarina, à confirmer.]",
+k_contato:"Contact",t_contato:"On se <em>parle ?</em>",p_contato:"Pour des invitations, conférences et conversations. Écrivez en portugais, anglais ou français.",
+l_email:"E-mail",f_nome:"Nom",f_email:"E-mail",f_msg:"Message",f_btn:"Envoyer →",f_ok:"Merci ! Je réponds bientôt.",f_top:"Haut ↑"
+}};
+
+</script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 30); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => { const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal')); el.style.transitionDelay = (sib.indexOf(el) % 4) * 100 + 'ms'; io.observe(el); });
+const secIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) document.querySelectorAll('.links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' });
+['sobre', 'trabalho', 'pensamento', 'contato'].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+
+/* language switch: PT is the source text; EN/FR come from i18n.js */
+const src = new Map();
+document.querySelectorAll('[data-i]').forEach(el => src.set(el, el.innerHTML));
+document.querySelectorAll('[data-ph]').forEach(el => src.set(el, el.placeholder));
+function setLang(l) {
+  const dict = (window.I18N && I18N[l]) || {};
+  document.querySelectorAll('[data-i]').forEach(el => { const k = el.dataset.i; el.innerHTML = l === 'pt' || !dict[k] ? src.get(el) : dict[k]; });
+  document.querySelectorAll('[data-ph]').forEach(el => { const k = el.dataset.ph; el.placeholder = l === 'pt' || !dict[k] ? src.get(el) : dict[k]; });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === l));
+  document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;
+  try { localStorage.setItem('ac-lang', l); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+let saved = null; try { saved = localStorage.getItem('ac-lang'); } catch (e) {}
+const nav2 = (navigator.language || 'pt').slice(0, 2);
+setLang(new URLSearchParams(location.search).get('lang') || saved || (['en', 'fr'].includes(nav2) ? nav2 : 'pt'));
+
+document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+</script>
+</body>
+</html>
