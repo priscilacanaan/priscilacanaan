@@ -80,7 +80,7 @@ section{padding:7rem 6vw;position:relative}
 .quote-card{background:linear-gradient(150deg,var(--green),var(--deep));color:var(--white);border-radius:32px;padding:3rem;position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(10,77,45,.6)}
 .quote-card::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:var(--pink);opacity:.25;animation:bob 8s ease-in-out infinite}
 .qm{font-family:var(--display);font-size:6rem;line-height:.6;color:var(--pink2);display:block;height:2.6rem}
-.quote-card p{font-family:var(--display);font-size:1.8rem;line-height:1.3;font-weight:600;position:relative;z-index:1}
+.quote-card p{font-family:var(--display);font-size:1.8rem;line-height:1.3;font-weight:700;position:relative;z-index:1;color:#FF2E8A}
 .quote-card small{display:block;margin-top:1.4rem;opacity:.8;font-weight:700;position:relative;z-index:1}
 
 /* modulos */
