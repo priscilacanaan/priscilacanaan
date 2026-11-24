@@ -239,4 +239,3 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
 .price small{font-size:1.1rem}
 .row span:not(:first-child):empty{background:transparent}
 
-.gal:last-child{grid-column:1/-1}
