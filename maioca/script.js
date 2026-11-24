@@ -19,30 +19,6 @@ function openNow() {
 }
 openNow(); setInterval(openNow, 60000);
 
-/* flavor picker */
-const chips = [...document.querySelectorAll('.chip')], cards = [...document.querySelectorAll('.flavor')];
-const cats = ['Açaí', 'Tapioca', 'Frutas', 'Especiais'];
-const descs = ['O clássico paraense, na textura que você já conhece.', 'O sabor da infância, em forma de sorvete.', 'Frutas da nossa terra, refrescantes e cheias de sabor.', 'Os sabores que só aparecem de vez em quando.'];
-const names = ['Açaí cremoso', 'Tapioca', 'Frutas', 'Especial da casa'];
-const pscoop = document.getElementById('pscoop');
-chips.forEach(c => c.addEventListener('click', () => {
-  const f = +c.dataset.f;
-  chips.forEach(x => x.classList.toggle('is-on', x === c));
-  cards.forEach(card => {
-    const ok = +card.dataset.cat === f;
-    card.classList.toggle('hide', !ok); card.classList.remove('show');
-    if (ok) { void card.offsetWidth; card.classList.add('show'); }
-  });
-  document.getElementById('pk-cat').textContent = cats[f];
-  document.getElementById('pk-name').textContent = names[f];
-  document.getElementById('pk-desc').textContent = descs[f];
-  pscoop.classList.add('swap'); setTimeout(() => pscoop.classList.remove('swap'), 350);
-  const cols = ['#7B2D8E', '#C98B4B', '#F06B8C', '#8E5BD6'];
-  pscoop.querySelectorAll('i').forEach(i => i.style.background = `radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,${cols[f]},${cols[f]}cc)`);
-}));
-/* start with the first category */
-chips[0].click();
-
 /* hero cone: scoop follows cursor a little */
 const hs = document.querySelector('.hero-scoop');
 if (hs && !reduce && matchMedia('(hover:hover)').matches) addEventListener('mousemove', e => {
