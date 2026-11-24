@@ -65,8 +65,13 @@ document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
 
 /* manifesto word-by-word highlight */
 const big = document.querySelector('[data-words]');
-big.innerHTML = big.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span> `).join('');
-const ws = [...big.querySelectorAll('.w')];
+const BIG_EN = big.textContent.trim();
+let ws = [];
+function splitWords(text) {
+  big.innerHTML = text.split(/\s+/).map(w => `<span class="w">${w}</span> `).join('');
+  ws = [...big.querySelectorAll('.w')];
+}
+splitWords(BIG_EN);
 function paintWords() {
   const r = big.getBoundingClientRect();
   const p = Math.min(Math.max((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.4), 0), 1);
@@ -138,3 +143,46 @@ tBtns.forEach(b => b.addEventListener('click', () => {
   });
 }));
 addEventListener('resize', () => movePill(toggle.querySelector('.is-on')));
+
+/* language: EN / ES */
+const ES = window.I18N_ES || {};
+const original = new Map();
+function textNodes(root) {
+  const out = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest('script,style,[data-words]') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+  });
+  while (w.nextNode()) out.push(w.currentNode);
+  return out;
+}
+const nodes = textNodes(document.body).filter(n => n.nodeValue.trim() in ES);
+nodes.forEach(n => original.set(n, n.nodeValue));
+const attrEls = [...document.querySelectorAll('[placeholder],[aria-label],[title]')];
+attrEls.forEach(el => ['placeholder','aria-label','title'].forEach(a => { if (el.hasAttribute(a)) el.dataset['en' + a.replace('-','')] = el.getAttribute(a); }));
+function setLang(lang, animate) {
+  const es = lang === 'es';
+  const apply = () => {
+    nodes.forEach(n => {
+      const en = original.get(n), key = en.trim();
+      n.nodeValue = es ? en.replace(key, ES[key]) : en;
+    });
+    attrEls.forEach(el => ['placeholder','aria-label','title'].forEach(a => {
+      const en = el.dataset['en' + a.replace('-','')];
+      if (en !== undefined) el.setAttribute(a, es && ES[en] ? ES[en] : en);
+    }));
+    splitWords(es ? ES[BIG_EN] || BIG_EN : BIG_EN); paintWords();
+    document.documentElement.lang = lang;
+    document.title = es ? 'VentureX Aventura — Coworking con alma de Miami' : 'VentureX Aventura — Coworking that feels like Miami';
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === lang));
+    movePill(toggle.querySelector('.is-on'));
+  };
+  if (animate && !reduce) {
+    document.body.classList.remove('switching'); void document.body.offsetWidth;
+    document.body.classList.add('switching'); setTimeout(apply, 200);
+  } else apply();
+  try { localStorage.setItem('vx-lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang, true)));
+const urlLang = new URLSearchParams(location.search).get('lang');
+let saved = null; try { saved = localStorage.getItem('vx-lang'); } catch (e) {}
+const startLang = urlLang || saved || ((navigator.language || '').startsWith('es') ? 'es' : 'en');
+if (startLang === 'es') setLang('es', false);

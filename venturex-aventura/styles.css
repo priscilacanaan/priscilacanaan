@@ -267,3 +267,29 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
 .g figcaption{position:absolute;left:1rem;bottom:1rem;font-size:.72rem;letter-spacing:.08em;background:rgba(255,255,255,.9);color:#0a0a0a;padding:.35rem .7rem;border-radius:999px}
 .g.has-img figcaption{display:none}
 @media(max-width:800px){.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.g1{grid-column:span 2}}
+
+/* language toggle */
+.nav-right{display:flex;align-items:center;gap:.7rem}
+.lang{display:flex;background:#1c1c1c;border-radius:999px;padding:3px}
+.lang button{border:0;background:none;color:var(--ink);font:600 .8rem var(--sans);padding:.45rem .7rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.lang button.is-on{background:var(--ink);color:var(--black)}
+body.switching main{animation:langflip .5s var(--ease)}
+@keyframes langflip{0%{opacity:1}40%{opacity:.2;filter:blur(4px)}100%{opacity:1}}
+
+/* social */
+.social{margin-top:2.5rem}
+.social-title{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:1rem}
+.social-row{display:flex;flex-wrap:wrap;gap:.7rem}
+.social-link{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);font-weight:500;font-size:.9rem;transition:background .3s,color .3s,transform .3s var(--ease),border-color .3s}
+.social-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.social-link svg .fill{fill:currentColor;stroke:none}
+.social-link:hover{background:var(--coral);color:var(--black);border-color:var(--coral);transform:translateY(-4px) rotate(-2deg)}
+.todo-link{border-style:dashed}
+.wa-float{position:fixed;right:1.4rem;bottom:1.4rem;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--coral);color:var(--black);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(255,90,0,.7);animation:wabob 3s ease-in-out infinite}
+.wa-float svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.wa-float svg .fill{fill:currentColor;stroke:none}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--coral);animation:waring 2s ease-out infinite}
+@keyframes wabob{50%{translate:0 -6px}}
+@keyframes waring{to{transform:scale(1.6);opacity:0}}
+@media(max-width:760px){.lang button{padding:.4rem .55rem}.nav .btn-sm{display:none}}
+.footer{padding-bottom:6.5rem}

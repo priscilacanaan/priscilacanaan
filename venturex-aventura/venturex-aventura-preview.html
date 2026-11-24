@@ -280,6 +280,32 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
 .g.has-img figcaption{display:none}
 @media(max-width:800px){.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.g1{grid-column:span 2}}
 
+/* language toggle */
+.nav-right{display:flex;align-items:center;gap:.7rem}
+.lang{display:flex;background:#1c1c1c;border-radius:999px;padding:3px}
+.lang button{border:0;background:none;color:var(--ink);font:600 .8rem var(--sans);padding:.45rem .7rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.lang button.is-on{background:var(--ink);color:var(--black)}
+body.switching main{animation:langflip .5s var(--ease)}
+@keyframes langflip{0%{opacity:1}40%{opacity:.2;filter:blur(4px)}100%{opacity:1}}
+
+/* social */
+.social{margin-top:2.5rem}
+.social-title{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:1rem}
+.social-row{display:flex;flex-wrap:wrap;gap:.7rem}
+.social-link{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);font-weight:500;font-size:.9rem;transition:background .3s,color .3s,transform .3s var(--ease),border-color .3s}
+.social-link svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.social-link svg .fill{fill:currentColor;stroke:none}
+.social-link:hover{background:var(--coral);color:var(--black);border-color:var(--coral);transform:translateY(-4px) rotate(-2deg)}
+.todo-link{border-style:dashed}
+.wa-float{position:fixed;right:1.4rem;bottom:1.4rem;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--coral);color:var(--black);display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(255,90,0,.7);animation:wabob 3s ease-in-out infinite}
+.wa-float svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.wa-float svg .fill{fill:currentColor;stroke:none}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--coral);animation:waring 2s ease-out infinite}
+@keyframes wabob{50%{translate:0 -6px}}
+@keyframes waring{to{transform:scale(1.6);opacity:0}}
+@media(max-width:760px){.lang button{padding:.4rem .55rem}.nav .btn-sm{display:none}}
+.footer{padding-bottom:6.5rem}
+
 </style>
 </head>
 <body>
@@ -295,7 +321,12 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <a href="#tour" class="btn btn-sm magnetic">Book a tour</a>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="is-on">EN</button><button data-lang="es">ES</button>
+    </div>
+    <a href="#tour" class="btn btn-sm magnetic">Book a tour</a>
+  </div>
 </header>
 
 <main id="top">
@@ -560,6 +591,18 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
   <div class="footer-awards">
     <span>★ Entrepreneur Franchise 500</span><span>★ SFBJ Fastest-Growing</span><span>★ Inc. 5000</span><span>★ GWA Member</span>
   </div>
+  <div class="social">
+    <p class="social-title">Follow us</p>
+    <!-- Social links: replace href="#" with the real VentureX Aventura profiles -->
+    <div class="social-row">
+      <a class="social-link todo-link" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="fill"/></svg><span>Instagram</span></a>
+      <a class="social-link todo-link" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" class="fill"/></svg><span>Facebook</span></a>
+      <a class="social-link todo-link" href="#" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg><span>LinkedIn</span></a>
+      <a class="social-link todo-link" href="#" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.5"/></svg><span>TikTok</span></a>
+      <a class="social-link" href="https://wa.me/17869526744" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z" class="fill"/></svg><span>WhatsApp</span></a>
+      <a class="social-link" href="https://www.google.com/maps/search/?api=1&query=Venture+X+Aventura+18851+NE+29th+Ave+Aventura+FL" target="_blank" rel="noopener" aria-label="Google Maps" title="Google Maps"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Google Maps</span></a>
+    </div>
+  </div>
   <div class="footer-row">
     <span>© 2026 VentureX Aventura</span>
     <span>Coworking · Private Offices · Meeting Rooms · Virtual Office</span>
@@ -567,6 +610,167 @@ details p{padding-top:1rem;line-height:1.6;opacity:.75;max-width:700px;animation
   </div>
 </footer>
 
+<a class="wa-float magnetic" href="https://wa.me/17869526744" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z" class="fill"/></svg></a>
+
+<script>
+/* Spanish translations: English text -> Spanish text. Edit freely. */
+window.I18N_ES = {
+ "Spaces": "Espacios",
+ "A day here": "Un día aquí",
+ "Pricing": "Precios",
+ "FAQ": "Preguntas",
+ "Book a tour": "Agenda una visita",
+ "Coworking · Private offices · Aventura, FL": "Coworking · Oficinas privadas · Aventura, FL",
+ "Work": "Trabaja",
+ "where it's": "donde todo",
+ "golden.": "brilla.",
+ "loud.": "vibra.",
+ "yours.": "es tuyo.",
+ "focused.": "fluye.",
+ "A design-led workspace minutes from Aventura Mall — for founders, freelancers and teams who want an office that feels like South Florida, not a cubicle farm.": "Un espacio de trabajo con diseño, a minutos de Aventura Mall — para fundadores, freelancers y equipos que quieren una oficina que se sienta como el sur de Florida, no como un cubículo.",
+ "Book a free tour": "Agenda una visita gratis",
+ "Day pass from": "Pase diario desde",
+ "OPEN 24/7 FOR MEMBERS · OPEN 24/7 FOR MEMBERS ·": "ABIERTO 24/7 PARA MIEMBROS · ABIERTO 24/7 ·",
+ "scroll": "desliza",
+ "Private offices": "Oficinas privadas",
+ "Hot desks": "Puestos flexibles",
+ "Meeting rooms": "Salas de reuniones",
+ "Virtual office": "Oficina virtual",
+ "Fast Wi-Fi": "Wi-Fi rápido",
+ "Free coffee": "Café gratis",
+ "Community events": "Eventos de comunidad",
+ "We didn't build another office. We built the place you'd pick if your laptop could go anywhere — bright, a little bit tropical, full of people doing interesting things, and quiet when you need it to be.": "No construimos otra oficina. Construimos el lugar que elegirías si tu laptop pudiera ir a cualquier parte — luminoso, un poco tropical, lleno de gente haciendo cosas interesantes, y tranquilo cuando lo necesitas.",
+ "/7 member access": "/7 acceso para miembros",
+ "min to Aventura Mall": "min de Aventura Mall",
+ "K sq ft of workspace": "K pies² de espacio",
+ "% month-to-month options": "% opciones mes a mes",
+ "* Confirm figures with the location before going live.": "* Confirmar cifras con la sede antes de publicar.",
+ "01 — Spaces": "01 — Espacios",
+ "Pick your": "Elige tu",
+ "vibe.": "estilo.",
+ "For teams of 1–20": "Para equipos de 1 a 20",
+ "Private Offices": "Oficinas Privadas",
+ "Lockable, furnished, move-in ready. Your logo on the door, our team handling the rest.": "Con llave, amuebladas y listas para entrar. Tu logo en la puerta, nuestro equipo se encarga del resto.",
+ "See offices →": "Ver oficinas →",
+ "Flexible": "Flexible",
+ "Coworking": "Coworking",
+ "Grab any seat in the open lounge. Swap the home office for real coffee and real people.": "Toma cualquier asiento en el lounge. Cambia la oficina en casa por café de verdad y gente de verdad.",
+ "See plans →": "Ver planes →",
+ "By the hour": "Por hora",
+ "Meeting Rooms": "Salas de Reuniones",
+ "Like the Golden Beach Room for 10 — screens, whiteboards and a room that makes the client say \"nice place.\"": "Como la Golden Beach Room para 10 — pantallas, pizarras y una sala que hace decir al cliente \"qué buen lugar\".",
+ "Book a room →": "Reservar sala →",
+ "Remote-first": "Trabajo remoto",
+ "Virtual Office": "Oficina Virtual",
+ "A prestigious Aventura business address, mail handling and a front desk that picks up.": "Una dirección comercial de prestigio en Aventura, manejo de correo y una recepción que siempre contesta.",
+ "Get an address →": "Obtener dirección →",
+ "Inside VentureX Aventura": "Dentro de VentureX Aventura",
+ "See the": "Conoce el",
+ "space.": "espacio.",
+ "02 — A day at VentureX": "02 — Un día en VentureX",
+ "From first espresso": "Del primer espresso",
+ "to": "a las llamadas al",
+ "sunset": "atardecer.",
+ "calls.": "",
+ "Espresso & inbox zero": "Espresso e inbox en cero",
+ "Free barista-style coffee, quiet corners, morning light through big windows.": "Café estilo barista gratis, rincones tranquilos y luz de mañana por grandes ventanales.",
+ "Deep work": "Trabajo profundo",
+ "Phone booths and focus zones. Headphones optional.": "Cabinas telefónicas y zonas de concentración. Audífonos opcionales.",
+ "Lunch, Aventura-style": "Almuerzo al estilo Aventura",
+ "Walk to dozens of restaurants or eat in the member kitchen.": "Camina a decenas de restaurantes o come en la cocina de miembros.",
+ "Client pitch": "Presentación al cliente",
+ "Meeting room booked, screen ready, reception greets your guest.": "Sala reservada, pantalla lista y la recepción recibe a tu invitado.",
+ "Community hour": "Hora de comunidad",
+ "Workshops, happy hours and the intro that becomes your next deal.": "Talleres, happy hours y la presentación que se convierte en tu próximo negocio.",
+ "Late call to Europe?": "¿Llamada tarde con Europa?",
+ "24/7 member access. The lights stay on for you.": "Acceso 24/7 para miembros. Las luces siguen encendidas para ti.",
+ "03 — Included": "03 — Incluido",
+ "Everything.": "Todo.",
+ "Really.": "De verdad.",
+ "High-speed Wi-Fi": "Wi-Fi de alta velocidad",
+ "Unlimited coffee & tea": "Café y té ilimitados",
+ "24/7 secure access": "Acceso seguro 24/7",
+ "Printing & scanning": "Impresión y escaneo",
+ "Phone booths": "Cabinas telefónicas",
+ "Mail & packages": "Correo y paquetes",
+ "Parking nearby": "Estacionamiento cercano",
+ "Member events": "Eventos para miembros",
+ "Daily cleaning": "Limpieza diaria",
+ "On-site team": "Equipo en sitio",
+ "Member kitchen": "Cocina de miembros",
+ "Florida sunshine (free)": "Sol de Florida (gratis)",
+ "04 — Pricing": "04 — Precios",
+ "Simple plans.": "Planes simples.",
+ "No drama.": "Sin drama.",
+ "Monthly": "Mensual",
+ "Annual": "Anual",
+ "Day Pass": "Pase Diario",
+ "/day": "/día",
+ "Any open seat": "Cualquier asiento libre",
+ "Coffee & Wi-Fi": "Café y Wi-Fi",
+ "Walk in, work": "Llega y trabaja",
+ "Get a pass": "Comprar pase",
+ "/mo": "/mes",
+ "Aventura business address": "Dirección comercial en Aventura",
+ "Mail handling": "Manejo de correo",
+ "Meeting room credits": "Créditos para salas",
+ "Start now": "Empezar ahora",
+ "Most loved": "El favorito",
+ "Unlimited lounge access": "Acceso ilimitado al lounge",
+ "24/7 entry": "Entrada 24/7",
+ "Events & community": "Eventos y comunidad",
+ "Join the crew": "Únete al equipo",
+ "Private Office": "Oficina Privada",
+ "from": "desde",
+ "Lockable furnished office": "Oficina amueblada con llave",
+ "Teams of 1–20": "Equipos de 1 a 20",
+ "All amenities": "Todos los servicios",
+ "Tour offices": "Visitar oficinas",
+ "* Example prices — replace with current VentureX Aventura rates.": "* Precios de ejemplo — reemplazar con las tarifas actuales de VentureX Aventura.",
+ "Placeholder for a real member quote. Ask two or three members for one sentence about why they chose this space — real names and faces are what make it feel authentic.": "Espacio para una frase real de un miembro. Pide a dos o tres miembros una frase sobre por qué eligieron este lugar — nombres y caras reales lo hacen auténtico.",
+ "— Member name, Company": "— Nombre del miembro, Empresa",
+ "05 — Questions": "05 — Preguntas",
+ "Good to": "Bueno",
+ "know.": "saberlo.",
+ "Can I visit before signing up?": "¿Puedo visitar antes de inscribirme?",
+ "Yes — book a free tour and try the space. Most people know in five minutes.": "Sí — agenda una visita gratis y prueba el espacio. La mayoría lo decide en cinco minutos.",
+ "Do I need a long-term contract?": "¿Necesito un contrato largo?",
+ "No. Month-to-month plans are available, with discounts for longer commitments.": "No. Hay planes mes a mes, con descuentos para compromisos más largos.",
+ "Can I bring guests or clients?": "¿Puedo traer invitados o clientes?",
+ "Of course. Reception will greet them, and meeting rooms can be booked by the hour.": "Claro. La recepción los recibe y las salas se reservan por hora.",
+ "Is there parking?": "¿Hay estacionamiento?",
+ "Yes, parking is available nearby. Ask the team for current details.": "Sí, hay estacionamiento cerca. Pregunta al equipo los detalles actuales.",
+ "Can I use the address for my business?": "¿Puedo usar la dirección para mi negocio?",
+ "Yes, with the Virtual Office or any membership that includes mail service.": "Sí, con la Oficina Virtual o cualquier membresía que incluya servicio de correo.",
+ "06 — Recognition": "06 — Reconocimientos",
+ "Award-winning": "Una marca",
+ "brand.": "premiada.",
+ "Fastest-Growing Companies": "Empresas de Mayor Crecimiento",
+ "Fastest-growing coworking concept": "Concepto de coworking de mayor crecimiento",
+ "Member": "Miembro",
+ "Since 2019": "Desde 2019",
+ "* Confirm the list with VentureX and swap in the official award logos.": "* Confirmar la lista con VentureX y usar los logos oficiales.",
+ "Come see it": "Ven a",
+ "in person.": "conocerlo.",
+ "Pick a time, we'll have the coffee ready.": "Elige un horario, tendremos el café listo.",
+ "Your name": "Tu nombre",
+ "Email": "Correo",
+ "I'm interested in…": "Me interesa…",
+ "Private office": "Oficina privada",
+ "Meeting room": "Sala de reuniones",
+ "Book my tour →": "Agendar mi visita →",
+ "Thanks! We'll reach out shortly. ☀": "¡Gracias! Te contactaremos pronto. ☀",
+ "[confirm phone]": "[confirmar teléfono]",
+ "★ SFBJ Fastest-Growing": "★ SFBJ Mayor Crecimiento",
+ "★ GWA Member": "★ Miembro GWA",
+ "Coworking · Private Offices · Meeting Rooms · Virtual Office": "Coworking · Oficinas Privadas · Salas de Reuniones · Oficina Virtual",
+ "Back to top ↑": "Volver arriba ↑",
+ "Follow us": "Síguenos",
+ "Chat on WhatsApp": "Escríbenos por WhatsApp",
+ "Find us on Google Maps": "Encuéntranos en Google Maps"
+};
+
+</script>
 <script>
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -635,8 +839,13 @@ document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
 
 /* manifesto word-by-word highlight */
 const big = document.querySelector('[data-words]');
-big.innerHTML = big.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span> `).join('');
-const ws = [...big.querySelectorAll('.w')];
+const BIG_EN = big.textContent.trim();
+let ws = [];
+function splitWords(text) {
+  big.innerHTML = text.split(/\s+/).map(w => `<span class="w">${w}</span> `).join('');
+  ws = [...big.querySelectorAll('.w')];
+}
+splitWords(BIG_EN);
 function paintWords() {
   const r = big.getBoundingClientRect();
   const p = Math.min(Math.max((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.4), 0), 1);
@@ -708,6 +917,49 @@ tBtns.forEach(b => b.addEventListener('click', () => {
   });
 }));
 addEventListener('resize', () => movePill(toggle.querySelector('.is-on')));
+
+/* language: EN / ES */
+const ES = window.I18N_ES || {};
+const original = new Map();
+function textNodes(root) {
+  const out = [], w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement.closest('script,style,[data-words]') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+  });
+  while (w.nextNode()) out.push(w.currentNode);
+  return out;
+}
+const nodes = textNodes(document.body).filter(n => n.nodeValue.trim() in ES);
+nodes.forEach(n => original.set(n, n.nodeValue));
+const attrEls = [...document.querySelectorAll('[placeholder],[aria-label],[title]')];
+attrEls.forEach(el => ['placeholder','aria-label','title'].forEach(a => { if (el.hasAttribute(a)) el.dataset['en' + a.replace('-','')] = el.getAttribute(a); }));
+function setLang(lang, animate) {
+  const es = lang === 'es';
+  const apply = () => {
+    nodes.forEach(n => {
+      const en = original.get(n), key = en.trim();
+      n.nodeValue = es ? en.replace(key, ES[key]) : en;
+    });
+    attrEls.forEach(el => ['placeholder','aria-label','title'].forEach(a => {
+      const en = el.dataset['en' + a.replace('-','')];
+      if (en !== undefined) el.setAttribute(a, es && ES[en] ? ES[en] : en);
+    }));
+    splitWords(es ? ES[BIG_EN] || BIG_EN : BIG_EN); paintWords();
+    document.documentElement.lang = lang;
+    document.title = es ? 'VentureX Aventura — Coworking con alma de Miami' : 'VentureX Aventura — Coworking that feels like Miami';
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === lang));
+    movePill(toggle.querySelector('.is-on'));
+  };
+  if (animate && !reduce) {
+    document.body.classList.remove('switching'); void document.body.offsetWidth;
+    document.body.classList.add('switching'); setTimeout(apply, 200);
+  } else apply();
+  try { localStorage.setItem('vx-lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang, true)));
+const urlLang = new URLSearchParams(location.search).get('lang');
+let saved = null; try { saved = localStorage.getItem('vx-lang'); } catch (e) {}
+const startLang = urlLang || saved || ((navigator.language || '').startsWith('es') ? 'es' : 'en');
+if (startLang === 'es') setLang('es', false);
 
 </script>
 </body>
