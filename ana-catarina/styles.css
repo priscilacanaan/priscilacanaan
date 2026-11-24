@@ -94,3 +94,25 @@ section{padding:7rem 6vw;position:relative}
 .portrait figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--paper);font-size:.8rem;padding:.35rem .8rem;border-radius:999px}
 .portrait.empty img{display:none}
 .portrait.empty::after{content:"Foto a enviar";position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-family:var(--serif);font-style:italic}
+
+/* ===== um pouco mais dinâmico ===== */
+.hero h1 span[data-i="h_1"]{display:inline-block;animation:rise 1.1s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.hero h1 em{background:linear-gradient(90deg,var(--accent),#c98a63,var(--accent));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fadeEm 1.6s .6s var(--ease) both,shine 6s 2s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.hero .btn{transition:transform .3s var(--ease),background .3s,box-shadow .4s}
+.hero .btn:hover{box-shadow:0 14px 30px -14px rgba(29,27,25,.6)}
+.card{position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;left:-40%;top:0;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(156,91,59,.12),transparent);transform:skewX(-18deg);transition:left 1s var(--ease);pointer-events:none}
+.card:hover::after{left:120%}
+.card .n{display:inline-block;transition:transform .5s var(--ease)}
+.card:hover .n{transform:translateX(6px)}
+.facts div{transition:transform .35s var(--ease),padding .35s var(--ease)}
+.facts div:hover{transform:translateX(6px)}
+.pensamento p{transition:opacity .6s var(--ease)}
+.pensamento blockquote.in .qm{animation:qmIn 1.2s var(--ease) both}
+@keyframes qmIn{from{opacity:0;transform:translateY(-20px) scale(.8)}}
+.links a{transition:color .3s,transform .3s var(--ease)}
+.links a:hover{transform:translateY(-2px)}
+.portrait{box-shadow:0 30px 60px -36px rgba(29,27,25,.5);transition:transform .6s var(--ease),box-shadow .6s}
+.portrait:hover{transform:translateY(-6px);box-shadow:0 40px 70px -34px rgba(29,27,25,.6)}
