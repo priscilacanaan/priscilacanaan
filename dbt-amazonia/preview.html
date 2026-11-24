@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0E7A45" />
+<title>DBT Amazônia — Curso de Treino de Habilidades DBT</title>
+<meta name="description" content="DBT Amazônia: curso de treino de habilidades da Terapia Comportamental Dialética (DBT). Atenção plena, tolerância ao estresse, regulação emocional e efetividade interpessoal." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--green:#0E7A45;--green2:#14995A;--deep:#0A4D2D;--pink:#E7829F;--pink2:#F7C6D6;--pinkbg:#FDF1F5;--leaf:#EEF7F0;--olive:#7E8F1F;--ink:#1F2A22;--mut:#56655B;--white:#FFFFFF;--display:"Baloo 2",system-ui,sans-serif;--sans:"Nunito",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--pink)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1;letter-spacing:-.01em}
+h1{font-size:clamp(2.9rem,6vw,5.2rem)}
+h2{font-size:clamp(2.3rem,4.6vw,3.8rem)}
+h3{font-size:1.5rem;margin-bottom:.5rem}
+.progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:90}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--pink));transform-origin:left;transform:scaleX(var(--sp,0))}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 6vw;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);transition:box-shadow .3s,padding .3s}
+.nav.solid{box-shadow:0 8px 30px -18px rgba(10,77,45,.4);padding:.5rem 6vw}
+.logo img{height:64px;width:auto;display:block;transition:height .3s var(--ease)}
+.nav.solid .logo img{height:50px}
+.links{display:flex;gap:1.6rem;font-weight:700;font-size:.92rem}
+.links a{position:relative;color:var(--mut);transition:color .3s}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--green),var(--pink));transform:scaleX(0);transition:transform .4s var(--ease)}
+.links a:hover,.links a.active{color:var(--green)}
+.links a:hover::after,.links a.active::after{transform:scaleX(1)}
+@media(max-width:1020px){.links{display:none}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--green);color:var(--white);font:800 1rem var(--sans);padding:1rem 1.6rem;border-radius:999px;border:0;cursor:pointer;box-shadow:0 10px 24px -10px rgba(14,122,69,.7);transition:transform .3s var(--ease),box-shadow .3s,background .3s;position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-120%);transition:transform .8s var(--ease)}
+.btn:hover::before{transform:translateX(120%)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 30px -10px rgba(14,122,69,.8)}
+.btn span{transition:transform .3s var(--ease)}.btn:hover span{transform:translateX(5px)}
+.btn-line{background:var(--white);color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
+.btn-line:hover{background:var(--green);color:var(--white)}
+.btn-sm{padding:.7rem 1.2rem;font-size:.9rem;box-shadow:0 6px 16px -8px rgba(14,122,69,.7)}
+section{padding:7rem 6vw;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:1rem}
+.kicker::before{content:"";width:22px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--green),var(--pink))}
+.head{margin-bottom:3rem;max-width:780px}
+.note{font-size:.85rem;color:var(--mut);margin-top:1.4rem}
+.todo{background:var(--pink2);color:var(--ink);padding:.05rem .45rem;border-radius:6px;font-size:.88em;font-weight:700}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3rem;padding-top:9rem;background:radial-gradient(circle at 85% 20%,var(--pink2) 0%,transparent 40%),radial-gradient(circle at 10% 90%,var(--leaf) 0%,transparent 45%),var(--white);overflow:hidden}
+@media(max-width:960px){.hero{grid-template-columns:1fr;text-align:left}}
+.hero-txt>*{position:relative;z-index:1}
+.tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--pinkbg);color:var(--green);font-weight:800;padding:.5rem 1rem;border-radius:999px;margin-bottom:1.6rem;font-size:.9rem;box-shadow:inset 0 0 0 1px var(--pink2)}
+.hl{color:var(--green);position:relative;white-space:nowrap}
+.hl::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.28em;background:var(--pink2);z-index:-1;border-radius:6px;transform:scaleX(0);transform-origin:left;animation:underline 1s .8s var(--ease) forwards}
+@keyframes underline{to{transform:scaleX(1)}}
+.hl2{color:var(--pink)}
+.lead{font-size:1.2rem;color:var(--mut);max-width:580px;margin:1.6rem 0 2.2rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-logo{position:relative;justify-self:center;width:min(420px,88vw)}
+.logo-card{background:var(--white);border-radius:50%;aspect-ratio:1;display:grid;place-items:center;box-shadow:0 40px 80px -30px rgba(14,122,69,.45);position:relative;z-index:1;animation:bob 6s ease-in-out infinite;transition:transform .5s var(--ease)}
+.logo-card img{width:82%;height:auto}
+.hero-logo:hover .logo-card{transform:rotate(-3deg) scale(1.03)}
+@keyframes bob{50%{transform:translateY(-14px)}}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);z-index:0}
+.o1{width:70px;height:70px;background:var(--pink);top:6%;right:4%;animation:bob 5s ease-in-out infinite}
+.o2{width:46px;height:46px;background:var(--green2);bottom:8%;left:2%;animation:bob 7s ease-in-out infinite reverse}
+.petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.petals i{position:absolute;top:-10%;width:18px;height:12px;border-radius:70% 0 70% 0;background:var(--pink2);opacity:.8;animation:fall linear infinite}
+.petals i:nth-child(1){left:8%;animation-duration:14s}
+.petals i:nth-child(2){left:28%;animation-duration:19s;animation-delay:-4s;width:12px;height:9px}
+.petals i:nth-child(3){left:52%;animation-duration:16s;animation-delay:-8s;background:#D9EFE0}
+.petals i:nth-child(4){left:70%;animation-duration:22s;animation-delay:-2s;width:14px}
+.petals i:nth-child(5){left:86%;animation-duration:17s;animation-delay:-11s;background:#D9EFE0;width:10px;height:8px}
+.petals i:nth-child(6){left:40%;animation-duration:24s;animation-delay:-14s;width:16px}
+@keyframes fall{from{transform:translateY(-10vh) rotate(0)}to{transform:translateY(110vh) rotate(360deg)}}
+
+/* band */
+.band{background:var(--green);color:var(--white);padding:1.2rem 0;overflow:hidden}
+.band-track{display:flex;gap:1.8rem;width:max-content;animation:band 32s linear infinite;font-family:var(--display);font-weight:700;font-size:1.6rem;align-items:center}
+.band-track i{font-style:normal;color:var(--pink2)}
+@keyframes band{to{transform:translateX(-50%)}}
+
+/* dbt */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.split p{color:var(--mut);margin-bottom:1rem;max-width:600px}
+.split h2 em{color:var(--green)}
+.quote-card{background:linear-gradient(150deg,var(--green),var(--deep));color:var(--white);border-radius:32px;padding:3rem;position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(10,77,45,.6)}
+.quote-card::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:var(--pink);opacity:.25;animation:bob 8s ease-in-out infinite}
+.qm{font-family:var(--display);font-size:6rem;line-height:.6;color:var(--pink2);display:block;height:2.6rem}
+.quote-card p{font-family:var(--display);font-size:1.8rem;line-height:1.3;font-weight:600;position:relative;z-index:1}
+.quote-card small{display:block;margin-top:1.4rem;opacity:.8;font-weight:700;position:relative;z-index:1}
+
+/* modulos */
+.modulos{background:var(--leaf)}
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1000px){.mods{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.mods{grid-template-columns:1fr}}
+.mod{background:var(--white);border-radius:26px;padding:2rem;position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s;border-top:5px solid var(--pink)}
+.mod:nth-child(2){border-top-color:var(--green)}
+.mod:nth-child(3){border-top-color:var(--pink)}
+.mod:nth-child(4){border-top-color:var(--green)}
+.mod:hover{transform:translateY(-10px);box-shadow:0 30px 50px -28px rgba(14,122,69,.5)}
+.num{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--pinkbg);color:var(--pink);font-family:var(--display);font-weight:800;font-size:1.2rem;margin-bottom:1.2rem;transition:transform .5s var(--ease),background .4s,color .4s}
+.mod:hover .num{background:var(--green);color:var(--white);transform:rotate(-12deg) scale(1.1)}
+.mod p{color:var(--mut);font-size:.98rem}
+
+/* curso */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:860px){.info-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.info-grid{grid-template-columns:1fr}}
+.info{border:2px dashed var(--pink2);border-radius:22px;padding:1.6rem;transition:border-color .4s,background .4s,transform .4s var(--ease)}
+.info:hover{border-color:var(--green);background:var(--leaf);transform:translateY(-4px)}
+.info small{display:block;font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--pink)}
+.info b{font-family:var(--display);font-size:1.35rem;color:var(--green);font-weight:700;line-height:1.3}
+
+/* duvidas */
+.faq{max-width:880px}
+details{border-bottom:2px solid var(--leaf);padding:1.4rem 0}
+summary{list-style:none;cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;color:var(--ink);transition:color .3s}
+summary:hover{color:var(--green)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:50%;background:var(--pinkbg);color:var(--pink);font-size:1.5rem;transition:transform .4s var(--ease),background .3s,color .3s}
+details[open] summary::after{transform:rotate(45deg);background:var(--green);color:var(--white)}
+details p{padding-top:.9rem;color:var(--mut);max-width:720px;animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}}
+
+/* inscricao */
+.inscricao{background:linear-gradient(160deg,var(--pinkbg),var(--leaf))}
+.insc-card{display:grid;grid-template-columns:1fr 1fr;gap:4rem;background:var(--white);border-radius:36px;padding:3.5rem;max-width:1140px;margin:auto;box-shadow:0 40px 80px -40px rgba(10,77,45,.35)}
+@media(max-width:900px){.insc-card{grid-template-columns:1fr;padding:2.2rem}}
+.insc-card h2 em{color:var(--green)}
+.insc-card>div p{color:var(--mut);margin-top:.6rem}
+.social{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
+.social a{padding:.6rem 1.1rem;border-radius:999px;background:var(--leaf);color:var(--green);font-weight:800;font-size:.9rem;transition:transform .3s var(--ease),background .3s,color .3s}
+.social a:hover{background:var(--pink);color:var(--white);transform:translateY(-3px)}
+.form{display:grid;gap:.8rem}
+.form input,.form select{padding:1rem 1.2rem;border-radius:16px;border:2px solid var(--leaf);background:var(--white);font:600 1rem var(--sans);color:var(--ink);transition:border-color .3s,box-shadow .3s}
+.form input:focus,.form select:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 4px rgba(231,130,159,.2)}
+.form .btn{justify-content:center}
+.ok{display:none;font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--green)}
+.form.sent>*:not(.ok){display:none}
+.form.sent .ok{display:block;animation:fade .6s var(--ease)}
+.lgpd{text-align:center;color:var(--mut);font-size:.88rem;margin-top:2rem}
+
+/* footer */
+.footer{background:var(--deep);color:var(--white);padding:4rem 6vw 2.5rem;text-align:center}
+.foot-logo{height:120px;width:auto;background:var(--white);border-radius:50%;padding:12px;margin:0 auto;display:block}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2.5rem;font-size:.9rem;opacity:.85;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15)}
+.foot-row a:hover{color:var(--pink2)}
+
+.wa{position:fixed;right:1.3rem;bottom:1.3rem;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.4);transition:transform .3s var(--ease)}
+.wa:hover{transform:scale(1.1) rotate(-6deg)}
+.wa svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.wa .fill{fill:currentColor;stroke:none}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.petals{display:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo"><img src="fotos/logo-dbt.png" alt="DBT Amazônia" /></a>
+  <nav class="links">
+    <a href="#dbt" data-s="dbt">O que é DBT</a><a href="#modulos" data-s="modulos">Módulos</a><a href="#curso" data-s="curso">O curso</a><a href="#duvidas" data-s="duvidas">Dúvidas</a><a href="#inscricao" data-s="inscricao">Inscrição</a>
+  </nav>
+  <a href="#inscricao" class="btn btn-sm">Quero me inscrever</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hero-txt">
+    <p class="tag reveal">🌸 Treino de habilidades DBT</p>
+    <h1 class="reveal">Aprender a <span class="hl">lidar</span> com o que sente, <span class="hl2">passo a passo.</span></h1>
+    <p class="lead reveal">Um curso prático de habilidades da Terapia Comportamental Dialética (DBT), para quem quer ferramentas concretas para o dia a dia, em grupo e com acompanhamento.</p>
+    <div class="cta reveal">
+      <a href="#inscricao" class="btn">Quero me inscrever <span>→</span></a>
+      <a href="#modulos" class="btn btn-line">Ver os módulos</a>
+    </div>
+  </div>
+  <div class="hero-logo reveal">
+    <div class="logo-card"><img src="fotos/logo-dbt.png" alt="Logo DBT Amazônia" /></div>
+    <span class="orb o1"></span><span class="orb o2"></span>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true">
+  <div class="band-track">
+    <span>Atenção plena</span><i>❀</i><span>Tolerância ao estresse</span><i>❀</i><span>Regulação emocional</span><i>❀</i><span>Efetividade interpessoal</span><i>❀</i>
+    <span>Atenção plena</span><i>❀</i><span>Tolerância ao estresse</span><i>❀</i><span>Regulação emocional</span><i>❀</i><span>Efetividade interpessoal</span><i>❀</i>
+  </div>
+</div>
+
+<section id="dbt" class="sec dbt">
+  <div class="split">
+    <div class="reveal">
+      <p class="kicker">O que é DBT</p>
+      <h2>Equilíbrio entre <em>aceitar</em> e <em>mudar.</em></h2>
+      <p>A Terapia Comportamental Dialética foi desenvolvida para pessoas com grande intensidade emocional. Ela combina aceitação e mudança: você aprende a aceitar o momento presente e, ao mesmo tempo, a construir novas formas de agir.</p>
+      <p>No treino de habilidades, o foco é prático: técnicas que podem ser usadas nas situações reais, como conflitos, crises e decisões difíceis.</p>
+    </div>
+    <div class="quote-card reveal">
+      <span class="qm">“</span>
+      <p>Habilidades se aprendem como um idioma: com prática, repetição e com alguém para apoiar o caminho.</p>
+      <small>Princípio do treino de habilidades DBT</small>
+    </div>
+  </div>
+</section>
+
+<section id="modulos" class="sec modulos">
+  <div class="head reveal">
+    <p class="kicker">Módulos</p>
+    <h2>Quatro áreas, <em>um caminho.</em></h2>
+  </div>
+  <div class="mods">
+    <article class="mod reveal"><span class="num">01</span><h3>Atenção plena</h3><p>Estar presente no momento, observar pensamentos e emoções sem ser levado por eles.</p></article>
+    <article class="mod reveal"><span class="num">02</span><h3>Tolerância ao estresse</h3><p>Atravessar crises sem piorar a situação: técnicas para momentos de alta intensidade.</p></article>
+    <article class="mod reveal"><span class="num">03</span><h3>Regulação emocional</h3><p>Entender o que você sente, reduzir a vulnerabilidade e responder às emoções com mais escolha.</p></article>
+    <article class="mod reveal"><span class="num">04</span><h3>Efetividade interpessoal</h3><p>Pedir o que precisa, dizer não e manter relações saudáveis, respeitando você e o outro.</p></article>
+  </div>
+</section>
+
+<section id="curso" class="sec curso">
+  <div class="head reveal">
+    <p class="kicker">O curso</p>
+    <h2>Como <em>funciona.</em></h2>
+  </div>
+  <div class="info-grid">
+    <div class="info reveal"><small>Formato</small><b>[Presencial / online]</b></div>
+    <div class="info reveal"><small>Carga horária</small><b>[X horas]</b></div>
+    <div class="info reveal"><small>Turmas</small><b>[em grupo · X participantes]</b></div>
+    <div class="info reveal"><small>Início</small><b>[data]</b></div>
+    <div class="info reveal"><small>Investimento</small><b>[R$ valor]</b></div>
+    <div class="info reveal"><small>Para quem</small><b>[público-alvo]</b></div>
+  </div>
+  <p class="note">Preencher com as informações reais do curso antes de publicar.</p>
+</section>
+
+<section id="duvidas" class="sec duvidas">
+  <div class="head reveal">
+    <p class="kicker">Dúvidas</p>
+    <h2>Antes de <em>se inscrever.</em></h2>
+  </div>
+  <div class="faq">
+    <details class="reveal"><summary>Preciso já estar em terapia para fazer o curso?</summary><p>[Informar a exigência, se houver, ou dizer que o curso é aberto a todos.]</p></details>
+    <details class="reveal"><summary>O curso substitui a psicoterapia?</summary><p>O treino de habilidades é uma ferramenta de aprendizado e não substitui acompanhamento clínico individual quando ele for necessário.</p></details>
+    <details class="reveal"><summary>Como funciona a inscrição?</summary><p>Preencha o formulário abaixo. A equipe entra em contato para confirmar a vaga e as formas de pagamento.</p></details>
+  </div>
+</section>
+
+<section id="inscricao" class="sec inscricao">
+  <div class="insc-card reveal">
+    <div>
+      <p class="kicker">Inscrição</p>
+      <h2>Quero aprender <em>habilidades.</em></h2>
+      <p>Conte um pouco sobre você e a equipe retorna com as próximas turmas.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/dbtamazonia/" target="_blank" rel="noopener">Instagram @dbtamazonia</a>
+        <a href="https://wa.me/[55DDDNUMERO]" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <form class="form" id="form">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="email" placeholder="E-mail" required />
+      <input type="tel" placeholder="WhatsApp" required />
+      <select required>
+        <option value="">Você já conhece a DBT?</option>
+        <option>Não, quero conhecer</option><option>Já li sobre o assunto</option><option>Sou profissional da saúde</option><option>Estou em tratamento</option>
+      </select>
+      <button class="btn" type="submit">Enviar inscrição →</button>
+      <p class="ok">Recebido! Entraremos em contato em breve. 🌸</p>
+    </form>
+  </div>
+  <p class="lgpd">Seus dados são usados apenas para o contato sobre o curso. <span class="todo">[link da política de privacidade]</span></p>
+</section>
+
+</main>
+
+<footer class="footer">
+  <img src="fotos/logo-dbt.png" alt="DBT Amazônia" class="foot-logo" />
+  <div class="foot-row">
+    <span>© 2026 DBT Amazônia · [CNPJ / registro]</span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/[55DDDNUMERO]" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
+</a>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => {
+  nav.classList.toggle('solid', scrollY > 30);
+  bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight));
+}, { passive: true });
+
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => {
+  const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+  el.style.transitionDelay = (sib.indexOf(el) % 4) * 90 + 'ms';
+  io.observe(el);
+});
+
+const secIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) document.querySelectorAll('.links a').forEach(a => a.classList.toggle('active', a.dataset.s === e.target.id));
+}), { rootMargin: '-45% 0px -50% 0px' });
+['dbt', 'modulos', 'curso', 'duvidas', 'inscricao'].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+
+/* logo tilt follows mouse */
+const lc = document.querySelector('.logo-card');
+if (lc && !reduce) document.querySelector('.hero-logo').addEventListener('mousemove', e => {
+  const r = lc.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+  lc.style.transform = `perspective(700px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+});
+if (lc) document.querySelector('.hero-logo').addEventListener('mouseleave', () => lc.style.transform = '');
+
+document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+</script>
+</body>
+</html>
