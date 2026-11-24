@@ -17,3 +17,4 @@ Abra `index.html` (ou `preview.html`, tudo num arquivo só).
 - Endereço da fábrica, telefone, WhatsApp, e-mails, CNPJ, redes sociais
 - Fotos (ver `fotos/LEIA-ME.md`) e logo
 - Formulário: ligar a um serviço real
+- Política de Privacidade (`privacidade.html`) e Termos de Uso (`termos.html`): preencher os [colchetes] e revisar com advogado

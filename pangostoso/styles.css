@@ -362,3 +362,6 @@ body.ck-open .wa{bottom:8.5rem}
   .ck-btns{width:100%}.ck-btns button{flex:1}
   body.ck-open .wa{bottom:15rem}
 }
+
+.lgpd{grid-column:1/-1;font-size:.82rem;opacity:.9}
+.lgpd a{color:var(--wheat);text-decoration:underline}
