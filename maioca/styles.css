@@ -311,3 +311,7 @@ body{background:#F3E6D2}
 .gal figure::after,.gal2 figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(92,10,54,.45));opacity:0;transition:opacity .5s}
 .gal figure:hover::after,.gal2 figure:hover::after{opacity:1}
 .gal figcaption,.gal2 figcaption{z-index:2}
+
+.unit{color:inherit}
+.map-go{font-style:normal;margin-top:.5rem;font-size:.85rem;font-weight:700;color:var(--pink);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s var(--ease)}
+.unit:hover .map-go{opacity:1;transform:none}
