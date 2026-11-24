@@ -2,7 +2,7 @@
 window.I18N = {
 en:{
 n_serv:"Services",n_port:"Portfolio",n_sobre:"About",n_cont:"Contact",n_btn:"Let's talk",
-eyebrow:"Studio · AI · Web · Media",t1:"Automations that",t2:"work",r1:"for you.",r2:"without getting tired.",r3:"24 hours.",
+eyebrow:"Studio · AI · Web · Media",t1:"Solutions in",
 lead:"I build AI-powered automations, websites that sell and content that tells your story. Everything designed so your business works better, every day.",
 cta1:"Start a project",cta2:"See the portfolio",
 m1:"AI automation",m2:"Websites",m3:"Media and content",m4:"AI customer service",m5:"Landing pages",m6:"Video and identity",
@@ -34,7 +34,7 @@ foot:"© 2026 Priscila Canaan · AI automation, websites and media studio",fl_pr
 },
 es:{
 n_serv:"Servicios",n_port:"Portafolio",n_sobre:"Sobre mí",n_cont:"Contacto",n_btn:"Hablemos",
-eyebrow:"Estudio · IA · Web · Medios",t1:"Automatizaciones que",t2:"trabajan",r1:"por ti.",r2:"sin cansarse.",r3:"las 24 horas.",
+eyebrow:"Estudio · IA · Web · Medios",t1:"Soluciones en",
 lead:"Creo automatizaciones con inteligencia artificial, sitios web que venden y contenidos que cuentan tu historia. Todo pensado para que tu negocio funcione mejor, todos los días.",
 cta1:"Quiero un proyecto",cta2:"Ver portafolio",
 m1:"Automatización con IA",m2:"Sitios web",m3:"Medios y contenido",m4:"Atención con IA",m5:"Landing pages",m6:"Video e identidad",

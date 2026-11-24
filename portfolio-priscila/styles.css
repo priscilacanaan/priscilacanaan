@@ -158,3 +158,6 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .lang button{border:0;background:none;color:var(--mut);font:600 .75rem var(--sans);padding:.4rem .7rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
 .lang button.is-on{background:var(--paper);color:var(--ink)}
 @media(max-width:960px){.nav-r .btn{display:none}}
+/* rotating word: all options stack in the same spot */
+.rot{display:inline-grid !important;vertical-align:bottom;overflow:visible;padding-bottom:.08em;white-space:nowrap}
+.rot b{grid-area:1/1;white-space:nowrap}
