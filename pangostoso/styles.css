@@ -90,12 +90,12 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.5vw,4.6re
 .knob:nth-child(2){animation-duration:9s;animation-direction:reverse}
 @keyframes turn{to{transform:rotate(360deg)}}
 .temp{margin-left:auto;font-family:ui-monospace,Menlo,monospace;color:#FF8A3D;background:#120a05;padding:.35rem .7rem;border-radius:8px;font-size:1.1rem;text-shadow:0 0 8px #FF6A1A}
-.badge-round{position:absolute;left:6%;top:2%;z-index:3;background:var(--wheat);border-radius:50%;box-shadow:0 12px 30px -12px rgba(43,26,16,.6);width:150px;height:150px;display:grid;place-items:center}
+.badge-round{position:absolute;left:6%;top:2%;z-index:3;background:var(--wheat);border-radius:50%;box-shadow:0 12px 30px -12px rgba(43,26,16,.6);width:112px;height:112px;display:grid;place-items:center}
 .badge-round svg{position:absolute;inset:0;animation:turn 16s linear infinite}
-.badge-round text{font-size:15.5px;font-weight:800;letter-spacing:.18em;fill:var(--crust)}
-.badge-round span{font-size:2.4rem;animation:flick 1.2s ease-in-out infinite alternate}
+.badge-round text{font-size:17px;font-weight:800;fill:var(--crust)}
+.badge-round span{font-size:1.7rem;animation:flick 1.2s ease-in-out infinite alternate}
 @keyframes flick{to{transform:scale(1.15) rotate(6deg)}}
-@media(max-width:600px){.badge-round{width:110px;height:110px;left:-10px}}
+@media(max-width:600px){.badge-round{width:90px;height:90px;left:-6px}}
 
 /* conveyor belt */
 .belt{position:relative;z-index:2;background:var(--crust);color:var(--cream);padding:1.3rem 0 0;overflow:hidden}
