@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F5F1EA" />
+<title>Consultório — Central de pessoas e agenda</title>
+<style>
+:root{--bg:#F5F1EA;--card:#FFFDF9;--nude:#EADACB;--nude2:#D8C3AE;--ink:#33281F;--brown:#8A6A52;--mut:#7D6C5E;--ok:#5D8A6B;--warn:#B9793F;--bad:#A64B4B;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+@media(max-width:820px){.app{grid-template-columns:1fr}.side{display:none}}
+.side{background:var(--card);border-right:1px solid var(--nude);padding:1.6rem 1.2rem;display:flex;flex-direction:column;gap:1.6rem;position:sticky;top:0;height:100vh}
+.brand{font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:.5rem}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--brown)}
+.menu{display:grid;gap:.4rem}
+.nav-btn{display:flex;align-items:center;gap:.7rem;border:0;background:none;padding:.7rem .8rem;border-radius:12px;cursor:pointer;text-align:left;color:var(--mut);transition:background .3s,color .3s,transform .3s var(--ease)}
+.nav-btn:hover{background:var(--bg);color:var(--ink);transform:translateX(3px)}
+.nav-btn.is-on{background:var(--ink);color:var(--card)}
+.side-foot{margin-top:auto;display:grid;gap:.5rem}
+.mini{font-size:.78rem;color:var(--mut)}
+.main{padding:2rem clamp(1rem,3vw,2.8rem);max-width:1200px;width:100%}
+.view{display:none;animation:in .5s var(--ease)}
+.view.is-on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.4rem}
+.kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brown);font-weight:600}
+h1{font-size:1.9rem;font-weight:600;letter-spacing:-.02em;margin-top:.2rem}
+h2{font-size:1.3rem;font-weight:600;margin-bottom:.4rem}
+.top-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.btn{background:var(--ink);color:var(--card);border:0;padding:.7rem 1.1rem;border-radius:12px;cursor:pointer;font-weight:600;transition:transform .25s var(--ease),box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(51,40,31,.6)}
+.ghost{background:var(--card);border:1px solid var(--nude2);padding:.6rem .9rem;border-radius:12px;cursor:pointer;transition:background .25s,transform .25s var(--ease)}
+.ghost:hover{background:var(--nude);transform:translateY(-1px)}
+.search{border:1px solid var(--nude2);background:var(--card);padding:.65rem .9rem;border-radius:12px;min-width:220px;outline:none;transition:border-color .3s,box-shadow .3s}
+.search:focus{border-color:var(--brown);box-shadow:0 0 0 4px rgba(138,106,82,.15)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
+@media(max-width:640px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--card);border:1px solid var(--nude);border-radius:18px;padding:1.1rem 1.3rem;transition:transform .4s var(--ease),box-shadow .4s}
+.stat:hover{transform:translateY(-3px);box-shadow:0 16px 30px -22px rgba(51,40,31,.5)}
+.stat b{display:block;font-size:1.8rem;font-weight:600;color:var(--brown);line-height:1.1}
+.stat span{font-size:.82rem;color:var(--mut)}
+
+/* week strip */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-bottom:1.2rem}
+@media(max-width:700px){.week{grid-template-columns:repeat(4,1fr)}}
+.day{background:var(--card);border:1px solid var(--nude);border-radius:14px;padding:.6rem .4rem;text-align:center;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s}
+.day:hover{transform:translateY(-2px)}
+.day small{display:block;font-size:.7rem;text-transform:uppercase;color:var(--mut);letter-spacing:.08em}
+.day b{font-size:1.1rem;font-weight:600}
+.day em{display:block;margin:.25rem auto 0;width:6px;height:6px;border-radius:50%;background:transparent}
+.day.has em{background:var(--brown)}
+.day.is-on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.day.is-on small{color:var(--nude2)}
+
+/* slots */
+.slots{background:var(--card);border:1px solid var(--nude);border-radius:20px;overflow:hidden}
+.slot{display:grid;grid-template-columns:76px 1fr;border-top:1px solid var(--nude);min-height:58px;transition:background .3s}
+.slot:first-child{border-top:0}
+.slot:hover{background:#fbf7f1}
+.hora{padding:.8rem 1rem;color:var(--mut);font-size:.85rem;font-variant-numeric:tabular-nums;border-right:1px solid var(--nude)}
+.corpo{padding:.5rem .7rem;display:flex;flex-direction:column;gap:.4rem;justify-content:center}
+.ev{display:flex;justify-content:space-between;align-items:center;gap:.8rem;background:var(--bg);border-left:4px solid var(--brown);border-radius:12px;padding:.6rem .9rem;cursor:pointer;animation:pop .45s var(--ease);transition:transform .25s var(--ease),box-shadow .3s}
+.ev:hover{transform:translateX(4px);box-shadow:0 10px 20px -14px rgba(51,40,31,.6)}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.ev b{font-weight:600}
+.ev small{color:var(--mut)}
+.badge{font-size:.72rem;font-weight:600;padding:.25rem .6rem;border-radius:999px;white-space:nowrap}
+.s-Agendada{background:#E7EEF0;color:#3E6470}
+.s-Realizada{background:#E4EFE7;color:var(--ok)}
+.s-Faltou{background:#F6E9DA;color:var(--warn)}
+.s-Cancelada{background:#F3E1E1;color:var(--bad)}
+.ev.s-Realizada{border-color:var(--ok)}
+.ev.s-Faltou{border-color:var(--warn)}
+.ev.s-Cancelada{border-color:var(--bad);opacity:.7}
+.add-slot{border:1px dashed var(--nude2);background:none;color:var(--mut);border-radius:12px;padding:.35rem;cursor:pointer;font-size:.8rem;opacity:0;transition:opacity .3s,background .3s}
+.corpo:hover .add-slot{opacity:1}
+.add-slot:hover{background:var(--bg);color:var(--ink)}
+.vazio-dia{padding:2rem;text-align:center;color:var(--mut)}
+
+/* pessoas */
+.pessoas-grid{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:1.2rem;align-items:start}
+@media(max-width:900px){.pessoas-grid{grid-template-columns:1fr}}
+.lista{background:var(--card);border:1px solid var(--nude);border-radius:20px;overflow:hidden;max-height:72vh;overflow-y:auto}
+.pessoa{display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem;border-top:1px solid var(--nude);cursor:pointer;transition:background .25s,padding .3s var(--ease)}
+.pessoa:first-child{border-top:0}
+.pessoa:hover{background:#fbf7f1;padding-left:1.3rem}
+.pessoa.is-on{background:var(--bg)}
+.av{width:40px;height:40px;border-radius:50%;background:var(--nude);display:grid;place-items:center;font-weight:600;color:var(--brown);flex:none}
+.pessoa b{display:block;font-weight:600}
+.pessoa small{color:var(--mut)}
+.ficha{background:var(--card);border:1px solid var(--nude);border-radius:20px;padding:1.6rem;min-height:300px;animation:in .45s var(--ease)}
+.ficha-top{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1rem}
+.ficha dl{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.2rem;font-size:.92rem;margin-bottom:1rem}
+.ficha dt{color:var(--mut)}
+.ficha dd{font-weight:500}
+.hist h3{font-size:.95rem;margin:1.2rem 0 .6rem;color:var(--brown)}
+.hist .ev{cursor:default}
+.vazio{color:var(--mut);padding:2rem 0}
+.prox{font-size:.82rem;color:var(--ok);font-weight:600}
+
+/* modal */
+dialog{border:0;border-radius:22px;padding:0;max-width:520px;width:calc(100% - 2rem);background:var(--card);box-shadow:0 40px 90px -30px rgba(51,40,31,.5)}
+dialog::backdrop{background:rgba(51,40,31,.35);backdrop-filter:blur(3px);animation:fadeBg .3s}
+dialog[open] .modal{animation:in .4s var(--ease)}
+@keyframes fadeBg{from{opacity:0}}
+.modal{padding:1.6rem;display:grid;gap:.9rem}
+.modal label{display:grid;gap:.35rem;font-size:.85rem;color:var(--mut)}
+.modal input,.modal select,.modal textarea{padding:.7rem .85rem;border:1px solid var(--nude2);border-radius:12px;background:var(--bg);color:var(--ink);outline:none;transition:border-color .25s,box-shadow .25s}
+.modal input:focus,.modal select:focus,.modal textarea:focus{border-color:var(--brown);box-shadow:0 0 0 4px rgba(138,106,82,.15)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:520px){.row2{grid-template-columns:1fr}}
+.actions{display:flex;justify-content:flex-end;gap:.5rem;margin-top:.4rem}
+
+.toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,140%);background:var(--ink);color:var(--card);padding:.8rem 1.2rem;border-radius:14px;transition:transform .5s var(--ease);z-index:99;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="brand"><span class="dot"></span>Consultório</div>
+    <nav class="menu">
+      <button class="nav-btn is-on" data-v="agenda"><span>📅</span>Agenda</button>
+      <button class="nav-btn" data-v="pessoas"><span>👥</span>Pessoas</button>
+    </nav>
+    <div class="side-foot">
+      <p class="mini">Dados guardados neste navegador.</p>
+      <button class="ghost" id="seed">Carregar exemplos</button>
+      <button class="ghost" id="clear">Limpar tudo</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- AGENDA -->
+    <section class="view is-on" id="v-agenda">
+      <header class="top">
+        <div>
+          <p class="kicker">Agenda</p>
+          <h1 id="dia-titulo">Hoje</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" id="prev">‹</button>
+          <button class="ghost" id="hoje">Hoje</button>
+          <button class="ghost" id="next">›</button>
+          <button class="btn" id="novo-ag">+ Nova sessão</button>
+        </div>
+      </header>
+      <div class="stats">
+        <div class="stat"><b id="s-dia">0</b><span>sessões no dia</span></div>
+        <div class="stat"><b id="s-prox">0</b><span>próximas esta semana</span></div>
+        <div class="stat"><b id="s-pess">0</b><span>pessoas cadastradas</span></div>
+      </div>
+      <div class="week" id="week"></div>
+      <div class="slots" id="slots"></div>
+    </section>
+
+    <!-- PESSOAS -->
+    <section class="view" id="v-pessoas">
+      <header class="top">
+        <div>
+          <p class="kicker">Central</p>
+          <h1>Pessoas</h1>
+        </div>
+        <div class="top-actions">
+          <input class="search" id="busca" placeholder="Buscar por nome" />
+          <button class="btn" id="nova-pessoa">+ Nova pessoa</button>
+        </div>
+      </header>
+      <div class="pessoas-grid">
+        <div class="lista" id="lista"></div>
+        <div class="ficha" id="ficha"><p class="vazio">Escolha uma pessoa para ver o histórico.</p></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- modal pessoa -->
+<dialog id="dlg-pessoa">
+  <form method="dialog" class="modal" id="form-pessoa">
+    <h2 id="titulo-pessoa">Nova pessoa</h2>
+    <label>Nome<input name="nome" required /></label>
+    <div class="row2">
+      <label>Telefone / WhatsApp<input name="telefone" /></label>
+      <label>E-mail<input name="email" type="email" /></label>
+    </div>
+    <div class="row2">
+      <label>Nascimento<input name="nascimento" type="date" /></label>
+      <label>Tipo de atendimento
+        <select name="tipo"><option>Individual</option><option>Casal</option><option>Avaliação neuropsicológica</option></select>
+      </label>
+    </div>
+    <label>Observações (sem dados sensíveis desnecessários)<textarea name="obs" rows="3"></textarea></label>
+    <div class="actions">
+      <button value="cancel" class="ghost" formnovalidate>Cancelar</button>
+      <button value="ok" class="btn">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- modal sessão -->
+<dialog id="dlg-ag">
+  <form method="dialog" class="modal" id="form-ag">
+    <h2 id="titulo-ag">Nova sessão</h2>
+    <label>Pessoa
+      <select name="pessoa" required></select>
+    </label>
+    <div class="row2">
+      <label>Data<input name="data" type="date" required /></label>
+      <label>Horário<input name="hora" type="time" required step="1800" /></label>
+    </div>
+    <div class="row2">
+      <label>Duração (min)
+        <select name="duracao"><option>50</option><option selected>60</option><option>90</option></select>
+      </label>
+      <label>Status
+        <select name="status"><option>Agendada</option><option>Realizada</option><option>Faltou</option><option>Cancelada</option></select>
+      </label>
+    </div>
+    <label>Anotações da sessão<textarea name="notas" rows="3"></textarea></label>
+    <div class="actions">
+      <button value="cancel" class="ghost" formnovalidate>Cancelar</button>
+      <button value="ok" class="btn">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+<script>
+/* ---------- dados (guardados no navegador) ---------- */
+const KEY = 'consultorio-v1';
+let db = JSON.parse(localStorage.getItem(KEY) || 'null') || { pessoas: [], sessoes: [] };
+const save = () => localStorage.setItem(KEY, JSON.stringify(db));
+const uid = () => Math.random().toString(36).slice(2, 10);
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(2, '0');
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const fromIso = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+const pessoaById = id => db.pessoas.find(p => p.id === id);
+const toast = msg => { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2200); };
+const fmtDia = d => d.toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' });
+
+/* ---------- navegação ---------- */
+let view = 'agenda', current = new Date(), selectedPessoa = null;
+document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => showView(b.dataset.v)));
+function showView(v) {
+  view = v;
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('is-on', b.dataset.v === v));
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('is-on', s.id === 'v-' + v));
+  render();
+}
+
+/* ---------- agenda ---------- */
+function renderAgenda() {
+  const sel = iso(current);
+  const hoje = iso(new Date());
+  $('#dia-titulo').textContent = sel === hoje ? 'Hoje · ' + fmtDia(current) : fmtDia(current);
+
+  // week strip (7 days around the selected day, Monday-based)
+  const start = new Date(current); start.setDate(current.getDate() - ((current.getDay() + 6) % 7));
+  const week = $('#week'); week.innerHTML = '';
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(start); d.setDate(start.getDate() + i);
+    const s = iso(d);
+    const has = db.sessoes.some(x => x.data === s);
+    const el = document.createElement('div');
+    el.className = 'day' + (s === sel ? ' is-on' : '') + (has ? ' has' : '');
+    el.innerHTML = `<small>${d.toLocaleDateString('pt-BR', { weekday: 'short' }).replace('.', '')}</small><b>${d.getDate()}</b><em></em>`;
+    el.addEventListener('click', () => { current = d; render(); });
+    week.appendChild(el);
+  }
+
+  // slots 08:00 – 20:00 every 30 min
+  const doDia = db.sessoes.filter(s => s.data === sel).sort((a, b) => a.hora.localeCompare(b.hora));
+  const box = $('#slots'); box.innerHTML = '';
+  for (let h = 8; h <= 20; h++) for (const m of [0, 30]) {
+    if (h === 20 && m === 30) continue;
+    const hora = `${pad(h)}:${pad(m)}`;
+    const row = document.createElement('div'); row.className = 'slot';
+    const evs = doDia.filter(s => s.hora === hora);
+    row.innerHTML = `<div class="hora">${hora}</div><div class="corpo"></div>`;
+    const corpo = row.querySelector('.corpo');
+    evs.forEach(s => {
+      const p = pessoaById(s.pessoaId);
+      const ev = document.createElement('div');
+      ev.className = 'ev s-' + s.status;
+      ev.innerHTML = `<div><b>${p ? p.nome : 'Pessoa removida'}</b><br><small>${s.duracao} min · ${p ? p.tipo : ''}</small></div><span class="badge s-${s.status}">${s.status}</span>`;
+      ev.addEventListener('click', () => openAgenda(s));
+      corpo.appendChild(ev);
+    });
+    const add = document.createElement('button'); add.className = 'add-slot'; add.textContent = '+ sessão neste horário';
+    add.addEventListener('click', () => openAgenda(null, sel, hora));
+    corpo.appendChild(add);
+    box.appendChild(row);
+  }
+
+  // stats
+  $('#s-dia').textContent = doDia.length;
+  const fim = new Date(start); fim.setDate(start.getDate() + 6);
+  $('#s-prox').textContent = db.sessoes.filter(s => s.data >= hoje && s.data <= iso(fim) && s.status === 'Agendada').length;
+  $('#s-pess').textContent = db.pessoas.length;
+}
+
+/* ---------- pessoas ---------- */
+function renderPessoas() {
+  const q = ($('#busca').value || '').toLowerCase();
+  const lista = $('#lista'); lista.innerHTML = '';
+  const itens = db.pessoas.filter(p => p.nome.toLowerCase().includes(q)).sort((a, b) => a.nome.localeCompare(b.nome));
+  if (!itens.length) lista.innerHTML = '<p class="vazio" style="padding:1.2rem">Nenhuma pessoa encontrada.</p>';
+  itens.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'pessoa' + (selectedPessoa === p.id ? ' is-on' : '');
+    const ini = p.nome.split(' ').filter(x => /^\p{L}/u.test(x) && x.toLowerCase() !== 'exemplo').slice(0, 2).map(x => x[0]).join('').toUpperCase();
+    el.innerHTML = `<div class="av">${ini}</div><div><b>${p.nome}</b><small>${p.tipo}</small></div>`;
+    el.addEventListener('click', () => { selectedPessoa = p.id; renderPessoas(); });
+    lista.appendChild(el);
+  });
+  renderFicha();
+}
+function renderFicha() {
+  const f = $('#ficha');
+  const p = pessoaById(selectedPessoa);
+  if (!p) { f.innerHTML = '<p class="vazio">Escolha uma pessoa para ver o histórico.</p>'; return; }
+  const hist = db.sessoes.filter(s => s.pessoaId === p.id).sort((a, b) => (b.data + b.hora).localeCompare(a.data + a.hora));
+  const hoje = iso(new Date());
+  const prox = hist.find(s => s.data >= hoje && s.status === 'Agendada');
+  f.innerHTML = `
+    <div class="ficha-top">
+      <div><p class="kicker">${p.tipo}</p><h2>${p.nome}</h2>${prox ? `<p class="prox">Próxima: ${fromIso(prox.data).toLocaleDateString('pt-BR')} às ${prox.hora}</p>` : ''}</div>
+      <div style="display:flex;gap:.5rem">
+        <button class="ghost" id="ed-p">Editar</button>
+        <button class="btn" id="ag-p">+ Sessão</button>
+        <button class="ghost" id="del-p" style="color:var(--bad)">Excluir</button>
+      </div>
+    </div>
+    <dl>
+      <dt>Telefone</dt><dd>${p.telefone || '—'}</dd>
+      <dt>E-mail</dt><dd>${p.email || '—'}</dd>
+      <dt>Nascimento</dt><dd>${p.nascimento ? fromIso(p.nascimento).toLocaleDateString('pt-BR') : '—'}</dd>
+      <dt>Observações</dt><dd>${p.obs || '—'}</dd>
+    </dl>
+    <div class="hist"><h3>Histórico de sessões (${hist.length})</h3>
+      ${hist.map(s => `<div class="ev s-${s.status}"><div><b>${fromIso(s.data).toLocaleDateString('pt-BR')} · ${s.hora}</b><br><small>${s.duracao} min${s.notas ? ' · ' + s.notas : ''}</small></div><span class="badge s-${s.status}">${s.status}</span></div>`).join('') || '<p class="vazio">Nenhuma sessão ainda.</p>'}
+    </div>`;
+  $('#ed-p').onclick = () => openPessoa(p);
+  $('#ag-p').onclick = () => openAgenda(null, hoje, '09:00', p.id);
+  $('#del-p').onclick = () => {
+    if (!confirm(`Excluir ${p.nome} e todas as sessões dela?`)) return;
+    db.pessoas = db.pessoas.filter(x => x.id !== p.id);
+    db.sessoes = db.sessoes.filter(x => x.pessoaId !== p.id);
+    selectedPessoa = null; save(); render(); toast('Pessoa excluída');
+  };
+}
+
+/* ---------- modais ---------- */
+const dlgP = $('#dlg-pessoa'), formP = $('#form-pessoa');
+function openPessoa(p) {
+  formP.reset(); $('#titulo-pessoa').textContent = p ? 'Editar pessoa' : 'Nova pessoa';
+  formP.dataset.id = p ? p.id : '';
+  if (p) for (const k of ['nome', 'telefone', 'email', 'nascimento', 'tipo', 'obs']) if (formP[k]) formP[k].value = p[k] || '';
+  dlgP.showModal();
+}
+formP.addEventListener('submit', e => {
+  if (e.submitter && e.submitter.value === 'cancel') return;
+  const v = Object.fromEntries(new FormData(formP));
+  if (!v.nome.trim()) return;
+  if (formP.dataset.id) Object.assign(pessoaById(formP.dataset.id), v);
+  else { const id = uid(); db.pessoas.push({ id, ...v }); selectedPessoa = id; }
+  save(); dlgP.close(); render(); toast('Pessoa salva');
+});
+
+const dlgA = $('#dlg-ag'), formA = $('#form-ag');
+function openAgenda(s, data, hora, pessoaId) {
+  formA.reset();
+  const sel = formA.pessoa; sel.innerHTML = db.pessoas.map(p => `<option value="${p.id}">${p.nome}</option>`).join('');
+  if (!db.pessoas.length) { toast('Cadastre uma pessoa antes de agendar'); showView('pessoas'); openPessoa(); return; }
+  $('#titulo-ag').textContent = s ? 'Editar sessão' : 'Nova sessão';
+  formA.dataset.id = s ? s.id : '';
+  if (s) { sel.value = s.pessoaId; formA.data.value = s.data; formA.hora.value = s.hora; formA.duracao.value = s.duracao; formA.status.value = s.status; formA.notas.value = s.notas || ''; }
+  else { formA.data.value = data || iso(current); formA.hora.value = hora || '09:00'; if (pessoaId) sel.value = pessoaId; }
+  dlgA.showModal();
+}
+formA.addEventListener('submit', e => {
+  if (e.submitter && e.submitter.value === 'cancel') return;
+  const v = Object.fromEntries(new FormData(formA));
+  const conflito = db.sessoes.find(x => x.id !== formA.dataset.id && x.data === v.data && x.hora === v.hora && x.status !== 'Cancelada');
+  if (conflito) { toast('Já existe uma sessão nesse horário'); e.preventDefault(); return; }
+  const dados = { pessoaId: v.pessoa, data: v.data, hora: v.hora, duracao: v.duracao, status: v.status, notas: v.notas };
+  if (formA.dataset.id) Object.assign(db.sessoes.find(x => x.id === formA.dataset.id), dados);
+  else db.sessoes.push({ id: uid(), ...dados });
+  current = fromIso(v.data);
+  save(); dlgA.close(); render(); toast('Sessão salva');
+});
+
+/* ---------- barra lateral e cabeçalhos ---------- */
+$('#prev').onclick = () => { current.setDate(current.getDate() - 1); render(); };
+$('#next').onclick = () => { current.setDate(current.getDate() + 1); render(); };
+$('#hoje').onclick = () => { current = new Date(); render(); };
+$('#novo-ag').onclick = () => openAgenda(null);
+$('#nova-pessoa').onclick = () => openPessoa();
+$('#busca').addEventListener('input', renderPessoas);
+
+$('#seed').onclick = () => {
+  if (db.pessoas.length && !confirm('Adicionar exemplos aos dados atuais?')) return;
+  const a = uid(), b = uid(), c = uid();
+  db.pessoas.push(
+    { id: a, nome: 'Exemplo — Ana Souza', telefone: '(91) 00000-0001', email: 'ana@exemplo.com', nascimento: '1990-05-12', tipo: 'Individual', obs: 'Registro de exemplo.' },
+    { id: b, nome: 'Exemplo — Carlos e Lia', telefone: '(91) 00000-0002', email: 'casal@exemplo.com', nascimento: '', tipo: 'Casal', obs: 'Registro de exemplo.' },
+    { id: c, nome: 'Exemplo — Marina Lopes', telefone: '(91) 00000-0003', email: '', nascimento: '2001-11-03', tipo: 'Avaliação neuropsicológica', obs: 'Registro de exemplo.' });
+  const hoje = new Date();
+  const d = (n) => { const x = new Date(hoje); x.setDate(hoje.getDate() + n); return iso(x); };
+  db.sessoes.push(
+    { id: uid(), pessoaId: a, data: d(0), hora: '09:00', duracao: '50', status: 'Agendada', notas: '' },
+    { id: uid(), pessoaId: b, data: d(0), hora: '14:00', duracao: '60', status: 'Agendada', notas: '' },
+    { id: uid(), pessoaId: c, data: d(-1), hora: '10:30', duracao: '60', status: 'Realizada', notas: 'Entrevista inicial (anamnese).' },
+    { id: uid(), pessoaId: a, data: d(-7), hora: '09:00', duracao: '50', status: 'Realizada', notas: 'Sessão de acompanhamento.' },
+    { id: uid(), pessoaId: a, data: d(2), hora: '09:00', duracao: '50', status: 'Agendada', notas: '' });
+  save(); render(); toast('Exemplos carregados');
+};
+$('#clear').onclick = () => {
+  if (!confirm('Apagar todas as pessoas e sessões deste navegador?')) return;
+  db = { pessoas: [], sessoes: [] }; selectedPessoa = null; save(); render(); toast('Dados apagados');
+};
+
+function render() { if (view === 'agenda') renderAgenda(); else renderPessoas(); }
+render();
+
+</script>
+</body>
+</html>

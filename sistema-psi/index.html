@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F5F1EA" />
+<title>Consultório — Central de pessoas e agenda</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="brand"><span class="dot"></span>Consultório</div>
+    <nav class="menu">
+      <button class="nav-btn is-on" data-v="agenda"><span>📅</span>Agenda</button>
+      <button class="nav-btn" data-v="pessoas"><span>👥</span>Pessoas</button>
+    </nav>
+    <div class="side-foot">
+      <p class="mini">Dados guardados neste navegador.</p>
+      <button class="ghost" id="seed">Carregar exemplos</button>
+      <button class="ghost" id="clear">Limpar tudo</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- AGENDA -->
+    <section class="view is-on" id="v-agenda">
+      <header class="top">
+        <div>
+          <p class="kicker">Agenda</p>
+          <h1 id="dia-titulo">Hoje</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" id="prev">‹</button>
+          <button class="ghost" id="hoje">Hoje</button>
+          <button class="ghost" id="next">›</button>
+          <button class="btn" id="novo-ag">+ Nova sessão</button>
+        </div>
+      </header>
+      <div class="stats">
+        <div class="stat"><b id="s-dia">0</b><span>sessões no dia</span></div>
+        <div class="stat"><b id="s-prox">0</b><span>próximas esta semana</span></div>
+        <div class="stat"><b id="s-pess">0</b><span>pessoas cadastradas</span></div>
+      </div>
+      <div class="week" id="week"></div>
+      <div class="slots" id="slots"></div>
+    </section>
+
+    <!-- PESSOAS -->
+    <section class="view" id="v-pessoas">
+      <header class="top">
+        <div>
+          <p class="kicker">Central</p>
+          <h1>Pessoas</h1>
+        </div>
+        <div class="top-actions">
+          <input class="search" id="busca" placeholder="Buscar por nome" />
+          <button class="btn" id="nova-pessoa">+ Nova pessoa</button>
+        </div>
+      </header>
+      <div class="pessoas-grid">
+        <div class="lista" id="lista"></div>
+        <div class="ficha" id="ficha"><p class="vazio">Escolha uma pessoa para ver o histórico.</p></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- modal pessoa -->
+<dialog id="dlg-pessoa">
+  <form method="dialog" class="modal" id="form-pessoa">
+    <h2 id="titulo-pessoa">Nova pessoa</h2>
+    <label>Nome<input name="nome" required /></label>
+    <div class="row2">
+      <label>Telefone / WhatsApp<input name="telefone" /></label>
+      <label>E-mail<input name="email" type="email" /></label>
+    </div>
+    <div class="row2">
+      <label>Nascimento<input name="nascimento" type="date" /></label>
+      <label>Tipo de atendimento
+        <select name="tipo"><option>Individual</option><option>Casal</option><option>Avaliação neuropsicológica</option></select>
+      </label>
+    </div>
+    <label>Observações (sem dados sensíveis desnecessários)<textarea name="obs" rows="3"></textarea></label>
+    <div class="actions">
+      <button value="cancel" class="ghost" formnovalidate>Cancelar</button>
+      <button value="ok" class="btn">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- modal sessão -->
+<dialog id="dlg-ag">
+  <form method="dialog" class="modal" id="form-ag">
+    <h2 id="titulo-ag">Nova sessão</h2>
+    <label>Pessoa
+      <select name="pessoa" required></select>
+    </label>
+    <div class="row2">
+      <label>Data<input name="data" type="date" required /></label>
+      <label>Horário<input name="hora" type="time" required step="1800" /></label>
+    </div>
+    <div class="row2">
+      <label>Duração (min)
+        <select name="duracao"><option>50</option><option selected>60</option><option>90</option></select>
+      </label>
+      <label>Status
+        <select name="status"><option>Agendada</option><option>Realizada</option><option>Faltou</option><option>Cancelada</option></select>
+      </label>
+    </div>
+    <label>Anotações da sessão<textarea name="notas" rows="3"></textarea></label>
+    <div class="actions">
+      <button value="cancel" class="ghost" formnovalidate>Cancelar</button>
+      <button value="ok" class="btn">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
