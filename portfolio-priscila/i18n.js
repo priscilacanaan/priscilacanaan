@@ -1,7 +1,7 @@
 /* PT is the source text in index.html. EN and ES below. */
 window.I18N = {
 en:{
-n_serv:"Services",n_port:"Portfolio",n_sobre:"About",n_cont:"Contact",n_btn:"Let's talk",
+n_serv:"Services",k_mini:"Mini apps",t_mini:"Tools <em>to try.</em>",p_mini:"Four mini apps built for direct use: open them on their own site or use them right here.",n_port:"Portfolio",n_sobre:"About",n_cont:"Contact",n_btn:"Let's talk",
 eyebrow:"Studio · AI · Web · Media",t1:"Solutions in",
 lead:"I build AI-powered automations, websites that sell and content that tells your story. Everything designed so your business works better, every day.",
 cta1:"Start a project",cta2:"See the portfolio",
@@ -33,7 +33,7 @@ f_btn:"Send →",f_ok:"Received! I'll reply soon.",
 foot:"© 2026 Priscila Canaan · AI automation, websites and media studio",fl_priv:"Privacy",fl_terms:"Terms of Use",fl_top:"Top ↑"
 },
 es:{
-n_serv:"Servicios",n_port:"Portafolio",n_sobre:"Sobre mí",n_cont:"Contacto",n_btn:"Hablemos",
+n_serv:"Servicios",k_mini:"Mini apps",t_mini:"Herramientas <em>para probar.</em>",p_mini:"Cuatro mini apps creados para uso directo: ábrelos en su propio sitio o úsalos aquí mismo.",n_port:"Portafolio",n_sobre:"Sobre mí",n_cont:"Contacto",n_btn:"Hablemos",
 eyebrow:"Estudio · IA · Web · Medios",t1:"Soluciones en",
 lead:"Creo automatizaciones con inteligencia artificial, sitios web que venden y contenidos que cuentan tu historia. Todo pensado para que tu negocio funcione mejor, todos los días.",
 cta1:"Quiero un proyecto",cta2:"Ver portafolio",

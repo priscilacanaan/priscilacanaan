@@ -161,3 +161,18 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 /* rotating word: all options stack in the same spot */
 .rot{display:inline-grid !important;vertical-align:bottom;overflow:visible;padding-bottom:.08em;white-space:nowrap}
 .rot b{grid-area:1/1;white-space:nowrap}
+
+/* mini apps */
+.miniapps{background:var(--ink2);border-block:1px solid var(--line)}
+.miniapps .lead{color:var(--mut);max-width:620px;margin-top:1rem}
+.app-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+@media(max-width:900px){.app-grid{grid-template-columns:1fr}}
+.app-card{background:var(--ink);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
+.app-card:hover{transform:translateY(-6px);border-color:rgba(0,194,168,.5)}
+.app-frame{height:380px;background:#fff;position:relative}
+.app-frame iframe{width:100%;height:100%;border:0;display:block}
+.app-info{padding:1.4rem 1.6rem 1.6rem}
+.app-info h3{font-size:1.4rem;margin:.5rem 0 .3rem}
+.app-info p{color:var(--mut);font-size:.95rem;margin-bottom:.8rem}
+.app-open{color:var(--teal);font-weight:600;font-size:.92rem}
+.app-open:hover{color:var(--paper)}
