@@ -46,3 +46,79 @@ function fillLine() {
   tl.style.setProperty('--p', reduce ? 1 : p);
 }
 addEventListener('scroll', () => requestAnimationFrame(fillLine), { passive: true }); fillLine();
+
+/* ===== mais dinâmico ===== */
+/* preloader */
+(function(){
+  const n=document.getElementById('pl-n'); let v=0;
+  const done=()=>{ if(!document.body.classList.contains('loading'))return; n.textContent=100; setTimeout(()=>document.body.classList.remove('loading'),250); };
+  if(reduce){ document.body.classList.remove('loading'); return; }
+  const t=setInterval(()=>{ v=Math.min(v+Math.ceil(Math.random()*12),99); n.textContent=v; },70);
+  const finish=()=>{ clearInterval(t); done(); };
+  if(document.readyState==='complete') setTimeout(finish,900); else addEventListener('load',()=>setTimeout(finish,600));
+  setTimeout(finish,2500);
+})();
+
+/* scroll progress */
+const bar=document.querySelector('.progress');
+addEventListener('scroll',()=>{ bar.style.setProperty('--sp', scrollY/(document.documentElement.scrollHeight-innerHeight)); },{passive:true});
+
+/* rotating hero word */
+const rw=[...document.querySelectorAll('.rot b')]; let ri=0;
+if(!reduce) setInterval(()=>{ const c=rw[ri]; c.classList.remove('on'); c.classList.add('out'); setTimeout(()=>c.classList.remove('out'),450); ri=(ri+1)%rw.length; rw[ri].classList.add('on'); },2300);
+
+/* oven follows mouse */
+const oven=document.querySelector('.oven');
+if(oven && !reduce) addEventListener('mousemove',e=>{
+  const x=e.clientX/innerWidth-.5, y=e.clientY/innerHeight-.5;
+  oven.style.transform=`perspective(900px) rotate(-3deg) rotateY(${x*16}deg) rotateX(${-y*12}deg) translate(${x*10}px,${y*10}px)`;
+});
+
+/* magnetic buttons */
+if(!reduce) document.querySelectorAll('.mag').forEach(b=>{
+  b.addEventListener('mousemove',e=>{ const r=b.getBoundingClientRect(); b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.4}px)`; });
+  b.addEventListener('mouseleave',()=>b.style.transform='');
+});
+
+/* split headings letter by letter */
+document.querySelectorAll('.split').forEach(h=>{
+  let i=0;
+  const walk=node=>{ [...node.childNodes].forEach(ch=>{
+    if(ch.nodeType===3){ const frag=document.createDocumentFragment();
+      [...ch.nodeValue].forEach(l=>{ const s=document.createElement('span'); if(l===' '){s.className='sp';s.innerHTML='&nbsp;';} else {s.className='ch';s.textContent=l;s.style.transitionDelay=(i++*28)+'ms';} frag.appendChild(s); });
+      ch.replaceWith(frag);
+    } else walk(ch); }); };
+  walk(h);
+  const o=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ h.classList.add('in'); o.disconnect(); } }),{threshold:.4}); o.observe(h);
+});
+
+/* big marquee moves with scroll speed */
+const r1=document.querySelector('.r1'), r2=document.querySelector('.r2');
+if(r1 && !reduce){
+  let x1=0, x2=-400, vel=0, lastY=scrollY;
+  addEventListener('scroll',()=>{ vel+= (scrollY-lastY)*.15; lastY=scrollY; },{passive:true});
+  (function loop(){
+    vel*=.92; const base=.6;
+    x1-= base+Math.abs(vel); x2+= base+Math.abs(vel);
+    const w1=r1.scrollWidth/2, w2=r2.scrollWidth/2;
+    if(-x1>w1) x1+=w1; if(x2>0) x2-=w2;
+    r1.style.transform=`translateX(${x1}px) skewX(${Math.max(-12,Math.min(12,-vel))}deg)`;
+    r2.style.transform=`translateX(${x2}px) skewX(${Math.max(-12,Math.min(12,vel))}deg)`;
+    requestAnimationFrame(loop);
+  })();
+}
+
+/* 3D tilt + shine */
+if(!reduce) document.querySelectorAll('.tilt').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    el.classList.add('tilting');
+    el.style.transform=`perspective(800px) rotateY(${(x-.5)*14}deg) rotateX(${(.5-y)*12}deg) translateY(-8px)`;
+    el.style.setProperty('--mx',x*100+'%'); el.style.setProperty('--my',y*100+'%');
+  });
+  el.addEventListener('mouseleave',()=>{ el.classList.remove('tilting'); el.style.transform=''; });
+});
+
+/* footer letters */
+const fb=document.querySelector('.footer-big');
+if(fb){ fb.innerHTML=fb.innerHTML.replace(/>([^<]+)</g,(m,t)=>'>'+[...t].map(l=>`<span class="fl">${l}</span>`).join('')+'<').replace(/^([^<]+)/,(m,t)=>[...t].map(l=>`<span class="fl">${l}</span>`).join('')); }
