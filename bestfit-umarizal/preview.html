@@ -412,7 +412,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
       <h2>Vem treinar <em>com a gente.</em></h2>
       <p>Deixe seus dados e a equipe marca o melhor horário. A primeira aula é por conta da casa.</p>
     </div>
-    <form class="form" onsubmit="event.preventDefault(); this.classList.add('sent');">
+    <form class="form" id="aula-form">
       <input type="text" placeholder="Seu nome" required />
       <input type="tel" placeholder="WhatsApp" required />
       <select required>
@@ -420,7 +420,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
         <option>Ganhar massa</option><option>Emagrecer</option><option>Saúde e disposição</option><option>Ainda não sei</option>
       </select>
       <button class="btn" type="submit">Agendar minha aula →</button>
-      <p class="ok">Recebido! A equipe chama você no WhatsApp para marcar. 💪</p>
+      <p class="ok">Abrimos o WhatsApp com seus dados. É só enviar a mensagem para marcar sua aula. 💪</p>
     </form>
   </div>
 </section>
@@ -435,7 +435,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
       <div><span>Sábado</span><b>08:00 – 16:00</b></div>
       <div><span>Domingo e feriado</span><b>09:00 – 14:00</b></div>
     </div>
-    <p class="phone"><a href="tel:+5591980484544">(91) 98048-4544</a> · <a href="https://wa.me/5591980484544" target="_blank" rel="noopener">WhatsApp</a></p>
+    <p class="phone"><a href="tel:+5591980484544">(91) 98048-4544</a> · <a href="https://wa.me/5591980484544?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Best%20Fit%20Umarizal%20e%20quero%20saber%20mais." target="_blank" rel="noopener">WhatsApp</a></p>
     <a class="btn btn-sm" href="https://www.google.com/maps/place/Academia+Best+Fit+Umarizal/@-1.4438621,-48.4784867,20z/data=!4m6!3m5!1s0x92a48d1fbaa46e95:0x6efb24fe90b5cf14!8m2!3d-1.4438355!4d-48.4780621!16s%2Fg%2F11ldd1zrmm?entry=ttu&amp;g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Abrir no Google Maps ↗</a>
   </div>
   <div class="map reveal">
@@ -456,7 +456,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/5591980484544" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa" href="https://wa.me/5591980484544?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Best%20Fit%20Umarizal%20e%20quero%20saber%20mais." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
 </a>
 
@@ -517,6 +517,16 @@ if (!reduce) document.querySelectorAll('.mag').forEach(b => {
 /* cursor spotlight */
 const spot = document.querySelector('.spot');
 if (!reduce) addEventListener('mousemove', e => { spot.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; });
+
+/* aula experimental form: opens WhatsApp with the details filled in */
+const af=document.getElementById('aula-form');
+if(af) af.addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=n=>af.querySelector(n).value.trim();
+  const texto=`Olá! Quero marcar uma aula experimental na Best Fit Umarizal.\nNome: ${v('input[type=text]')}\nWhatsApp: ${v('input[type=tel]')}\nObjetivo: ${v('select')}`;
+  window.open('https://wa.me/5591980484544?text='+encodeURIComponent(texto),'_blank','noopener');
+  af.classList.add('sent');
+});
 
 </script>
 </body>
