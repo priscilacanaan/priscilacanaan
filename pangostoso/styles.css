@@ -18,7 +18,6 @@ body{background:var(--cream);color:var(--crust);font-family:var(--sans);font-siz
 a{color:inherit;text-decoration:none}
 em{font-style:normal;color:var(--oven)}
 code{background:var(--dough);padding:.1rem .35rem;border-radius:4px}
-#flour{position:fixed;inset:0;pointer-events:none;z-index:1}
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 5vw;transition:background .4s,box-shadow .4s,padding .4s}
@@ -264,5 +263,4 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.5vw,4.6re
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal,.hero h1 .w{opacity:1;transform:none}
-  #flour{display:none}
 }

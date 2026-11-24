@@ -3,7 +3,7 @@
 Abra `index.html` (ou `preview.html`, tudo num arquivo só).
 
 ## O que tem
-- Início com forno animado: o pão cresce, sai vapor, a temperatura pisca. Farinha caindo pela tela (desvia do mouse).
+- Início com forno animado: o pão cresce, sai vapor, a temperatura pisca.
 - Esteira de produtos rolando, números que contam, catálogo com filtros (Pães, Congelados, Doces, Sabores do Pará, Food service).
 - "Do trigo à mesa" com linha que enche ao rolar; para quem fornecemos; selos de qualidade que giram.
 - Mapa animado de entregas na Grande Belém com caminhão andando.

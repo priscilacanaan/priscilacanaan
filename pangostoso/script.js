@@ -46,27 +46,3 @@ function fillLine() {
   tl.style.setProperty('--p', reduce ? 1 : p);
 }
 addEventListener('scroll', () => requestAnimationFrame(fillLine), { passive: true }); fillLine();
-
-/* falling flour particles */
-const cv = document.getElementById('flour');
-if (cv && !reduce) {
-  const ctx = cv.getContext('2d');
-  let W, H, parts = [];
-  const size = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; };
-  size(); addEventListener('resize', size);
-  for (let i = 0; i < 70; i++) parts.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, r: Math.random() * 2.2 + .6, s: Math.random() * .5 + .2, d: Math.random() * Math.PI * 2 });
-  let mx = -999, my = -999;
-  addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  (function loop() {
-    ctx.clearRect(0, 0, W, H);
-    for (const p of parts) {
-      p.y += p.s; p.d += .01; p.x += Math.sin(p.d) * .3;
-      const dx = p.x - mx, dy = p.y - my, dist = Math.hypot(dx, dy);
-      if (dist < 90) { p.x += dx / dist * 2; p.y += dy / dist * 2; }
-      if (p.y > H + 5) { p.y = -5; p.x = Math.random() * W; }
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.fill();
-      ctx.strokeStyle = 'rgba(200,170,120,.35)'; ctx.stroke();
-    }
-    requestAnimationFrame(loop);
-  })();
-}
