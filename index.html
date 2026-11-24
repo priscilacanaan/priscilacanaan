@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bayfront Corporate Center · Design Proposal</title>
+<meta name="description" content="Design proposal for a Class A office building website. Fictional content." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#0d1b2a; --navy:#13263b; --navy-2:#1c3550;
+    --gold:#c8a96a; --gold-soft:#e6d3a8; --sand:#f6f1e7; --paper:#fbf9f4;
+    --muted:#6b7682; --line:rgba(13,27,42,.12);
+    --serif:"Cormorant Garamond",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1200px,92vw);margin-inline:auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+  h2{font-size:clamp(2.2rem,4.4vw,3.6rem)}
+  .lead{font-size:1.08rem;color:var(--muted);max-width:56ch}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.7rem;border:1px solid var(--gold);color:#fff;background:var(--gold);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;transition:.35s}
+  .btn:hover{background:transparent;color:var(--gold)}
+  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* NAV */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:.4s}
+  header.solid{background:rgba(13,27,42,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px;color:#fff}
+  .logo{display:flex;align-items:center;gap:.9rem}
+  .logo-mark{width:38px;height:38px;border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);font-size:1.2rem;color:var(--gold)}
+  .logo-text{font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em;line-height:1}
+  .logo-text small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.38em;color:var(--gold-soft);margin-top:.35rem}
+  .nav ul{display:flex;gap:2.2rem;list-style:none;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase}
+  .nav ul a{opacity:.85;transition:.3s;position:relative}
+  .nav ul a:hover{opacity:1;color:var(--gold-soft)}
+  .burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:grid;align-items:end;color:#fff;overflow:hidden;background:var(--ink)}
+  .hero-art{position:absolute;inset:0}
+  .hero-art svg{width:100%;height:100%}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,.35) 0%,rgba(13,27,42,.15) 40%,rgba(13,27,42,.92) 100%)}
+  .hero-content{position:relative;z-index:2;padding-bottom:12vh}
+  .hero h1{font-size:clamp(3rem,8vw,7.2rem);margin:1.2rem 0 1.6rem;max-width:12ch}
+  .hero h1 em{color:var(--gold-soft);font-style:italic}
+  .hero p{max-width:50ch;font-size:1.1rem;opacity:.85;margin-bottom:2.4rem}
+  .hero .actions{display:flex;gap:1rem;flex-wrap:wrap}
+  .scroll{position:absolute;right:4vw;bottom:6vh;z-index:2;writing-mode:vertical-rl;font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-soft)}
+  .scroll::after{content:"";display:block;width:1px;height:60px;background:var(--gold);margin:1rem auto 0;animation:drip 2.2s infinite}
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* STATS */
+  .stats{background:var(--navy);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:3rem 1.5rem;border-left:1px solid rgba(255,255,255,.08);text-align:center}
+  .stat:first-child{border-left:0}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:3rem;color:var(--gold-soft);line-height:1}
+  .stat span{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+
+  section{padding:clamp(5rem,11vw,9rem) 0}
+
+  /* ABOUT */
+  .about .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:6rem;align-items:center}
+  .about h2{margin:1.2rem 0 1.6rem}
+  .about p+p{margin-top:1rem}
+  .about-visual{position:relative;aspect-ratio:4/5}
+  .about-visual .frame{position:absolute;inset:0;background:linear-gradient(160deg,#1c3550,#0d1b2a);overflow:hidden}
+  .about-visual .frame svg{width:100%;height:100%}
+  .about-visual::before{content:"";position:absolute;inset:-22px 22px 22px -22px;border:1px solid var(--gold);z-index:-1}
+  .badge{position:absolute;left:-2.5rem;bottom:3rem;background:var(--paper);padding:1.6rem 2rem;box-shadow:0 30px 60px -30px rgba(13,27,42,.4)}
+  .badge b{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--navy);display:block;line-height:1}
+  .badge span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .signature{margin-top:2.4rem;display:flex;gap:2.5rem}
+  .signature div{border-top:1px solid var(--gold);padding-top:.8rem;font-size:.85rem;color:var(--muted)}
+  .signature strong{display:block;color:var(--ink);font-weight:500}
+
+  /* AMENITIES */
+  .amenities{background:var(--sand)}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:3rem;margin-bottom:4rem;flex-wrap:wrap}
+  .head h2{margin-top:1rem;max-width:16ch}
+  .grid-a{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .card{background:var(--sand);padding:2.8rem 2.4rem;transition:.45s;position:relative}
+  .card:hover{background:var(--navy);color:#fff}
+  .card:hover p{color:rgba(255,255,255,.7)}
+  .card svg{width:38px;height:38px;stroke:var(--gold);fill:none;stroke-width:1.2;margin-bottom:1.8rem}
+  .card h3{font-size:1.65rem;margin-bottom:.6rem}
+  .card p{font-size:.94rem;color:var(--muted);transition:.45s}
+  .card .n{position:absolute;top:2rem;right:2.2rem;font-family:var(--serif);font-size:.95rem;color:var(--gold)}
+
+  /* SPACES */
+  .spaces{background:var(--ink);color:#fff}
+  .spaces .lead{color:rgba(255,255,255,.65)}
+  .tabs{display:flex;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+  .tab{background:none;border:1px solid rgba(255,255,255,.2);color:#fff;padding:.7rem 1.3rem;font:inherit;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.3s}
+  .tab.on,.tab:hover{border-color:var(--gold);color:var(--gold-soft)}
+  .suites{display:grid;gap:1px;background:rgba(255,255,255,.08)}
+  .suite{display:grid;grid-template-columns:1fr 1fr 1fr 1.2fr auto;align-items:center;gap:1.5rem;background:var(--ink);padding:1.6rem 1.2rem;transition:.3s}
+  .suite:hover{background:var(--navy)}
+  .suite .s{font-family:var(--serif);font-size:1.6rem}
+  .suite small{display:block;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+  .suite a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .suite a:hover{color:#fff}
+  .note{margin-top:1.5rem;font-size:.8rem;color:rgba(255,255,255,.45)}
+
+  /* LOCATION */
+  .location .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center}
+  .times{margin-top:2.5rem;border-top:1px solid var(--line)}
+  .time{display:flex;justify-content:space-between;padding:1.15rem 0;border-bottom:1px solid var(--line)}
+  .time b{font-family:var(--serif);font-weight:500;font-size:1.35rem;color:var(--navy)}
+  .map{position:relative;aspect-ratio:1/1;background:var(--navy);overflow:hidden}
+  .map svg{width:100%;height:100%}
+
+  /* QUOTE */
+  .quote{background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;text-align:center}
+  .quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.25;max-width:24ch;margin:1.8rem auto}
+  .quote cite{font-style:normal;font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-soft)}
+
+  /* CONTACT */
+  .contact .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem}
+  .info{margin-top:2.5rem;display:grid;gap:1.6rem}
+  .info div small{display:block;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .info div p{font-family:var(--serif);font-size:1.45rem}
+  form{background:#fff;padding:3rem;box-shadow:0 40px 80px -50px rgba(13,27,42,.35);display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+  form .full{grid-column:1/-1}
+  label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  input,select,textarea{width:100%;border:0;border-bottom:1px solid var(--line);padding:.7rem 0;font:inherit;background:transparent;color:var(--ink);outline:none;transition:.3s}
+  input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+  textarea{resize:vertical;min-height:90px}
+  form .btn{justify-self:start;cursor:pointer;font-family:var(--sans)}
+  .sent{grid-column:1/-1;color:var(--navy);font-family:var(--serif);font-size:1.3rem;display:none}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.6);padding:4rem 0 4rem;font-size:.85rem}
+  footer .top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+  footer .logo{color:#fff}
+  footer ul{list-style:none;display:flex;gap:2rem;flex-wrap:wrap}
+  footer ul a:hover{color:var(--gold-soft)}
+  footer .bottom{padding-top:2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.75rem}
+
+  /* reveal */
+  .r{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+  .r.in{opacity:1;transform:none}
+
+  @media (max-width:960px){
+    .nav ul{position:fixed;inset:84px 0 auto 0;flex-direction:column;gap:0;background:var(--ink);padding:1rem 4vw 2rem;display:none}
+    .nav ul.open{display:flex}
+    .nav ul li{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .burger{display:block}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-left:0}
+    .about .wrap,.location .wrap,.contact .wrap{grid-template-columns:1fr;gap:4rem}
+    .grid-a{grid-template-columns:1fr 1fr}
+    .suite{grid-template-columns:1fr 1fr;row-gap:.8rem}
+    .badge{left:1rem}
+  }
+  @media (max-width:600px){
+    .grid-a{grid-template-columns:1fr}
+    form{grid-template-columns:1fr;padding:2rem}
+    .scroll{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:60;background:#c8a96a;color:#0d1b2a;text-align:center;font:500 .72rem Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:.55rem">Design proposal · Fictional building and content</div>
+<header id="top">
+  <nav class="wrap nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">B</span>
+      <span class="logo-text">BAYFRONT<small>CORPORATE CENTER</small></span>
+    </a>
+    <ul id="menu">
+      <li><a href="#about">The Building</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#spaces">Availability</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu" id="burger">☰</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0d1b2a"/><stop offset=".55" stop-color="#2a4766"/><stop offset=".8" stop-color="#c79b63"/><stop offset="1" stop-color="#e9c58f"/>
+        </linearGradient>
+        <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#2f5070"/><stop offset=".5" stop-color="#16293f"/><stop offset="1" stop-color="#0d1b2a"/>
+        </linearGradient>
+        <linearGradient id="glass2" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3a5d80"/><stop offset="1" stop-color="#112238"/>
+        </linearGradient>
+        <pattern id="win" width="28" height="22" patternUnits="userSpaceOnUse">
+          <rect width="28" height="22" fill="none"/><line x1="0" y1="21" x2="28" y2="21" stroke="#c8a96a" stroke-opacity=".18"/><line x1="27" y1="0" x2="27" y2="22" stroke="#9fb6cc" stroke-opacity=".12"/>
+        </pattern>
+      </defs>
+      <rect width="1600" height="1000" fill="url(#sky)"/>
+      <circle cx="1180" cy="760" r="120" fill="#f3d9a6" opacity=".55"/>
+      <!-- skyline -->
+      <g fill="#122236" opacity=".7">
+        <rect x="0" y="640" width="90" height="360"/><rect x="100" y="590" width="70" height="410"/><rect x="1330" y="610" width="90" height="390"/><rect x="1440" y="560" width="160" height="440"/>
+      </g>
+      <!-- tower 1 -->
+      <polygon points="430,260 760,200 760,1000 430,1000" fill="url(#glass)"/>
+      <polygon points="430,260 760,200 760,1000 430,1000" fill="url(#win)"/>
+      <polygon points="760,200 900,250 900,1000 760,1000" fill="url(#glass2)"/>
+      <polygon points="760,200 900,250 900,1000 760,1000" fill="url(#win)" opacity=".6"/>
+      <line x1="760" y1="200" x2="760" y2="1000" stroke="#e6d3a8" stroke-opacity=".5"/>
+      <!-- tower 2 -->
+      <polygon points="930,380 1130,340 1130,1000 930,1000" fill="url(#glass)"/>
+      <polygon points="930,380 1130,340 1130,1000 930,1000" fill="url(#win)"/>
+      <polygon points="1130,340 1230,370 1230,1000 1130,1000" fill="url(#glass2)"/>
+      <line x1="1130" y1="340" x2="1130" y2="1000" stroke="#e6d3a8" stroke-opacity=".4"/>
+      <!-- palms -->
+      <g stroke="#0a1522" stroke-width="7" fill="none" stroke-linecap="round">
+        <path d="M250 1000 C260 880 270 820 300 740"/><path d="M1320 1000 C1310 900 1300 840 1280 780"/>
+      </g>
+      <g fill="#0a1522">
+        <path d="M300 740 q-80 -10 -130 40 q70 -30 130 -40z"/><path d="M300 740 q70 -40 140 0 q-70 -15 -140 0z"/><path d="M300 740 q-20 -70 -90 -90 q60 40 90 90z"/><path d="M300 740 q40 -70 110 -70 q-70 20 -110 70z"/>
+        <path d="M1280 780 q-80 -10 -130 40 q70 -30 130 -40z"/><path d="M1280 780 q70 -40 140 0 q-70 -15 -140 0z"/><path d="M1280 780 q-20 -70 -90 -90 q60 40 90 90z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">Class A Offices · Design Proposal</span>
+    <h1>Where business <em>rises</em> above the bay.</h1>
+    <p>Refined office suites on the boulevard, minutes from downtown and the airport, designed for companies that expect more from where they work.</p>
+    <div class="actions">
+      <a href="#spaces" class="btn">View Availability</a>
+      <a href="#contact" class="btn ghost">Schedule a Tour</a>
+    </div>
+  </div>
+  <span class="scroll">Scroll</span>
+</section>
+
+<!-- STATS (verify all figures) -->
+<div class="stats" data-verify="true">
+  <div class="wrap">
+    <div class="stat"><b data-count="2">0</b><span>Office Towers</span></div>
+    <div class="stat"><b data-count="24">0</b><span>Hour Security</span></div>
+    <div class="stat"><b data-count="25">0</b><span>Min to the Airport</span></div>
+    <div class="stat"><b>A+</b><span>Class Building</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="r">
+      <span class="eyebrow">The Building</span>
+      <h2>An address that speaks before you do.</h2>
+      <p class="lead">Bayfront Corporate Center brings together polished architecture, natural light and the convenience of a vibrant, walkable neighborhood.</p>
+      <p class="lead">Floor-to-ceiling glass, elegant lobbies and attentive on-site management create a setting where teams do their best work and clients feel welcome from the moment they arrive.</p>
+      <div class="signature">
+        <div><strong>On-site</strong>Property management</div>
+        <div><strong>Flexible</strong>Suites from small to full floor</div>
+      </div>
+    </div>
+    <div class="about-visual r">
+      <div class="frame">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="lob" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26425f"/><stop offset="1" stop-color="#0d1b2a"/></linearGradient></defs>
+          <rect width="400" height="500" fill="url(#lob)"/>
+          <g stroke="#c8a96a" stroke-opacity=".35">
+            <line x1="60" y1="0" x2="60" y2="500"/><line x1="140" y1="0" x2="140" y2="500"/><line x1="220" y1="0" x2="220" y2="500"/><line x1="300" y1="0" x2="300" y2="500"/><line x1="380" y1="0" x2="380" y2="500"/>
+          </g>
+          <rect x="0" y="380" width="400" height="120" fill="#e6d3a8" opacity=".12"/>
+          <ellipse cx="200" cy="120" rx="90" ry="14" fill="#f3d9a6" opacity=".55"/>
+          <line x1="200" y1="0" x2="200" y2="106" stroke="#e6d3a8" stroke-opacity=".6"/>
+          <rect x="110" y="330" width="180" height="55" fill="#0d1b2a" stroke="#c8a96a" stroke-opacity=".6"/>
+          <text x="200" y="363" text-anchor="middle" fill="#e6d3a8" font-family="Cormorant Garamond,serif" font-size="16" letter-spacing="4">BAYFRONT</text>
+        </svg>
+      </div>
+      <div class="badge"><b>Bayfront</b><span>Boulevard Frontage</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div class="wrap">
+    <div class="head r">
+      <div><span class="eyebrow">Amenities</span><h2>Every detail, considered.</h2></div>
+      <p class="lead">Services that make the workday easier, for your team and for every visitor.</p>
+    </div>
+    <div class="grid-a r">
+      <div class="card"><span class="n">01</span><svg viewBox="0 0 40 40"><path d="M6 34V14L20 6l14 8v20M14 34V22h12v12"/></svg><h3>Grand Lobby</h3><p>A light-filled, attended lobby that sets the tone for every meeting.</p></div>
+      <div class="card"><span class="n">02</span><svg viewBox="0 0 40 40"><path d="M20 4l13 5v10c0 8-6 14-13 17C13 33 7 27 7 19V9z"/><path d="M14 20l4 4 8-8"/></svg><h3>24/7 Security</h3><p>Controlled access and round-the-clock security staff.</p></div>
+      <div class="card"><span class="n">03</span><svg viewBox="0 0 40 40"><rect x="5" y="10" width="30" height="20" rx="2"/><path d="M12 30v4M28 30v4M5 20h30"/></svg><h3>Covered Parking</h3><p>Structured garage parking with convenient access to both towers.</p></div>
+      <div class="card"><span class="n">04</span><svg viewBox="0 0 40 40"><path d="M10 34h20M20 34V18M12 10h16l-2 8H14z"/></svg><h3>Café &amp; Dining</h3><p>Coffee, lunch and client dinners steps away along the boulevard.</p></div>
+      <div class="card"><span class="n">05</span><svg viewBox="0 0 40 40"><path d="M6 20a14 14 0 0128 0M11 20a9 9 0 0118 0M16 20a4 4 0 018 0"/><circle cx="20" cy="26" r="2"/></svg><h3>Fiber Connectivity</h3><p>Multiple high-speed providers for uninterrupted operations.</p></div>
+      <div class="card"><span class="n">06</span><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="M20 12v8l5 4"/></svg><h3>On-site Management</h3><p>A responsive building team, available when you need it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section class="spaces" id="spaces">
+  <div class="wrap">
+    <div class="head r">
+      <div><span class="eyebrow">Availability</span><h2>Find your next suite.</h2></div>
+      <p class="lead">From focused executive suites to full-floor headquarters. Sample listings below; contact leasing for current availability.</p>
+    </div>
+    <div class="tabs r">
+      <button class="tab on" data-f="all">All</button>
+      <button class="tab" data-f="small">Under 2,500 SF</button>
+      <button class="tab" data-f="mid">2,500 – 6,000 SF</button>
+      <button class="tab" data-f="large">6,000 SF +</button>
+    </div>
+    <div class="suites r" id="suites"></div>
+    <p class="note">Listings shown are illustrative. Availability changes often; our leasing team will share the current floor plans.</p>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="wrap">
+    <div class="r">
+      <span class="eyebrow">Location</span>
+      <h2>The center of everything.</h2>
+      <p class="lead" style="margin-top:1.4rem">Set on a main boulevard between downtown and the coast, with shopping, dining, hotels and residences all around.</p>
+      <div class="times" data-verify="true">
+        <div class="time"><span>Shopping district</span><b>2 min</b></div>
+        <div class="time"><span>Interstate highway</span><b>10 min</b></div>
+        <div class="time"><span>Regional airport</span><b>25 min</b></div>
+        <div class="time"><span>International airport</span><b>30 min</b></div>
+        <div class="time"><span>Downtown</span><b>30 min</b></div>
+      </div>
+    </div>
+    <div class="map r">
+      <svg viewBox="0 0 500 500" aria-label="Stylized map">
+        <rect width="500" height="500" fill="#13263b"/>
+        <path d="M330 0 C360 120 300 220 350 330 C380 400 340 460 360 500 L500 500 L500 0Z" fill="#1d3a57"/>
+        <text x="420" y="260" fill="#6f8eae" font-size="12" letter-spacing="4" font-family="Inter" transform="rotate(90 420 260)">ATLANTIC OCEAN</text>
+        <g stroke="#2a4766" stroke-width="1">
+          <line x1="0" y1="80" x2="330" y2="80"/><line x1="0" y1="170" x2="320" y2="170"/><line x1="0" y1="300" x2="340" y2="300"/><line x1="0" y1="420" x2="350" y2="420"/>
+          <line x1="70" y1="0" x2="70" y2="500"/><line x1="160" y1="0" x2="160" y2="500"/>
+        </g>
+        <path d="M250 0 C245 150 255 330 245 500" stroke="#c8a96a" stroke-width="3" fill="none"/>
+        <text x="232" y="470" fill="#e6d3a8" font-size="11" letter-spacing="3" font-family="Inter" transform="rotate(-90 232 470)">BAYFRONT BLVD</text>
+        <path d="M30 0 L30 500" stroke="#5a7896" stroke-width="2"/>
+        <text x="40" y="490" fill="#6f8eae" font-size="10" letter-spacing="3" font-family="Inter">HWY</text>
+        <rect x="170" y="190" width="60" height="45" fill="none" stroke="#6f8eae"/>
+        <text x="200" y="250" fill="#9fb6cc" font-size="9" text-anchor="middle" font-family="Inter" letter-spacing="2">SHOPPING</text>
+        <circle cx="250" cy="150" r="26" fill="#c8a96a" opacity=".18"><animate attributeName="r" values="14;34;14" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="250" cy="150" r="8" fill="#c8a96a"/>
+        <rect x="268" y="128" width="150" height="40" fill="#fbf9f4"/>
+        <text x="278" y="146" fill="#0d1b2a" font-size="12" font-family="Cormorant Garamond,serif" font-weight="600">Bayfront Corporate Center</text>
+        <text x="278" y="160" fill="#6b7682" font-size="8" letter-spacing="1.5" font-family="Inter">BAYFRONT BLVD</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="wrap r">
+    <span class="eyebrow">Bayfront Corporate Center</span>
+    <blockquote>“A workplace should be as ambitious as the people inside it.”</blockquote>
+    <cite>Leasing now · Schedule a private tour</cite>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="r">
+      <span class="eyebrow">Leasing</span>
+      <h2>Let's find your space.</h2>
+      <p class="lead" style="margin-top:1.4rem">Tell us about your team and we'll arrange a private tour of available suites.</p>
+      <div class="info" data-verify="true">
+        <div><small>Address</small><p>100 Bayfront Boulevard<br/>Your City, ST 00000</p></div>
+        <div><small>Phone</small><p><a href="tel:+15555550100">(555) 555‑0100</a></p></div>
+        <div><small>Email</small><p><a href="mailto:leasing@example.com">leasing@example.com</a></p></div>
+      </div>
+    </div>
+    <form class="r" id="lead">
+      <div><label>Name</label><input required /></div>
+      <div><label>Company</label><input /></div>
+      <div><label>Email</label><input type="email" required /></div>
+      <div><label>Phone</label><input type="tel" /></div>
+      <div class="full"><label>Space needed</label>
+        <select><option>Under 2,500 SF</option><option>2,500 – 6,000 SF</option><option>6,000 SF +</option><option>Not sure yet</option></select></div>
+      <div class="full"><label>Message</label><textarea></textarea></div>
+      <button class="btn" type="submit">Request a Tour</button>
+      <p class="sent">Thank you. This is a design preview, so no message was sent.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <a href="#" class="logo"><span class="logo-mark">B</span><span class="logo-text">BAYFRONT<small>CORPORATE CENTER</small></span></a>
+      <ul><li><a href="#about">The Building</a></li><li><a href="#amenities">Amenities</a></li><li><a href="#spaces">Availability</a></li><li><a href="#location">Location</a></li><li><a href="#contact">Contact</a></li></ul>
+    </div>
+    <div class="bottom"><span>© <span id="y"></span> Bayfront Corporate Center · Design proposal, fictional content.</span><span>Design proposal</span></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('burger').onclick=()=>document.getElementById('menu').classList.toggle('open');
+  document.getElementById('lead').onsubmit=e=>{e.preventDefault();e.target.querySelector('.sent').style.display='block';e.target.reset();};
+  // sticky nav
+  const hdr=document.getElementById('top');
+  addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40));
+  document.querySelectorAll('#menu a').forEach(a=>a.onclick=()=>document.getElementById('menu').classList.remove('open'));
+  document.getElementById('y').textContent=new Date().getFullYear();
+
+  // reveal + counters
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+  const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.count;let n=0;const s=setInterval(()=>{n++;el.textContent=n;if(n>=t)clearInterval(s)},Math.max(20,900/t));co.unobserve(el)}),{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+  // suites (illustrative)
+  const suites=[
+    {s:'Suite 210',f:'2nd Floor',sf:1850,t:'Executive suite',c:'small'},
+    {s:'Suite 405',f:'4th Floor',sf:3200,t:'Bay views',c:'mid'},
+    {s:'Suite 620',f:'6th Floor',sf:4750,t:'Corner office',c:'mid'},
+    {s:'Suite 800',f:'8th Floor',sf:8900,t:'Full floor',c:'large'},
+    {s:'Suite 1150',f:'11th Floor',sf:2100,t:'Move-in ready',c:'small'},
+  ];
+  const box=document.getElementById('suites');
+  function draw(f){box.innerHTML=suites.filter(x=>f==='all'||x.c===f).map(x=>`
+    <div class="suite"><div class="s">${x.s}</div><div><small>Floor</small>${x.f}</div>
+    <div><small>Size</small>${x.sf.toLocaleString()} SF</div><div><small>Highlight</small>${x.t}</div>
+    <a href="#contact">Inquire →</a></div>`).join('')}
+  draw('all');
+  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');draw(b.dataset.f)});
+</script>
+</body>
+</html>
