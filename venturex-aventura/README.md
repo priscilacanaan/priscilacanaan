@@ -23,3 +23,7 @@ contadores, cards 3D, botões magnéticos, linha do tempo horizontal, preços qu
 - Ícones no rodapé: Instagram, Facebook, LinkedIn, TikTok, WhatsApp e Google Maps.
 - Instagram, Facebook, LinkedIn e TikTok estão com `href="#"` (borda tracejada): trocar pelos links reais em `index.html` (procure "Social links").
 - WhatsApp usa 786-952-6744 (confirmar) — também no botão flutuante.
+
+## Logo e cores
+- Logo original: salve o arquivo como `logo.png` (de preferência fundo transparente) nesta pasta. Ele entra sozinho no menu e no rodapé; sem ele, aparece "VentureX" escrito em amarelo.
+- Cores: no início de `styles.css`, `--coral` é o amarelo principal (hoje #FFC72C) e `--sun` o amarelo claro. Troque pelo código exato da marca quando tiver.
