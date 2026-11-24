@@ -13,8 +13,7 @@
   <aside class="side">
     <div class="brand"><span class="dot"></span>Consultório</div>
     <nav class="menu">
-      <button class="nav-btn is-on" data-v="agenda"><span>📅</span>Agenda</button>
-      <button class="nav-btn" data-v="pessoas"><span>👥</span>Pessoas</button>
+      <button class="nav-btn is-on" data-v="pessoas"><span>👥</span>Pessoas</button>
     </nav>
     <div class="side-foot">
       <p class="mini">Dados guardados neste navegador.</p>
@@ -25,31 +24,8 @@
 
   <main class="main">
 
-    <!-- AGENDA -->
-    <section class="view is-on" id="v-agenda">
-      <header class="top">
-        <div>
-          <p class="kicker">Agenda</p>
-          <h1 id="dia-titulo">Hoje</h1>
-        </div>
-        <div class="top-actions">
-          <button class="ghost" id="prev">‹</button>
-          <button class="ghost" id="hoje">Hoje</button>
-          <button class="ghost" id="next">›</button>
-          <button class="btn" id="novo-ag">+ Nova sessão</button>
-        </div>
-      </header>
-      <div class="stats">
-        <div class="stat"><b id="s-dia">0</b><span>sessões no dia</span></div>
-        <div class="stat"><b id="s-prox">0</b><span>próximas esta semana</span></div>
-        <div class="stat"><b id="s-pess">0</b><span>pessoas cadastradas</span></div>
-      </div>
-      <div class="week" id="week"></div>
-      <div class="slots" id="slots"></div>
-    </section>
-
     <!-- PESSOAS -->
-    <section class="view" id="v-pessoas">
+    <section class="view is-on" id="v-pessoas">
       <header class="top">
         <div>
           <p class="kicker">Central</p>
@@ -92,32 +68,8 @@
   </form>
 </dialog>
 
-<!-- modal sessão -->
-<dialog id="dlg-ag">
-  <form method="dialog" class="modal" id="form-ag">
-    <h2 id="titulo-ag">Nova sessão</h2>
-    <label>Pessoa
-      <select name="pessoa" required></select>
-    </label>
-    <div class="row2">
-      <label>Data<input name="data" type="date" required /></label>
-      <label>Horário<input name="hora" type="time" required step="1800" /></label>
-    </div>
-    <div class="row2">
-      <label>Duração (min)
-        <select name="duracao"><option>50</option><option selected>60</option><option>90</option></select>
-      </label>
-      <label>Status
-        <select name="status"><option>Agendada</option><option>Realizada</option><option>Faltou</option><option>Cancelada</option></select>
-      </label>
-    </div>
-    <label>Anotações da sessão<textarea name="notas" rows="3"></textarea></label>
-    <div class="actions">
-      <button value="cancel" class="ghost" formnovalidate>Cancelar</button>
-      <button value="ok" class="btn">Salvar</button>
-    </div>
-  </form>
-</dialog>
+<!-- modal sessão removido -->
+
 
 <div class="toast" id="toast"></div>
 <script src="script.js"></script>
