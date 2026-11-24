@@ -146,3 +146,8 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .rot b:not(.on){visibility:hidden}
 .rot b.on{visibility:visible}
 .rot b.out{visibility:visible}
+
+/* no overlap: outgoing word disappears instantly, incoming fades in after */
+.rot b{transition:opacity .45s var(--ease) .05s,transform .45s var(--ease) .05s}
+.rot b.out{opacity:0;visibility:hidden;transform:none;transition:none}
+.rot b.on{opacity:1;visibility:visible}

@@ -159,6 +159,11 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .rot b.on{visibility:visible}
 .rot b.out{visibility:visible}
 
+/* no overlap: outgoing word disappears instantly, incoming fades in after */
+.rot b{transition:opacity .45s var(--ease) .05s,transform .45s var(--ease) .05s}
+.rot b.out{opacity:0;visibility:hidden;transform:none;transition:none}
+.rot b.on{opacity:1;visibility:visible}
+
 </style>
 </head>
 <body>
@@ -314,7 +319,7 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 
 <footer class="footer">
   <span>© 2026 Priscila Canaan · Estúdio de automações com IA, websites e mídia</span>
-  <a href="#topo">Voltar ao topo ↑</a>
+  <span><a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos de Uso</a> · <a href="#topo">Topo ↑</a></span>
 </footer>
 
 <script>
