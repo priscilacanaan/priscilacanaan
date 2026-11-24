@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avaliação DISC</title>
+<style>
+  /* ===== Cores da marca: troque aqui para a identidade da empresa ===== */
+  :root{
+    --marca:#1f2a44;        /* cor principal (azul-marinho) */
+    --marca-2:#b8925a;      /* cor de destaque (dourado) */
+    --fundo:#f5f3ef;
+    --cartao:#ffffff;
+    --texto:#1d1d1f;
+    --suave:#6b6b73;
+    --linha:#e4e0d8;
+    --D:#c0392b; --I:#e0a526; --S:#2e8b57; --C:#2f6db5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--fundo);color:var(--texto);line-height:1.5}
+  header{background:var(--marca);color:#fff;padding:22px 20px}
+  .topo{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:14px}
+  .logo{width:48px;height:48px;border-radius:10px;background:var(--marca-2);display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--marca)}
+  .topo h1{margin:0;font-size:20px;letter-spacing:.3px}
+  .topo p{margin:2px 0 0;font-size:13px;opacity:.8}
+  main{max-width:880px;margin:0 auto;padding:24px 16px 60px}
+  .cartao{background:var(--cartao);border:1px solid var(--linha);border-radius:14px;padding:24px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  h2{margin:0 0 10px;color:var(--marca);font-size:22px}
+  h3{margin:18px 0 6px;color:var(--marca);font-size:17px}
+  label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+  input,select{width:100%;padding:11px 12px;border:1px solid var(--linha);border-radius:9px;font-size:15px;font-family:inherit}
+  input:focus,select:focus{outline:2px solid var(--marca-2);border-color:transparent}
+  .grade{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  @media(max-width:640px){.grade{grid-template-columns:1fr}}
+  .btn{background:var(--marca);color:#fff;border:0;border-radius:10px;padding:13px 22px;font-size:15px;font-weight:600;cursor:pointer}
+  .btn:hover{filter:brightness(1.15)}
+  .btn.sec{background:#fff;color:var(--marca);border:1px solid var(--marca)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .acoes{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:18px}
+  .aviso{font-size:13px;color:var(--suave)}
+  .erro{color:#b3261e;font-size:14px;margin-top:10px;min-height:1em}
+  .progresso{height:8px;background:var(--linha);border-radius:99px;overflow:hidden;margin:6px 0 4px}
+  .progresso div{height:100%;background:var(--marca-2);transition:width .3s}
+  .q-cab{display:flex;justify-content:space-between;font-size:13px;color:var(--suave)}
+  .situacao{font-size:18px;font-weight:600;margin:14px 0 14px}
+  table.opcoes{width:100%;border-collapse:collapse}
+  table.opcoes th{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--suave);font-weight:600;padding:6px;text-align:center}
+  table.opcoes th:first-child{text-align:left}
+  table.opcoes td{border-top:1px solid var(--linha);padding:12px 6px;vertical-align:middle}
+  table.opcoes td.esc{width:78px;text-align:center}
+  .esc input{width:22px;height:22px;cursor:pointer;accent-color:var(--marca)}
+  tr.mais td{background:#eef6ef} tr.menos td{background:#fbeeee}
+  .instr{background:#faf6ee;border-left:4px solid var(--marca-2);padding:12px 14px;border-radius:8px;font-size:14px}
+  .barras{display:grid;gap:12px;margin:14px 0}
+  .barra{display:grid;grid-template-columns:150px 1fr 48px;align-items:center;gap:10px;font-size:14px}
+  .trilho{height:22px;background:#efece6;border-radius:6px;overflow:hidden}
+  .trilho div{height:100%;border-radius:6px}
+  .selo{display:inline-block;padding:6px 14px;border-radius:99px;color:#fff;font-weight:700;font-size:15px;margin-right:6px}
+  ul{margin:6px 0 0;padding-left:20px} li{margin:3px 0}
+  .duas{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.duas{grid-template-columns:1fr}.barra{grid-template-columns:110px 1fr 40px}}
+  .dados td{padding:3px 12px 3px 0;font-size:14px}
+  .rodape{font-size:12px;color:var(--suave);text-align:center;margin-top:24px}
+  .oculto{display:none}
+  @media print{
+    header{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .nao-imprimir{display:none!important}
+    body{background:#fff}
+    .cartao{box-shadow:none;break-inside:avoid}
+    .trilho div,.selo,.logo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="topo">
+    <div class="logo">DISC</div>
+    <div>
+      <h1>Avaliação de Perfil Comportamental</h1>
+      <p>Metodologia DISC</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- TELA 1: Boas-vindas e cadastro -->
+  <section id="telaInicio" class="cartao">
+    <h2>Bem-vindo(a) à sua avaliação DISC</h2>
+    <p>Esta avaliação ajuda a entender como você costuma agir no trabalho: como toma decisões, se comunica, reage ao ritmo e lida com regras. <strong>Não existe perfil certo ou errado</strong>: cada estilo tem forças próprias.</p>
+    <div class="instr">
+      <strong>Como responder</strong>
+      <ul>
+        <li>São <strong>24 situações</strong> do dia a dia profissional, cada uma com 4 frases.</li>
+        <li>Em cada uma, marque a frase <strong>MAIS</strong> parecida com você e a <strong>MENOS</strong> parecida.</li>
+        <li>Responda pensando em como você <em>realmente age</em> no trabalho, não como gostaria de agir.</li>
+        <li>Leva cerca de 10 a 15 minutos. Vá pela primeira impressão.</li>
+      </ul>
+    </div>
+    <div class="grade">
+      <div><label for="nome">Nome completo *</label><input id="nome" autocomplete="name"></div>
+      <div><label for="email">E-mail *</label><input id="email" type="email" autocomplete="email"></div>
+      <div><label for="cargo">Cargo / vaga *</label><input id="cargo"></div>
+      <div><label for="empresa">Empresa / área</label><input id="empresa"></div>
+      <div>
+        <label for="objetivo">Objetivo da avaliação</label>
+        <select id="objetivo">
+          <option>Processo seletivo</option>
+          <option>Desenvolvimento profissional</option>
+          <option>Formação de equipe</option>
+          <option>Desenvolvimento de liderança</option>
+          <option>Orientação de carreira</option>
+        </select>
+      </div>
+      <div><label for="consultora">Consultor(a) responsável</label><input id="consultora"></div>
+    </div>
+    <label style="font-weight:400;display:flex;gap:8px;align-items:flex-start;margin-top:16px">
+      <input id="lgpd" type="checkbox" style="width:auto;margin-top:4px">
+      <span class="aviso">Autorizo a empresa responsável por esta avaliação a tratar minhas respostas e meu resultado exclusivamente para a finalidade indicada acima, conforme a LGPD (Lei 13.709/2018).</span>
+    </label>
+    <div class="erro" id="erroInicio"></div>
+    <div class="acoes"><span></span><button class="btn" id="btnComecar">Começar avaliação</button></div>
+  </section>
+
+  <!-- TELA 2: Perguntas -->
+  <section id="telaPerguntas" class="cartao oculto">
+    <div class="q-cab"><span id="qNum"></span><span id="qPct"></span></div>
+    <div class="progresso"><div id="qBarra"></div></div>
+    <div class="situacao" id="qTexto"></div>
+    <table class="opcoes">
+      <thead><tr><th>Frase</th><th>Mais</th><th>Menos</th></tr></thead>
+      <tbody id="qOpcoes"></tbody>
+    </table>
+    <div class="erro" id="erroQ"></div>
+    <div class="acoes">
+      <button class="btn sec" id="btnVoltar">Voltar</button>
+      <button class="btn" id="btnAvancar">Próxima</button>
+    </div>
+  </section>
+
+  <!-- TELA 3: Resultado -->
+  <section id="telaResultado" class="oculto"></section>
+
+  <p class="rodape">O DISC descreve preferências de comportamento; não mede inteligência, competência técnica ou caráter, e deve ser interpretado junto com entrevista e outras evidências.</p>
+</main>
+
+<script>
+/* =========================================================
+   QUESTIONÁRIO — 24 situações, 4 frases cada (D, I, S, C)
+   ========================================================= */
+const PERGUNTAS = [
+  {t:"Quando recebo um projeto novo...", o:{
+    D:"Defino logo a meta e começo a agir.",
+    I:"Reúno as pessoas para gerar ideias juntos.",
+    S:"Entendo com calma o que esperam de mim.",
+    C:"Estudo os detalhes e os riscos antes de começar."}},
+  {t:"Em uma reunião, eu costumo...", o:{
+    D:"Ir direto ao ponto e buscar uma decisão.",
+    I:"Animar a conversa e trazer entusiasmo.",
+    S:"Ouvir todos e ajudar a manter o clima bom.",
+    C:"Fazer perguntas e checar se os dados estão certos."}},
+  {t:"Diante de um conflito na equipe...", o:{
+    D:"Enfrento o problema de frente e resolvo rápido.",
+    I:"Converso para aliviar a tensão e reaproximar as pessoas.",
+    S:"Busco um acordo em que todos fiquem bem.",
+    C:"Analiso os fatos para entender quem tem razão."}},
+  {t:"O que mais me motiva no trabalho é...", o:{
+    D:"Desafios e resultados visíveis.",
+    I:"Reconhecimento e contato com gente.",
+    S:"Estabilidade e um time unido.",
+    C:"Fazer as coisas com qualidade e precisão."}},
+  {t:"Quando preciso tomar uma decisão importante...", o:{
+    D:"Decido rápido, mesmo sem ter todas as respostas.",
+    I:"Sigo minha intuição e o que as pessoas sentem.",
+    S:"Prefiro pensar com tempo e consultar quem confio.",
+    C:"Só decido depois de comparar dados e alternativas."}},
+  {t:"Sob pressão, eu tendo a...", o:{
+    D:"Ficar mais firme e exigente.",
+    I:"Falar mais e buscar apoio dos outros.",
+    S:"Ficar mais quieto(a) e evitar confronto.",
+    C:"Me fechar nos detalhes e ser mais crítico(a)."}},
+  {t:"Meu ambiente de trabalho ideal é...", o:{
+    D:"Dinâmico, com autonomia e metas ousadas.",
+    I:"Alegre, colaborativo e cheio de interação.",
+    S:"Tranquilo, previsível e com boas relações.",
+    C:"Organizado, com processos e padrões claros."}},
+  {t:"Ao me comunicar, eu sou mais...", o:{
+    D:"Direto(a) e objetivo(a).",
+    I:"Expressivo(a) e persuasivo(a).",
+    S:"Paciente e acolhedor(a).",
+    C:"Preciso(a) e cuidadoso(a) com as palavras."}},
+  {t:"Quando as regras atrapalham o resultado...", o:{
+    D:"Questiono a regra e busco outro caminho.",
+    I:"Tento convencer as pessoas a flexibilizar.",
+    S:"Sigo a regra para não gerar desconforto.",
+    C:"Sigo a regra; ela costuma existir por um motivo."}},
+  {t:"Os colegas costumam me ver como alguém...", o:{
+    D:"Determinado(a) e corajoso(a).",
+    I:"Otimista e comunicativo(a).",
+    S:"Leal e confiável.",
+    C:"Criterioso(a) e organizado(a)."}},
+  {t:"Diante de uma mudança repentina na empresa...", o:{
+    D:"Vejo uma oportunidade e já me posiciono.",
+    I:"Fico animado(a) com as novidades.",
+    S:"Preciso de um tempo para me adaptar.",
+    C:"Quero entender os motivos e o plano em detalhe."}},
+  {t:"Quando trabalho em equipe, meu papel natural é...", o:{
+    D:"Liderar e cobrar entregas.",
+    I:"Motivar e integrar as pessoas.",
+    S:"Apoiar e garantir que ninguém fique para trás.",
+    C:"Planejar e revisar a qualidade."}},
+  {t:"O que mais me incomoda é...", o:{
+    D:"Lentidão e indecisão.",
+    I:"Isolamento e rotina sem graça.",
+    S:"Conflitos e mudanças bruscas.",
+    C:"Erros, desorganização e improviso."}},
+  {t:"Quando recebo uma crítica...", o:{
+    D:"Rebato se não concordo.",
+    I:"Me afeta, mas logo quero conversar e esclarecer.",
+    S:"Aceito em silêncio, mesmo que me chateie.",
+    C:"Peço exemplos concretos para avaliar se procede."}},
+  {t:"No meu dia a dia, eu gosto de...", o:{
+    D:"Ter várias frentes e resolver muita coisa.",
+    I:"Conversar, trocar e conhecer pessoas novas.",
+    S:"Manter uma rotina estável e bem feita.",
+    C:"Seguir um planejamento e checar cada etapa."}},
+  {t:"Para convencer alguém, eu...", o:{
+    D:"Mostro o resultado que vamos alcançar.",
+    I:"Uso entusiasmo e boas histórias.",
+    S:"Construo confiança aos poucos.",
+    C:"Apresento números, fatos e lógica."}},
+  {t:"Quando um prazo está apertado...", o:{
+    D:"Assumo o comando e acelero o time.",
+    I:"Mobilizo as pessoas com energia.",
+    S:"Faço minha parte com constância, sem alarde.",
+    C:"Priorizo o essencial para não comprometer a qualidade."}},
+  {t:"Ao aprender algo novo, prefiro...", o:{
+    D:"Colocar a mão na massa logo.",
+    I:"Aprender em grupo, trocando experiências.",
+    S:"Ter alguém que me mostre passo a passo.",
+    C:"Ler o material completo e entender a fundo."}},
+  {t:"Meu ponto de atenção é que às vezes eu...", o:{
+    D:"Sou impaciente e atropelo as pessoas.",
+    I:"Me comprometo com mais do que consigo cumprir.",
+    S:"Evito dizer \"não\" e acumulo tarefas.",
+    C:"Demoro demais buscando a perfeição."}},
+  {t:"Em uma negociação, eu...", o:{
+    D:"Defendo minha posição com firmeza.",
+    I:"Crio conexão e clima de parceria.",
+    S:"Procuro um meio-termo justo para os dois lados.",
+    C:"Me preparo com dados e analiso cada cláusula."}},
+  {t:"Quando alguém do time está com dificuldade...", o:{
+    D:"Mostro o que precisa ser feito e cobro.",
+    I:"Encorajo e levanto o ânimo.",
+    S:"Ofereço ajuda e acompanho de perto.",
+    C:"Explico o método correto em detalhes."}},
+  {t:"O tipo de reconhecimento que mais valorizo é...", o:{
+    D:"Mais autonomia e novos desafios.",
+    I:"Elogio público e visibilidade.",
+    S:"Um agradecimento sincero e pessoal.",
+    C:"O reconhecimento da qualidade do meu trabalho."}},
+  {t:"Ao organizar minhas tarefas...", o:{
+    D:"Foco no que dá mais resultado primeiro.",
+    I:"Me organizo de forma flexível, conforme o dia.",
+    S:"Sigo uma sequência que já conheço e funciona.",
+    C:"Uso listas, controles e prazos bem definidos."}},
+  {t:"Ao final de um dia bom de trabalho, sinto que...", o:{
+    D:"Venci obstáculos e avancei nas metas.",
+    I:"Me conectei com pessoas e me diverti.",
+    S:"Ajudei e mantive tudo em harmonia.",
+    C:"Fiz tudo certo, sem erros."}}
+];
+
+/* =========================================================
+   CONTEÚDO DOS PERFIS
+   ========================================================= */
+const PERFIS = {
+  D:{nome:"Dominância",cor:"var(--D)",lema:"Foco em resultados, desafios e ação.",
+    resumo:"Pessoa direta, decidida e orientada a metas. Gosta de desafios, assume riscos com facilidade e se sente bem quando tem autonomia para agir e decidir.",
+    forcas:["Toma decisões com rapidez","Assume a liderança em situações difíceis","Persistente diante de obstáculos","Foco claro em resultado e prazo"],
+    atencao:["Pode soar impaciente ou autoritário(a)","Tende a ouvir pouco antes de decidir","Pode subestimar detalhes e riscos"],
+    comunicar:["Seja breve e vá direto ao ponto","Fale de resultados e objetivos","Ofereça opções, não imposições"],
+    motiva:"Desafios, autonomia, metas ousadas e poder de decisão.",
+    medo:"Perder o controle ou ser visto(a) como fraco(a).",
+    funcoes:"Gestão, comercial de alta performance, liderança de projetos, empreendedorismo, cargos de virada (turnaround)."},
+  I:{nome:"Influência",cor:"var(--I)",lema:"Foco em pessoas, entusiasmo e persuasão.",
+    resumo:"Pessoa comunicativa, otimista e sociável. Inspira e engaja os outros, gosta de reconhecimento e se destaca em ambientes de interação e criatividade.",
+    forcas:["Comunicação envolvente e persuasiva","Cria rede de relacionamentos com facilidade","Motiva e energiza a equipe","Criativa e aberta a novidades"],
+    atencao:["Pode se dispersar e perder prazos","Tende a prometer mais do que consegue entregar","Pode evitar tarefas repetitivas e detalhadas"],
+    comunicar:["Seja caloroso(a) e aberto(a) à conversa","Dê espaço para ideias e opiniões","Formalize por escrito os combinados"],
+    motiva:"Reconhecimento, interação, ambiente leve e liberdade para criar.",
+    medo:"Rejeição e perda de prestígio social.",
+    funcoes:"Vendas, relacionamento com clientes, marketing, treinamento, eventos, comunicação, recrutamento."},
+  S:{nome:"Estabilidade",cor:"var(--S)",lema:"Foco em cooperação, constância e apoio.",
+    resumo:"Pessoa calma, leal e colaborativa. Valoriza harmonia, segurança e relações de confiança. É um pilar de consistência para a equipe.",
+    forcas:["Paciência e escuta atenta","Lealdade e comprometimento com o time","Constância e confiabilidade nas entregas","Excelente para apoiar e mediar"],
+    atencao:["Pode resistir a mudanças rápidas","Tende a evitar conflitos necessários","Dificuldade em dizer \"não\""],
+    comunicar:["Seja gentil e sem pressão","Explique mudanças com antecedência e o porquê","Mostre como ela/ele pode contribuir"],
+    motiva:"Segurança, ambiente harmonioso, rotina clara e reconhecimento sincero.",
+    medo:"Perda de estabilidade e conflitos.",
+    funcoes:"Atendimento, suporte, RH/DP, operações, administração, áreas de cuidado e serviços contínuos."},
+  C:{nome:"Conformidade",cor:"var(--C)",lema:"Foco em qualidade, precisão e método.",
+    resumo:"Pessoa analítica, organizada e criteriosa. Valoriza dados, padrões e qualidade. Prefere fazer certo a fazer rápido.",
+    forcas:["Atenção aos detalhes e precisão","Raciocínio lógico e analítico","Organização e respeito a processos","Alto padrão de qualidade"],
+    atencao:["Pode ser perfeccionista e demorar a decidir","Tende a ser muito crítico(a), consigo e com os outros","Pode parecer distante ou pouco flexível"],
+    comunicar:["Traga dados, fatos e argumentos lógicos","Dê tempo para analisar antes de decidir","Seja claro(a) sobre padrões e expectativas"],
+    motiva:"Clareza, padrões de qualidade, tempo para análise e trabalho bem feito.",
+    medo:"Errar e ser criticado(a) pelo seu trabalho.",
+    funcoes:"Finanças, controladoria, qualidade, engenharia, TI, jurídico, auditoria, planejamento."}
+};
+
+const COMBINACOES = {
+  DI:"Realizador(a) Inspirador(a): combina garra por resultados com capacidade de engajar pessoas. Lidera pelo exemplo e pelo entusiasmo.",
+  DS:"Executor(a) Persistente: orientado(a) a metas, mas com constância e lealdade. Entrega resultado de forma firme e estável.",
+  DC:"Estrategista Exigente: busca resultado com alto padrão de qualidade. Decidido(a), lógico(a) e crítico(a).",
+  ID:"Persuasor(a): comunicação forte a serviço de objetivos claros. Convence, mobiliza e faz acontecer.",
+  IS:"Conselheiro(a): caloroso(a), acessível e prestativo(a). Constrói relações de confiança e cuida do clima do time.",
+  IC:"Comunicador(a) Analítico(a): une sociabilidade e cuidado com detalhes. Apresenta ideias de forma clara e bem embasada.",
+  SD:"Realizador(a) Constante: trabalha de forma estável e determinada. Firme quando precisa, sem perder a calma.",
+  SI:"Agregador(a): apoia, acolhe e une as pessoas. Excelente em times colaborativos e atendimento.",
+  SC:"Especialista Confiável: metódico(a), paciente e preciso(a). Garante consistência e qualidade no dia a dia.",
+  CD:"Analista Decidido(a): baseia decisões em dados e as executa com firmeza. Foco em qualidade e resultado.",
+  CI:"Avaliador(a) Diplomático(a): criterioso(a) e analítico(a), mas sabe se comunicar bem com pessoas.",
+  CS:"Perfeccionista Cuidadoso(a): organizado(a), estável e preciso(a). Segue processos com rigor e confiabilidade."
+};
+
+/* =========================================================
+   LÓGICA
+   ========================================================= */
+const $ = id => document.getElementById(id);
+let atual = 0;
+const respostas = PERGUNTAS.map(() => ({mais:null, menos:null}));
+let candidato = {};
+
+// embaralha a ordem das frases de forma fixa (mesma ordem sempre para a mesma pergunta)
+function ordem(i){
+  const l=["D","I","S","C"]; let s=(i+1)*9301+49297;
+  for(let k=l.length-1;k>0;k--){ s=(s*9301+49297)%233280; const j=Math.floor(s/233280*(k+1)); [l[k],l[j]]=[l[j],l[k]]; }
+  return l;
+}
+
+$("btnComecar").onclick = () => {
+  const nome=$("nome").value.trim(), email=$("email").value.trim(), cargo=$("cargo").value.trim();
+  if(!nome||!email||!cargo){ $("erroInicio").textContent="Preencha nome, e-mail e cargo para continuar."; return; }
+  if(!/^\S+@\S+\.\S+$/.test(email)){ $("erroInicio").textContent="Confira o e-mail digitado."; return; }
+  if(!$("lgpd").checked){ $("erroInicio").textContent="É preciso autorizar o uso dos dados para continuar."; return; }
+  candidato={nome,email,cargo,empresa:$("empresa").value.trim(),objetivo:$("objetivo").value,consultora:$("consultora").value.trim(),data:new Date().toLocaleDateString("pt-BR")};
+  $("telaInicio").classList.add("oculto"); $("telaPerguntas").classList.remove("oculto");
+  mostrar();
+};
+
+function mostrar(){
+  const p=PERGUNTAS[atual], r=respostas[atual];
+  $("qNum").textContent=`Situação ${atual+1} de ${PERGUNTAS.length}`;
+  const pct=Math.round(atual/PERGUNTAS.length*100);
+  $("qPct").textContent=pct+"% concluído"; $("qBarra").style.width=pct+"%";
+  $("qTexto").textContent=p.t; $("erroQ").textContent="";
+  $("qOpcoes").innerHTML=ordem(atual).map(k=>`
+    <tr class="${r.mais===k?'mais':''} ${r.menos===k?'menos':''}">
+      <td>${p.o[k]}</td>
+      <td class="esc"><input type="radio" name="mais" value="${k}" ${r.mais===k?'checked':''} aria-label="Mais parecido"></td>
+      <td class="esc"><input type="radio" name="menos" value="${k}" ${r.menos===k?'checked':''} aria-label="Menos parecido"></td>
+    </tr>`).join("");
+  document.querySelectorAll("#qOpcoes input").forEach(inp=>inp.onchange=()=>{
+    const outro = inp.name==="mais"?"menos":"mais";
+    r[inp.name]=inp.value;
+    if(r[outro]===inp.value) r[outro]=null; // não pode ser mais e menos ao mesmo tempo
+    mostrar();
+  });
+  $("btnVoltar").disabled = atual===0;
+  $("btnAvancar").textContent = atual===PERGUNTAS.length-1 ? "Ver meu resultado" : "Próxima";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+$("btnVoltar").onclick=()=>{ if(atual>0){atual--;mostrar();} };
+$("btnAvancar").onclick=()=>{
+  const r=respostas[atual];
+  if(!r.mais||!r.menos){ $("erroQ").textContent="Marque uma frase MAIS e uma frase MENOS parecida com você."; return; }
+  if(atual<PERGUNTAS.length-1){ atual++; mostrar(); } else resultado();
+};
+
+function resultado(){
+  // pontuação: cada "mais" soma 1 e cada "menos" subtrai 1 → saldo de -24 a +24 por fator
+  const bruto={D:0,I:0,S:0,C:0};
+  respostas.forEach(r=>{bruto[r.mais]++; bruto[r.menos]--;});
+  const pct={}; for(const k in bruto) pct[k]=Math.round((bruto[k]+24)/48*100); // escala 0–100
+  const rank=Object.keys(pct).sort((a,b)=>pct[b]-pct[a]);
+  const p1=rank[0], p2=rank[1];
+  const combo = (pct[p1]-pct[p2] <= 15) ? COMBINACOES[p1+p2] : null; // segundo fator relevante?
+  const P=PERFIS[p1];
+  const codigo = combo ? p1+p2 : p1;
+
+  const barras=["D","I","S","C"].map(k=>`
+    <div class="barra"><strong>${k} · ${PERFIS[k].nome}</strong>
+      <div class="trilho"><div style="width:${pct[k]}%;background:${PERFIS[k].cor}"></div></div>
+      <span>${pct[k]}%</span></div>`).join("");
+
+  const lista=a=>"<ul>"+a.map(x=>`<li>${x}</li>`).join("")+"</ul>";
+  const blocoFator=k=>`
+    <div class="cartao">
+      <h2 style="color:${PERFIS[k].cor}">${k} · ${PERFIS[k].nome} <span class="aviso">(${pct[k]}%)</span></h2>
+      <p><em>${PERFIS[k].lema}</em> ${PERFIS[k].resumo}</p>
+      <div class="duas">
+        <div><h3>Pontos fortes</h3>${lista(PERFIS[k].forcas)}</div>
+        <div><h3>Pontos de atenção</h3>${lista(PERFIS[k].atencao)}</div>
+      </div>
+      <h3>Como se comunicar com esse estilo</h3>${lista(PERFIS[k].comunicar)}
+    </div>`;
+
+  $("telaResultado").innerHTML=`
+    <div class="cartao">
+      <h2>Relatório de Perfil Comportamental DISC</h2>
+      <table class="dados">
+        <tr><td><strong>Nome</strong></td><td>${esc(candidato.nome)}</td></tr>
+        <tr><td><strong>Cargo / vaga</strong></td><td>${esc(candidato.cargo)}</td></tr>
+        ${candidato.empresa?`<tr><td><strong>Empresa / área</strong></td><td>${esc(candidato.empresa)}</td></tr>`:""}
+        <tr><td><strong>Objetivo</strong></td><td>${esc(candidato.objetivo)}</td></tr>
+        ${candidato.consultora?`<tr><td><strong>Consultor(a)</strong></td><td>${esc(candidato.consultora)}</td></tr>`:""}
+        <tr><td><strong>Data</strong></td><td>${candidato.data}</td></tr>
+      </table>
+    </div>
+
+    <div class="cartao">
+      <h2>Seu perfil predominante</h2>
+      <p><span class="selo" style="background:${P.cor}">${codigo}</span>
+         <strong>${P.nome}${combo?" + "+PERFIS[p2].nome:""}</strong></p>
+      <p>${combo||P.resumo}</p>
+      <div class="barras">${barras}</div>
+      <p class="aviso">As porcentagens mostram a intensidade de cada fator no seu jeito de agir. Todos temos os quatro; o que muda é a combinação.</p>
+    </div>
+
+    ${blocoFator(p1)}
+    ${combo?blocoFator(p2):""}
+
+    <div class="cartao">
+      <h2>Leitura para o RH</h2>
+      <div class="duas">
+        <div><h3>O que motiva</h3><p>${P.motiva}</p></div>
+        <div><h3>O que tende a evitar</h3><p>${P.medo}</p></div>
+      </div>
+      <h3>Áreas e funções com boa afinidade</h3><p>${P.funcoes}</p>
+      <h3>Sugestões de desenvolvimento</h3>${lista(desenvolvimento(rank[3]))}
+      <h3>Perguntas sugeridas para a entrevista</h3>${lista(perguntasEntrevista(p1))}
+      <p class="aviso">Fator menos intenso: <strong>${rank[3]} · ${PERFIS[rank[3]].nome}</strong> (${pct[rank[3]]}%). Use este relatório como apoio à entrevista, nunca como critério único de decisão.</p>
+    </div>
+
+    <div class="acoes nao-imprimir">
+      <button class="btn sec" onclick="copiar('csv',this)">Copiar respostas (para Excel)</button>
+      <button class="btn" onclick="copiar('rel',this)">Copiar relatório</button>
+    </div>`;
+  window._res={bruto,pct,codigo};
+  $("telaPerguntas").classList.add("oculto"); $("telaResultado").classList.remove("oculto");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function desenvolvimento(menor){
+  return {
+    D:["Praticar tomar posição e defender opiniões em reuniões","Assumir pequenas decisões com prazo curto","Dar feedback direto quando algo não vai bem"],
+    I:["Desenvolver networking e presença em apresentações","Compartilhar mais ideias e conquistas com o time","Exercitar a comunicação com entusiasmo e empatia"],
+    S:["Praticar a escuta ativa antes de responder","Ter mais paciência com ritmos diferentes do seu","Acompanhar as entregas até o fim com constância"],
+    C:["Checar detalhes e dados antes de concluir","Usar listas e processos para organizar o trabalho","Planejar riscos antes de agir"]
+  }[menor];
+}
+function perguntasEntrevista(k){
+  return {
+    D:["Conte sobre uma meta difícil que você bateu. Como chegou lá?","Fale de uma vez em que precisou ter paciência com a equipe.","Como você reage quando alguém discorda da sua decisão?"],
+    I:["Conte sobre uma vez em que convenceu alguém de uma ideia.","Como você se organiza para cumprir prazos?","Fale de uma tarefa detalhada e repetitiva que precisou fazer bem."],
+    S:["Conte sobre uma grande mudança que viveu no trabalho e como se adaptou.","Fale de uma vez em que precisou dizer \"não\" ou discordar.","Como você lida com várias demandas urgentes ao mesmo tempo?"],
+    C:["Conte sobre um erro que você identificou antes que causasse problema.","Fale de uma decisão que precisou tomar sem ter todas as informações.","Como você lida quando o prazo não permite fazer tudo perfeito?"]
+  }[k];
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function copiar(tipo,btn){
+  const c=candidato, r=window._res;
+  const txt = tipo==='csv'
+    ? [["Nome","E-mail","Cargo","Empresa","Objetivo","Consultor(a)","Data","Perfil","D%","I%","S%","C%"],
+       [c.nome,c.email,c.cargo,c.empresa,c.objetivo,c.consultora,c.data,r.codigo,r.pct.D,r.pct.I,r.pct.S,r.pct.C]].map(l=>l.join("\t")).join("\n")
+    : $("telaResultado").innerText.replace(/Copiar respostas.*$/s,"").trim();
+  const ok=()=>{const t=btn.textContent;btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent=t,2000);};
+  const falha=()=>{btn.textContent="Não deu para copiar: selecione o texto e copie à mão";};
+  try{ navigator.clipboard.writeText(txt).then(ok,falha); }catch(e){ falha(); }
+}
+function baixarCSV(){
+  const c=candidato, r=window._res;
+  const linhas=[["Nome","E-mail","Cargo","Empresa","Objetivo","Consultor(a)","Data","Perfil","D%","I%","S%","C%"],
+    [c.nome,c.email,c.cargo,c.empresa,c.objetivo,c.consultora,c.data,r.codigo,r.pct.D,r.pct.I,r.pct.S,r.pct.C],[],
+    ["Situação","Mais","Menos"], ...respostas.map((x,i)=>[PERGUNTAS[i].t,PERGUNTAS[i].o[x.mais],PERGUNTAS[i].o[x.menos]])];
+  const csv="﻿"+linhas.map(l=>l.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(";")).join("\n");
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+  a.download=`DISC_${c.nome.replace(/\s+/g,"_")}.csv`; a.click();
+}
+</script>
+</body>
+</html>
