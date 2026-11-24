@@ -59,3 +59,22 @@ if (!reduce) document.querySelectorAll('.flavor').forEach(el => {
 /* ticker speeds up with scroll */
 const tk = document.querySelector('.ticker-track');
 if (tk && !reduce) { let last = scrollY, sp = 0; addEventListener('scroll', () => { sp += Math.abs(scrollY - last) * .02; last = scrollY; }, { passive: true }); (function loop() { sp *= .95; tk.style.animationDuration = Math.max(8, 26 - sp) + 's'; requestAnimationFrame(loop); })(); }
+
+/* Monte o seu: steps driven by scroll */
+const mSec=document.getElementById('monte');
+if(mSec){
+  const ms=[...mSec.querySelectorAll('.ms')], bars=[...mSec.querySelectorAll('.steps-bar li')];
+  const balls=[...mSec.querySelectorAll('.m-ball')], drips=[...mSec.querySelectorAll('.m-drip')], confs=[...mSec.querySelectorAll('.m-conf')];
+  const stepOf=p=>p<.2?0:p<.45?1:p<.7?2:3;
+  function paintMonte(){
+    const r=mSec.getBoundingClientRect(), total=mSec.offsetHeight-innerHeight;
+    const p=Math.min(Math.max(-r.top/total,0),1), s=stepOf(p);
+    ms.forEach(el=>el.classList.toggle('on',+el.dataset.step===s));
+    bars.forEach(el=>el.classList.toggle('on',+el.dataset.step<=s));
+    balls.forEach((b,i)=>b.classList.toggle('on',s>=0 && p>i*.06));
+    drips.forEach((d,i)=>d.classList.toggle('on',s>=1));
+    confs.forEach((c,i)=>c.classList.toggle('on',s>=2));
+  }
+  addEventListener('scroll',()=>requestAnimationFrame(paintMonte),{passive:true});
+  paintMonte();
+}
