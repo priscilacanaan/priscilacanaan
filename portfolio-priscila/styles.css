@@ -151,3 +151,5 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .rot b{transition:opacity .45s var(--ease) .05s,transform .45s var(--ease) .05s}
 .rot b.out{opacity:0;visibility:hidden;transform:none;transition:none}
 .rot b.on{opacity:1;visibility:visible}
+
+.thumb-ph{display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--teal),var(--coral));font-family:var(--display);font-weight:700;font-size:1.8rem;color:#fff;letter-spacing:-.02em}
