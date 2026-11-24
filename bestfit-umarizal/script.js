@@ -61,6 +61,6 @@ if(af) af.addEventListener('submit',e=>{
   e.preventDefault();
   const v=n=>af.querySelector(n).value.trim();
   const texto=`Olá! Quero marcar uma aula experimental na Best Fit Umarizal.\nNome: ${v('input[type=text]')}\nWhatsApp: ${v('input[type=tel]')}\nObjetivo: ${v('select')}`;
-  window.open('https://wa.me/5591980484544?text='+encodeURIComponent(texto),'_blank','noopener');
+  window.open('https://api.whatsapp.com/send?phone=5591980484544&text='+encodeURIComponent(texto),'_blank');
   af.classList.add('sent');
 });
