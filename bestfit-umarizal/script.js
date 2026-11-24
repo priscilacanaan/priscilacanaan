@@ -35,13 +35,6 @@ const gio = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: .4 });
 if (gauge) gio.observe(gauge);
 
-/* plan period toggle: shows trimestral discount */
-const toggle = document.querySelector('.toggle'), pill = toggle.querySelector('.pill'), tb = [...toggle.querySelectorAll('button')];
-const movePill = b => { pill.style.left = b.offsetLeft + 'px'; pill.style.width = b.offsetWidth + 'px'; };
-movePill(tb[0]);
-tb.forEach(b => b.addEventListener('click', () => { tb.forEach(x => x.classList.toggle('is-on', x === b)); movePill(b); }));
-addEventListener('resize', () => movePill(toggle.querySelector('.is-on')));
-
 /* tilt + spotlight on cards */
 if (!reduce) document.querySelectorAll('.card, .plan').forEach(el => {
   el.addEventListener('mousemove', e => {
