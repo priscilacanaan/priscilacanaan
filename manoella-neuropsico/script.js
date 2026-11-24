@@ -64,3 +64,16 @@ addEventListener('scroll', () => {
 
 /* form */
 document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+/* nav: highlight the section in view */
+const navLinks=[...document.querySelectorAll('.links a')];
+const secIO=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ navLinks.forEach(a=>a.classList.toggle('active',a.dataset.s===e.target.id)); }
+}),{rootMargin:'-45% 0px -50% 0px'});
+['sobre','servicos','neuro','duvidas','contato'].forEach(id=>{ const el=document.getElementById(id); if(el) secIO.observe(el); });
+
+/* soft cursor glow over hero */
+const glow=document.createElement('div');
+glow.style.cssText='position:fixed;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;background:radial-gradient(circle,rgba(138,106,82,.12),transparent 65%);pointer-events:none;z-index:0;transition:transform .4s var(--ease)';
+document.body.appendChild(glow);
+if(!reduce && matchMedia('(hover:hover)').matches) addEventListener('mousemove',e=>{ glow.style.transform=`translate(${e.clientX}px,${e.clientY}px)`; });
