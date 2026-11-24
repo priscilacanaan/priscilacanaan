@@ -122,3 +122,17 @@ if(!reduce) document.querySelectorAll('.tilt').forEach(el=>{
 /* footer letters */
 const fb=document.querySelector('.footer-big');
 if(fb){ fb.innerHTML=fb.innerHTML.replace(/>([^<]+)</g,(m,t)=>'>'+[...t].map(l=>`<span class="fl">${l}</span>`).join('')+'<').replace(/^([^<]+)/,(m,t)=>[...t].map(l=>`<span class="fl">${l}</span>`).join('')); }
+
+/* cookie banner (LGPD): remembers the choice */
+(function(){
+  const el=document.getElementById('cookies'); if(!el) return;
+  let saved=null; try{ saved=localStorage.getItem('pg-cookies'); }catch(e){}
+  if(saved) { el.remove(); return; }
+  const open=()=>{ el.classList.add('show'); document.body.classList.add('ck-open'); };
+  const close=choice=>{ try{ localStorage.setItem('pg-cookies',choice); }catch(e){}
+    el.classList.remove('show'); document.body.classList.remove('ck-open'); setTimeout(()=>el.remove(),800); };
+  el.querySelector('.ck-yes').addEventListener('click',()=>close('todos'));
+  el.querySelector('.ck-no').addEventListener('click',()=>close('essenciais'));
+  // appears right after the opening screen
+  const wait=setInterval(()=>{ if(!document.body.classList.contains('loading')){ clearInterval(wait); setTimeout(open,900); } },150);
+})();

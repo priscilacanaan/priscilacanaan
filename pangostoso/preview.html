@@ -56,7 +56,7 @@ code{background:var(--dough);padding:.1rem .35rem;border-radius:4px}
 .btn:hover span{transform:translateX(5px)}
 .btn-ghost{background:transparent;color:var(--crust);box-shadow:inset 0 0 0 2px var(--crust)}
 .btn-ghost:hover{background:var(--crust);color:var(--cream);box-shadow:inset 0 0 0 2px var(--crust)}
-.btn-sm{padding:.65rem 1.2rem;font-size:.9rem;box-shadow:0 4px 0 #9E2F10}
+.btn-sm{padding:.65rem 1.2rem;font-size:.9rem;white-space:nowrap;box-shadow:0 4px 0 #9E2F10}
 
 /* shared */
 section{padding:7rem 5vw;position:relative;z-index:2}
@@ -348,6 +348,32 @@ body.loading .hero h1 .w{animation-play-state:paused}
 .footer-big .fl:hover{transform:translateY(-.15em) rotate(-8deg);color:var(--cream)}
 
 @media (prefers-reduced-motion:reduce){.preloader{display:none}.split .ch{opacity:1;transform:none}}
+
+/* cookie banner (LGPD) */
+.cookies{position:fixed;left:50%;bottom:1.2rem;z-index:150;width:min(960px,calc(100% - 2rem));display:flex;align-items:center;gap:1.2rem;
+  background:var(--crust);color:var(--cream);border-radius:24px;padding:1.1rem 1.3rem;box-shadow:0 20px 50px -15px rgba(0,0,0,.55);
+  transform:translate(-50%,160%);transition:transform .7s var(--bounce)}
+.cookies.show{transform:translate(-50%,0)}
+.ck-emo{font-size:2.4rem;flex:none;animation:ckspin 3s ease-in-out infinite}
+@keyframes ckspin{50%{transform:rotate(-18deg) scale(1.08)}}
+.cookies p{font-size:.92rem;line-height:1.5;flex:1}
+.cookies p b{color:var(--wheat)}
+.ck-link{color:var(--wheat);text-decoration:underline}
+.ck-btns{display:flex;gap:.6rem;flex:none}
+.cookies button{border:0;border-radius:999px;padding:.75rem 1.2rem;font:700 .9rem var(--sans);cursor:pointer;transition:transform .2s,background .3s}
+.cookies button:hover{transform:translateY(-2px)}
+.ck-yes{background:var(--oven);color:var(--cream);box-shadow:0 4px 0 #9E2F10}
+.ck-no{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 2px rgba(255,246,232,.4)}
+.ck-no:hover{box-shadow:inset 0 0 0 2px var(--cream)}
+body.ck-open .wa{bottom:8.5rem}
+.wa{transition:bottom .5s var(--ease)}
+@media(max-width:760px){
+  .cookies{flex-direction:column;align-items:flex-start;gap:.8rem;bottom:.8rem}
+  .ck-emo{position:absolute;top:-2rem;right:1rem;font-size:2.2rem}
+  .cookies{padding-top:1.4rem}
+  .ck-btns{width:100%}.ck-btns button{flex:1}
+  body.ck-open .wa{bottom:15rem}
+}
 
 </style>
 </head>
@@ -645,6 +671,15 @@ body.loading .hero h1 .w{animation-play-state:paused}
   <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
 </a>
 
+<div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <span class="ck-emo" aria-hidden="true">🍪</span>
+  <p><b>A gente usa cookies</b> (os digitais, infelizmente 😄) para o site funcionar e entender como você navega. Você escolhe. Saiba mais na nossa <a href="#" class="ck-link">Política de Privacidade</a>.</p>
+  <div class="ck-btns">
+    <button class="ck-no" type="button">Só os essenciais</button>
+    <button class="ck-yes" type="button">Aceitar todos</button>
+  </div>
+</div>
+
 <script>
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -770,6 +805,20 @@ if(!reduce) document.querySelectorAll('.tilt').forEach(el=>{
 /* footer letters */
 const fb=document.querySelector('.footer-big');
 if(fb){ fb.innerHTML=fb.innerHTML.replace(/>([^<]+)</g,(m,t)=>'>'+[...t].map(l=>`<span class="fl">${l}</span>`).join('')+'<').replace(/^([^<]+)/,(m,t)=>[...t].map(l=>`<span class="fl">${l}</span>`).join('')); }
+
+/* cookie banner (LGPD): remembers the choice */
+(function(){
+  const el=document.getElementById('cookies'); if(!el) return;
+  let saved=null; try{ saved=localStorage.getItem('pg-cookies'); }catch(e){}
+  if(saved) { el.remove(); return; }
+  const open=()=>{ el.classList.add('show'); document.body.classList.add('ck-open'); };
+  const close=choice=>{ try{ localStorage.setItem('pg-cookies',choice); }catch(e){}
+    el.classList.remove('show'); document.body.classList.remove('ck-open'); setTimeout(()=>el.remove(),800); };
+  el.querySelector('.ck-yes').addEventListener('click',()=>close('todos'));
+  el.querySelector('.ck-no').addEventListener('click',()=>close('essenciais'));
+  // appears right after the opening screen
+  const wait=setInterval(()=>{ if(!document.body.classList.contains('loading')){ clearInterval(wait); setTimeout(open,900); } },150);
+})();
 
 </script>
 </body>
