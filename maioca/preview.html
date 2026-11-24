@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-:root{--cream:#FFF8E7;--pink:#B0268C;--pink2:#F5C2E0;--berry:#5C0A36;--plum:#3E0624;--mango:#FFE27A;--mint:#2EC4C8;--ink:#3E0624;--mut:#7A4A63;--white:#FFFFFF;--display:"Fredoka",system-ui,sans-serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);--bounce:cubic-bezier(.5,1.7,.4,1)}
+:root{--cream:#F3E6D2;--pink:#B0268C;--pink2:#F5C2E0;--berry:#5C0A36;--plum:#3E0624;--mango:#FFE27A;--mint:#2EC4C8;--ink:#3E0624;--mut:#7A4A63;--white:#FFFFFF;--display:"Fredoka",system-ui,sans-serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);--bounce:cubic-bezier(.5,1.7,.4,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -214,8 +214,8 @@ section{padding:7rem 6vw;position:relative}
 .hero-scoop::before{display:none}
 
 /* real photos + logo */
-.logo img{height:52px;width:auto;border-radius:12px;display:block}
-.foot-logo img{height:120px;width:auto;border-radius:24px;display:block;margin:0 auto}
+.logo img{height:46px;width:auto;display:block}
+.foot-logo img{height:110px;width:auto;display:block;margin:0 auto}
 .hero-photo{position:relative;justify-self:center;width:min(440px,86vw);aspect-ratio:1}
 .arch{position:absolute;inset:6% 6% 6% 6%;border-radius:50% 50% 36% 36%/42% 42% 58% 58%;overflow:hidden;box-shadow:0 40px 70px -30px rgba(92,10,54,.55);animation:floatS 7s ease-in-out infinite}
 .arch img{width:100%;height:100%;object-fit:cover}
@@ -251,13 +251,23 @@ section{padding:7rem 6vw;position:relative}
 .gal2 figure:hover img{transform:scale(1.07)}
 .gal2 figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--mango);color:var(--berry);font-weight:700;font-size:.85rem;padding:.35rem .8rem;border-radius:999px}
 
+/* logo without colored background, beige areas */
+body{background:#F3E6D2}
+.hero{background:linear-gradient(115deg,#F3E6D2 55%,#EBD6BB 55%)}
+.galeria,.novidades,.onde,.visita{background:#F3E6D2}
+.nav.solid{background:rgba(243,230,210,.95)}
+.footer{background:var(--berry)}
+.blobs{display:none}
+.hero::after{content:none}
+.hero-photo .float{box-shadow:0 14px 24px -12px rgba(92,10,54,.45)}
+
 </style>
 </head>
 <body>
 <div class="progress" aria-hidden="true"><span></span></div>
 
 <header class="nav" id="nav">
-  <a href="#topo" class="logo"><img src="fotos/logo-maioca.png" alt="Maioca" /></a>
+  <a href="#topo" class="logo"><img src="fotos/logo-maioca-transparente.png" alt="Maioca" /></a>
   <nav class="links">
     <a href="#sabores">Sabores</a><a href="#experiencia">Experiência</a><a href="#onde">Onde</a><a href="#visita">Visite</a>
   </nav>
@@ -408,7 +418,7 @@ section{padding:7rem 6vw;position:relative}
 </main>
 
 <footer class="footer">
-  <div class="foot-logo"><img src="fotos/logo-maioca.png" alt="Maioca" /></div>
+  <div class="foot-logo"><img src="fotos/logo-maioca-transparente.png" alt="Maioca" /></div>
   <div class="foot-row">
     <span>© 2026 Maioca · Belém – PA · CNPJ [00.000.000/0001-00]</span>
     <a href="#topo">Voltar ao topo ↑</a>
