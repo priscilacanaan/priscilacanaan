@@ -33,3 +33,6 @@
 - **Feito:** site em `site-maura/`: topo com jardim desenhado ao vivo (açaizeiros, helicônias, folhagens, vasos de terracota) que balança com o vento; o mouse/dedo cria rajadas; botões Calmaria/Brisa/Ventania. Seções: serviços, quem cuida (foto), vasos (foto), plantas da nossa terra (animadas), como trabalhamos, contato com orçamento pelo WhatsApp. Logo e 2 fotos enviados pela Priscila. Testado no computador e no celular.
 - **Dados (do site antigo via busca, CONFIRMAR):** Tv. Rui Barbosa, 676 - Reduto; (91) 3241-1000; WhatsApp (91) 99100-0202; seg–sex 8h–17h, sáb 8h–12h; Instagram @maurajardinsbelem. Lista de serviços escrita por mim → confirmar.
 - **Aberto:** confirmar dados e serviços · link githack e portfólio (só com autorização da Maura Jardins).
+- **Maura publicada (25/11, autorização confirmada pela Priscila):** https://raw.githack.com/priscilacanaan/priscilacanaan/49c8a298f12dc63c631d60e1ad4629715213ff41/site-maura/index.html
+- **Portfólio com 9 projetos** (Maura e Keuffer em destaque no topo, Green no fim): https://raw.githack.com/priscilacanaan/priscilacanaan/a08acf353d35801075ef451840f1d2f6e2bf4e41/portfolio-priscila/index.html
+- **Lição:** testar sempre com as fontes do Google carregando (a fonte Syne é bem mais larga e mudou o layout).
