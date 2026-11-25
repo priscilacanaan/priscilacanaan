@@ -18,3 +18,4 @@
 - **Como:** o portfólio estava no ramo `claude/focused-albattani-kp9gs3`; trouxe para o ramo `claude/practical-feynman-rwkx1x` (merge, nada perdido) e editei aqui.
 - **Link novo do portfólio:** https://raw.githack.com/priscilacanaan/priscilacanaan/3bff24b9a9171e7ee87b1410c9914ae55d930be8/portfolio-priscila/index.html
 - **Atenção:** o link antigo do portfólio (que aponta para o outro ramo) não mostra a Green.
+- **Atualizado (25/11):** portfólio ajustado para 7 projetos (contador 6 → 7; Green em destaque na linha inteira). Link mais novo: https://raw.githack.com/priscilacanaan/priscilacanaan/3494c8abbb14a59bf80c72cd3f273bb53bd4e42b/portfolio-priscila/index.html
