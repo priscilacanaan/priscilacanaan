@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>Companhia Belém Academia · Reduto, Belém | Treine em boa companhia</title>
+<meta name="description" content="Companhia Belém Academia, no Reduto, em Belém-PA: musculação, aeróbicos e aulas. Fale com a equipe e venha conhecer." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ajustes da Companhia sobre a base */
+  .nav .logo img{height:42px;width:auto}
+  .foot-logo img{max-width:min(380px,80vw);height:auto}
+  html{overflow-x:clip}
+  @media(max-width:600px){.hero .scroll{display:none}.nav .logo img{height:34px}.nav .btn-sm{white-space:nowrap;padding:.6rem .9rem;font-size:.7rem}}
+  .hero-bg i:nth-child(1){background:var(--lime)}
+  .contato-planos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;max-width:1200px;margin:0 auto}
+  .contato-planos .plan{display:flex;flex-direction:column}
+  .contato-planos .plan p.desc{color:#cfcfc8;margin:.6rem 0 1.4rem;line-height:1.6;flex:1}
+  .contato-planos .plan.featured p.desc{color:#000}
+  .contato-planos .plan .btn{align-self:flex-start}
+  @media(max-width:900px){.contato-planos{grid-template-columns:1fr}}
+  .phone a{text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+<div class="spot" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo"><img src="logo.png" alt="Companhia Belém Academia" width="210" height="42" /></a>
+  <nav class="links">
+    <a href="#treinos">Treinos</a><a href="#comece">Comece</a><a href="#planos">Planos</a><a href="#local">Localização</a>
+  </nav>
+  <a href="#aula" class="btn btn-sm mag">Quero conhecer</a>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+  <p class="kicker reveal">Academia · Reduto · Belém – PA</p>
+  <h1 class="hero-title">
+    <span class="ln"><span>TREINE EM</span></span>
+    <span class="ln"><span>BOA <span class="rot-out"><b class="on">COMPANHIA</b><b>FORMA</b><b>ENERGIA</b></span></span></span>
+  </h1>
+  <p class="hero-sub reveal">Musculação, aeróbicos e aulas com uma equipe que acompanha você de perto. Treinar fica mais fácil quando você não está sozinho.</p>
+  <div class="hero-cta reveal">
+    <a href="#aula" class="btn mag">Quero conhecer a academia <span>→</span></a>
+    <a href="#treinos" class="btn btn-ghost">Ver treinos</a>
+  </div>
+  <div class="hero-meter reveal" aria-hidden="true">
+    <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52"/></svg><b>💪</b></div>
+    <p>Hoje é dia de<br/><strong>treinar em companhia</strong></p>
+  </div>
+  <div class="scroll" aria-hidden="true">role para baixo</div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Musculação</span><i>✚</i><span>Aeróbicos</span><i>✚</i><span>Aulas coletivas</span><i>✚</i><span>Funcional</span><i>✚</i><span>Avaliação física</span><i>✚</i><span>Reduto · Belém</span><i>✚</i>
+    <span>Musculação</span><i>✚</i><span>Aeróbicos</span><i>✚</i><span>Aulas coletivas</span><i>✚</i><span>Funcional</span><i>✚</i><span>Avaliação física</span><i>✚</i><span>Reduto · Belém</span><i>✚</i>
+  </div>
+</div>
+
+<section id="treinos" class="treinos">
+  <div class="head">
+    <p class="kicker">Treinos</p>
+    <h2>Do jeito <em>que você precisa.</em></h2>
+  </div>
+  <div class="cards">
+    <article class="card tilt reveal"><div class="c-ico">🏋️</div><h3>Musculação</h3><p>Área de pesos e máquinas para ganhar força, definir o corpo e cuidar da saúde, com orientação da equipe.</p><ul><li>Pesos livres</li><li>Máquinas</li><li>Orientação</li></ul></article>
+    <article class="card tilt reveal"><div class="c-ico">🏃</div><h3>Aeróbicos</h3><p>Esteiras, bikes e outros aparelhos para condicionamento, resistência e gasto calórico.</p><ul><li>Esteira</li><li>Bike</li><li>Condicionamento</li></ul></article>
+    <article class="card tilt reveal"><div class="c-ico">🔥</div><h3>Aulas coletivas</h3><p>Treinos em grupo para quem gosta de energia e de treinar com outras pessoas.</p><ul><li>Em turma</li><li>Com professor</li></ul></article>
+    <article class="card tilt reveal"><div class="c-ico">⚡</div><h3>Funcional</h3><p>Movimentos do dia a dia, core e mobilidade para um corpo mais forte e disposto.</p><ul><li>Core</li><li>Mobilidade</li><li>Força</li></ul></article>
+  </div>
+  <p class="note">Confirme as modalidades e os horários das aulas com a recepção.</p>
+</section>
+
+<section id="comece" class="coach">
+  <div class="coach-card reveal">
+    <div class="coach-txt">
+      <p class="kicker">Comece do jeito certo</p>
+      <h2>Seu primeiro treino <em>com a gente.</em></h2>
+      <p>Você conta o seu objetivo, a equipe avalia o seu ponto de partida e monta o treino com você. Sem treino copiado da internet.</p>
+      <ol class="steps">
+        <li><b>1</b>Conversa sobre o seu objetivo</li>
+        <li><b>2</b>Avaliação do ponto de partida</li>
+        <li><b>3</b>Treino montado com você</li>
+      </ol>
+    </div>
+    <div class="coach-visual" aria-hidden="true">
+      <div class="gauge"><span>MEU PRIMEIRO TREINO</span><b class="pct">0</b><small>% pronto</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos" class="planos">
+  <div class="head">
+    <p class="kicker">Planos</p>
+    <h2>Um plano <em>para o seu ritmo.</em></h2>
+  </div>
+  <div class="contato-planos">
+    <div class="plan reveal">
+      <h3>Para começar</h3>
+      <p class="desc">Primeira vez em academia ou voltando depois de um tempo? A equipe indica o melhor plano para criar o hábito.</p>
+      <a href="#aula" class="btn btn-ghost">Quero começar</a>
+    </div>
+    <div class="plan featured reveal">
+      <span class="ribbon">Fale com a gente</span>
+      <h3>Valores e promoções</h3>
+      <p class="desc">Os valores e as condições do mês são passados pelo WhatsApp, sempre atualizados.</p>
+      <a class="btn js-zap" href="#" target="_blank" rel="noopener">Ver valores →</a>
+    </div>
+    <div class="plan reveal">
+      <h3>Para empresas</h3>
+      <p class="desc">Quer levar a sua equipe para treinar? Pergunte sobre condições para grupos e empresas.</p>
+      <a class="btn btn-ghost js-zap" href="#" target="_blank" rel="noopener">Perguntar</a>
+    </div>
+  </div>
+</section>
+
+<section id="aula" class="aula">
+  <div class="aula-card reveal">
+    <div>
+      <p class="kicker light">Venha conhecer</p>
+      <h2>Vem treinar <em>em companhia.</em></h2>
+      <p>Deixe seus dados e a mensagem já sai pronta no WhatsApp da academia. A equipe responde para combinar a sua visita.</p>
+    </div>
+    <form class="form" id="aula-form">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="tel" placeholder="Seu WhatsApp" required />
+      <select required>
+        <option value="">Qual seu objetivo?</option>
+        <option>Ganhar massa</option><option>Emagrecer</option><option>Saúde e disposição</option><option>Ainda não sei</option>
+      </select>
+      <button class="btn" type="submit">Enviar pelo WhatsApp →</button>
+      <p class="ok">Abrimos o WhatsApp com seus dados. É só enviar a mensagem.</p>
+    </form>
+  </div>
+</section>
+
+<section id="local" class="local">
+  <div class="local-info reveal">
+    <p class="kicker">Localização</p>
+    <h2>A gente é <em>do Reduto.</em></h2>
+    <p class="addr">Rua Municipalidade, 489<br/>Reduto · Belém – PA · CEP 66053-180</p>
+    <p class="phone"><a href="tel:+559140053555">(91) 4005-3555</a> · <a class="js-zap" href="#" target="_blank" rel="noopener">WhatsApp (91) 99338-7055</a></p>
+    <p class="note" style="text-align:left;margin:0 0 1.4rem">Confirme o horário de funcionamento pelo telefone ou WhatsApp.</p>
+    <a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=Companhia+Bel%C3%A9m+Academia+Rua+Municipalidade+489+Reduto+Bel%C3%A9m" target="_blank" rel="noopener">Abrir no Google Maps ↗</a>
+  </div>
+  <div class="map reveal">
+    <iframe title="Mapa Companhia Belém Academia" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=Rua+Municipalidade,+489+-+Reduto,+Bel%C3%A9m+-+PA,+66053-180&amp;z=17&amp;output=embed"></iframe>
+    <span class="pin" aria-hidden="true">📍</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-logo"><img src="logo.png" alt="Companhia Belém Academia" width="419" height="84" /></div>
+  <div class="foot-row">
+    <span>© 2026 Companhia Belém Academia · Reduto, Belém – PA</span>
+    <span class="social"><a href="https://www.instagram.com/companhiabelem/" target="_blank" rel="noopener">Instagram @companhiabelem</a></span>
+    <a href="#top">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<a class="wa js-zap" href="#" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
+</a>
+
+<script>
+  document.querySelectorAll('.js-zap').forEach(a => a.href = 'https://api.whatsapp.com/send?phone=5591993387055&text=' + encodeURIComponent('Olá! Vim pelo site da Companhia Belém e quero saber mais sobre os planos.'));
+</script>
+<script src="script.js"></script>
+</body>
+</html>

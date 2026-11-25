@@ -44,3 +44,8 @@
 - **Link:** https://raw.githack.com/priscilacanaan/priscilacanaan/de9f18b2598ca4fcff3f1028bd9b1c366249db32/portfolio-priscila/index.html
 - **Contato do portfólio (25/11):** e-mail sisprila@gmail.com e WhatsApp (91) 98144-0648 na página inicial e na política de privacidade; Instagram retirado. O formulário, que antes não enviava nada, agora abre o WhatsApp com a mensagem pronta. Link: https://raw.githack.com/priscilacanaan/priscilacanaan/fe16287fc17c265097e9bdc8d0dde7d663fd5df1/portfolio-priscila/index.html
 - **Botão do WhatsApp (25/11):** botão verde flutuante no canto do portfólio (com o texto no computador, só o ícone no celular). Link: https://raw.githack.com/priscilacanaan/priscilacanaan/7b7ed97aceb6119d0929c5f5b1f5a8857463a7d1/portfolio-priscila/index.html
+
+## 25/11/2026 · Site Companhia Belém Academia
+- **Feito:** `site-companhia/`, refeito com a base da Best Fit (mesmas animações) em vermelho e preto, com o logo enviado. Formulário e botões abrem o WhatsApp (91) 99338-7055 com mensagem pronta. Testado no computador e no celular.
+- **Sem inventar:** não usei fotos, preços, grade de horários nem depoimento da Best Fit. O site antigo (companhiabelem.com.br) estava bloqueado aqui; os dados vieram do Instagram/cadastros públicos.
+- **Aberto:** confirmar dados, horários, modalidades e planos; fotos reais; link githack e portfólio (só com autorização da Companhia).
