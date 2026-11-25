@@ -187,3 +187,12 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .app-ph{background:linear-gradient(135deg,#7C5CFF,#00C2A8);display:grid;place-items:center;position:relative;overflow:hidden}
 .app-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
 .app-ph-txt{font-family:'Space Grotesk';font-weight:700;font-size:2.2rem;color:#fff;text-align:center;padding:1rem;letter-spacing:-.02em;text-shadow:0 4px 20px rgba(0,0,0,.25)}
+
+/* botão flutuante do WhatsApp */
+.zap{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;height:58px;padding:0 20px 0 16px;border-radius:999px;background:#25d366;color:#06381c;font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;box-shadow:0 14px 34px -10px rgba(37,211,102,.55);transition:transform .3s var(--ease),box-shadow .3s}
+.zap svg{width:28px;height:28px;flex:none}
+.zap:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(37,211,102,.75)}
+.zap:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+@media(prefers-reduced-motion:no-preference){.zap::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:zapPulso 2.6s ease-out infinite}}
+@keyframes zapPulso{to{box-shadow:0 0 0 16px rgba(37,211,102,0)}}
+@media(max-width:620px){.zap{width:58px;padding:0;justify-content:center;right:16px;bottom:16px}.zap span{display:none}}
