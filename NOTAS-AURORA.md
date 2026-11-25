@@ -36,3 +36,4 @@
 - **Maura publicada (25/11, autorização confirmada pela Priscila):** https://raw.githack.com/priscilacanaan/priscilacanaan/49c8a298f12dc63c631d60e1ad4629715213ff41/site-maura/index.html
 - **Portfólio com 9 projetos** (Maura e Keuffer em destaque no topo, Green no fim): https://raw.githack.com/priscilacanaan/priscilacanaan/a08acf353d35801075ef451840f1d2f6e2bf4e41/portfolio-priscila/index.html
 - **Lição:** testar sempre com as fontes do Google carregando (a fonte Syne é bem mais larga e mudou o layout).
+- **Atualizado (25/11):** portfólio em 3 linhas de 3 cards, sem destaques (Maura, Keuffer e Green na primeira linha): https://raw.githack.com/priscilacanaan/priscilacanaan/616aa30a799bb0d039c2ea523ab471a43333be1b/portfolio-priscila/index.html
