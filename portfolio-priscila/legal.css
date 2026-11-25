@@ -67,3 +67,7 @@ th:first-child{border-radius:10px 0 0 0}th:last-child{border-radius:0 10px 0 0}
 .foot a{color:var(--wheat);margin-left:1rem}
 @media print{.top,.toc,.progress,.foot,.btn-ck{display:none}.wrap{display:block}.doc section{opacity:1;transform:none}.hero{background:none;color:#000}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.doc section{opacity:1;transform:none}}
+
+.ck-btn{font:600 .9rem inherit;font-family:inherit;padding:.55rem 1rem;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;margin:.25rem .4rem .25rem 0}
+.ck-btn:hover{opacity:.8}
+#ck-status{font-weight:600}

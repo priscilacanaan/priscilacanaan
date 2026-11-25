@@ -75,7 +75,17 @@
 
     <section id="cookies">
       <h2><span>4.</span> Cookies</h2>
-      <p>Cookies são pequenos arquivos guardados no seu navegador. Este site usa cookies essenciais para funcionar. <span class="ph">[Se houver ferramenta de análise, como Google Analytics, listar aqui e informar que só é ativada com consentimento. Se não houver, dizer isso.]</span></p>
+      <p>Cookies são pequenos arquivos guardados no seu navegador. Na primeira visita, um aviso pergunta o que você permite. Sua escolha fica guardada no próprio navegador por 12 meses; depois disso, o aviso aparece de novo.</p>
+      <table>
+        <tr><th>Categoria</th><th>Para que serve</th></tr>
+        <tr><td>Essenciais (sempre ativos)</td><td>Fazem o site funcionar e guardam suas escolhas, como o idioma (<code>pc-lang</code>) e a sua preferência de cookies (<code>pg-cookies</code> e <code>pg-cookies-pref</code>).</td></tr>
+        <tr><td>Medição de audiência</td><td>Contariam visitas e páginas mais vistas. Hoje o site não usa nenhuma ferramenta desse tipo. Se passar a usar, ela será listada aqui e só funcionará com a sua permissão.</td></tr>
+        <tr><td>Marketing</td><td>Ajudariam a mostrar anúncios em outros sites. Hoje o site não usa nenhuma ferramenta desse tipo.</td></tr>
+      </table>
+      <div class="box">
+        <p id="ck-status">Você ainda não escolheu</p>
+        <p><button type="button" class="ck-btn" data-cookies-abrir>Mudar minhas preferências</button> <button type="button" class="ck-btn" id="ck-reset">Apagar minha escolha</button></p>
+      </div>
       <p>O site também carrega fontes do Google Fonts e pode levar você ao WhatsApp, ao Instagram ou ao Google Maps. Esses serviços seguem as políticas de privacidade próprias.</p>
     </section>
 
@@ -134,8 +144,9 @@
 
 <footer class="foot">
   <span>© 2026 Priscila Canaan</span>
-  <span><a href="index.html">Início</a><a href="termos.html">Termos de Uso</a></span>
+  <span><a href="index.html">Início</a><a href="termos.html">Termos de Uso</a><a href="#" data-cookies-abrir>Cookies</a></span>
 </footer>
 <script src="legal.js"></script>
+<script src="cookies.js"></script>
 </body>
 </html>

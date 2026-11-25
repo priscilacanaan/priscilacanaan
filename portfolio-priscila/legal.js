@@ -18,10 +18,11 @@ const st = document.getElementById('ck-status'), btn = document.getElementById('
 function showCk() {
   if (!st) return;
   let v = null; try { v = localStorage.getItem('pg-cookies'); } catch (e) {}
-  st.textContent = v === 'todos' ? 'Sua escolha atual: aceitar todos' : v === 'essenciais' ? 'Sua escolha atual: só os essenciais' : 'Você ainda não escolheu';
+  st.textContent = v === 'todos' ? 'Sua escolha atual: aceitar todos' : v === 'essenciais' ? 'Sua escolha atual: só os essenciais' : v === 'personalizado' ? 'Sua escolha atual: personalizada' : 'Você ainda não escolheu';
 }
 showCk();
+addEventListener('pg-cookies', showCk);
 if (btn) btn.addEventListener('click', () => {
-  try { localStorage.removeItem('pg-cookies'); } catch (e) {}
-  st.textContent = 'Escolha apagada — o aviso vai aparecer de novo na página inicial.';
+  if (window.pgCookies) window.pgCookies.redefinir(); else { try { localStorage.removeItem('pg-cookies'); localStorage.removeItem('pg-cookies-pref'); } catch (e) {} }
+  st.textContent = 'Escolha apagada. O aviso apareceu de novo para você escolher.';
 });
