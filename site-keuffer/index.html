@@ -98,12 +98,16 @@ a{color:inherit}
 /* experimente: teclado 2D */
 .exp{background:linear-gradient(180deg,var(--preto),#10101a)}
 .piano{display:flex;position:relative;height:clamp(150px,22vw,220px);max-width:900px;margin:0 auto;user-select:none;touch-action:none}
-.piano .b{flex:1;background:linear-gradient(#fff,#e9e9ee);border:1px solid #bbb;border-radius:0 0 10px 10px;position:relative;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;color:#888;font:600 12px Inter,sans-serif}
+.piano .b{flex:1;background:linear-gradient(#fff,#e9e9ee);border:1px solid #bbb;border-radius:0 0 10px 10px;position:relative;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;color:#888;font:600 12px Inter,sans-serif;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px}
 .piano .b.on{background:linear-gradient(#dfe6ff,#b9c8ff)}
-.piano .p{position:absolute;top:0;height:60%;background:linear-gradient(#2b2b33,#0d0d12);border-radius:0 0 7px 7px;z-index:2;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;color:#888;font:600 11px Inter,sans-serif}
+.piano .p{position:absolute;top:0;height:60%;background:linear-gradient(#2b2b33,#0d0d12);border-radius:0 0 7px 7px;z-index:2;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;color:#bbb;font:600 11px Inter,sans-serif;flex-direction:column;align-items:center;justify-content:flex-end;gap:1px}
 .piano .p.on{background:linear-gradient(#5a1210,var(--vermelho))}
 .legenda{text-align:center;color:var(--suave);font-size:14px;margin-top:18px}
-@media(max-width:600px){.piano .b span,.piano .p span{display:none}}
+.piano .nt{font:800 clamp(15px,2vw,22px) Unbounded,sans-serif;color:#1b1b22;line-height:1}
+.piano .p .nt{font-size:clamp(10px,1.2vw,13px);color:#fff}
+.piano .sf{font-size:12px;color:#666}.piano .p .sf{font-size:10px;color:#aaa}
+.piano .at{font-size:10px;color:#999;border:1px solid #ccc;border-radius:4px;padding:0 5px;margin-top:4px}.piano .p .at{border-color:#555;color:#888}
+@media(max-width:600px){.piano .at,.piano .p .sf{display:none}.piano .p .nt{font-size:9px}}
 
 /* lojas */
 .lojas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:18px}
@@ -192,7 +196,7 @@ footer .cont{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
   <section class="band exp" id="experimente">
     <div class="cont">
       <h2>Experimente agora</h2>
-      <p class="intro">Toque com o mouse, com o dedo ou com o teclado do computador (teclas A até K).</p>
+      <p class="intro">Toque com o mouse, com o dedo ou com o teclado do computador (atalhos de A até K). As notas começam em C, o Dó.</p>
       <div class="piano" id="piano"></div>
       <p class="legenda">Gostou? O de verdade está te esperando na loja.</p>
     </div>
@@ -570,14 +574,16 @@ renderer.setAnimationLoop(t => {
 
 /* ================= TECLADO 2D ================= */
 const piano = document.getElementById("piano"), mapa = "AWSEDFTGYHUJK".split("");
+const NOTAS = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B","C"], SOLF = ["Dó","Dó#","Ré","Ré#","Mi","Fá","Fá#","Sol","Sol#","Lá","Lá#","Si","Dó"];
+const rotulo = n => `<span class="nt">${NOTAS[n]}</span><span class="sf">${SOLF[n]}</span><span class="at">${mapa[n]}</span>`;
 const brancas = [0, 2, 4, 5, 7, 9, 11, 12]; let html = "", nB = 0;
 for (let n = 0; n <= 12; n++) { const f = 261.63 * Math.pow(2, n / 12);
-  if (brancas.includes(n)) { html += `<div class="b" data-f="${f}" data-k="${mapa[n]}"><span>${mapa[n]}</span></div>`; nB++; } }
+  if (brancas.includes(n)) { html += `<div class="b" data-f="${f}" data-k="${mapa[n]}">${rotulo(n)}</div>`; nB++; } }
 piano.innerHTML = html;
 const larg = 100 / nB;
 [[1, 1], [3, 2], [6, 4], [8, 5], [10, 6]].forEach(([n, pos]) => {
   const d = document.createElement("div"); d.className = "p"; d.dataset.f = 261.63 * Math.pow(2, n / 12); d.dataset.k = mapa[n];
-  d.style.left = `calc(${pos * larg}% - ${larg * .3}%)`; d.style.width = `${larg * .6}%`; d.innerHTML = `<span>${mapa[n]}</span>`; piano.appendChild(d); });
+  d.style.left = `calc(${pos * larg}% - ${larg * .3}%)`; d.style.width = `${larg * .6}%`; d.innerHTML = rotulo(n); piano.appendChild(d); });
 function toca(el){ if (!el) return; audio(); nota(+el.dataset.f, ctx.currentTime + .01, .7); el.classList.add("on"); setTimeout(() => el.classList.remove("on"), 180); }
 piano.addEventListener("pointerdown", e => toca(e.target.closest(".b,.p")));
 addEventListener("keydown", e => { if (e.repeat || e.target.matches("input,textarea")) return;
