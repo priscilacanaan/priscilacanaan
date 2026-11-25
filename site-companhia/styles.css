@@ -199,8 +199,8 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);l
 .hr-tbl b{color:var(--lime)}
 .phone{margin:1.4rem 0;font-weight:600}
 .phone a{border-bottom:2px solid var(--lime)}
-.map{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px}
-.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:invert(.92) hue-rotate(180deg) saturate(.8) brightness(.95);display:block}
+.map{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px;background:#e9e9e4}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
 .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);font-size:2.4rem;pointer-events:none;animation:bounce 1.6s ease-in-out infinite}
 @keyframes bounce{50%{transform:translate(-50%,-115%)}}
 .todo{background:var(--lime);color:#000;font-size:.72em;font-weight:800;padding:.1rem .4rem;border-radius:3px}
