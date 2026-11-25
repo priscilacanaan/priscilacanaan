@@ -19,3 +19,8 @@
 - **Link novo do portfólio:** https://raw.githack.com/priscilacanaan/priscilacanaan/3bff24b9a9171e7ee87b1410c9914ae55d930be8/portfolio-priscila/index.html
 - **Atenção:** o link antigo do portfólio (que aponta para o outro ramo) não mostra a Green.
 - **Atualizado (25/11):** portfólio ajustado para 7 projetos (contador 6 → 7; Green em destaque na linha inteira). Link mais novo: https://raw.githack.com/priscilacanaan/priscilacanaan/3494c8abbb14a59bf80c72cd3f273bb53bd4e42b/portfolio-priscila/index.html
+
+## 25/11/2026 · Site Keuffer Music
+- **Feito:** site em `site-keuffer/` com palco 3D (Three.js): guitarra, violão, teclado e bateria girando, botão "Tocar" com som gerado no navegador, teclas do teclado 3D clicáveis, piano 2D tocável (teclas A–K), departamentos, lojas e redes. Logo recortado da imagem enviada. Testado no computador e no celular.
+- **Dados (de diretórios online, CONFIRMAR):** Loja Umarizal: Av. Generalíssimo Deodoro, 457, (91) 3073-1600, seg–sex 9h–18h, sáb 9h–13h. Loja Comércio: Rua Senador Manoel Barata, 355. Há outro telefone listado: (91) 3259-3576. Site oficial: keuffer.com.br.
+- **Aberto:** confirmar dados e WhatsApp · publicar (só com autorização da Keuffer e o "publica" da Priscila) · incluir no portfólio.

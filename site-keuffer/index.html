@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keuffer Music · Instrumentos musicais em Belém</title>
+<meta name="description" content="Keuffer Music: instrumentos musicais, áudio e iluminação profissional em Belém. Guitarras, violões, teclados, baterias e acessórios. Experimente os instrumentos em 3D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: palco de show, noite, energia controlada; fala com músico.
+IDEA: a loja como um palco iluminado: os instrumentos giram sob refletores vermelho e azul.
+PICTURE: palco 3D interativo, gira com o dedo e toca de verdade.
+COLOUR/TYPE: preto de palco, vermelho Keuffer (logo), azul Keuffer (logo); Unbounded + Inter.
+LAYOUT: palco no topo, departamentos, experimente o teclado, lojas, contato.
+*/
+:root{
+  --preto:#0b0b10; --palco:#14141c; --linha:#2a2a36; --texto:#f2f2f5; --suave:#a3a3b2;
+  --vermelho:#e1251b; --azul:#2a5bd7; --azul-claro:#6f95ff;
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--preto);color:var(--texto);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Unbounded,Inter,sans-serif;line-height:1.05;margin:0 0 .5em;text-wrap:balance}
+h2{font-size:clamp(30px,4.4vw,48px)}
+h3{font-size:19px;line-height:1.2}
+a{color:inherit}
+.cont{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding:clamp(56px,8vw,110px) 0}
+.intro{color:var(--suave);font-size:18px;max-width:42em;margin:0 0 40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 24px;border-radius:999px;font:600 16px Inter,sans-serif;text-decoration:none;border:0;cursor:pointer;color:#fff}
+.btn-verm{background:var(--vermelho)}
+.btn-verm:hover{filter:brightness(1.12)}
+.btn-linha{background:transparent;border:1.5px solid #4a4a5a}
+.btn-linha:hover{border-color:#fff}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--azul-claro);outline-offset:3px}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:30;background:rgba(11,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
+.topo .cont{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:Unbounded,sans-serif;font-weight:700;font-size:17px}
+.marca img{width:48px;height:48px}
+.menu{display:flex;gap:28px;color:var(--suave);font-weight:500}
+.menu a{text-decoration:none}.menu a:hover{color:#fff}
+@media(max-width:880px){.menu{display:none}}
+@media(max-width:420px){.marca span{display:none}}
+
+/* palco */
+.palco{position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 55% at 70% 45%,#1d1d2c 0%,var(--preto) 70%)}
+.palco .cont{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:24px;align-items:center;min-height:min(820px,calc(100svh - 72px));padding-top:28px;padding-bottom:28px}
+.palco h1{font-size:clamp(38px,5.6vw,72px);font-weight:900}
+.palco h1 .v{color:var(--vermelho)}
+.palco h1 .a{color:var(--azul-claro)}
+.palco p.sub{color:var(--suave);font-size:clamp(17px,1.5vw,19px);max-width:30em;margin:0 0 28px}
+.palco .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.cena{display:flex;flex-direction:column;gap:14px}
+.tela{position:relative;height:min(520px,58vh)}
+.tela canvas{position:absolute;inset:0;width:100%!important;height:100%!important;outline:none;touch-action:pan-y;cursor:grab}
+.tela canvas:active{cursor:grabbing}
+.semgl{position:absolute;inset:0;display:none;place-items:center;text-align:center;color:var(--suave);padding:24px}
+.dica{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);font-size:13px;color:var(--suave);background:rgba(20,20,28,.7);padding:6px 14px;border-radius:999px;white-space:nowrap;pointer-events:none}
+.controles{display:flex;flex-direction:column;align-items:center;gap:12px}
+.seletor{display:flex;gap:6px;background:rgba(20,20,28,.85);border:1px solid var(--linha);border-radius:999px;padding:6px;flex-wrap:wrap;justify-content:center}
+.seletor button{background:transparent;color:var(--suave);border:0;border-radius:999px;padding:10px 16px;font:600 14px Inter,sans-serif;cursor:pointer;min-height:44px}
+.seletor button.on{background:#fff;color:var(--preto)}
+.tocar{display:flex;align-items:center;gap:14px}
+.tocar .btn{min-width:170px}
+.eq{display:flex;align-items:flex-end;gap:3px;height:30px;width:64px}
+.eq i{flex:1;background:linear-gradient(var(--vermelho),var(--azul));border-radius:2px;height:12%;transition:height .06s}
+.nome-inst{font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,28px);text-align:center;margin:0}
+.desc-inst{color:var(--suave);font-size:14px;text-align:center;margin:-6px 0 0;max-width:34em;padding:0 12px}
+@media(max-width:860px){
+  .palco .cont{grid-template-columns:1fr;min-height:0}
+  .cena{order:2}.tela{height:min(440px,58vh)}
+  .texto-palco{order:1}
+}
+
+/* faixa */
+.faixa{border-block:1px solid var(--linha);overflow:hidden;white-space:nowrap;background:var(--palco)}
+.faixa div{display:inline-flex;gap:42px;padding:16px 0;font-family:Unbounded,sans-serif;font-weight:700;font-size:15px;color:var(--suave)}
+.faixa b{color:var(--vermelho)}
+@media(prefers-reduced-motion:no-preference){.faixa div{animation:corre 34s linear infinite}}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* departamentos */
+.deps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.dep:last-child{grid-column:span 2}
+@media(max-width:1000px){.deps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.deps{grid-template-columns:1fr}.dep:last-child{grid-column:auto}}
+.dep{background:var(--palco);border:1px solid var(--linha);border-radius:22px;padding:26px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.dep:hover{transform:translateY(-4px);border-color:#44445a}
+.dep::after{content:"";position:absolute;right:-40px;bottom:-40px;width:120px;height:120px;border-radius:50%;background:var(--c,var(--vermelho));opacity:.16;filter:blur(18px)}
+.dep svg{width:40px;height:40px;color:var(--c,var(--vermelho));margin-bottom:14px}
+.dep p{color:var(--suave);margin:0}
+
+/* experimente: teclado 2D */
+.exp{background:linear-gradient(180deg,var(--preto),#10101a)}
+.piano{display:flex;position:relative;height:clamp(150px,22vw,220px);max-width:900px;margin:0 auto;user-select:none;touch-action:none}
+.piano .b{flex:1;background:linear-gradient(#fff,#e9e9ee);border:1px solid #bbb;border-radius:0 0 10px 10px;position:relative;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;color:#888;font:600 12px Inter,sans-serif}
+.piano .b.on{background:linear-gradient(#dfe6ff,#b9c8ff)}
+.piano .p{position:absolute;top:0;height:60%;background:linear-gradient(#2b2b33,#0d0d12);border-radius:0 0 7px 7px;z-index:2;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;color:#888;font:600 11px Inter,sans-serif}
+.piano .p.on{background:linear-gradient(#5a1210,var(--vermelho))}
+.legenda{text-align:center;color:var(--suave);font-size:14px;margin-top:18px}
+@media(max-width:600px){.piano .b span,.piano .p span{display:none}}
+
+/* lojas */
+.lojas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:18px}
+.loja{background:var(--palco);border:1px solid var(--linha);border-radius:22px;padding:28px}
+.loja .tag{display:inline-block;font-size:13px;font-weight:600;color:var(--azul-claro);margin-bottom:10px}
+.loja p{color:var(--suave);margin:0 0 6px}
+.loja .btn{margin-top:14px;min-height:44px;padding:10px 18px}
+.redes{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.redes a{display:inline-flex;align-items:center;gap:10px;background:var(--palco);border:1px solid var(--linha);border-radius:999px;padding:10px 18px;text-decoration:none;min-height:44px;font-weight:600}
+.redes a:hover{border-color:#fff}
+.redes svg{width:20px;height:20px}
+.obs{color:var(--suave);font-size:13px;margin-top:22px}
+
+/* chamada */
+.chamada{background:linear-gradient(120deg,var(--vermelho),#8e1710 45%,var(--azul));border-radius:28px;padding:clamp(28px,5vw,56px);display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.chamada h2{margin:0;max-width:16em}
+.chamada .btn{background:#fff;color:var(--preto)}
+
+footer{border-top:1px solid var(--linha);padding:34px 0;color:var(--suave);font-size:14px}
+footer .cont{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dep{transition:none}}
+</style>
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+}}
+</script>
+</head>
+<body>
+
+<header class="topo">
+  <div class="cont">
+    <a class="marca" href="#inicio"><img src="img/logo.png" alt="Keuffer Music" width="48" height="48"><span>Keuffer Music</span></a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#inicio">Palco 3D</a><a href="#departamentos">Departamentos</a><a href="#experimente">Experimente</a><a href="#lojas">Lojas</a>
+    </nav>
+    <a class="btn btn-verm" href="#lojas" style="min-height:44px;padding:10px 18px">Visite a loja</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="palco">
+    <div class="cont">
+      <div class="texto-palco">
+        <h1>Seu som<br>começa <span class="v">aqui</span><span class="a">.</span></h1>
+        <p class="sub">Instrumentos musicais, áudio e iluminação profissional em Belém. Gire os instrumentos no palco e aperte <b>Tocar</b> para ouvir.</p>
+        <div class="acoes">
+          <a class="btn btn-verm" href="#lojas">Encontre uma loja</a>
+          <a class="btn btn-linha" href="#experimente">Tocar o teclado</a>
+        </div>
+      </div>
+      <div class="cena">
+        <div class="tela" id="cena">
+        <span class="dica">Arraste para girar · aperte Tocar para ouvir</span>
+        <div class="semgl" id="semgl">O palco 3D não abriu neste navegador. Os instrumentos estão na loja esperando por você.</div>
+        </div>
+        <div class="controles">
+          <p class="nome-inst" id="nomeInst">Guitarra elétrica</p>
+          <p class="desc-inst" id="descInst"></p>
+          <div class="tocar">
+            <button class="btn btn-verm" id="btnTocar" type="button">▶ Tocar</button>
+            <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="seletor" role="tablist" aria-label="Escolha o instrumento">
+            <button class="on" data-i="guitarra" role="tab">Guitarra</button>
+            <button data-i="violao" role="tab">Violão</button>
+            <button data-i="teclado" role="tab">Teclado</button>
+            <button data-i="bateria" role="tab">Bateria</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div id="faixa"></div></div>
+
+  <section class="band" id="departamentos">
+    <div class="cont">
+      <h2>Tudo para quem faz música</h2>
+      <p class="intro">Do primeiro violão ao som do show. Fale com a equipe da loja para escolher o instrumento certo para você.</p>
+      <div class="deps" id="deps"></div>
+    </div>
+  </section>
+
+  <section class="band exp" id="experimente">
+    <div class="cont">
+      <h2>Experimente agora</h2>
+      <p class="intro">Toque com o mouse, com o dedo ou com o teclado do computador (teclas A até K).</p>
+      <div class="piano" id="piano"></div>
+      <p class="legenda">Gostou? O de verdade está te esperando na loja.</p>
+    </div>
+  </section>
+
+  <section class="band" id="lojas">
+    <div class="cont">
+      <h2>Nossas lojas em Belém</h2>
+      <p class="intro">Venha testar, tirar dúvidas e sair tocando.</p>
+      <div class="lojas" id="listaLojas"></div>
+      <div class="redes">
+        <a href="https://www.instagram.com/lojaskeuffer/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@lojaskeuffer</a>
+        <a href="https://www.tiktok.com/@keuffer.music" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5Z"/></svg>@keuffer.music</a>
+        <a href="https://www.keuffer.com.br" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>keuffer.com.br</a>
+      </div>
+      <p class="obs">Horários e telefones podem mudar. Confirme pelos canais oficiais antes de ir.</p>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0">
+    <div class="cont">
+      <div class="chamada">
+        <h2>Bora tocar? Fale com a Keuffer.</h2>
+        <a class="btn" id="btnLigar" href="#">Ligar para a loja</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="cont">
+    <span>© <span id="ano"></span> Keuffer Music · Belém, PA</span>
+    <span>Modelos 3D ilustrativos. Consulte os produtos disponíveis na loja.</span>
+  </div>
+</footer>
+
+<script>
+{
+  /* ===== DADOS DA LOJA: confira antes de publicar ===== */
+  const LOJAS = [
+    {nome:"Umarizal", end:"Av. Generalíssimo Deodoro, 457 - Umarizal, Belém - PA", cep:"66050-160",
+     tel:"(91) 3073-1600", telLink:"+559130731600", horario:"Segunda a sexta, 9h às 18h · Sábado, 9h às 13h"},
+    {nome:"Comércio", end:"Rua Senador Manoel Barata, 355 - Comércio, Belém - PA", cep:"66045-190",
+     tel:"", telLink:"", horario:""}
+  ];
+  const DEPS = [
+    ["Cordas","Guitarras, violões, baixos, ukuleles, cordas e encordoamentos.","var(--vermelho)",'<path d="M14 3l7 7M17.5 6.5 9 15"/><path d="M9 15a3.5 3.5 0 1 1-4.9 0c1.3-1.4 3.6-1.4 4.9 0Z"/><path d="M6 18l-1 3"/>'],
+    ["Teclas","Teclados, pianos digitais, sintetizadores e controladores.","var(--azul-claro)",'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 5v9M12 5v9M17 5v9M7 14v5M12 14v5M17 14v5"/>'],
+    ["Percussão","Baterias acústicas e eletrônicas, pratos, baquetas e percussão.","#ffb020",'<ellipse cx="12" cy="8" rx="8" ry="3"/><path d="M4 8v8c0 1.7 3.6 3 8 3s8-1.3 8-3V8M16 3l-3 4M8 3l3 4"/>'],
+    ["Sopro","Instrumentos de sopro e acessórios para estudo e apresentação.","#3fd0a0",'<path d="M4 20 18 6M15 3l6 6M9 13l2 2M12 10l2 2"/>'],
+    ["Áudio profissional","Caixas de som, mesas, microfones e equipamentos para palco e estúdio.","var(--vermelho)",'<rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="12" cy="6" r="1.5"/>'],
+    ["Iluminação","Iluminação profissional para palco, eventos e igrejas.","var(--azul-claro)",'<path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V18h8v-3.3A7 7 0 0 0 12 2Z"/>'],
+    ["Acessórios","Cabos, capas, pedais, afinadores, estantes e tudo o que faltar.","#ffb020",'<path d="M4 4h6v6H4zM14 14h6v6h-6zM10 7h4a3 3 0 0 1 3 3v4"/>'],
+  ];
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+  $("deps").innerHTML = DEPS.map(([t,d,c,ic])=>`
+    <article class="dep" style="--c:${c}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg>
+      <h3>${t}</h3><p>${d}</p></article>`).join("");
+
+  $("listaLojas").innerHTML = LOJAS.map(l=>`
+    <article class="loja">
+      <span class="tag">Loja ${esc(l.nome)}</span>
+      <h3>${esc(l.end)}</h3>
+      <p>CEP ${esc(l.cep)}</p>
+      ${l.horario?`<p>${esc(l.horario)}</p>`:""}
+      ${l.tel?`<p>Telefone: <a href="tel:${esc(l.telLink)}">${esc(l.tel)}</a></p>`:""}
+      <a class="btn btn-linha" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Keuffer "+l.end)}">Ver no mapa</a>
+    </article>`).join("");
+  $("btnLigar").href = "tel:" + LOJAS[0].telLink;
+  $("btnLigar").textContent = "Ligar: " + LOJAS[0].tel;
+  $("ano").textContent = new Date().getFullYear();
+
+  const palavras = ["GUITARRAS","VIOLÕES","TECLADOS","BATERIAS","BAIXOS","ÁUDIO","ILUMINAÇÃO","ACESSÓRIOS"];
+  const f = palavras.map(p=>`<span>${p}</span><b>●</b>`).join("");
+  $("faixa").innerHTML = f + f;
+}
+</script>
+
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+/* ================= ÁUDIO (sintetizado no navegador) ================= */
+let ctx, master, analyser, dist;
+function audio(){
+  if (ctx) { if (ctx.state === "suspended") ctx.resume(); return ctx; }
+  ctx = new (window.AudioContext || window.webkitAudioContext)();
+  master = ctx.createGain(); master.gain.value = .8;
+  analyser = ctx.createAnalyser(); analyser.fftSize = 64;
+  const comp = ctx.createDynamicsCompressor();
+  master.connect(comp); comp.connect(analyser); analyser.connect(ctx.destination);
+  dist = ctx.createWaveShaper(); const k = 18, n = 1024, c = new Float32Array(n);
+  for (let i = 0; i < n; i++) { const x = i * 2 / n - 1; c[i] = (1 + k) * x / (1 + k * Math.abs(x)); }
+  dist.curve = c; const dg = ctx.createGain(); dg.gain.value = .35; dist.connect(dg); dg.connect(master);
+  return ctx;
+}
+// corda dedilhada (Karplus-Strong)
+function corda(freq, t, out, dur = 2.2, brilho = .5){
+  const sr = ctx.sampleRate, len = Math.floor(sr * dur), N = Math.round(sr / freq);
+  const buf = ctx.createBuffer(1, len, sr), d = buf.getChannelData(0), ring = new Float32Array(N);
+  for (let i = 0; i < N; i++) ring[i] = Math.random() * 2 - 1;
+  let p = 0;
+  for (let i = 0; i < len; i++) { const nx = (p + 1) % N; ring[p] = (ring[p] * brilho + ring[nx] * (1 - brilho)) * .996; d[i] = ring[p]; p = nx; }
+  const s = ctx.createBufferSource(); s.buffer = buf; const g = ctx.createGain(); g.gain.value = .35;
+  s.connect(g); g.connect(out); s.start(t);
+}
+function nota(freq, t, dur = .5, tipo = "sawtooth"){
+  const o = ctx.createOscillator(), o2 = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  o.type = tipo; o.frequency.value = freq; o2.type = "triangle"; o2.frequency.value = freq * 1.003;
+  f.type = "lowpass"; f.frequency.setValueAtTime(3200, t); f.frequency.exponentialRampToValueAtTime(700, t + dur);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.22, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+  o.connect(f); o2.connect(f); f.connect(g); g.connect(master);
+  o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+}
+function ruido(t, dur, tipo, freq, vol){
+  const b = ctx.createBuffer(1, ctx.sampleRate * dur, ctx.sampleRate), d = b.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  s.buffer = b; f.type = tipo; f.frequency.value = freq;
+  g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+  s.connect(f); f.connect(g); g.connect(master); s.start(t);
+}
+function bumbo(t){ const o = ctx.createOscillator(), g = ctx.createGain();
+  o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(45, t + .25);
+  g.gain.setValueAtTime(1, t); g.gain.exponentialRampToValueAtTime(.001, t + .4);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t + .45); }
+function caixa(t){ ruido(t, .2, "bandpass", 1800, .7); const o = ctx.createOscillator(), g = ctx.createGain();
+  o.type = "triangle"; o.frequency.value = 190; g.gain.setValueAtTime(.4, t); g.gain.exponentialRampToValueAtTime(.001, t + .12);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t + .15); }
+const chimbal = (t, aberto) => ruido(t, aberto ? .3 : .05, "highpass", 7500, .3);
+
+const SONS = {
+  guitarra(){ const t = ctx.currentTime + .05;
+    [[82.41,123.47,164.81,207.65,246.94,329.63],[110,164.81,220,277.18,329.63],[123.47,185,246.94,311.13,369.99]]
+      .forEach((ac, k) => ac.forEach((fq, i) => corda(fq, t + k * .75 + i * .022, dist, 1.4, .55)));
+    return 2.6; },
+  violao(){ const t = ctx.currentTime + .05;
+    [[98,123.47,146.83,196,246.94,392],[130.81,164.81,196,261.63,329.63],[110,164.81,220,261.63,329.63],[146.83,220,293.66,369.99]]
+      .forEach((ac, k) => { ac.forEach((fq, i) => corda(fq, t + k * .7 + i * .03, master, 2, .5));
+        ac.slice().reverse().forEach((fq, i) => corda(fq, t + k * .7 + .35 + i * .02, master, 1.2, .5)); });
+    return 3.2; },
+  teclado(){ const t = ctx.currentTime + .05, seq = [261.63,329.63,392,523.25,392,329.63,349.23,440,523.25,698.46,523.25,440,392,493.88,587.33,783.99];
+    seq.forEach((fq, i) => nota(fq, t + i * .16, .35));
+    [130.81,174.61,196].forEach((fq, i) => nota(fq, t + i * .64, .9, "square"));
+    return 2.8; },
+  bateria(){ const t = ctx.currentTime + .05, s = 60 / 112 / 2;
+    for (let i = 0; i < 16; i++) { const q = t + i * s;
+      chimbal(q, i % 8 === 7); if (i % 8 === 0 || i % 8 === 5 || i === 10) bumbo(q); if (i % 4 === 2) caixa(q); }
+    caixa(t + 15.5 * s); return 16 * s + .4; }
+};
+
+/* ================= CENA 3D ================= */
+const cena = document.getElementById("cena");
+let renderer;
+try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
+catch (e) { document.getElementById("semgl").style.display = "grid"; throw e; }
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+cena.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), .04).texture;
+const camera = new THREE.PerspectiveCamera(34, 1, .1, 100);
+camera.position.set(0, 1.2, 14);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, .2, 0); controls.enableZoom = false; controls.enablePan = false;
+controls.enableDamping = true; controls.autoRotate = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+controls.autoRotateSpeed = 1.6; controls.minPolarAngle = Math.PI * .28; controls.maxPolarAngle = Math.PI * .56;
+
+// luzes de palco
+scene.add(new THREE.HemisphereLight(0xffffff, 0x111122, .35));
+const key = new THREE.SpotLight(0xffffff, 140, 30, .5, .6); key.position.set(3, 9, 6); key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024); scene.add(key);
+const luzV = new THREE.SpotLight(0xff2a1a, 220, 30, .55, .7); luzV.position.set(-6, 5, -2); scene.add(luzV);
+const luzA = new THREE.SpotLight(0x3366ff, 220, 30, .55, .7); luzA.position.set(6, 5, -2); scene.add(luzA);
+[key, luzV, luzA].forEach(l => l.target.position.set(0, .5, 0)); scene.add(key.target, luzV.target, luzA.target);
+
+// piso do palco
+const piso = new THREE.Mesh(new THREE.CircleGeometry(3.3, 64), new THREE.MeshStandardMaterial({ color: 0x060609, roughness: .7, metalness: 0, envMapIntensity: .08 }));
+piso.rotation.x = -Math.PI / 2; piso.position.y = -2.3; piso.receiveShadow = true; scene.add(piso);
+const anel = new THREE.Mesh(new THREE.RingGeometry(3.25, 3.36, 96), new THREE.MeshBasicMaterial({ color: 0xe1251b, transparent: true, opacity: .8 }));
+anel.rotation.x = -Math.PI / 2; anel.position.y = -2.29; scene.add(anel);
+
+// materiais
+const M = {
+  verm: new THREE.MeshPhysicalMaterial({ color: 0xc81610, metalness: .2, roughness: .25, clearcoat: 1, clearcoatRoughness: .05 }),
+  azul: new THREE.MeshPhysicalMaterial({ color: 0x1d47b8, metalness: .2, roughness: .28, clearcoat: 1, clearcoatRoughness: .06 }),
+  preto: new THREE.MeshStandardMaterial({ color: 0x0c0c0f, roughness: .45 }),
+  branco: new THREE.MeshStandardMaterial({ color: 0xf2f2f2, roughness: .35 }),
+  cromo: new THREE.MeshStandardMaterial({ color: 0xdddddd, metalness: 1, roughness: .18 }),
+  ouro: new THREE.MeshStandardMaterial({ color: 0xd9a441, metalness: 1, roughness: .28 }),
+  escala: new THREE.MeshStandardMaterial({ color: 0x2a160c, roughness: .6 }),
+  braco: new THREE.MeshStandardMaterial({ color: 0xc9925a, roughness: .45 }),
+  corda: new THREE.MeshStandardMaterial({ color: 0xcfcfcf, metalness: 1, roughness: .3 }),
+  pele: new THREE.MeshStandardMaterial({ color: 0xf4f1ea, roughness: .7 }),
+};
+function madeira(){ const c = document.createElement("canvas"); c.width = 512; c.height = 512; const g = c.getContext("2d");
+  const gr = g.createRadialGradient(256, 256, 40, 256, 256, 300); gr.addColorStop(0, "#e8b878"); gr.addColorStop(1, "#8a4f22");
+  g.fillStyle = gr; g.fillRect(0, 0, 512, 512); g.globalAlpha = .12;
+  for (let i = 0; i < 90; i++) { g.strokeStyle = i % 2 ? "#5a2f10" : "#f6d3a0"; g.lineWidth = 1 + Math.random() * 2; g.beginPath();
+    const x = Math.random() * 512; g.moveTo(x, 0); g.bezierCurveTo(x + 20, 170, x - 20, 340, x + 10, 512); g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; }
+const box = (w, h, d, m) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.castShadow = true; return o; };
+const cil = (rt, rb, h, m, s = 32) => { const o = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, s), m); o.castShadow = true; return o; };
+const em = (o, x, y, z) => (o.position.set(x, y, z), o);
+
+function braco(g, y0, y1, larg, mBraco, nCordas = 6){
+  const h = y1 - y0, b = em(box(larg, h, .16, mBraco), 0, y0 + h / 2, .1); g.add(b);
+  g.add(em(box(larg + .02, h, .04, M.escala), 0, y0 + h / 2, .2));
+  for (let i = 1; i <= 20; i++) { const y = y1 - h * (1 - Math.pow(2, -i / 12)) * 1.6; if (y < y0 + .05) break;
+    g.add(em(box(larg + .02, .015, .055, M.cromo), 0, y, .21));
+    if ([3,5,7,9,12,15,17].includes(i)) g.add(em(cil(.025, .025, .01, M.branco, 12).rotateX(Math.PI / 2), 0, y + .08, .225)); }
+  const cab = em(new THREE.Mesh(new RoundedBoxGeometry(larg + .24, .95, .12, 3, .05), mBraco), 0, y1 + .5, .08); cab.castShadow = true; g.add(cab);
+  for (let i = 0; i < nCordas; i++) { const lado = i < nCordas / 2 ? -1 : 1, k = i % (nCordas / 2);
+    g.add(em(cil(.035, .035, .16, M.cromo, 12).rotateZ(Math.PI / 2), lado * ((larg + .24) / 2 + .06), y1 + .2 + k * .25, .08)); }
+  g.add(em(box(larg + .02, .04, .05, M.branco), 0, y1, .22));
+}
+function cordas(g, y0, y1, n, larg0, larg1, z){
+  for (let i = 0; i < n; i++) { const f = n === 1 ? 0 : i / (n - 1) - .5;
+    const a = new THREE.Vector3(f * larg0, y0, z), b = new THREE.Vector3(f * larg1, y1, z);
+    const c = cil(.006 + (n - i) * .0012, .006 + (n - i) * .0012, a.distanceTo(b), M.corda, 6);
+    c.position.copy(a).add(b).multiplyScalar(.5); c.lookAt(b); c.rotateX(Math.PI / 2); g.add(c); }
+}
+
+function guitarra(){
+  const g = new THREE.Group(), s = new THREE.Shape();
+  s.moveTo(0, -1.75); s.bezierCurveTo(1.05, -1.75, 1.35, -1.2, 1.28, -.5); s.bezierCurveTo(1.22, -.05, .85, .15, .95, .6);
+  s.bezierCurveTo(1.05, 1.0, 1.0, 1.5, .75, 1.6); s.bezierCurveTo(.52, 1.66, .45, 1.2, .3, 1.0); s.lineTo(-.3, 1.0);
+  s.bezierCurveTo(-.45, 1.15, -.6, 1.32, -.82, 1.27); s.bezierCurveTo(-1.06, 1.17, -1.0, .75, -.95, .55);
+  s.bezierCurveTo(-.85, .15, -1.25, -.05, -1.28, -.5); s.bezierCurveTo(-1.35, -1.2, -1.05, -1.75, 0, -1.75);
+  const corpo = new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: .3, bevelEnabled: true, bevelThickness: .06, bevelSize: .06, bevelSegments: 6, curveSegments: 48 }), M.verm);
+  corpo.position.z = -.15; corpo.castShadow = true; g.add(corpo);
+  const sp = new THREE.Shape(); sp.moveTo(-.25, 1.0); sp.lineTo(.3, 1.0); sp.bezierCurveTo(.6, .4, .9, -.2, .7, -.75); sp.bezierCurveTo(.4, -1.1, -.6, -.9, -.85, -.4); sp.bezierCurveTo(-.95, .2, -.6, .7, -.25, 1.0);
+  const esc = em(new THREE.Mesh(new THREE.ExtrudeGeometry(sp, { depth: .02, bevelEnabled: false }), M.branco), 0, 0, .21); g.add(esc);
+  [.55, -.15].forEach(y => { g.add(em(box(.62, .2, .06, M.preto), 0, y, .25));
+    for (let i = 0; i < 6; i++) g.add(em(cil(.02, .02, .02, M.cromo, 8).rotateX(Math.PI / 2), -.22 + i * .088, y, .285)); });
+  g.add(em(box(.7, .16, .08, M.cromo), 0, -.85, .25));
+  [[.62, -.95], [.82, -.6], [.98, -.25]].forEach(([x, y]) => g.add(em(cil(.09, .1, .1, M.preto, 24).rotateX(Math.PI / 2), x, y, .27)));
+  braco(g, .9, 4.4, .36, M.braco);
+  cordas(g, -.85, 4.4, 6, .3, .25, .27);
+  g.scale.setScalar(.82); g.position.y = -.85; return g;
+}
+function violao(){
+  const g = new THREE.Group(), s = new THREE.Shape();
+  s.moveTo(0, -1.9); s.bezierCurveTo(1.3, -1.9, 1.55, -1.0, 1.35, -.35); s.bezierCurveTo(1.18, .1, .78, .25, .9, .75);
+  s.bezierCurveTo(1.05, 1.45, .6, 1.75, 0, 1.75); s.bezierCurveTo(-.6, 1.75, -1.05, 1.45, -.9, .75);
+  s.bezierCurveTo(-.78, .25, -1.18, .1, -1.35, -.35); s.bezierCurveTo(-1.55, -1.0, -1.3, -1.9, 0, -1.9);
+  const tampo = new THREE.MeshStandardMaterial({ map: madeira(), roughness: .35 });
+  const lat = new THREE.MeshStandardMaterial({ color: 0x5a2e14, roughness: .4 });
+  const corpo = new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: .55, bevelEnabled: true, bevelThickness: .03, bevelSize: .03, bevelSegments: 3, curveSegments: 48 }), [tampo, lat]);
+  const uv = corpo.geometry.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, (uv.getX(i) + 1.6) / 3.2, (uv.getY(i) + 1.9) / 3.7);
+  corpo.position.z = -.47; corpo.castShadow = true; g.add(corpo);
+  g.add(em(new THREE.Mesh(new THREE.CircleGeometry(.42, 48), M.preto), 0, .55, .115));
+  g.add(em(new THREE.Mesh(new THREE.RingGeometry(.46, .54, 48), M.ouro), 0, .55, .114));
+  g.add(em(box(.9, .14, .06, new THREE.MeshStandardMaterial({ color: 0x2a160c, roughness: .5 })), 0, -.95, .14));
+  braco(g, 1.5, 4.6, .4, M.braco);
+  cordas(g, -.95, 4.6, 6, .34, .3, .24);
+  g.scale.setScalar(.78); g.position.y = -.95; return g;
+}
+let teclas = [];
+function teclado(){
+  const g = new THREE.Group(); teclas = [];
+  const base = new THREE.Mesh(new RoundedBoxGeometry(6.4, .45, 2.0, 4, .12), M.preto); base.castShadow = true; g.add(base);
+  const painel = em(new THREE.Mesh(new RoundedBoxGeometry(6.2, .12, .7, 3, .05), new THREE.MeshStandardMaterial({ color: 0x1b1b22, roughness: .3 })), 0, .27, -.6); g.add(painel);
+  g.add(em(box(1.4, .02, .4, new THREE.MeshStandardMaterial({ color: 0x0a1a40, emissive: 0x2a5bd7, emissiveIntensity: 1.4 })), 0, .34, -.6));
+  for (let i = 0; i < 8; i++) g.add(em(cil(.09, .1, .1, M.cromo, 20), -2.8 + i * .22 + (i > 3 ? 4.0 : 0), .36, -.6));
+  g.add(em(box(.5, .05, .25, M.verm), -2.75 + 4.6, .34, -.6));
+  const brancas = [0, 2, 4, 5, 7, 9, 11], larg = 5.9 / 15;
+  let w = 0;
+  for (let n = 0; n < 25; n++) { const oit = Math.floor(n / 12), st = n % 12, freq = 261.63 * Math.pow(2, n / 12);
+    if (brancas.includes(st)) { const k = em(box(larg - .02, .16, 1.15, M.branco.clone()), -2.95 + larg / 2 + w * larg, .27, .32);
+      k.userData = { freq, base: k.position.y }; g.add(k); teclas.push(k); w++; }
+    else { const k = em(box(larg * .58, .2, .72, M.preto.clone()), -2.95 + w * larg, .37, .12);
+      k.userData = { freq, base: k.position.y }; g.add(k); teclas.push(k); } }
+  [-2.6, 2.6].forEach(x => { const p = em(cil(.06, .06, 2.3, M.cromo, 12), x, -1.35, 0); p.rotation.z = x > 0 ? -.35 : .35; g.add(p); });
+  g.rotation.x = .3; g.scale.setScalar(.8); g.position.y = -.2; return g;
+}
+function pele(texto){ const c = document.createElement("canvas"); c.width = c.height = 512; const x = c.getContext("2d");
+  x.fillStyle = "#f4f1ea"; x.fillRect(0, 0, 512, 512);
+  if (texto) { x.fillStyle = "#e1251b"; x.beginPath(); x.arc(256, 256, 200, 0, 7); x.fill();
+    x.fillStyle = "#fff"; x.font = "900 150px Unbounded, Arial Black, sans-serif"; x.textAlign = "center"; x.fillText("K", 256, 300);
+    x.font = "800 44px Unbounded, Arial Black, sans-serif"; x.fillText("KEUFFER", 256, 380); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; }
+function tambor(r, h, cor, frente){
+  const g = new THREE.Group(), casco = cil(r, r, h, cor, 48); g.add(casco);
+  const mPele = new THREE.MeshStandardMaterial({ map: pele(frente), roughness: .6 });
+  const topo = new THREE.Mesh(new THREE.CircleGeometry(r * .99, 48), mPele); topo.rotation.x = -Math.PI / 2; topo.position.y = h / 2 + .005; g.add(topo);
+  [h / 2, -h / 2].forEach(y => g.add(em(new THREE.Mesh(new THREE.TorusGeometry(r + .01, .025, 8, 48), M.cromo).rotateX(Math.PI / 2), 0, y, 0)));
+  for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2; g.add(em(box(.04, h * .7, .06, M.cromo), Math.cos(a) * (r + .02), 0, Math.sin(a) * (r + .02))); }
+  return g; }
+function prato(r, x, y, z, inc){ const g = new THREE.Group();
+  const p = new THREE.Mesh(new THREE.CylinderGeometry(.06, r, .06, 48, 1, true), M.ouro); p.material.side = THREE.DoubleSide; p.castShadow = true;
+  p.position.y = y; p.rotation.z = inc; g.add(p); g.add(em(cil(.02, .02, y + 2.3, M.cromo, 8), 0, (y - 2.3) / 2, 0));
+  g.position.set(x, 0, z); return g; }
+function bateria(){
+  const g = new THREE.Group();
+  const bumbo = tambor(.95, .75, M.azul, true); bumbo.rotation.x = Math.PI / 2; bumbo.position.set(0, -1.3, 0); g.add(bumbo);
+  const t1 = tambor(.42, .35, M.azul); t1.position.set(-.5, -.05, .05); t1.rotation.z = .25; g.add(t1);
+  const t2 = tambor(.46, .38, M.azul); t2.position.set(.52, -.03, .05); t2.rotation.z = -.25; g.add(t2);
+  const surdo = tambor(.6, .7, M.azul); surdo.position.set(1.65, -1.25, .5); g.add(surdo);
+  const cx = tambor(.5, .22, M.cromo); cx.position.set(-1.4, -.75, .7); cx.rotation.x = .18; g.add(cx);
+  [[-1.4, -.85, .7]].forEach(([x, y, z]) => g.add(em(cil(.025, .025, 1.4, M.cromo, 8), x, -1.6, z)));
+  g.add(prato(.62, -2.1, .55, -.2, .18)); g.add(prato(.75, 1.95, 1.0, -.5, -.22));
+  const hh = new THREE.Group(); hh.add(em(new THREE.Mesh(new THREE.CylinderGeometry(.05, .45, .05, 40), M.ouro), 0, -.15, 0));
+  hh.add(em(new THREE.Mesh(new THREE.CylinderGeometry(.45, .05, .05, 40), M.ouro), 0, -.1, 0));
+  hh.add(em(cil(.02, .02, 2.2, M.cromo, 8), 0, -1.2, 0)); hh.position.set(-2.2, 0, .9); g.add(hh);
+  g.scale.setScalar(.95); g.position.y = .35; return g;
+}
+
+const INST = {
+  guitarra: { nome: "Guitarra elétrica", desc: "Corpo de dois cutaways, captadores duplos e acabamento vermelho brilhante.", criar: guitarra },
+  violao:   { nome: "Violão", desc: "Tampo em madeira clara e roseta dourada, ideal para estudar e tocar em roda.", criar: violao },
+  teclado:  { nome: "Teclado", desc: "Duas oitavas para você tocar aqui mesmo: clique nas teclas do modelo 3D.", criar: teclado },
+  bateria:  { nome: "Bateria", desc: "Bumbo, caixa, tons, surdo, chimbal e pratos, prontos para o show.", criar: bateria }
+};
+let atual = "guitarra", grupo = INST.guitarra.criar(), saindo = null, escala = 0;
+grupo.userData.alvo = grupo.scale.x; grupo.scale.setScalar(.001);
+scene.add(grupo);
+
+function trocar(id){
+  if (id === atual) return; atual = id;
+  if (saindo) scene.remove(saindo);
+  saindo = grupo; grupo = INST[id].criar(); grupo.userData.alvo = grupo.scale.x; grupo.scale.setScalar(.001); scene.add(grupo); escala = 0;
+  document.getElementById("nomeInst").textContent = INST[id].nome;
+  document.getElementById("descInst").textContent = INST[id].desc;
+  document.querySelectorAll(".seletor button").forEach(b => { const on = b.dataset.i === id; b.classList.toggle("on", on); b.setAttribute("aria-selected", on); });
+  document.querySelector(".dica").textContent = id === "teclado" ? "Arraste para girar · clique nas teclas para tocar" : "Arraste para girar · aperte Tocar para ouvir";
+}
+document.getElementById("descInst").textContent = INST.guitarra.desc;
+document.querySelectorAll(".seletor button").forEach(b => b.addEventListener("click", () => trocar(b.dataset.i)));
+
+let tocandoAte = 0;
+document.getElementById("btnTocar").addEventListener("click", () => { audio(); const d = SONS[atual](); tocandoAte = performance.now() + d * 1000; });
+
+// clicar nas teclas do teclado 3D
+const ray = new THREE.Raycaster(), ptr = new THREE.Vector2(); let inicio = null;
+renderer.domElement.addEventListener("pointerdown", e => { inicio = [e.clientX, e.clientY]; });
+renderer.domElement.addEventListener("pointerup", e => {
+  if (atual !== "teclado" || !inicio || Math.hypot(e.clientX - inicio[0], e.clientY - inicio[1]) > 6) return;
+  const r = renderer.domElement.getBoundingClientRect();
+  ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+  ray.setFromCamera(ptr, camera); const hit = ray.intersectObjects(teclas)[0];
+  if (hit) { audio(); nota(hit.object.userData.freq, ctx.currentTime + .01, .6); hit.object.position.y = hit.object.userData.base - .06; hit.object.userData.solta = performance.now() + 160; tocandoAte = performance.now() + 500; }
+});
+
+function tamanho(){ const w = cena.clientWidth, h = cena.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h;
+  const dir = camera.position.clone().sub(controls.target).setLength(w < 520 ? 15 : 12); camera.position.copy(controls.target).add(dir); camera.updateProjectionMatrix(); }
+const ro = new ResizeObserver(tamanho); ro.observe(cena); tamanho();
+
+const barras = [...document.querySelectorAll("#eq i")], dados = new Uint8Array(32);
+let visivel = true;
+new IntersectionObserver(([en]) => visivel = en.isIntersecting).observe(cena);
+renderer.setAnimationLoop(t => {
+  if (!visivel) return;
+  controls.update();
+  if (escala < 1) { escala = Math.min(1, escala + .045); const e = 1 - Math.pow(1 - escala, 3);
+    grupo.scale.setScalar(grupo.userData.alvo * e); grupo.rotation.y = (1 - e) * 2.4;
+    if (saindo) { saindo.scale.multiplyScalar(.86); if (escala >= 1) { scene.remove(saindo); saindo = null; } } }
+  grupo.position.y += Math.sin(t / 900) * .0012;
+  teclas.forEach(k => { if (k.userData.solta && t > k.userData.solta) { k.position.y = k.userData.base; k.userData.solta = 0; } });
+  let nivel = 0;
+  if (analyser && performance.now() < tocandoAte + 400) { analyser.getByteFrequencyData(dados);
+    barras.forEach((b, i) => { const v = dados[i * 3 + 1] / 255; b.style.height = 12 + v * 88 + "%"; nivel += v; }); nivel /= barras.length; }
+  else barras.forEach(b => b.style.height = "12%");
+  luzV.intensity = 220 + nivel * 900; luzA.intensity = 220 + nivel * 900; anel.material.opacity = .6 + nivel * .4;
+  renderer.render(scene, camera);
+});
+
+/* ================= TECLADO 2D ================= */
+const piano = document.getElementById("piano"), mapa = "AWSEDFTGYHUJK".split("");
+const brancas = [0, 2, 4, 5, 7, 9, 11, 12]; let html = "", nB = 0;
+for (let n = 0; n <= 12; n++) { const f = 261.63 * Math.pow(2, n / 12);
+  if (brancas.includes(n)) { html += `<div class="b" data-f="${f}" data-k="${mapa[n]}"><span>${mapa[n]}</span></div>`; nB++; } }
+piano.innerHTML = html;
+const larg = 100 / nB;
+[[1, 1], [3, 2], [6, 4], [8, 5], [10, 6]].forEach(([n, pos]) => {
+  const d = document.createElement("div"); d.className = "p"; d.dataset.f = 261.63 * Math.pow(2, n / 12); d.dataset.k = mapa[n];
+  d.style.left = `calc(${pos * larg}% - ${larg * .3}%)`; d.style.width = `${larg * .6}%`; d.innerHTML = `<span>${mapa[n]}</span>`; piano.appendChild(d); });
+function toca(el){ if (!el) return; audio(); nota(+el.dataset.f, ctx.currentTime + .01, .7); el.classList.add("on"); setTimeout(() => el.classList.remove("on"), 180); }
+piano.addEventListener("pointerdown", e => toca(e.target.closest(".b,.p")));
+addEventListener("keydown", e => { if (e.repeat || e.target.matches("input,textarea")) return;
+  toca(piano.querySelector(`[data-k="${e.key.toUpperCase()}"]`)); });
+</script>
+</body>
+</html>
