@@ -43,3 +43,4 @@
 - **Hoje o site não usa Google Analytics nem pixel.** Se for colocar, usar o exemplo no topo do cookies.js e listar a ferramenta na política.
 - **Link:** https://raw.githack.com/priscilacanaan/priscilacanaan/de9f18b2598ca4fcff3f1028bd9b1c366249db32/portfolio-priscila/index.html
 - **Contato do portfólio (25/11):** e-mail sisprila@gmail.com e WhatsApp (91) 98144-0648 na página inicial e na política de privacidade; Instagram retirado. O formulário, que antes não enviava nada, agora abre o WhatsApp com a mensagem pronta. Link: https://raw.githack.com/priscilacanaan/priscilacanaan/fe16287fc17c265097e9bdc8d0dde7d663fd5df1/portfolio-priscila/index.html
+- **Botão do WhatsApp (25/11):** botão verde flutuante no canto do portfólio (com o texto no computador, só o ícone no celular). Link: https://raw.githack.com/priscilacanaan/priscilacanaan/7b7ed97aceb6119d0929c5f5b1f5a8857463a7d1/portfolio-priscila/index.html
