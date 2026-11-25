@@ -12,3 +12,9 @@
 - **Feito:** site de uma página em `site-green/` (index.html + img/ com logo, fachada e balcão enviados pela Priscila). Seções: capa, marcas, serviços, por que autorizada, como funciona, orçamento pelo WhatsApp, dúvidas. Testado no computador e no celular.
 - **Fontes dos dados:** WhatsApp (91) 98249-0105 tirado da foto da fachada. Telefone fixo e endereço (Tv. Quatorze de Março, 912 - Umarizal) vêm de um diretório online não confirmado → CONFIRMAR. O link da bio e o Instagram estavam bloqueados na rede desta sessão.
 - **Aberto:** confirmar endereço, telefone, horário e condições de orçamento e garantia · publicar (só com o "publica" da Priscila) · DISC: aguardando o "sim" para Supabase + GitHub Pages.
+
+## 25/11/2026 · Green no portfólio
+- **Feito:** card da Green Eletrônica adicionado em primeiro no portfólio (`portfolio-priscila/`), com foto do site e textos em PT/EN/ES. Link do card: raw.githack do commit 87b6084.
+- **Como:** o portfólio estava no ramo `claude/focused-albattani-kp9gs3`; trouxe para o ramo `claude/practical-feynman-rwkx1x` (merge, nada perdido) e editei aqui.
+- **Link novo do portfólio:** https://raw.githack.com/priscilacanaan/priscilacanaan/3bff24b9a9171e7ee87b1410c9914ae55d930be8/portfolio-priscila/index.html
+- **Atenção:** o link antigo do portfólio (que aponta para o outro ramo) não mostra a Green.
