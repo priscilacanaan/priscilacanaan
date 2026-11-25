@@ -37,7 +37,15 @@ const glow = document.querySelector('.glow');
 if (!reduce) addEventListener('mousemove', e => { glow.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; });
 document.querySelectorAll('.svc').forEach(s => s.addEventListener('mousemove', e => { const r = s.getBoundingClientRect(); s.style.setProperty('--mx', (e.clientX - r.left) + 'px'); s.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
 
-document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, v = s => (f.querySelector(s).value || '').trim();
+  const sel = f.querySelector('select'), servico = sel.value ? sel.options[sel.selectedIndex].text : '';
+  const msg = ['Olá, Priscila! Vim pelo seu portfólio.', '', `*Nome:* ${v('input[type=text]')}`, `*E-mail:* ${v('input[type=email]')}`,
+    servico && `*Preciso de:* ${servico}`, v('textarea') && `*Projeto:* ${v('textarea')}`].filter(Boolean).join('\n');
+  window.open('https://wa.me/5591981440648?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  f.classList.add('sent');
+});
 
 /* ---------- idioma: PT (fonte), EN, ES ---------- */
 const srcTxt = new Map();

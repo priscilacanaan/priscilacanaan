@@ -29,7 +29,7 @@ st1:"Automation",st2:"Generative AI",st3:"Responsive sites",st4:"Video",st5:"Vis
 k_cont:"Contact",t_cont:"Let's build <em>something together?</em>",p_cont:"Tell me about your project. I'll reply to arrange a conversation.",
 l_mail:"E-mail",f_name:"Your name",f_mail:"E-mail",f_msg:"Tell me a bit about the project",
 o_0:"What do you need?",o_1:"AI automation",o_2:"Website",o_3:"Media and content",o_4:"More than one front",
-f_btn:"Send →",f_ok:"Received! I'll reply soon.",
+f_btn:"Send →",f_ok:"Opening WhatsApp with your message. Just tap send.",
 foot:"© 2026 Priscila Canaan · AI automation, websites and media studio",fl_priv:"Privacy",fl_cookies:"Cookies",fl_terms:"Terms of Use",fl_top:"Top ↑"
 },
 es:{
@@ -61,6 +61,6 @@ st1:"Automatización",st2:"IA generativa",st3:"Sitios adaptables",st4:"Video",st
 k_cont:"Contacto",t_cont:"¿Creamos <em>algo juntas?</em>",p_cont:"Cuéntame sobre tu proyecto. Respondo para coordinar una conversación.",
 l_mail:"Correo",f_name:"Tu nombre",f_mail:"Correo",f_msg:"Cuéntame un poco sobre el proyecto",
 o_0:"¿Qué necesitas?",o_1:"Automatización con IA",o_2:"Sitio web",o_3:"Medios y contenido",o_4:"Más de un frente",
-f_btn:"Enviar →",f_ok:"¡Recibido! Te respondo pronto.",
+f_btn:"Enviar →",f_ok:"Abriendo WhatsApp con tu mensaje. Solo toca enviar.",
 foot:"© 2026 Priscila Canaan · Estudio de automatización con IA, sitios web y medios",fl_priv:"Privacidad",fl_cookies:"Cookies",fl_terms:"Términos de uso",fl_top:"Arriba ↑"
 }};
