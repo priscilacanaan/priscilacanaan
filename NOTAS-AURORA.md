@@ -28,3 +28,8 @@
 - **Portfólio com 8 projetos** (Keuffer em destaque no topo, Green em destaque no fim): https://raw.githack.com/priscilacanaan/priscilacanaan/f1ae8bea90811d2c3353293cac7d4edd5bf29cba/portfolio-priscila/index.html
 - **Atualizado (25/11):** piano da Keuffer com notas a partir do C (Dó). Keuffer: https://raw.githack.com/priscilacanaan/priscilacanaan/9eea21629984f5daaac34bbd4f5ae3aa92802f98/site-keuffer/index.html · Portfólio: https://raw.githack.com/priscilacanaan/priscilacanaan/06dcf6f0990131011c3baff00786a85410d5a4ee/portfolio-priscila/index.html
 - **Atualizado (25/11):** piano sem as letras de atalho. Keuffer: https://raw.githack.com/priscilacanaan/priscilacanaan/bde5fc0c3132ec488d66cc3ff1132a554270ae3a/site-keuffer/index.html · Portfólio: https://raw.githack.com/priscilacanaan/priscilacanaan/cf715794ac709ee9f961913f537ed976054cacbf/portfolio-priscila/index.html
+
+## 25/11/2026 · Site Maura Jardins
+- **Feito:** site em `site-maura/`: topo com jardim desenhado ao vivo (açaizeiros, helicônias, folhagens, vasos de terracota) que balança com o vento; o mouse/dedo cria rajadas; botões Calmaria/Brisa/Ventania. Seções: serviços, quem cuida (foto), vasos (foto), plantas da nossa terra (animadas), como trabalhamos, contato com orçamento pelo WhatsApp. Logo e 2 fotos enviados pela Priscila. Testado no computador e no celular.
+- **Dados (do site antigo via busca, CONFIRMAR):** Tv. Rui Barbosa, 676 - Reduto; (91) 3241-1000; WhatsApp (91) 99100-0202; seg–sex 8h–17h, sáb 8h–12h; Instagram @maurajardinsbelem. Lista de serviços escrita por mim → confirmar.
+- **Aberto:** confirmar dados e serviços · link githack e portfólio (só com autorização da Maura Jardins).
