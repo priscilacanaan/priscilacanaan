@@ -49,3 +49,5 @@
 - **Feito:** `site-companhia/`, refeito com a base da Best Fit (mesmas animações) em vermelho e preto, com o logo enviado. Formulário e botões abrem o WhatsApp (91) 99338-7055 com mensagem pronta. Testado no computador e no celular.
 - **Sem inventar:** não usei fotos, preços, grade de horários nem depoimento da Best Fit. O site antigo (companhiabelem.com.br) estava bloqueado aqui; os dados vieram do Instagram/cadastros públicos.
 - **Aberto:** confirmar dados, horários, modalidades e planos; fotos reais; link githack e portfólio (só com autorização da Companhia).
+- **Companhia publicada (25/11, autorização confirmada pela Priscila):** https://raw.githack.com/priscilacanaan/priscilacanaan/e39ba91c4b30c464351e3771cfa7e2c6f45751b0/site-companhia/index.html
+- **Portfólio com 10 projetos:** https://raw.githack.com/priscilacanaan/priscilacanaan/a208408f0cae8951195e7b2c7f9ea6c98909cfbe/portfolio-priscila/index.html
