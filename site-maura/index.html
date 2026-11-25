@@ -55,11 +55,12 @@ img{display:block;max-width:100%}
 .heroi{position:relative;min-height:max(620px,100svh);background:linear-gradient(180deg,#e9a07b 0%,#d97b52 38%,var(--terra) 70%,var(--terra-esc) 100%);color:#fff;overflow:hidden}
 #jardim{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
 .heroi .cont{position:relative;z-index:2;padding-top:clamp(120px,18vh,180px);pointer-events:none}
-.heroi .cont>*{pointer-events:auto}
+.heroi .cont>*{pointer-events:auto;max-width:min(640px,48vw)}
+@media(max-width:760px){.heroi .cont>*{max-width:none}}
 .selo{display:inline-flex;align-items:center;gap:8px;background:rgba(23,53,39,.28);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:22px}
-.heroi h1{font-size:clamp(34px,6.4vw,88px);font-weight:800;max-width:9.5em;text-shadow:0 2px 30px rgba(120,40,15,.25)}
+.heroi h1{font-size:clamp(34px,4.4vw,64px);font-weight:800;max-width:11em;text-shadow:0 2px 30px rgba(120,40,15,.25)}
 .heroi h1 em{font-style:normal;color:var(--broto)}
-.heroi p.sub{font-size:clamp(17px,1.6vw,20px);max-width:28em;margin:0 0 28px;color:rgba(255,255,255,.93)}
+.heroi p.sub{font-size:clamp(16px,1.4vw,19px);max-width:30em;margin:0 0 28px;color:rgba(255,255,255,.93)}
 .heroi .acoes{display:flex;gap:12px;flex-wrap:wrap}
 .vento{position:absolute;z-index:3;left:max(4vw,16px);bottom:24px;display:flex;align-items:center;gap:10px;background:rgba(23,53,39,.78);backdrop-filter:blur(8px);padding:8px 8px 8px 16px;border-radius:999px;color:#fff;font-size:14px}
 .vento button{background:transparent;color:#fff;border:0;border-radius:999px;padding:8px 14px;min-height:40px;font:600 14px Inter,sans-serif;cursor:pointer}
