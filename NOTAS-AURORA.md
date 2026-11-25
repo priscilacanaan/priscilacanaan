@@ -26,3 +26,4 @@
 - **Aberto:** confirmar dados e WhatsApp · publicar (só com autorização da Keuffer e o "publica" da Priscila) · incluir no portfólio.
 - **Keuffer publicada (25/11, com autorização confirmada pela Priscila):** https://raw.githack.com/priscilacanaan/priscilacanaan/eb27cd4fb92af64c53db665a9c2491ee150606a0/site-keuffer/index.html
 - **Portfólio com 8 projetos** (Keuffer em destaque no topo, Green em destaque no fim): https://raw.githack.com/priscilacanaan/priscilacanaan/f1ae8bea90811d2c3353293cac7d4edd5bf29cba/portfolio-priscila/index.html
+- **Atualizado (25/11):** piano da Keuffer com notas a partir do C (Dó). Keuffer: https://raw.githack.com/priscilacanaan/priscilacanaan/9eea21629984f5daaac34bbd4f5ae3aa92802f98/site-keuffer/index.html · Portfólio: https://raw.githack.com/priscilacanaan/priscilacanaan/06dcf6f0990131011c3baff00786a85410d5a4ee/portfolio-priscila/index.html
