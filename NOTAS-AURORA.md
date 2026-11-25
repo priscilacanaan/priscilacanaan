@@ -37,3 +37,8 @@
 - **Portfólio com 9 projetos** (Maura e Keuffer em destaque no topo, Green no fim): https://raw.githack.com/priscilacanaan/priscilacanaan/a08acf353d35801075ef451840f1d2f6e2bf4e41/portfolio-priscila/index.html
 - **Lição:** testar sempre com as fontes do Google carregando (a fonte Syne é bem mais larga e mudou o layout).
 - **Atualizado (25/11):** portfólio em 3 linhas de 3 cards, sem destaques (Maura, Keuffer e Green na primeira linha): https://raw.githack.com/priscilacanaan/priscilacanaan/616aa30a799bb0d039c2ea523ab471a43333be1b/portfolio-priscila/index.html
+
+## 25/11/2026 · Cookies no portfólio
+- **Feito:** `portfolio-priscila/cookies.js`: aviso na primeira visita (Aceitar todos / Só essenciais / Personalizar), tela de preferências com 3 categorias (essenciais sempre ligados; medição de audiência e marketing desligados até a pessoa aceitar), escolha guardada 12 meses, PT/EN/ES acompanhando o site, link "Cookies" no rodapé das 3 páginas, scripts com `type="text/plain" data-categoria="analise"` só rodam com consentimento. Política de privacidade (seção 4) atualizada, com botões de mudar/apagar a escolha. 11 testes passaram.
+- **Hoje o site não usa Google Analytics nem pixel.** Se for colocar, usar o exemplo no topo do cookies.js e listar a ferramenta na política.
+- **Link:** https://raw.githack.com/priscilacanaan/priscilacanaan/de9f18b2598ca4fcff3f1028bd9b1c366249db32/portfolio-priscila/index.html
