@@ -96,6 +96,13 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 @media(max-width:960px){.grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.grid{grid-template-columns:1fr}}
+.card.destaque{grid-column:1/-1;display:grid;grid-template-columns:2fr 1fr;align-items:center}
+.card.destaque .thumb{aspect-ratio:1830/563;height:100%}
+.thumb picture{display:block;width:100%;height:100%}
+.card.destaque .info{padding:2rem 2.2rem}
+.card.destaque .info h3{font-size:1.7rem}
+@media(max-width:960px){.card.destaque{grid-template-columns:1fr}.card.destaque .thumb{height:auto}}
+@media(max-width:620px){.card.destaque .thumb{aspect-ratio:900/563}}
 .card{background:var(--ink2);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:block;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
 .card:hover{transform:translateY(-8px);border-color:rgba(0,194,168,.5);box-shadow:0 30px 60px -30px rgba(124,92,255,.5)}
 .card.hide{display:none}
