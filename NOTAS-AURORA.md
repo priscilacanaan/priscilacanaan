@@ -24,3 +24,5 @@
 - **Feito:** site em `site-keuffer/` com palco 3D (Three.js): guitarra, violão, teclado e bateria girando, botão "Tocar" com som gerado no navegador, teclas do teclado 3D clicáveis, piano 2D tocável (teclas A–K), departamentos, lojas e redes. Logo recortado da imagem enviada. Testado no computador e no celular.
 - **Dados (de diretórios online, CONFIRMAR):** Loja Umarizal: Av. Generalíssimo Deodoro, 457, (91) 3073-1600, seg–sex 9h–18h, sáb 9h–13h. Loja Comércio: Rua Senador Manoel Barata, 355. Há outro telefone listado: (91) 3259-3576. Site oficial: keuffer.com.br.
 - **Aberto:** confirmar dados e WhatsApp · publicar (só com autorização da Keuffer e o "publica" da Priscila) · incluir no portfólio.
+- **Keuffer publicada (25/11, com autorização confirmada pela Priscila):** https://raw.githack.com/priscilacanaan/priscilacanaan/eb27cd4fb92af64c53db665a9c2491ee150606a0/site-keuffer/index.html
+- **Portfólio com 8 projetos** (Keuffer em destaque no topo, Green em destaque no fim): https://raw.githack.com/priscilacanaan/priscilacanaan/f1ae8bea90811d2c3353293cac7d4edd5bf29cba/portfolio-priscila/index.html
