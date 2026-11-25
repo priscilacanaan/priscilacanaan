@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<title>Best Fit Academia Umarizal — Belém | Treine com energia</title>
+<meta name="description" content="Academia Best Fit no Umarizal, Belém-PA: musculação, aulas coletivas e acompanhamento. Agende sua aula experimental." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#000;--bg2:#0d0d0d;--card:#121212;--line:#262626;--lime:#F7C001;--red:#F7C001;--txt:#f2f2ee;--mut:#9a9a94;--display:"Anton",Impact,sans-serif;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--lime)}
+.outline{color:transparent;-webkit-text-stroke:2px var(--lime)}
+.todo,.todo-link{color:var(--lime)}
+.progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:90}
+.progress span{display:block;height:100%;background:var(--lime);transform-origin:left;transform:scaleX(var(--sp,0))}
+.spot{position:fixed;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(circle,rgba(247,192,1,.14),transparent 65%);pointer-events:none;z-index:1;transition:transform .15s linear}
+@media(hover:none){.spot{display:none}}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 5vw;transition:background .3s,padding .3s}
+.nav.solid{background:rgba(0,0,0,.92);backdrop-filter:blur(10px);padding:.7rem 5vw;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center}
+.logo img{height:64px;width:auto;display:block}
+.foot-logo img{width:min(520px,80vw);height:auto;display:block}
+.logo b{color:var(--lime);font-weight:400}
+
+.links{display:flex;gap:1.6rem;font-weight:600;font-size:.92rem;text-transform:uppercase;letter-spacing:.06em}
+.links a{position:relative;color:var(--mut);transition:color .2s}
+.links a:hover{color:var(--txt)}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--lime);transform:scaleX(0);transition:transform .3s var(--ease)}
+.links a:hover::after{transform:scaleX(1)}
+@media(max-width:980px){.links{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--lime);color:#000;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:1rem 1.6rem;border-radius:4px;border:0;font:800 .95rem var(--sans);cursor:pointer;transition:transform .2s,box-shadow .3s,background .3s;clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.btn:hover{box-shadow:0 0 0 4px rgba(247,192,1,.25),0 0 30px rgba(247,192,1,.4)}
+.btn span{transition:transform .3s var(--ease)}
+.btn:hover span{transform:translateX(5px)}
+.btn-ghost{background:transparent;color:var(--txt);box-shadow:inset 0 0 0 2px var(--line);clip-path:none;border-radius:4px}
+.btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--lime);color:var(--lime)}
+.btn-sm{padding:.7rem 1.2rem;font-size:.82rem}
+.mag{transition:transform .2s ease-out,box-shadow .3s}
+
+/* type */
+section{padding:7rem 5vw;position:relative;z-index:2}
+.kicker{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--lime);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:28px;height:2px;background:var(--lime)}
+.kicker.light{color:#000}.kicker.light::before{background:#000}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6vw,5rem);line-height:.98;text-transform:uppercase;letter-spacing:.01em}
+.head{margin-bottom:3rem}
+.note{font-size:.78rem;color:var(--mut);margin-top:1.6rem}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:7rem;overflow:hidden;position:relative}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-bg i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.35}
+.hero-bg i:nth-child(1){width:500px;height:500px;background:var(--lime);right:-120px;top:5%;animation:drift 12s ease-in-out infinite}
+.hero-bg i:nth-child(2){width:380px;height:380px;background:var(--red);left:-140px;bottom:-80px;animation:drift 15s ease-in-out infinite reverse}
+.hero-bg i:nth-child(3){width:240px;height:240px;background:#fff;opacity:.08;left:40%;top:30%;animation:drift 9s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(60px,-50px) scale(1.12)}}
+.hero>*:not(.hero-bg){position:relative;z-index:1}
+.hero-title{font-family:var(--display);font-weight:400;font-size:clamp(4.2rem,15vw,13rem);line-height:.88;text-transform:uppercase;letter-spacing:-.005em}
+.hero-title .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero-title .ln>span{display:inline-block;transform:translateY(110%);animation:up 1s var(--ease) forwards}
+.hero-title .ln:nth-child(2)>span{animation-delay:.15s}
+@keyframes up{to{transform:none}}
+.hero-sub{font-size:1.15rem;line-height:1.6;color:#cfcfc8;max-width:520px;margin:1.8rem 0 2.2rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-meter{position:absolute;right:6vw;top:18vh;display:flex;align-items:center;gap:1rem;background:rgba(22,22,22,.8);border:1px solid var(--line);padding:1rem 1.2rem;border-radius:16px;backdrop-filter:blur(8px)}
+.ring{position:relative;width:70px;height:70px;display:grid;place-items:center}
+.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke:var(--line);stroke-width:8}
+.ring .arc{stroke:var(--lime);stroke-linecap:round;stroke-dasharray:327;stroke-dashoffset:327;animation:arc 3s ease-in-out infinite}
+@keyframes arc{0%{stroke-dashoffset:327}70%,100%{stroke-dashoffset:60}}
+.ring b{font-size:1.4rem}
+.hero-meter p{font-size:.8rem;color:var(--mut);line-height:1.4}
+.hero-meter strong{color:var(--txt);font-size:.95rem}
+.scroll{position:absolute;left:5vw;bottom:2.5rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+@media(max-width:760px){.hero-meter{display:none}}
+
+/* marquee */
+.marquee{background:var(--lime);color:#000;padding:1.1rem 0;overflow:hidden;transform:rotate(-2deg) scale(1.04);position:relative;z-index:3}
+.track{display:flex;gap:1.6rem;width:max-content;animation:mq 26s linear infinite;font-family:var(--display);font-size:2.2rem;text-transform:uppercase}
+.track i{font-style:normal;color:#000}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;padding-top:6rem;padding-bottom:4rem}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+.stat{border-top:2px solid var(--line);padding-top:1rem;position:relative}
+.stat::after{content:"";position:absolute;top:-2px;left:0;height:2px;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease)}
+.stat.in::after{transform:scaleX(1)}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(3.5rem,7vw,6rem);line-height:1;color:var(--lime)}
+.stat span{color:var(--mut);font-size:.92rem}
+.stats .note{grid-column:1/-1;margin-top:0}
+
+/* treinos */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:1000px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform .35s var(--ease),border-color .3s,box-shadow .4s;will-change:transform}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(247,192,1,.22),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{border-color:var(--lime);box-shadow:0 30px 60px -30px rgba(247,192,1,.35)}
+.card:hover::before{opacity:1}
+.c-ico{font-size:2.6rem;margin-bottom:1rem;display:inline-block;transition:transform .5s var(--ease)}
+.card:hover .c-ico{transform:rotate(-12deg) scale(1.15)}
+.card h3{font-family:var(--display);font-weight:400;font-size:2rem;text-transform:uppercase;margin-bottom:.5rem}
+.card p{color:var(--mut);line-height:1.55;font-size:.95rem}
+.card ul{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+.card li{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);padding:.3rem .6rem;border-radius:999px}
+
+/* horarios */
+.horarios{background:var(--bg2)}
+.grade{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card)}
+.row{display:grid;grid-template-columns:110px repeat(5,1fr);font-size:.92rem}
+.row span{padding:.95rem .6rem;text-align:center;border-top:1px solid var(--line);transition:background .25s,color .25s}
+.row span:first-child{font-weight:800;color:var(--mut);text-align:left;padding-left:1.2rem}
+.row:not(.head-row) span:not(:first-child):not(:empty):hover{background:var(--lime);color:#000;font-weight:800}
+.head-row span{font-family:var(--display);font-size:1.1rem;text-transform:uppercase;color:var(--lime);border-top:0}
+.row:nth-child(n+3) span:nth-child(n+2){animation:fadein .6s var(--ease) both}
+.row:nth-child(3) span{animation-delay:.1s}.row:nth-child(4) span{animation-delay:.2s}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}}
+@media(max-width:700px){.row{grid-template-columns:70px repeat(5,minmax(96px,1fr));overflow-x:auto}}
+.hours-line{margin-top:1.6rem;font-size:1rem}
+.hours-line b{color:var(--lime)}
+
+/* coach */
+.coach-card{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:3rem;overflow:hidden}
+@media(max-width:860px){.coach-card{grid-template-columns:1fr;padding:2rem}}
+.coach-txt h2{margin-bottom:1rem}
+.coach-txt>p:not(.kicker){color:var(--mut);line-height:1.6;max-width:520px}
+.steps{list-style:none;margin-top:1.6rem;display:flex;flex-direction:column;gap:.8rem}
+.steps li{display:flex;align-items:center;gap:1rem;font-weight:600}
+.steps b{width:38px;height:38px;border-radius:50%;background:var(--lime);color:#000;display:grid;place-items:center;font-family:var(--display);font-weight:400;font-size:1.2rem;flex:none;transition:transform .4s var(--ease)}
+.steps li:hover b{transform:rotate(360deg)}
+.gauge{width:min(300px,80vw);aspect-ratio:1;border-radius:50%;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;background:
+  radial-gradient(circle at 50% 50%,var(--card) 58%,transparent 59%),conic-gradient(var(--lime) calc(var(--g,0)*1%),var(--line) 0);
+  transition:background .2s;box-shadow:0 0 60px rgba(247,192,1,.15)}
+.gauge span{font-size:.7rem;letter-spacing:.18em;color:var(--mut);text-align:center;padding:0 1rem}
+.gauge .pct{font-family:var(--display);font-weight:400;font-size:4.5rem;color:var(--lime);line-height:1}
+.gauge small{color:var(--mut);font-size:.85rem}
+
+/* planos */
+.toggle{position:relative;display:inline-flex;margin-top:1.6rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+.toggle button{position:relative;z-index:1;border:0;background:none;color:var(--mut);padding:.6rem 1.2rem;font:700 .9rem var(--sans);cursor:pointer;border-radius:999px;transition:color .3s}
+.toggle button.is-on{color:#000}
+.toggle small{color:var(--red);font-weight:800}
+.toggle .pill{position:absolute;top:4px;bottom:4px;left:4px;border-radius:999px;background:var(--lime);transition:all .4s var(--ease)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-items:stretch;margin-top:1rem}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2.2rem;display:flex;flex-direction:column;position:relative;transition:transform .4s var(--ease),border-color .3s}
+.plan:hover{transform:translateY(-8px);border-color:#3a3a3a}
+.plan h3{font-family:var(--display);font-weight:400;font-size:1.8rem;text-transform:uppercase}
+.price{display:flex;align-items:baseline;gap:.3rem;margin:1rem 0 1.4rem;flex-wrap:wrap}
+.price span{color:var(--mut)}
+.price b{font-family:var(--display);font-weight:400;font-size:3.6rem;line-height:1}
+.price small{color:var(--mut)}
+.plan ul{list-style:none;flex:1;margin-bottom:1.8rem}
+.plan li{padding:.6rem 0;border-bottom:1px dashed var(--line);color:#d9d9d2;font-size:.95rem}
+.plan li::before{content:"✚ ";color:var(--lime)}
+.plan .btn{justify-content:center}
+.plan.featured{background:var(--lime);color:#000;border-color:var(--lime);transform:scale(1.03)}
+.plan.featured:hover{transform:scale(1.03) translateY(-8px)}
+.plan.featured h3,.plan.featured .price b,.plan.featured .price span,.plan.featured .price small{color:#000}
+.plan.featured li{color:#000;border-color:rgba(0,0,0,.25)}
+.plan.featured li::before{color:#000}
+.plan.featured .btn{background:#000;color:var(--lime);clip-path:none;border-radius:4px}
+.ribbon{position:absolute;top:-13px;right:1.4rem;background:#000;color:var(--lime);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.4rem .9rem;border-radius:4px}
+
+/* quote */
+.quote{text-align:center;padding-top:4rem;padding-bottom:4rem}
+.quote blockquote{font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;text-transform:uppercase;max-width:900px;margin:auto}
+.who{margin-top:1.4rem;color:var(--lime);font-weight:700}
+
+/* aula */
+.aula{padding-top:2rem}
+.aula-card{background:var(--lime);color:#000;border-radius:24px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;overflow:hidden}
+.aula-card::after{content:"💪";position:absolute;right:-30px;bottom:-40px;font-size:14rem;opacity:.12;transform:rotate(-14deg)}
+@media(max-width:860px){.aula-card{grid-template-columns:1fr;padding:2rem}}
+.aula-card h2{color:#000}
+.aula-card h2 em{color:#000;text-decoration:underline;text-decoration-thickness:6px}
+.aula-card>div p:not(.kicker){margin-top:1rem;line-height:1.55;font-weight:500}
+.form{display:grid;gap:.7rem;position:relative;z-index:1}
+.form input,.form select{padding:1rem 1.1rem;border:2px solid #000;border-radius:4px;background:#fff;font:600 1rem var(--sans);color:#000}
+.form input:focus,.form select:focus{outline:3px solid #000;outline-offset:2px}
+.form .btn{justify-content:center;background:#000;color:var(--lime);clip-path:none;border-radius:4px}
+.form .btn:hover{box-shadow:0 0 0 4px rgba(0,0,0,.2)}
+.ok{display:none;font-weight:800;font-size:1.1rem}
+.form.sent>*:not(.ok){display:none}
+.form.sent .ok{display:block;animation:up .6s var(--ease) both}
+.form.sent{min-height:200px}
+
+/* local */
+.local{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
+@media(max-width:900px){.local{grid-template-columns:1fr}}
+.local h2{margin-bottom:1.2rem}
+.addr{color:#d9d9d2;line-height:1.6;font-size:1.05rem;margin-bottom:1.6rem}
+.hr-tbl{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:1.4rem}
+.hr-tbl div{display:flex;justify-content:space-between;padding:.8rem 1.1rem;border-top:1px solid var(--line);font-size:.95rem}
+.hr-tbl div:first-child{border-top:0}
+.hr-tbl span{color:var(--mut)}
+.hr-tbl b{color:var(--lime)}
+.phone{margin:1.4rem 0;font-weight:600}
+.phone a{border-bottom:2px solid var(--lime)}
+.map{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:420px}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:invert(.92) hue-rotate(180deg) saturate(.8) brightness(.95);display:block}
+.pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);font-size:2.4rem;pointer-events:none;animation:bounce 1.6s ease-in-out infinite}
+@keyframes bounce{50%{transform:translate(-50%,-115%)}}
+.todo{background:var(--lime);color:#000;font-size:.72em;font-weight:800;padding:.1rem .4rem;border-radius:3px}
+
+/* footer */
+.footer{background:#000;padding:4rem 5vw 6rem;border-top:1px solid var(--line);position:relative;z-index:2;overflow:hidden}
+
+
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2rem;color:var(--mut);font-size:.88rem}
+.social{display:flex;gap:1rem}
+.social a:hover{color:var(--lime)}
+
+/* whatsapp */
+.wa{position:fixed;right:1.3rem;bottom:1.3rem;z-index:80;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:ring 2s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}100%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+.wa svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.wa .fill{fill:currentColor;stroke:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.hero-title .ln>span{transform:none}}
+
+/* photos */
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:grayscale(.3) contrast(1.1)}
+.galeria{padding-top:5rem}
+.gal-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:260px;gap:1rem}
+.gal{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);margin:0;background:var(--card)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease),filter .5s}
+.gal:hover img{transform:scale(1.07);filter:saturate(1.2)}
+.gal figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--lime);color:#000;font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .7rem;border-radius:4px}
+.g-big{grid-row:span 2}
+@media(max-width:800px){.gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:200px}.g-big{grid-column:span 2;grid-row:span 1}}
+
+
+.pay{color:var(--mut);font-size:.82rem;margin-top:-.8rem;margin-bottom:.6rem}
+.plan.featured .pay{color:#000}
+.price span{font-size:.95rem}
+.price small{font-size:1.1rem}
+.row span:not(:first-child):empty{background:transparent}
+
+
+/* ===== depoimento ===== */
+.depo{padding-top:3rem;padding-bottom:4rem}
+.depo .kicker{margin-bottom:1.6rem}
+.depo-card{position:relative;max-width:880px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:2.6rem 2.6rem 2.2rem;overflow:hidden;transition:transform .4s var(--ease),border-color .3s}
+.depo-card:hover{border-color:var(--lime);transform:translateY(-6px)}
+.depo-card::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(247,192,1,.12) 50%,transparent 70%);transform:translateX(-100%);transition:transform 1.2s var(--ease);pointer-events:none}
+.depo-card:hover::before{transform:translateX(100%)}
+.depo-flag{position:absolute;top:1rem;right:1rem;background:var(--lime);color:#000;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.35rem .6rem;border-radius:4px}
+.depo-q{font-family:var(--display);font-size:6rem;line-height:.6;color:var(--lime);display:block;height:2.4rem}
+.depo-txt{font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.5;font-weight:500;color:#eee}
+.depo-who{display:flex;align-items:center;gap:1rem;margin-top:1.6rem}
+.depo-who .av{width:52px;height:52px;border-radius:50%;background:var(--lime);color:#000;display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;flex:none}
+.depo-who b{display:block;font-size:1.05rem}
+.depo-who small{color:var(--mut)}
+.depo-stars{display:flex;gap:.2rem;margin-top:1.2rem;color:var(--lime);font-size:1.2rem}
+.depo-stars i{font-style:normal;animation:star 2.4s ease-in-out infinite}
+.depo-stars i:nth-child(2){animation-delay:.15s}.depo-stars i:nth-child(3){animation-delay:.3s}.depo-stars i:nth-child(4){animation-delay:.45s}.depo-stars i:nth-child(5){animation-delay:.6s}
+@keyframes star{50%{transform:scale(1.35) rotate(12deg)}}
+
+/* ===== hero rotating word ===== */
+.rot-out{display:inline-grid;vertical-align:top;color:transparent;-webkit-text-stroke:2px var(--lime)}
+.rot-out b{grid-area:1/1;font-weight:400;opacity:0;transform:translateY(60%);transition:opacity .4s,transform .6s var(--ease)}
+.rot-out b.on{opacity:1;transform:none}
+.rot-out b.out{opacity:0;transform:translateY(-60%);transition:opacity .25s,transform .35s var(--ease)}
+
+/* ===== parallax photo ===== */
+.hero-photo{will-change:transform}
+
+/* ===== title hover shine ===== */
+h2{background:linear-gradient(90deg,#f2f2ee 0%,#f2f2ee 40%,var(--lime) 50%,#f2f2ee 60%,#f2f2ee 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;background-position:100% 0;transition:background-position 1.4s var(--ease)}
+h2.in-view{background-position:0 0}
+h2 em{-webkit-text-fill-color:var(--lime)}
+.aula-card h2{background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:#000;color:#000}
+.aula-card h2 em{-webkit-text-fill-color:#000;color:#000}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+<div class="spot" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo"><img src="logo.png" alt="Best Fit Academia" /></a>
+  <nav class="links">
+    <a href="#treinos">Treinos</a><a href="#horarios">Horários</a><a href="#planos">Planos</a><a href="#local">Localização</a>
+  </nav>
+  <a href="#aula" class="btn btn-sm mag">Aula grátis</a>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"><img src="fotos/fachada-noite.jpg" alt="" class="hero-photo" /><i></i><i></i><i></i></div>
+  <p class="kicker reveal">Academia · Umarizal · Belém – PA</p>
+  <h1 class="hero-title">
+    <span class="ln"><span>SEU TREINO</span></span>
+    <span class="ln"><span>SEM <span class="rot-out"><b class="on">DESCULPA</b><b>ENROLAÇÃO</b><b>DESISTIR</b></span></span></span>
+  </h1>
+  <p class="hero-sub reveal">Musculação, aulas coletivas e acompanhamento de perto para você sair do “vou começar segunda” e começar de verdade.</p>
+  <div class="hero-cta reveal">
+    <a href="#aula" class="btn mag">Quero minha aula grátis <span>→</span></a>
+    <a href="#treinos" class="btn btn-ghost">Ver modalidades</a>
+  </div>
+  <div class="hero-meter reveal" aria-hidden="true">
+    <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><circle class="arc" cx="60" cy="60" r="52"/></svg><b>🔥</b></div>
+    <p>Treino de hoje<br/><strong>Pernas + Glúteo</strong></p>
+  </div>
+  <div class="scroll" aria-hidden="true">role para baixo</div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Musculação</span><i>✚</i><span>Muay Thai</span><i>✚</i><span>Jiu-jitsu</span><i>✚</i><span>Pilates</span><i>✚</i><span>Fit Dance</span><i>✚</i><span>GAP</span><i>✚</i><span>Avaliação física</span><i>✚</i>
+    <span>Musculação</span><i>✚</i><span>Muay Thai</span><i>✚</i><span>Jiu-jitsu</span><i>✚</i><span>Pilates</span><i>✚</i><span>Fit Dance</span><i>✚</i><span>GAP</span><i>✚</i><span>Avaliação física</span><i>✚</i>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="stat reveal"><b data-count="7">0</b><span>dias por semana abertos</span></div>
+  <div class="stat reveal"><b data-count="3">0</b><span>turnos de aula por dia</span></div>
+  <div class="stat reveal"><b data-count="0">0</b><span>taxa de adesão</span></div>
+  <div class="stat reveal"><b data-count="5">0</b><span>convidados por mês (Silver)</span></div>
+</section>
+
+<section class="galeria">
+  <div class="head">
+    <p class="kicker">A academia</p>
+    <h2>Por dentro <em>da Best Fit.</em></h2>
+  </div>
+  <div class="gal-grid">
+    <figure class="gal g-big reveal"><img src="fotos/piso-academia.jpg" alt="Piso da academia Best Fit com aparelhos" loading="lazy" /><figcaption>Musculação</figcaption></figure>
+    <figure class="gal reveal"><img src="fotos/airbike.jpg" alt="Aula de bike no ar na Best Fit" loading="lazy" /><figcaption>Cardio</figcaption></figure>
+    <figure class="gal reveal"><img src="fotos/jiu-jitsu.jpg" alt="Treino de jiu-jitsu na Best Fit" loading="lazy" /><figcaption>Jiu-jitsu</figcaption></figure>
+    <figure class="gal reveal"><img src="fotos/cabo-treino.jpg" alt="Treino de costas no cabo" loading="lazy" /><figcaption>Treino</figcaption></figure>
+    <figure class="gal reveal"><img src="fotos/esteiras.jpg" alt="Esteiras da academia Best Fit" loading="lazy" /><figcaption>Esteiras</figcaption></figure>
+  </div>
+</section>
+
+<section id="treinos" class="treinos">
+  <div class="head">
+    <p class="kicker">Modalidades</p>
+    <h2>Escolha o <em>seu</em> jogo.</h2>
+  </div>
+  <div class="cards">
+    <article class="card tilt reveal"><div class="c-ico">🏋️</div><h3>Musculação</h3><p>Área completa de pesos e aeróbicos, com equipamentos importados e espaço de sobra.</p><ul><li>Musculação</li><li>Aeróbicos</li><li>Air bike</li></ul></article>
+    <article class="card tilt reveal"><div class="c-ico">🥋</div><h3>Lutas</h3><p>Jiu-jitsu e Muay Thai com turmas que treinam juntas. Técnica, defesa e condicionamento.</p><ul><li>Jiu-jitsu</li><li>Muay Thai</li></ul></article>
+    <article class="card tilt reveal"><div class="c-ico">🧘‍♀️</div><h3>Pilates & Funcional</h3><p>Postura, core e força. Aulas de pilates pela manhã e à noite, e circuito funcional para o corpo inteiro.</p><ul><li>Pilates</li><li>Funcional</li><li>Circuito</li></ul></article>
+    <article class="card tilt reveal"><div class="c-ico">💃</div><h3>Dança & GAP</h3><p>Fit Dance para quem gosta de ritmo e GAP para fortalecer glúteos, pernas e abdômen.</p><ul><li>Fit Dance</li><li>GAP</li></ul></article>
+  </div>
+</section>
+
+<section id="horarios" class="horarios">
+  <div class="head">
+    <p class="kicker">Quadro de aulas</p>
+    <h2>Treine quando <em>der.</em></h2>
+  </div>
+  <div class="grade reveal">
+    <div class="row head-row"><span>Hora</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span></div>
+    <div class="row"><span>06:30</span><span></span><span>Pilates</span><span></span><span>Pilates</span><span></span></div>
+    <div class="row"><span>07:30</span><span></span><span>Pilates</span><span></span><span>Pilates</span><span></span></div>
+    <div class="row"><span>08:30</span><span>Circuito funcional</span><span>Fit Dance</span><span>GAP</span><span>Fit Dance</span><span>GAP</span></div>
+    <div class="row"><span>17:00</span><span></span><span>Muay Thai</span><span></span><span>Muay Thai</span><span></span></div>
+    <div class="row"><span>18:00</span><span>Pilates</span><span></span><span>Pilates</span><span></span><span>Pilates</span></div>
+    <div class="row"><span>18:30</span><span></span><span>Funcional</span><span></span><span>GAP</span><span></span></div>
+    <div class="row"><span>19:30</span><span>Muay Thai</span><span>Fit Dance</span><span>Muay Thai</span><span>Fit Dance</span><span>Muay Thai</span></div>
+    <div class="row"><span>20:30</span><span>Jiu-jitsu</span><span>Jiu-jitsu</span><span>Jiu-jitsu</span><span>Jiu-jitsu</span><span>Jiu-jitsu</span></div>
+  </div>
+  <p class="hours-line reveal">Musculação e aeróbicos: <b>seg a sex 05:00–23:00 · sáb 08:00–16:00 · dom e feriado 09:00–14:00</b></p>
+  <p class="note">Aulas de sábado não estão no quadro. Confirme com a recepção.</p>
+</section>
+
+<section class="coach">
+  <div class="coach-card reveal">
+    <div class="coach-txt">
+      <p class="kicker">Avaliação física gratuita</p>
+      <h2>Comece com um <em>diagnóstico.</em></h2>
+      <p>Medimos, testamos e montamos o seu primeiro treino. Sem achismo e sem treino copiado da internet.</p>
+      <ol class="steps">
+        <li><b>1</b>Conversa sobre o seu objetivo</li>
+        <li><b>2</b>Avaliação e medidas</li>
+        <li><b>3</b>Treino montado com você</li>
+      </ol>
+    </div>
+    <div class="coach-visual" aria-hidden="true">
+      <div class="gauge"><span>MEU PRIMEIRO TREINO</span><b class="pct">0</b><small>% pronto</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos" class="planos">
+  <div class="head">
+    <p class="kicker">Planos</p>
+    <h2>Sem <em>letra miúda.</em></h2>
+  </div>
+  <div class="plans">
+    <div class="plan reveal">
+      <h3>Best Silver</h3>
+      <p class="price"><span>R$</span><b>189</b><small>,90/mês</small></p>
+      <p class="pay">Plano recorrente</p>
+      <ul>
+        <li>Acesso a todas as unidades</li>
+        <li>Musculação, aeróbicos e aulas coletivas</li>
+        <li>Sem restrição de horário</li>
+        <li>Sem multas ou taxas de cancelamento</li>
+        <li>Sem taxa de adesão e sem fidelidade</li>
+        <li>5 convidados por mês</li>
+      </ul>
+      <a href="#aula" class="btn btn-ghost">Quero esse</a>
+    </div>
+    <div class="plan featured reveal">
+      <span class="ribbon">Mais vendido</span>
+      <h3>Best Gold</h3>
+      <p class="price"><span>12x R$</span><b>119</b><small>,90/mês</small></p>
+      <p class="pay">Plano anual</p>
+      <ul>
+        <li>Musculação, aeróbicos e aulas coletivas</li>
+        <li>Sem restrição de horário</li>
+        <li>Sem taxa de adesão</li>
+        <li>Fidelidade de 12 meses</li>
+      </ul>
+      <a href="#aula" class="btn">Quero esse →</a>
+    </div>
+    <div class="plan reveal">
+      <h3>Best Platinum</h3>
+      <p class="price"><span>R$</span><b>139</b><small>,90/mês</small></p>
+      <p class="pay">Plano recorrente · não ocupa limite no cartão</p>
+      <ul>
+        <li>Musculação, aeróbicos e aulas coletivas</li>
+        <li>Sem restrição de horário</li>
+        <li>Sem taxa de adesão</li>
+        <li>Fidelidade de 12 meses</li>
+      </ul>
+      <a href="#aula" class="btn btn-ghost">Quero esse</a>
+    </div>
+  </div>
+  <p class="note">Condições comerciais podem mudar. Consulte a promoção vigente antes de matricular.</p>
+</section>
+
+<section class="depo">
+  <p class="kicker">Quem treina conta</p>
+  <div class="depo-card reveal">
+    <span class="depo-flag">EXEMPLO · trocar pelo depoimento real</span>
+    <span class="depo-q">“</span>
+    <blockquote class="depo-txt">Cheguei aqui sem saber por onde começar. Hoje venho quase todo dia, a equipe me acompanha de perto e eu sinto a diferença no corpo e na disposição.</blockquote>
+    <div class="depo-who"><span class="av">[N]</span><div><b>[Nome do aluno]</b><small>aluno há [X] meses · [modalidade]</small></div></div>
+    <div class="depo-stars" aria-label="5 de 5 estrelas"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
+  </div>
+</section>
+
+<section id="aula" class="aula">
+  <div class="aula-card reveal">
+    <div>
+      <p class="kicker light">Aula experimental</p>
+      <h2>Vem treinar <em>com a gente.</em></h2>
+      <p>Deixe seus dados e a equipe marca o melhor horário. A primeira aula é por conta da casa.</p>
+    </div>
+    <form class="form" id="aula-form">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="tel" placeholder="WhatsApp" required />
+      <select required>
+        <option value="">Qual seu objetivo?</option>
+        <option>Ganhar massa</option><option>Emagrecer</option><option>Saúde e disposição</option><option>Ainda não sei</option>
+      </select>
+      <button class="btn" type="submit">Agendar minha aula →</button>
+      <p class="ok">Abrimos o WhatsApp com seus dados. É só enviar a mensagem para marcar sua aula. 💪</p>
+    </form>
+  </div>
+</section>
+
+<section id="local" class="local">
+  <div class="local-info reveal">
+    <p class="kicker">Localização</p>
+    <h2>A gente é <em>do Umarizal.</em></h2>
+    <p class="addr">[Endereço completo]<br/>Umarizal · Belém – PA</p>
+    <div class="hr-tbl">
+      <div><span>Seg a sex</span><b>05:00 – 23:00</b></div>
+      <div><span>Sábado</span><b>08:00 – 16:00</b></div>
+      <div><span>Domingo e feriado</span><b>09:00 – 14:00</b></div>
+    </div>
+    <p class="phone"><a href="tel:+5591980484544">91980484544</a> · <a href="https://api.whatsapp.com/send?phone=5591980484544&text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Best%20Fit%20Umarizal%20e%20quero%20saber%20mais." target="_blank" rel="noopener">WhatsApp</a></p>
+    <a class="btn btn-sm" href="https://www.google.com/maps/place/Academia+Best+Fit+Umarizal/@-1.4438621,-48.4784867,20z/data=!4m6!3m5!1s0x92a48d1fbaa46e95:0x6efb24fe90b5cf14!8m2!3d-1.4438355!4d-48.4780621!16s%2Fg%2F11ldd1zrmm?entry=ttu&amp;g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Abrir no Google Maps ↗</a>
+  </div>
+  <div class="map reveal">
+    <iframe title="Mapa Academia Best Fit Umarizal" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=-1.4438355,-48.4780621&amp;z=18&amp;output=embed"></iframe>
+    <span class="pin" aria-hidden="true">📍</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-logo"><img src="logo.png" alt="Best Fit Academia" /></div>
+  <div class="foot-row">
+    <span>© 2026 Best Fit Academia · Umarizal, Belém – PA · CNPJ [00.000.000/0001-00]</span>
+    <span class="social"><a href="https://www.instagram.com/bestfit.umarizal" target="_blank" rel="noopener">Instagram @bestfit.umarizal</a></span>
+    <a href="#top">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<a class="wa" href="https://api.whatsapp.com/send?phone=5591980484544&text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Best%20Fit%20Umarizal%20e%20quero%20saber%20mais." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
+</a>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* nav + progress */
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => {
+  nav.classList.toggle('solid', scrollY > 40);
+  bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight));
+}, { passive: true });
+
+/* reveal */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in'); io.unobserve(e.target);
+}), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* counters */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target, end = +el.dataset.count, t0 = performance.now();
+  const step = t => { const p = Math.min((t - t0) / 1600, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 4))); if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step); el.closest('.stat').classList.add('in'); cio.unobserve(el);
+}), { threshold: .6 });
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+/* gauge fills while visible (first workout progress) */
+const gauge = document.querySelector('.gauge'), pct = document.querySelector('.pct');
+const gio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  let v = 0; const t = setInterval(() => {
+    v = Math.min(v + 2, 100); gauge.style.setProperty('--g', v); pct.textContent = v;
+    if (v >= 100) clearInterval(t);
+  }, 25);
+  gio.unobserve(gauge);
+}), { threshold: .4 });
+if (gauge) gio.observe(gauge);
+
+/* tilt + spotlight on cards */
+if (!reduce) document.querySelectorAll('.card, .plan').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    el.style.setProperty('--mx', x * 100 + '%'); el.style.setProperty('--my', y * 100 + '%');
+    if (el.classList.contains('card')) el.style.transform = `perspective(800px) rotateY(${(x - .5) * 12}deg) rotateX(${(.5 - y) * 10}deg) translateY(-6px)`;
+  });
+  el.addEventListener('mouseleave', () => el.style.transform = '');
+});
+
+/* magnetic buttons */
+if (!reduce) document.querySelectorAll('.mag').forEach(b => {
+  b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .3}px,${(e.clientY - r.top - r.height / 2) * .4}px)`; });
+  b.addEventListener('mouseleave', () => b.style.transform = '');
+});
+
+/* cursor spotlight */
+const spot = document.querySelector('.spot');
+if (!reduce) addEventListener('mousemove', e => { spot.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; });
+
+/* aula experimental form: opens WhatsApp with the details filled in */
+const af=document.getElementById('aula-form');
+if(af) af.addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=n=>af.querySelector(n).value.trim();
+  const texto=`Olá! Quero marcar uma aula experimental na Best Fit Umarizal.\nNome: ${v('input[type=text]')}\nWhatsApp: ${v('input[type=tel]')}\nObjetivo: ${v('select')}`;
+  window.open('https://api.whatsapp.com/send?phone=5591980484544&text='+encodeURIComponent(texto),'_blank');
+  af.classList.add('sent');
+});
+
+/* ===== dinâmico ===== */
+/* rotating outline word in hero */
+const ro=[...document.querySelectorAll('.rot-out b')]; let roi=0;
+if(!reduce && ro.length) setInterval(()=>{
+  const cur=ro[roi]; cur.classList.remove('on'); cur.classList.add('out');
+  setTimeout(()=>cur.classList.remove('out'),400);
+  roi=(roi+1)%ro.length; ro[roi].classList.add('on');
+},2600);
+
+/* hero photo parallax */
+const hp=document.querySelector('.hero-photo');
+if(hp && !reduce) addEventListener('scroll',()=>{ hp.style.transform=`translateY(${scrollY*.25}px) scale(1.08)`; },{passive:true});
+
+/* scroll-speed marquee */
+const mqT=document.querySelector('.track');
+if(mqT && !reduce){
+  let x=0,v=0,last=scrollY;
+  addEventListener('scroll',()=>{ v+=(scrollY-last)*.4; last=scrollY; },{passive:true});
+  (function loop(){ v*=.92; x-=1.2+Math.min(Math.abs(v),40); if(-x>mqT.scrollWidth/2) x+=mqT.scrollWidth/2; mqT.style.transform=`translateX(${x}px)`; requestAnimationFrame(loop); })();
+}
+
+/* section titles shine in when visible */
+const hio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); hio.unobserve(e.target); } }),{threshold:.5});
+document.querySelectorAll('h2').forEach(el=>hio.observe(el));
+
+/* stagger reveal in grids */
+document.querySelectorAll('.cards, .plans, .gal-grid').forEach(g=>[...g.children].forEach((el,i)=>el.style.transitionDelay=(i*90)+'ms'));
+
+</script>
+</body>
+</html>

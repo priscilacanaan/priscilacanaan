@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F4EFE6" />
+<title>Backbone Business Services — Accounting, immigration paperwork & insurance at Turnberry Plaza</title>
+<meta name="description" content="The back office for neighborhood businesses, immigrants and independent contractors in Aventura. Accounting, immigration document assistance, local financial consulting and insurance — walk in at Turnberry Plaza." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#F4EFE6;
+  --paper2:#EAE2D3;
+  --ink:#16231E;
+  --green:#1F5C45;
+  --green-d:#123A2C;
+  --terra:#D9653B;
+  --mustard:#E8B44A;
+  --sky:#5B8DB8;
+  --serif:"DM Serif Display",Georgia,serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:radial-gradient(rgba(22,35,30,.06) 1px,transparent 1px);background-size:22px 22px}
+a{color:inherit;text-decoration:none}
+em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--green)}
+.todo{background:var(--mustard);color:var(--ink);font-size:.75em;padding:.05rem .4rem;border-radius:4px;font-weight:700}
+
+/* strip */
+.strip{background:var(--ink);color:var(--paper);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-align:center;padding:.55rem 1rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.strip .dot{color:var(--mustard)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 5vw;
+  background:rgba(244,239,230,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(22,35,30,.08)}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand-mark{display:flex;flex-direction:column;gap:3px}
+.brand-mark i{display:block;height:6px;border-radius:3px;background:var(--green);transition:width .4s var(--ease)}
+.brand-mark i:nth-child(1){width:26px}.brand-mark i:nth-child(2){width:18px;background:var(--terra)}.brand-mark i:nth-child(3){width:22px;background:var(--mustard)}
+.brand:hover .brand-mark i{width:26px}
+.brand-name{font-family:var(--serif);font-size:1.5rem;line-height:1;display:flex;flex-direction:column}
+.brand-name small{font-family:var(--sans);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.6;margin-top:.2rem}
+.nav-links{display:flex;gap:1.8rem;font-weight:600;font-size:.95rem}
+.nav-links a{position:relative;padding:.2rem 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--terra);transform:scaleX(0);transition:transform .3s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:.7rem}
+.lang{display:flex;border:1.5px solid var(--ink);border-radius:999px;padding:2px}
+.lang button{border:0;background:none;font:700 .75rem var(--sans);padding:.4rem .6rem;border-radius:999px;cursor:pointer;color:var(--ink)}
+.lang button.is-on{background:var(--ink);color:var(--paper)}
+@media(max-width:900px){.nav-links{display:none}}
+@media(max-width:520px){.nav .btn-sm{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--green);color:var(--paper);padding:1rem 1.5rem;border-radius:14px;font-weight:700;border:2px solid var(--green);
+  font-family:inherit;font-size:1rem;cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-line{background:var(--paper);color:var(--ink);border-color:var(--ink)}
+.btn-sm{padding:.6rem 1rem;font-size:.85rem;box-shadow:3px 3px 0 var(--ink)}
+
+/* type */
+section{padding:6.5rem 5vw}
+.kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--terra);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.kicker.light{color:var(--mustard)}
+.head{max-width:820px;margin-bottom:3rem}
+.head.center{margin-inline:auto;text-align:center}
+.head.center .kicker{justify-content:center}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.01em}
+.lead{font-size:1.15rem;line-height:1.6;margin-top:1.2rem;opacity:.8;max-width:620px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;min-height:calc(100vh - 110px);padding-top:4rem}
+@media(max-width:960px){.hero{grid-template-columns:1fr}}
+.hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,6.4vw,5.8rem);line-height:1;letter-spacing:-.015em}
+.hero-title .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero-title .ln>span{display:inline-block;transform:translateY(105%);animation:up 1s var(--ease) forwards}
+.hero-title .ln:nth-child(2)>span{animation-delay:.15s}
+@keyframes up{to{transform:none}}
+.hl{position:relative;white-space:nowrap;color:var(--ink)}
+.hl::before{content:"";position:absolute;left:-.08em;right:-.08em;bottom:.08em;height:.38em;background:var(--mustard);z-index:-1;transform:scaleX(0);transform-origin:left;animation:mark .9s .9s var(--ease) forwards;border-radius:4px}
+@keyframes mark{to{transform:scaleX(1)}}
+.hero-sub{font-size:1.18rem;line-height:1.6;max-width:580px;margin:1.6rem 0 2rem;opacity:.85}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-proof{list-style:none;display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
+.hero-proof li{display:flex;flex-direction:column;border-left:3px solid var(--terra);padding-left:.8rem}
+.hero-proof strong{font-size:1.1rem}
+.hero-proof span{font-size:.85rem;opacity:.7}
+
+/* paper stack */
+.hero-stack{position:relative;height:520px}
+@media(max-width:960px){.hero-stack{height:420px;max-width:440px;margin:0 auto;width:100%}}
+.paper{position:absolute;width:250px;background:#fff;border-radius:6px;padding:1.2rem;box-shadow:0 1px 0 rgba(0,0,0,.05),0 18px 40px -18px rgba(22,35,30,.45);
+  display:flex;flex-direction:column;gap:.55rem;font-size:.85rem;opacity:0;animation:drop .9s var(--ease) forwards}
+.paper b{font-weight:800;font-size:.9rem;border-bottom:1px dashed rgba(22,35,30,.2);padding-bottom:.5rem}
+.paper .lines{height:8px;border-radius:4px;background:var(--paper2)}
+.paper .lines.short{width:60%}
+.paper .row{display:flex;justify-content:space-between;font-family:ui-monospace,Menlo,monospace;font-size:.8rem}
+.paper .row i{font-style:normal}
+.paper .row.total{border-top:1px solid var(--ink);padding-top:.4rem;font-weight:700}
+.paper .chip{align-self:flex-start;background:var(--sky);color:#fff;font-size:.72rem;font-weight:700;padding:.25rem .6rem;border-radius:999px}
+.paper .big{font-family:var(--serif);font-size:2.4rem;color:var(--green)}
+.p1{top:10px;left:4%;--r:-8deg;animation-delay:.3s}
+.p2{top:70px;right:2%;--r:6deg;animation-delay:.5s;background:#FFFDF6}
+.p3{bottom:40px;left:0;--r:4deg;animation-delay:.7s}
+.p4{bottom:0;right:8%;--r:-5deg;animation-delay:.9s;border-top:6px solid var(--green)}
+@keyframes drop{from{opacity:0;transform:translateY(-60px) rotate(0)}to{opacity:1;transform:rotate(var(--r))}}
+.paper{transition:transform .5s var(--ease)}
+.hero-stack:hover .p1{transform:rotate(-12deg) translate(-14px,-10px)}
+.hero-stack:hover .p2{transform:rotate(10deg) translate(14px,-10px)}
+.hero-stack:hover .p3{transform:rotate(8deg) translate(-12px,10px)}
+.hero-stack:hover .p4{transform:rotate(-9deg) translate(12px,10px)}
+.stamp{position:absolute;top:44%;left:36%;z-index:5;font-family:var(--sans);font-weight:800;font-size:2.4rem;letter-spacing:.1em;color:var(--terra);
+  border:5px solid var(--terra);border-radius:10px;padding:.2rem 1rem .4rem;text-align:center;line-height:1;mix-blend-mode:multiply;
+  transform:rotate(-14deg) scale(3);opacity:0;animation:stamp .5s 1.6s cubic-bezier(.5,1.8,.5,1) forwards}
+.stamp small{display:block;font-size:.7rem;letter-spacing:.3em;margin-top:.2rem}
+@keyframes stamp{to{opacity:.92;transform:rotate(-14deg) scale(1)}}
+
+/* ticker */
+.ticker{background:var(--green);color:var(--paper);overflow:hidden;padding:1.1rem 0;border-block:2px solid var(--ink)}
+.ticker-track{display:flex;gap:1.8rem;width:max-content;animation:tick 40s linear infinite;font-family:var(--serif);font-size:1.7rem}
+.ticker-track b{color:var(--mustard);font-family:var(--sans)}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1100px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.svc-grid{grid-template-columns:1fr}}
+.svc{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:1.6rem;display:flex;flex-direction:column;gap:.9rem;position:relative;overflow:hidden;
+  box-shadow:6px 6px 0 var(--accent);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.svc::before{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);transition:transform .5s var(--ease);z-index:0}
+.svc>*{position:relative;z-index:1}
+.svc:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--ink)}
+.svc:hover::before{transform:translateY(calc(100% - 8px))}
+.svc-top{display:flex;justify-content:space-between;align-items:center}
+.svc-num{font-weight:800;font-size:.85rem;opacity:.5}
+.svc-icon{font-size:2rem;width:58px;height:58px;display:grid;place-items:center;border-radius:14px;background:var(--paper);transition:transform .5s var(--ease)}
+.svc:hover .svc-icon{transform:rotate(-10deg) scale(1.1)}
+.svc h3{font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.1}
+.svc p{line-height:1.55;opacity:.8}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-top:auto;padding-top:.6rem;border-top:1px dashed rgba(22,35,30,.25)}
+.svc li{font-size:.92rem;font-weight:600;padding-left:1.3rem;position:relative}
+.svc li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800}
+
+/* who */
+.who{background:var(--paper2)}
+.who-tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+.tab{border:2px solid var(--ink);background:transparent;padding:.8rem 1.3rem;border-radius:999px;font:700 .95rem var(--sans);cursor:pointer;color:var(--ink);transition:background .3s,color .3s}
+.tab.is-on{background:var(--ink);color:var(--paper)}
+.tab:not(.is-on):hover{background:#fff}
+.who-panels{position:relative}
+.panel{display:none;grid-template-columns:1.4fr .6fr;gap:2.5rem;align-items:center;background:#fff;border:2px solid var(--ink);border-radius:24px;padding:2.5rem}
+.panel.is-on{display:grid;animation:panelIn .6s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(20px)}}
+@media(max-width:820px){.panel{grid-template-columns:1fr;padding:1.6rem}}
+.panel h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:1rem}
+.panel p{font-size:1.1rem;line-height:1.65;opacity:.85}
+.tagline{display:inline-block;margin-top:1.4rem;font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--terra)}
+.panel-card{background:var(--green);color:var(--paper);border-radius:18px;padding:1.6rem;transform:rotate(2deg);box-shadow:6px 6px 0 var(--ink)}
+.panel-card .emoji{font-size:2.6rem;display:block;margin-bottom:.6rem;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-6deg)}}
+.panel-card b{display:block;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mustard);margin-bottom:.6rem}
+.panel-card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.panel-card li::before{content:"☑ ";color:var(--mustard)}
+
+/* deadline */
+.deadline{background:var(--ink);color:var(--paper);text-align:center;position:relative;overflow:hidden}
+.deadline::before,.deadline::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;filter:blur(80px);opacity:.35}
+.deadline::before{background:var(--terra);left:-120px;top:-120px;animation:float 10s ease-in-out infinite}
+.deadline::after{background:var(--green);right:-120px;bottom:-160px;animation:float 12s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translate(60px,40px)}}
+.deadline-inner{position:relative}
+.deadline .kicker{justify-content:center}
+.deadline h2{color:var(--paper)}
+.countdown{display:flex;justify-content:center;gap:1rem;margin:2.2rem 0 1.4rem;flex-wrap:wrap}
+.countdown div{background:rgba(244,239,230,.08);border:1px solid rgba(244,239,230,.2);border-radius:18px;padding:1.2rem 1.6rem;min-width:130px}
+.countdown b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(3rem,7vw,5rem);line-height:1;color:var(--mustard);font-variant-numeric:tabular-nums}
+.countdown span{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;opacity:.7}
+.dl-note{opacity:.75}
+
+/* how */
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding-top:2.5rem}
+@media(max-width:820px){.steps{grid-template-columns:1fr}.steps-line{display:none}}
+.steps-line{position:absolute;top:0;left:0;width:100%;height:40px;overflow:visible}
+.steps-line path{fill:none;stroke:var(--terra);stroke-width:3;stroke-dasharray:8 10;stroke-dashoffset:var(--dash,1000);transition:stroke-dashoffset .1s linear}
+.step{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:1.8rem}
+.step-n{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--mustard);font-family:var(--serif);font-size:1.8rem;border:2px solid var(--ink);margin-bottom:1rem;transition:transform .5s var(--ease)}
+.step:hover .step-n{transform:rotate(360deg)}
+.step h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin-bottom:.5rem}
+.step p{line-height:1.6;opacity:.8}
+
+/* voices */
+.voices{background:var(--paper2)}
+.voice-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.voice-row{grid-template-columns:1fr}}
+.voice{background:#fff;border-radius:20px;padding:1.8rem;border:2px solid var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:1.4rem;transition:transform .4s var(--ease)}
+.voice:nth-child(2){transform:rotate(-1.5deg)}
+.voice:hover{transform:rotate(0) translateY(-6px)}
+.voice blockquote{font-family:var(--serif);font-size:1.35rem;line-height:1.35}
+.voice figcaption{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:.9rem}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--terra);color:#fff;font-weight:800}
+
+/* faq */
+.faq-list{max-width:860px}
+details{border-bottom:2px solid var(--ink);padding:1.4rem 0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;align-items:center;font-weight:700;font-size:1.2rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:50%;border:2px solid var(--ink);font-size:1.3rem;transition:transform .4s var(--ease),background .3s}
+details[open] summary::after{transform:rotate(45deg);background:var(--mustard)}
+details p{padding-top:.9rem;line-height:1.65;opacity:.85;max-width:720px;animation:panelIn .4s var(--ease)}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem}
+@media(max-width:960px){.visit{grid-template-columns:1fr}}
+.visit-card{background:var(--green);color:var(--paper);border-radius:28px;padding:2.6rem;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.visit-card h2{color:var(--paper);margin-bottom:2rem}
+.visit-card h2 em{color:var(--mustard)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:620px){.visit-grid{grid-template-columns:1fr}}
+.visit h4{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mustard);margin:1.2rem 0 .5rem}
+.visit h4:first-child{margin-top:0}
+.visit p{line-height:1.6}
+.visit a{border-bottom:1px solid rgba(244,239,230,.5)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1.2rem}
+.open-now{margin-top:.8rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.open-now::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c,#999);box-shadow:0 0 0 0 var(--c,#999);animation:ping 1.8s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px transparent}}
+.visit-form{display:flex;flex-direction:column;gap:.7rem;margin-top:1.2rem}
+.visit-form input,.visit-form select{padding:.9rem 1rem;border-radius:12px;border:2px solid var(--ink);font:500 1rem var(--sans);background:var(--paper);color:var(--ink)}
+.visit-form input:focus,.visit-form select:focus{outline:3px solid var(--mustard);outline-offset:1px}
+.visit-form .btn{background:var(--mustard);color:var(--ink);border-color:var(--ink);justify-content:center}
+.sent-msg{display:none;font-weight:700;font-size:1.1rem}
+.visit-form.sent>*:not(.sent-msg){display:none}
+.visit-form.sent .sent-msg{display:block;animation:panelIn .5s var(--ease)}
+.map{border-radius:28px;overflow:hidden;border:2px solid var(--ink);min-height:420px;box-shadow:8px 8px 0 var(--terra)}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:saturate(.8) contrast(1.05)}
+
+/* footer */
+.footer{background:var(--ink);color:var(--paper);padding:3.5rem 5vw 6rem}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.brand.light .brand-mark i:nth-child(1){background:var(--paper)}
+.foot-social{display:flex;gap:.6rem;flex-wrap:wrap}
+.foot-social a{border:1.5px solid rgba(244,239,230,.3);padding:.55rem 1rem;border-radius:999px;font-weight:600;font-size:.9rem;transition:background .3s,color .3s}
+.foot-social a:hover{background:var(--mustard);color:var(--ink);border-color:var(--mustard)}
+.todo-link{border-style:dashed!important}
+.disclaimer{margin:2.5rem 0 2rem;font-size:.82rem;line-height:1.6;opacity:.65;max-width:900px;border-left:3px solid var(--terra);padding-left:1rem}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.85rem;opacity:.7}
+
+/* whatsapp */
+.wa-float{position:fixed;right:1.3rem;bottom:1.3rem;z-index:50;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .2s}
+.wa-float:hover{transform:translate(-2px,-2px) rotate(-8deg)}
+.wa-float svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.wa-float .fill{fill:currentColor;stroke:none}
+
+/* reveal + lang switch */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+body.switching main{animation:fadeLang .45s var(--ease)}
+@keyframes fadeLang{40%{opacity:.25}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.paper{opacity:1;transform:none}
+  .hero-title .ln>span{transform:none}
+  .hl::before{transform:none}
+  .stamp{opacity:.92;transform:rotate(-14deg)}
+}
+
+</style>
+</head>
+<body>
+
+<!-- top strip -->
+<div class="strip">
+  <span>Walk-ins welcome</span><span class="dot">•</span><span>Hablamos español</span><span class="dot">•</span><span>Falamos português</span>
+</div>
+
+<header class="nav">
+  <a href="#top" class="brand">
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="brand-name">Backbone<small>Business Services</small></span>
+  </a>
+  <nav class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#who">Who we help</a>
+    <a href="#how">How it works</a>
+    <a href="#visit">Visit us</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="is-on">EN</button><button data-lang="es">ES</button><button data-lang="pt">PT</button>
+    </div>
+    <a href="#visit" class="btn btn-sm">Book a visit</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <p class="kicker reveal"><span class="pin">📍</span>Turnberry Plaza · Aventura, FL</p>
+    <h1 class="hero-title">
+      <span class="ln"><span>You run the business.</span></span>
+      <span class="ln"><span>We run the <em class="hl">paperwork.</em></span></span>
+    </h1>
+    <p class="hero-sub reveal">Accounting, immigration documents, financial advice and insurance for neighborhood business owners, newcomers and independent contractors. No website, no app, no call center — just a desk, a person, and your folder.</p>
+    <div class="hero-cta reveal">
+      <a href="#visit" class="btn">Book a free first visit <span class="arr">→</span></a>
+      <a href="https://wa.me/10000000000" class="btn btn-line" target="_blank" rel="noopener">Message us on WhatsApp</a>
+    </div>
+    <ul class="hero-proof reveal">
+      <li><strong>EN · ES · PT</strong><span>spoken at the desk</span></li>
+      <li><strong>1 person</strong><span>who knows your file</span></li>
+      <li><strong>0 apps</strong><span>to download</span></li>
+    </ul>
+  </div>
+
+  <div class="hero-stack" aria-hidden="true">
+    <div class="paper p1"><b>Form W-9</b><span class="lines"></span><span class="lines short"></span><span class="lines"></span></div>
+    <div class="paper p2"><b>Receipts · March</b><span class="row"><i>Supplies</i><i>$214.60</i></span><span class="row"><i>Gas</i><i>$88.10</i></span><span class="row"><i>Phone</i><i>$65.00</i></span><span class="row total"><i>Total</i><i>$367.70</i></span></div>
+    <div class="paper p3"><b>Insurance quote</b><span class="lines"></span><span class="lines short"></span><span class="chip">General liability</span></div>
+    <div class="paper p4"><b>Q1 estimated tax</b><span class="big">$1,240</span><span class="lines short"></span></div>
+    <div class="stamp">DONE<small>on time</small></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Bookkeeping</span><b>✳</b><span>Tax returns</span><b>✳</b><span>Payroll</span><b>✳</b><span>Sales tax</span><b>✳</b><span>Document translation</span><b>✳</b><span>Form preparation</span><b>✳</b><span>Business licenses</span><b>✳</b><span>Credit & loans</span><b>✳</b><span>Business insurance</span><b>✳</b><span>Health & life insurance</span><b>✳</b>
+    <span>Bookkeeping</span><b>✳</b><span>Tax returns</span><b>✳</b><span>Payroll</span><b>✳</b><span>Sales tax</span><b>✳</b><span>Document translation</span><b>✳</b><span>Form preparation</span><b>✳</b><span>Business licenses</span><b>✳</b><span>Credit & loans</span><b>✳</b><span>Business insurance</span><b>✳</b><span>Health & life insurance</span><b>✳</b>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="head">
+    <p class="kicker">What we do</p>
+    <h2>Four desks. <em>One folder.</em></h2>
+    <p class="lead">Most of our clients came in for one thing and stayed for the rest. Everything lives in one file, with one person who knows it.</p>
+  </div>
+
+  <div class="svc-grid">
+    <article class="svc reveal" style="--accent:var(--green)">
+      <div class="svc-top"><span class="svc-num">01</span><span class="svc-icon">🧾</span></div>
+      <h3>Accounting & taxes</h3>
+      <p>Bring the shoebox. We turn receipts and bank statements into clean books, file your taxes, and keep you ahead of every deadline.</p>
+      <ul><li>Monthly bookkeeping</li><li>Personal & business tax returns</li><li>Payroll and 1099s</li><li>Florida sales tax & annual report</li></ul>
+    </article>
+    <article class="svc reveal" style="--accent:var(--terra)">
+      <div class="svc-top"><span class="svc-num">02</span><span class="svc-icon">🗂️</span></div>
+      <h3>Immigration document assistance</h3>
+      <p>We help you organize, translate and fill out your paperwork correctly — and we tell you honestly when you need a lawyer.</p>
+      <ul><li>Form preparation & review for completeness</li><li>Certified document translation</li><li>Organizing evidence & copies</li><li>Referrals to licensed attorneys</li></ul>
+    </article>
+    <article class="svc reveal" style="--accent:var(--mustard)">
+      <div class="svc-top"><span class="svc-num">03</span><span class="svc-icon">📈</span></div>
+      <h3>Local financial consulting</h3>
+      <p>Plain-language advice for real neighborhood businesses: pricing, cash flow, credit, and when it's time to hire or grow.</p>
+      <ul><li>Business setup (LLC, EIN, licenses)</li><li>Cash-flow and pricing check-ups</li><li>Building business credit</li><li>Loan & lease paperwork</li></ul>
+    </article>
+    <article class="svc reveal" style="--accent:var(--sky)">
+      <div class="svc-top"><span class="svc-num">04</span><span class="svc-icon">🛡️</span></div>
+      <h3>Insurance options</h3>
+      <p>We compare plans from several carriers and explain them in your language, so you know exactly what you're paying for.</p>
+      <ul><li>General liability & workers' comp</li><li>Commercial auto</li><li>Health plans for families & self-employed</li><li>Life insurance</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who" class="who">
+  <div class="head">
+    <p class="kicker">Who we help</p>
+    <h2>Built for people who <em>work with their hands, phone and word.</em></h2>
+  </div>
+  <div class="who-tabs" role="tablist">
+    <button class="tab is-on" data-tab="0" role="tab">Neighborhood businesses</button>
+    <button class="tab" data-tab="1" role="tab">New to the U.S.</button>
+    <button class="tab" data-tab="2" role="tab">Independent contractors</button>
+  </div>
+  <div class="who-panels">
+    <div class="panel is-on">
+      <div class="panel-text">
+        <h3>The salon, the bakery, the repair shop.</h3>
+        <p>Your customers find you by word of mouth, not Google. Your books shouldn't depend on a website either. We handle the bookkeeping, sales tax, payroll and insurance so you can stay behind the counter.</p>
+        <span class="tagline">"We keep your shop legal, insured and paid up."</span>
+      </div>
+      <div class="panel-card"><span class="emoji">🥐</span><b>Typical month</b><ul><li>Receipts sorted</li><li>Sales tax filed</li><li>Payroll done</li><li>Owner sleeps</li></ul></div>
+    </div>
+    <div class="panel">
+      <div class="panel-text">
+        <h3>New country, new forms.</h3>
+        <p>Starting over is hard enough. We help you understand the paperwork, translate your documents, open your first business, get your tax ID and build credit — in Spanish, Portuguese or English.</p>
+        <span class="tagline">"Someone who explains it twice, without rushing you."</span>
+      </div>
+      <div class="panel-card"><span class="emoji">🌎</span><b>First steps</b><ul><li>Documents translated</li><li>ITIN or EIN</li><li>First tax return</li><li>First business account</li></ul></div>
+    </div>
+    <div class="panel">
+      <div class="panel-text">
+        <h3>Drivers, cleaners, builders, creators.</h3>
+        <p>You get 1099s from three clients and pay everything from one card. We separate the business from the personal, plan your quarterly taxes and find the right insurance for the jobs you take.</p>
+        <span class="tagline">"No surprise tax bill in April."</span>
+      </div>
+      <div class="panel-card"><span class="emoji">🛠️</span><b>Every quarter</b><ul><li>Expenses tracked</li><li>Estimated tax paid</li><li>Insurance up to date</li><li>Invoices ready</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEADLINE COUNTDOWN -->
+<section class="deadline">
+  <div class="deadline-inner reveal">
+    <p class="kicker light">Next important date</p>
+    <h2 id="dl-name">—</h2>
+    <div class="countdown" aria-live="polite">
+      <div><b id="dl-d">0</b><span>days</span></div>
+      <div><b id="dl-h">0</b><span>hours</span></div>
+      <div><b id="dl-m">0</b><span>minutes</span></div>
+    </div>
+    <p class="dl-note"><span id="dl-date"></span> · <span>Don't wait until the last week — bring your papers now.</span></p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how">
+  <div class="head">
+    <p class="kicker">How it works</p>
+    <h2>Three visits to <em>calm.</em></h2>
+  </div>
+  <div class="steps">
+    <svg class="steps-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,20 C150,0 250,40 400,20 S650,0 800,20 1000,20 1000,20" /></svg>
+    <div class="step reveal"><span class="step-n">1</span><h3>Walk in</h3><p>Come to Turnberry Plaza with whatever you have — papers, photos of receipts, letters you don't understand. The first conversation is free.</p></div>
+    <div class="step reveal"><span class="step-n">2</span><h3>We sort it</h3><p>We open your folder, list what's missing and give you a clear price before we do any work. No surprises.</p></div>
+    <div class="step reveal"><span class="step-n">3</span><h3>We keep it</h3><p>Each month or quarter we remind you, by WhatsApp or phone, what's due. You just answer and sign.</p></div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section class="voices">
+  <div class="head center">
+    <p class="kicker">From the neighborhood</p>
+    <h2>Word of mouth is <em>our website.</em></h2>
+  </div>
+  <div class="voice-row">
+    <figure class="voice reveal"><blockquote>"Replace with a real client quote — short and specific, like what problem they came in with."</blockquote><figcaption><span class="av">A</span>Client name · Business type</figcaption></figure>
+    <figure class="voice reveal"><blockquote>"Ask clients in Spanish or Portuguese too — quotes in their own language feel the most real."</blockquote><figcaption><span class="av">B</span>Client name · Business type</figcaption></figure>
+    <figure class="voice reveal"><blockquote>"A photo of the client at their shop makes this section 10× more trustworthy."</blockquote><figcaption><span class="av">C</span>Client name · Business type</figcaption></figure>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="head">
+    <p class="kicker">Questions</p>
+    <h2>Before you <em>come in.</em></h2>
+  </div>
+  <div class="faq-list">
+    <details><summary>Do I need an appointment?</summary><p>No. Walk-ins are welcome during office hours. If you want to be sure someone is free, send a WhatsApp and we'll hold a time for you.</p></details>
+    <details><summary>Are you lawyers?</summary><p>No. We are not attorneys and cannot give legal advice or represent you before immigration authorities. We help you prepare, translate and organize documents, and we refer you to a licensed immigration attorney whenever your case needs one.</p></details>
+    <details><summary>What should I bring to the first visit?</summary><p>An ID, any letters or forms you received, and whatever records you have — bank statements, receipts, last year's tax return. If you have nothing organized, that's fine. That's why we're here.</p></details>
+    <details><summary>How much does it cost?</summary><p>The first conversation is free. After that, we give you a written price before starting any work. Monthly bookkeeping plans are available for small businesses.</p></details>
+    <details><summary>Can you help me if I don't have a Social Security number?</summary><p>Yes. We can help you apply for an ITIN, file taxes and open a business with the documents you have.</p></details>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="visit">
+  <div class="visit-card reveal">
+    <p class="kicker light">Visit us</p>
+    <h2>Come by the <em>Plaza.</em></h2>
+    <div class="visit-grid">
+      <div>
+        <h4>Address</h4>
+        <p>Turnberry Plaza<br/>2875 NE 191st St, Suite <span class="todo">[#]</span><br/>Aventura, FL 33180</p>
+        <h4>Hours</h4>
+        <p class="hours"><span>Mon – Fri</span><span>9:00 – 6:00</span><span>Saturday</span><span>10:00 – 2:00</span><span>Sunday</span><span>Closed</span></p>
+        <p class="open-now" id="open-now"></p>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <p><a href="tel:+10000000000">(000) 000-0000</a> <span class="todo">[phone]</span><br/><a href="mailto:hello@example.com">hello@example.com</a> <span class="todo">[email]</span></p>
+        <form class="visit-form" onsubmit="event.preventDefault(); this.classList.add('sent');">
+          <input type="text" placeholder="Your name" required />
+          <input type="tel" placeholder="Phone or WhatsApp" required />
+          <select required>
+            <option value="">I need help with…</option>
+            <option>Accounting & taxes</option><option>Immigration documents</option><option>Financial consulting</option><option>Insurance</option><option>Not sure yet</option>
+          </select>
+          <button class="btn" type="submit">Request a call back →</button>
+          <p class="sent-msg">Thank you! We'll call you within one business day.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="map reveal">
+    <iframe title="Map to Turnberry Plaza" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=Turnberry+Plaza,+2875+NE+191st+St,+Aventura,+FL+33180&output=embed"></iframe>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-top">
+    <a href="#top" class="brand light">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">Backbone<small>Business Services</small></span>
+    </a>
+    <div class="foot-social">
+      <!-- Replace "#" with real profiles -->
+      <a href="https://wa.me/10000000000" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#" class="todo-link">Instagram</a>
+      <a href="#" class="todo-link">Facebook</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Turnberry+Plaza+2875+NE+191st+St+Aventura+FL" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+  <p class="disclaimer">We are not attorneys licensed to practice law in Florida and may not give legal advice or accept fees for legal advice. We are not "notarios." Insurance products are offered through a licensed Florida insurance agent <span class="todo">[license #]</span>. Tax and accounting services do not include legal representation.</p>
+  <div class="foot-row">
+    <span>© 2026 Backbone Business Services</span>
+    <span>Turnberry Plaza · Aventura, FL</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/10000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
+</a>
+
+<script>
+/* Translations. Key = English text exactly as on the page. Edit the values to change wording. */
+window.I18N = {
+es: {
+"Walk-ins welcome":"Sin cita previa","Hablamos español":"Hablamos español","Falamos português":"Falamos português",
+"Business Services":"Servicios Empresariales",
+"Services":"Servicios","Who we help":"A quién ayudamos","How it works":"Cómo funciona","Visit us":"Visítenos","Book a visit":"Agendar visita",
+"Turnberry Plaza · Aventura, FL":"Turnberry Plaza · Aventura, FL",
+"You run the business.":"Usted maneja el negocio.","We run the":"Nosotros, el","paperwork.":"papeleo.",
+"Accounting, immigration documents, financial advice and insurance for neighborhood business owners, newcomers and independent contractors. No website, no app, no call center — just a desk, a person, and your folder.":
+"Contabilidad, documentos de inmigración, asesoría financiera y seguros para dueños de negocios del barrio, recién llegados y contratistas independientes. Sin página web, sin app, sin call center — solo un escritorio, una persona y su carpeta.",
+"Book a free first visit":"Primera visita gratis","Message us on WhatsApp":"Escríbanos por WhatsApp",
+"spoken at the desk":"en el escritorio","1 person":"1 persona","who knows your file":"que conoce su caso","0 apps":"0 apps","to download":"para descargar",
+"Form W-9":"Formulario W-9","Receipts · March":"Recibos · Marzo","Supplies":"Materiales","Gas":"Gasolina","Phone":"Teléfono","Total":"Total",
+"Insurance quote":"Cotización de seguro","General liability":"Responsabilidad civil","Q1 estimated tax":"Impuesto estimado T1","DONE":"LISTO","on time":"a tiempo",
+"Bookkeeping":"Contabilidad","Tax returns":"Declaraciones de impuestos","Payroll":"Nómina","Sales tax":"Impuesto de ventas","Document translation":"Traducción de documentos","Form preparation":"Preparación de formularios","Business licenses":"Licencias comerciales","Credit & loans":"Crédito y préstamos","Business insurance":"Seguro comercial","Health & life insurance":"Seguro de salud y vida",
+"What we do":"Lo que hacemos","Four desks.":"Cuatro escritorios.","One folder.":"Una carpeta.",
+"Most of our clients came in for one thing and stayed for the rest. Everything lives in one file, with one person who knows it.":"La mayoría de nuestros clientes vino por una cosa y se quedó por todo lo demás. Todo vive en un solo archivo, con una persona que lo conoce.",
+"Accounting & taxes":"Contabilidad e impuestos",
+"Bring the shoebox. We turn receipts and bank statements into clean books, file your taxes, and keep you ahead of every deadline.":"Traiga la caja de zapatos. Convertimos recibos y estados de cuenta en libros ordenados, presentamos sus impuestos y lo mantenemos al día con cada fecha límite.",
+"Monthly bookkeeping":"Contabilidad mensual","Personal & business tax returns":"Impuestos personales y de negocio","Payroll and 1099s":"Nómina y formularios 1099","Florida sales tax & annual report":"Impuesto de ventas y reporte anual de Florida",
+"Immigration document assistance":"Asistencia con documentos de inmigración",
+"We help you organize, translate and fill out your paperwork correctly — and we tell you honestly when you need a lawyer.":"Le ayudamos a organizar, traducir y llenar sus documentos correctamente — y le decimos con honestidad cuándo necesita un abogado.",
+"Form preparation & review for completeness":"Preparación y revisión de formularios","Certified document translation":"Traducción certificada de documentos","Organizing evidence & copies":"Organización de pruebas y copias","Referrals to licensed attorneys":"Referidos a abogados licenciados",
+"Local financial consulting":"Asesoría financiera local",
+"Plain-language advice for real neighborhood businesses: pricing, cash flow, credit, and when it's time to hire or grow.":"Consejos claros para negocios reales del barrio: precios, flujo de caja, crédito y cuándo es momento de contratar o crecer.",
+"Business setup (LLC, EIN, licenses)":"Apertura de empresa (LLC, EIN, licencias)","Cash-flow and pricing check-ups":"Revisión de flujo de caja y precios","Building business credit":"Construir crédito comercial","Loan & lease paperwork":"Trámites de préstamos y arrendamientos",
+"Insurance options":"Opciones de seguro",
+"We compare plans from several carriers and explain them in your language, so you know exactly what you're paying for.":"Comparamos planes de varias aseguradoras y se los explicamos en su idioma, para que sepa exactamente qué está pagando.",
+"General liability & workers' comp":"Responsabilidad civil y compensación laboral","Commercial auto":"Auto comercial","Health plans for families & self-employed":"Planes de salud para familias e independientes","Life insurance":"Seguro de vida",
+"Built for people who":"Hecho para gente que","work with their hands, phone and word.":"trabaja con sus manos, su teléfono y su palabra.",
+"Neighborhood businesses":"Negocios del barrio","New to the U.S.":"Recién llegados a EE. UU.","Independent contractors":"Contratistas independientes",
+"The salon, the bakery, the repair shop.":"El salón, la panadería, el taller.",
+"Your customers find you by word of mouth, not Google. Your books shouldn't depend on a website either. We handle the bookkeeping, sales tax, payroll and insurance so you can stay behind the counter.":"Sus clientes lo encuentran de boca en boca, no en Google. Sus cuentas tampoco deberían depender de una página web. Nosotros llevamos la contabilidad, el impuesto de ventas, la nómina y los seguros para que usted siga detrás del mostrador.",
+"\"We keep your shop legal, insured and paid up.\"":"\"Mantenemos su negocio legal, asegurado y al día.\"",
+"Typical month":"Un mes típico","Receipts sorted":"Recibos ordenados","Sales tax filed":"Impuesto de ventas presentado","Payroll done":"Nómina lista","Owner sleeps":"El dueño duerme tranquilo",
+"New country, new forms.":"Nuevo país, nuevos formularios.",
+"Starting over is hard enough. We help you understand the paperwork, translate your documents, open your first business, get your tax ID and build credit — in Spanish, Portuguese or English.":"Empezar de nuevo ya es difícil. Le ayudamos a entender los trámites, traducir sus documentos, abrir su primer negocio, obtener su número fiscal y construir crédito — en español, portugués o inglés.",
+"\"Someone who explains it twice, without rushing you.\"":"\"Alguien que se lo explica dos veces, sin apuro.\"",
+"First steps":"Primeros pasos","Documents translated":"Documentos traducidos","ITIN or EIN":"ITIN o EIN","First tax return":"Primera declaración de impuestos","First business account":"Primera cuenta de negocio",
+"Drivers, cleaners, builders, creators.":"Choferes, limpieza, construcción, creadores.",
+"You get 1099s from three clients and pay everything from one card. We separate the business from the personal, plan your quarterly taxes and find the right insurance for the jobs you take.":"Recibe 1099 de tres clientes y paga todo con una sola tarjeta. Separamos lo del negocio de lo personal, planificamos sus impuestos trimestrales y buscamos el seguro adecuado para sus trabajos.",
+"\"No surprise tax bill in April.\"":"\"Ninguna sorpresa con los impuestos en abril.\"",
+"Every quarter":"Cada trimestre","Expenses tracked":"Gastos registrados","Estimated tax paid":"Impuesto estimado pagado","Insurance up to date":"Seguro al día","Invoices ready":"Facturas listas",
+"Next important date":"Próxima fecha importante","days":"días","hours":"horas","minutes":"minutos",
+"Don't wait until the last week — bring your papers now.":"No espere a la última semana — traiga sus papeles ahora.",
+"Q4 estimated tax payment":"Pago de impuesto estimado del 4.º trimestre","W-2 and 1099-NEC forms due":"Vencen los formularios W-2 y 1099-NEC","Partnership & S-corp tax returns":"Declaraciones de sociedades y S-corp","Personal tax returns + Q1 estimated tax":"Declaración personal + impuesto estimado del 1.er trimestre","Florida annual report (Sunbiz)":"Reporte anual de Florida (Sunbiz)","Q2 estimated tax payment":"Pago de impuesto estimado del 2.º trimestre","Q3 estimated tax payment":"Pago de impuesto estimado del 3.er trimestre","Extended personal tax returns":"Declaraciones personales con extensión",
+"Three visits to":"Tres visitas para","calm.":"la calma.",
+"Walk in":"Venga","Come to Turnberry Plaza with whatever you have — papers, photos of receipts, letters you don't understand. The first conversation is free.":"Venga a Turnberry Plaza con lo que tenga — papeles, fotos de recibos, cartas que no entiende. La primera conversación es gratis.",
+"We sort it":"Lo ordenamos","We open your folder, list what's missing and give you a clear price before we do any work. No surprises.":"Abrimos su carpeta, anotamos lo que falta y le damos un precio claro antes de empezar. Sin sorpresas.",
+"We keep it":"Lo mantenemos","Each month or quarter we remind you, by WhatsApp or phone, what's due. You just answer and sign.":"Cada mes o trimestre le recordamos por WhatsApp o teléfono lo que vence. Usted solo responde y firma.",
+"From the neighborhood":"Del barrio","Word of mouth is":"El boca a boca es","our website.":"nuestra página web.",
+"\"Replace with a real client quote — short and specific, like what problem they came in with.\"":"\"Reemplazar con una frase real de un cliente — corta y concreta, como el problema con el que llegó.\"",
+"\"Ask clients in Spanish or Portuguese too — quotes in their own language feel the most real.\"":"\"Pida frases también en español o portugués — en su propio idioma se sienten más reales.\"",
+"\"A photo of the client at their shop makes this section 10× more trustworthy.\"":"\"Una foto del cliente en su negocio hace esta sección 10 veces más confiable.\"",
+"Client name · Business type":"Nombre del cliente · Tipo de negocio",
+"Questions":"Preguntas","Before you":"Antes de","come in.":"venir.",
+"Do I need an appointment?":"¿Necesito cita?","No. Walk-ins are welcome during office hours. If you want to be sure someone is free, send a WhatsApp and we'll hold a time for you.":"No. Puede venir sin cita en horario de oficina. Si quiere asegurarse de que alguien esté libre, mande un WhatsApp y le reservamos un horario.",
+"Are you lawyers?":"¿Ustedes son abogados?","No. We are not attorneys and cannot give legal advice or represent you before immigration authorities. We help you prepare, translate and organize documents, and we refer you to a licensed immigration attorney whenever your case needs one.":"No. No somos abogados y no podemos dar asesoría legal ni representarlo ante las autoridades de inmigración. Le ayudamos a preparar, traducir y organizar documentos, y lo referimos a un abogado de inmigración licenciado cuando su caso lo necesite.",
+"What should I bring to the first visit?":"¿Qué debo traer a la primera visita?","An ID, any letters or forms you received, and whatever records you have — bank statements, receipts, last year's tax return. If you have nothing organized, that's fine. That's why we're here.":"Una identificación, las cartas o formularios que recibió y los registros que tenga — estados de cuenta, recibos, la declaración del año pasado. Si no tiene nada organizado, está bien. Para eso estamos.",
+"How much does it cost?":"¿Cuánto cuesta?","The first conversation is free. After that, we give you a written price before starting any work. Monthly bookkeeping plans are available for small businesses.":"La primera conversación es gratis. Después le damos un precio por escrito antes de empezar. Tenemos planes mensuales de contabilidad para pequeños negocios.",
+"Can you help me if I don't have a Social Security number?":"¿Me pueden ayudar si no tengo número de Seguro Social?","Yes. We can help you apply for an ITIN, file taxes and open a business with the documents you have.":"Sí. Le ayudamos a solicitar un ITIN, presentar impuestos y abrir un negocio con los documentos que tenga.",
+"Come by the":"Pase por la","Plaza.":"Plaza.","Address":"Dirección","Hours":"Horario","Mon – Fri":"Lun – Vie","Saturday":"Sábado","Sunday":"Domingo","Closed":"Cerrado",
+"Talk to us":"Hable con nosotros","Your name":"Su nombre","Phone or WhatsApp":"Teléfono o WhatsApp","I need help with…":"Necesito ayuda con…",
+"Immigration documents":"Documentos de inmigración","Financial consulting":"Asesoría financiera","Insurance":"Seguros","Not sure yet":"Todavía no sé",
+"Request a call back →":"Pedir que me llamen →","Thank you! We'll call you within one business day.":"¡Gracias! Lo llamaremos dentro de un día hábil.",
+"Open now — walk in":"Abierto ahora — pase","Closed now — message us on WhatsApp":"Cerrado ahora — escríbanos por WhatsApp",
+"We are not attorneys licensed to practice law in Florida and may not give legal advice or accept fees for legal advice. We are not \"notarios.\" Insurance products are offered through a licensed Florida insurance agent":"No somos abogados autorizados para ejercer en Florida y no podemos dar asesoría legal ni cobrar por ella. No somos \"notarios\". Los seguros se ofrecen a través de un agente de seguros licenciado en Florida",
+". Tax and accounting services do not include legal representation.":". Los servicios de impuestos y contabilidad no incluyen representación legal.",
+"[license #]":"[licencia #]","[phone]":"[teléfono]","Back to top ↑":"Volver arriba ↑",
+"Map to Turnberry Plaza":"Mapa a Turnberry Plaza","Language":"Idioma",
+"Backbone Business Services — Accounting, immigration paperwork & insurance at Turnberry Plaza":"Backbone Business Services — Contabilidad, trámites de inmigración y seguros en Turnberry Plaza"
+},
+pt: {
+"Walk-ins welcome":"Sem hora marcada","Business Services":"Serviços Empresariais",
+"Services":"Serviços","Who we help":"Quem ajudamos","How it works":"Como funciona","Visit us":"Visite-nos","Book a visit":"Agendar visita",
+"You run the business.":"Você cuida do negócio.","We run the":"A gente cuida da","paperwork.":"papelada.",
+"Accounting, immigration documents, financial advice and insurance for neighborhood business owners, newcomers and independent contractors. No website, no app, no call center — just a desk, a person, and your folder.":
+"Contabilidade, documentos de imigração, consultoria financeira e seguros para donos de negócios do bairro, recém-chegados e autônomos. Sem site, sem app, sem central de atendimento — só uma mesa, uma pessoa e a sua pasta.",
+"Book a free first visit":"Primeira visita grátis","Message us on WhatsApp":"Fale com a gente no WhatsApp",
+"spoken at the desk":"no atendimento","1 person":"1 pessoa","who knows your file":"que conhece o seu caso","0 apps":"0 apps","to download":"para baixar",
+"Form W-9":"Formulário W-9","Receipts · March":"Recibos · Março","Supplies":"Materiais","Gas":"Gasolina","Phone":"Telefone","Total":"Total",
+"Insurance quote":"Cotação de seguro","General liability":"Responsabilidade civil","Q1 estimated tax":"Imposto estimado T1","DONE":"PRONTO","on time":"no prazo",
+"Bookkeeping":"Escrituração","Tax returns":"Declaração de impostos","Payroll":"Folha de pagamento","Sales tax":"Imposto sobre vendas","Document translation":"Tradução de documentos","Form preparation":"Preenchimento de formulários","Business licenses":"Licenças comerciais","Credit & loans":"Crédito e empréstimos","Business insurance":"Seguro empresarial","Health & life insurance":"Seguro saúde e de vida",
+"What we do":"O que fazemos","Four desks.":"Quatro mesas.","One folder.":"Uma pasta.",
+"Most of our clients came in for one thing and stayed for the rest. Everything lives in one file, with one person who knows it.":"A maioria dos clientes veio por uma coisa e ficou pelo resto. Tudo fica num só arquivo, com uma pessoa que conhece o seu caso.",
+"Accounting & taxes":"Contabilidade e impostos",
+"Bring the shoebox. We turn receipts and bank statements into clean books, file your taxes, and keep you ahead of every deadline.":"Traga a caixa de sapato. Transformamos recibos e extratos em contas organizadas, declaramos seus impostos e deixamos você em dia com todos os prazos.",
+"Monthly bookkeeping":"Escrituração mensal","Personal & business tax returns":"Imposto pessoal e da empresa","Payroll and 1099s":"Folha de pagamento e 1099","Florida sales tax & annual report":"Imposto sobre vendas e relatório anual da Flórida",
+"Immigration document assistance":"Ajuda com documentos de imigração",
+"We help you organize, translate and fill out your paperwork correctly — and we tell you honestly when you need a lawyer.":"Ajudamos você a organizar, traduzir e preencher seus documentos corretamente — e dizemos com sinceridade quando você precisa de um advogado.",
+"Form preparation & review for completeness":"Preenchimento e revisão de formulários","Certified document translation":"Tradução certificada de documentos","Organizing evidence & copies":"Organização de provas e cópias","Referrals to licensed attorneys":"Indicação de advogados licenciados",
+"Local financial consulting":"Consultoria financeira local",
+"Plain-language advice for real neighborhood businesses: pricing, cash flow, credit, and when it's time to hire or grow.":"Conselhos simples para negócios reais do bairro: preço, fluxo de caixa, crédito e a hora certa de contratar ou crescer.",
+"Business setup (LLC, EIN, licenses)":"Abertura de empresa (LLC, EIN, licenças)","Cash-flow and pricing check-ups":"Revisão de fluxo de caixa e preços","Building business credit":"Construção de crédito empresarial","Loan & lease paperwork":"Papelada de empréstimos e aluguéis",
+"Insurance options":"Opções de seguro",
+"We compare plans from several carriers and explain them in your language, so you know exactly what you're paying for.":"Comparamos planos de várias seguradoras e explicamos no seu idioma, para você saber exatamente o que está pagando.",
+"General liability & workers' comp":"Responsabilidade civil e acidente de trabalho","Commercial auto":"Seguro de veículo comercial","Health plans for families & self-employed":"Planos de saúde para famílias e autônomos","Life insurance":"Seguro de vida",
+"Built for people who":"Feito para quem","work with their hands, phone and word.":"trabalha com as mãos, o celular e a palavra.",
+"Neighborhood businesses":"Negócios do bairro","New to the U.S.":"Recém-chegados aos EUA","Independent contractors":"Autônomos",
+"The salon, the bakery, the repair shop.":"O salão, a padaria, a oficina.",
+"Your customers find you by word of mouth, not Google. Your books shouldn't depend on a website either. We handle the bookkeeping, sales tax, payroll and insurance so you can stay behind the counter.":"Seus clientes chegam por indicação, não pelo Google. Suas contas também não precisam depender de um site. A gente cuida da escrituração, do imposto sobre vendas, da folha e do seguro para você ficar no balcão.",
+"\"We keep your shop legal, insured and paid up.\"":"\"Seu negócio legal, segurado e em dia.\"",
+"Typical month":"Um mês típico","Receipts sorted":"Recibos organizados","Sales tax filed":"Imposto sobre vendas declarado","Payroll done":"Folha pronta","Owner sleeps":"O dono dorme tranquilo",
+"New country, new forms.":"País novo, formulários novos.",
+"Starting over is hard enough. We help you understand the paperwork, translate your documents, open your first business, get your tax ID and build credit — in Spanish, Portuguese or English.":"Recomeçar já é difícil. Ajudamos você a entender a papelada, traduzir documentos, abrir sua primeira empresa, tirar seu número fiscal e construir crédito — em português, espanhol ou inglês.",
+"\"Someone who explains it twice, without rushing you.\"":"\"Alguém que explica duas vezes, sem pressa.\"",
+"First steps":"Primeiros passos","Documents translated":"Documentos traduzidos","ITIN or EIN":"ITIN ou EIN","First tax return":"Primeira declaração de impostos","First business account":"Primeira conta empresarial",
+"Drivers, cleaners, builders, creators.":"Motoristas, limpeza, construção, criadores.",
+"You get 1099s from three clients and pay everything from one card. We separate the business from the personal, plan your quarterly taxes and find the right insurance for the jobs you take.":"Você recebe 1099 de três clientes e paga tudo num cartão só. A gente separa o pessoal do profissional, planeja seus impostos trimestrais e encontra o seguro certo para os seus trabalhos.",
+"\"No surprise tax bill in April.\"":"\"Nenhuma surpresa com imposto em abril.\"",
+"Every quarter":"Todo trimestre","Expenses tracked":"Despesas registradas","Estimated tax paid":"Imposto estimado pago","Insurance up to date":"Seguro em dia","Invoices ready":"Faturas prontas",
+"Next important date":"Próxima data importante","days":"dias","hours":"horas","minutes":"minutos",
+"Don't wait until the last week — bring your papers now.":"Não espere a última semana — traga seus papéis agora.",
+"Q4 estimated tax payment":"Pagamento do imposto estimado do 4º trimestre","W-2 and 1099-NEC forms due":"Prazo dos formulários W-2 e 1099-NEC","Partnership & S-corp tax returns":"Declarações de sociedades e S-corp","Personal tax returns + Q1 estimated tax":"Declaração pessoal + imposto estimado do 1º trimestre","Florida annual report (Sunbiz)":"Relatório anual da Flórida (Sunbiz)","Q2 estimated tax payment":"Pagamento do imposto estimado do 2º trimestre","Q3 estimated tax payment":"Pagamento do imposto estimado do 3º trimestre","Extended personal tax returns":"Declarações pessoais com prorrogação",
+"Three visits to":"Três visitas para a","calm.":"tranquilidade.",
+"Walk in":"Venha","Come to Turnberry Plaza with whatever you have — papers, photos of receipts, letters you don't understand. The first conversation is free.":"Venha ao Turnberry Plaza com o que tiver — papéis, fotos de recibos, cartas que você não entende. A primeira conversa é grátis.",
+"We sort it":"A gente organiza","We open your folder, list what's missing and give you a clear price before we do any work. No surprises.":"Abrimos sua pasta, listamos o que falta e passamos um preço claro antes de começar. Sem surpresas.",
+"We keep it":"A gente mantém","Each month or quarter we remind you, by WhatsApp or phone, what's due. You just answer and sign.":"Todo mês ou trimestre lembramos você, por WhatsApp ou telefone, do que vence. Você só responde e assina.",
+"From the neighborhood":"Do bairro","Word of mouth is":"A indicação é","our website.":"o nosso site.",
+"\"Replace with a real client quote — short and specific, like what problem they came in with.\"":"\"Trocar por uma frase real de cliente — curta e específica, como o problema com que chegou.\"",
+"\"Ask clients in Spanish or Portuguese too — quotes in their own language feel the most real.\"":"\"Peça frases também em português ou espanhol — no idioma da pessoa soam mais verdadeiras.\"",
+"\"A photo of the client at their shop makes this section 10× more trustworthy.\"":"\"Uma foto do cliente no negócio dele deixa esta seção 10 vezes mais confiável.\"",
+"Client name · Business type":"Nome do cliente · Tipo de negócio",
+"Questions":"Perguntas","Before you":"Antes de","come in.":"vir.",
+"Do I need an appointment?":"Preciso marcar horário?","No. Walk-ins are welcome during office hours. If you want to be sure someone is free, send a WhatsApp and we'll hold a time for you.":"Não. Pode vir sem marcar no horário de atendimento. Se quiser garantir alguém livre, mande um WhatsApp e reservamos um horário.",
+"Are you lawyers?":"Vocês são advogados?","No. We are not attorneys and cannot give legal advice or represent you before immigration authorities. We help you prepare, translate and organize documents, and we refer you to a licensed immigration attorney whenever your case needs one.":"Não. Não somos advogados e não podemos dar orientação jurídica nem representar você perante a imigração. Ajudamos a preparar, traduzir e organizar documentos, e indicamos um advogado de imigração licenciado sempre que o seu caso precisar.",
+"What should I bring to the first visit?":"O que levar na primeira visita?","An ID, any letters or forms you received, and whatever records you have — bank statements, receipts, last year's tax return. If you have nothing organized, that's fine. That's why we're here.":"Um documento com foto, as cartas ou formulários que recebeu e os registros que tiver — extratos, recibos, a declaração do ano passado. Se nada estiver organizado, tudo bem. É para isso que estamos aqui.",
+"How much does it cost?":"Quanto custa?","The first conversation is free. After that, we give you a written price before starting any work. Monthly bookkeeping plans are available for small businesses.":"A primeira conversa é grátis. Depois, passamos um preço por escrito antes de começar. Temos planos mensais de escrituração para pequenos negócios.",
+"Can you help me if I don't have a Social Security number?":"Vocês me ajudam se eu não tiver Social Security?","Yes. We can help you apply for an ITIN, file taxes and open a business with the documents you have.":"Sim. Ajudamos você a pedir o ITIN, declarar impostos e abrir uma empresa com os documentos que tiver.",
+"Come by the":"Passe na","Plaza.":"Plaza.","Address":"Endereço","Hours":"Horário","Mon – Fri":"Seg – Sex","Saturday":"Sábado","Sunday":"Domingo","Closed":"Fechado",
+"Talk to us":"Fale com a gente","Your name":"Seu nome","Phone or WhatsApp":"Telefone ou WhatsApp","I need help with…":"Preciso de ajuda com…",
+"Immigration documents":"Documentos de imigração","Financial consulting":"Consultoria financeira","Insurance":"Seguros","Not sure yet":"Ainda não sei",
+"Request a call back →":"Quero que me liguem →","Thank you! We'll call you within one business day.":"Obrigado! Ligamos para você em até um dia útil.",
+"Open now — walk in":"Aberto agora — pode vir","Closed now — message us on WhatsApp":"Fechado agora — mande um WhatsApp",
+"We are not attorneys licensed to practice law in Florida and may not give legal advice or accept fees for legal advice. We are not \"notarios.\" Insurance products are offered through a licensed Florida insurance agent":"Não somos advogados habilitados na Flórida e não podemos dar orientação jurídica nem cobrar por ela. Não somos \"notarios\". Os seguros são oferecidos por um corretor de seguros licenciado na Flórida",
+". Tax and accounting services do not include legal representation.":". Os serviços de impostos e contabilidade não incluem representação jurídica.",
+"[license #]":"[licença nº]","[phone]":"[telefone]","Back to top ↑":"Voltar ao topo ↑",
+"Map to Turnberry Plaza":"Mapa até o Turnberry Plaza","Language":"Idioma",
+"Backbone Business Services — Accounting, immigration paperwork & insurance at Turnberry Plaza":"Backbone Business Services — Contabilidade, documentos de imigração e seguros no Turnberry Plaza"
+}
+};
+
+</script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let LANG = 'en';
+const T = (en) => (LANG !== 'en' && window.I18N && I18N[LANG] && I18N[LANG][en]) || en;
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const sib = [...e.target.parentElement.children].filter(c => c.classList.contains('reveal'));
+  e.target.style.transitionDelay = (sib.indexOf(e.target) % 5) * 90 + 'ms';
+  e.target.classList.add('in'); io.unobserve(e.target);
+}), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* who-we-help tabs */
+const tabs = [...document.querySelectorAll('.tab')], panels = [...document.querySelectorAll('.panel')];
+tabs.forEach((t, i) => t.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.toggle('is-on', x === t));
+  panels.forEach((p, j) => p.classList.toggle('is-on', j === i));
+}));
+
+/* steps line draws on scroll */
+const path = document.querySelector('.steps-line path');
+if (path) {
+  const len = path.getTotalLength(); path.style.strokeDasharray = `${len}`;
+  const steps = document.querySelector('.steps');
+  const draw = () => {
+    const r = steps.getBoundingClientRect();
+    const p = Math.min(Math.max((innerHeight - r.top) / (innerHeight * .8), 0), 1);
+    path.style.strokeDashoffset = reduce ? 0 : len * (1 - p);
+  };
+  addEventListener('scroll', () => requestAnimationFrame(draw), { passive: true }); draw();
+}
+
+/* hero paper parallax with mouse */
+const stack = document.querySelector('.hero-stack');
+if (stack && !reduce) addEventListener('mousemove', e => {
+  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+  stack.style.transform = `translate(${x * -18}px, ${y * -14}px)`;
+});
+
+/* tax & filing deadlines (federal + Florida). Dates can shift when they fall on a weekend or holiday. */
+const DEADLINES = [
+  [0, 15, 'Q4 estimated tax payment'],
+  [0, 31, 'W-2 and 1099-NEC forms due'],
+  [2, 15, 'Partnership & S-corp tax returns'],
+  [3, 15, 'Personal tax returns + Q1 estimated tax'],
+  [4, 1, 'Florida annual report (Sunbiz)'],
+  [5, 15, 'Q2 estimated tax payment'],
+  [8, 15, 'Q3 estimated tax payment'],
+  [9, 15, 'Extended personal tax returns'],
+];
+function nextDeadline() {
+  const now = new Date();
+  for (const yAdd of [0, 1]) for (const [m, d, name] of DEADLINES) {
+    const dt = new Date(now.getFullYear() + yAdd, m, d, 23, 59);
+    if (dt > now) return { dt, name };
+  }
+}
+function tickDeadline() {
+  const n = nextDeadline(); if (!n) return;
+  const ms = n.dt - new Date();
+  document.getElementById('dl-name').textContent = T(n.name);
+  document.getElementById('dl-d').textContent = Math.floor(ms / 864e5);
+  document.getElementById('dl-h').textContent = Math.floor(ms / 36e5) % 24;
+  document.getElementById('dl-m').textContent = Math.floor(ms / 6e4) % 60;
+  const loc = { en: 'en-US', es: 'es-US', pt: 'pt-BR' }[LANG];
+  document.getElementById('dl-date').textContent = n.dt.toLocaleDateString(loc, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+tickDeadline(); setInterval(tickDeadline, 30000);
+
+/* open now? (office time = Miami) */
+function openNow() {
+  const el = document.getElementById('open-now'); if (!el) return;
+  const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+  const get = t => parts.find(p => p.type === t).value;
+  const day = get('weekday'), h = +get('hour') % 24 + (+get('minute')) / 60;
+  const open = (['Mon','Tue','Wed','Thu','Fri'].includes(day) && h >= 9 && h < 18) || (day === 'Sat' && h >= 10 && h < 14);
+  el.textContent = T(open ? 'Open now — walk in' : 'Closed now — message us on WhatsApp');
+  el.style.setProperty('--c', open ? '#4ade80' : '#E8B44A');
+}
+openNow(); setInterval(openNow, 60000);
+
+/* ---------- languages: EN / ES / PT ---------- */
+const original = new Map();
+const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+  acceptNode: n => n.parentElement.closest('script,style,#dl-name,#dl-date,#open-now') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+});
+while (walker.nextNode()) { const n = walker.currentNode; if (n.nodeValue.trim()) original.set(n, n.nodeValue); }
+const attrEls = [...document.querySelectorAll('[placeholder],[aria-label],[title]')].map(el => ({
+  el, attrs: ['placeholder', 'aria-label', 'title'].filter(a => el.hasAttribute(a)).map(a => [a, el.getAttribute(a)])
+}));
+const TITLE_EN = document.title;
+
+function applyLang(lang) {
+  LANG = lang;
+  original.forEach((en, n) => { const k = en.trim(); n.nodeValue = lang === 'en' ? en : en.replace(k, T(k)); });
+  attrEls.forEach(({ el, attrs }) => attrs.forEach(([a, en]) => el.setAttribute(a, T(en))));
+  document.title = T(TITLE_EN);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === lang));
+  tickDeadline(); openNow();
+  try { localStorage.setItem('bb-lang', lang); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
+  if (reduce) return applyLang(b.dataset.lang);
+  document.body.classList.remove('switching'); void document.body.offsetWidth;
+  document.body.classList.add('switching'); setTimeout(() => applyLang(b.dataset.lang), 180);
+}));
+let saved = null; try { saved = localStorage.getItem('bb-lang'); } catch (e) {}
+const nav = (navigator.language || '').slice(0, 2);
+const start = new URLSearchParams(location.search).get('lang') || saved || (['es', 'pt'].includes(nav) ? nav : 'en');
+if (start !== 'en') applyLang(start);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#FFF4F8" />
+<title>Maioca — Sorvete de Belém | Sabores que você vai querer repetir</title>
+<meta name="description" content="Maioca: sorvetes e sabores paraenses em Belém, com açaí, tapioca e muitas opções. Venha para o Mercado de São Brás." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root{--cream:#F3E6D2;--pink:#B0268C;--pink2:#F5C2E0;--berry:#5C0A36;--plum:#3E0624;--mango:#FFE27A;--mint:#2EC4C8;--ink:#3E0624;--mut:#7A4A63;--white:#FFFFFF;--display:"Fredoka",system-ui,sans-serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);--bounce:cubic-bezier(.5,1.7,.4,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--pink)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.01em}
+h1{font-size:clamp(3rem,8vw,7rem)}
+h2{font-size:clamp(2.4rem,5.4vw,4.4rem)}
+h3{font-size:1.5rem;margin-bottom:.3rem}
+.todo{background:var(--mango);color:var(--ink);padding:0 .4rem;border-radius:6px;font-size:.85em;font-weight:700}
+.note{font-size:.85rem;color:var(--mut);margin-top:2rem}
+.progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:90}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--mango),var(--pink),var(--berry));transform-origin:left;transform:scaleX(var(--sp,0))}
+.reveal{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .8s var(--ease),transform .9s var(--bounce)}
+.reveal.in{opacity:1;transform:none}
+.kicker{font-family:var(--display);font-weight:600;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:.8rem}
+.kicker.light{color:var(--mango)}
+.head{margin-bottom:2.8rem;max-width:760px}
+.head.center{margin-inline:auto;text-align:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--pink);color:var(--white);font:600 1rem var(--sans);padding:1rem 1.6rem;border-radius:999px;border:0;cursor:pointer;box-shadow:0 10px 0 var(--berry);transition:transform .25s var(--bounce),box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 13px 0 var(--berry)}
+.btn:active{transform:translateY(5px);box-shadow:0 3px 0 var(--berry)}
+.btn span{transition:transform .3s var(--ease)}.btn:hover span{transform:translateX(5px)}
+.btn-sm{padding:.7rem 1.2rem;font-size:.9rem;box-shadow:0 6px 0 var(--berry)}
+.btn-line{background:transparent;color:var(--plum);box-shadow:inset 0 0 0 3px var(--plum)}
+.btn-line:hover{background:var(--plum);color:var(--white);box-shadow:inset 0 0 0 3px var(--plum)}
+.btn-line-light{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}
+section{padding:7rem 6vw;position:relative}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 6vw;transition:background .3s,box-shadow .3s}
+.nav.solid{background:rgba(255,244,248,.9);backdrop-filter:blur(10px);box-shadow:0 8px 24px -16px rgba(58,20,70,.5)}
+.logo{font-family:var(--display);font-weight:700;font-size:1.9rem;display:flex;align-items:center;gap:.4rem;color:var(--berry);letter-spacing:-.02em}
+.logo-scoop{width:28px;height:28px;border-radius:50% 50% 45% 45%;background:linear-gradient(140deg,var(--pink),var(--mango));box-shadow:inset -4px -4px 0 rgba(0,0,0,.08);animation:bobS 3s ease-in-out infinite}
+@keyframes bobS{50%{transform:translateY(-4px) rotate(-6deg)}}
+.links{display:flex;gap:1.8rem;font-weight:500}
+.links a{position:relative;transition:color .3s}
+.links a::after{content:"";position:absolute;left:50%;bottom:-6px;width:8px;height:8px;border-radius:50%;background:var(--pink);transform:translateX(-50%) scale(0);transition:transform .4s var(--bounce)}
+.links a:hover{color:var(--pink)}
+.links a:hover::after{transform:translateX(-50%) scale(1)}
+@media(max-width:960px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3rem;padding-top:9rem;overflow:hidden;background:radial-gradient(circle at 80% 30%,var(--pink2) 0%,transparent 45%),var(--cream)}
+@media(max-width:960px){.hero{grid-template-columns:1fr;text-align:left;padding-bottom:6rem}}
+.blobs{position:absolute;inset:0;pointer-events:none}
+.blobs i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5}
+.blobs i:nth-child(1){width:380px;height:380px;background:var(--mango);left:-120px;bottom:-100px;animation:drift 14s ease-in-out infinite}
+.blobs i:nth-child(2){width:300px;height:300px;background:var(--mint);right:10%;top:-60px;animation:drift 18s ease-in-out infinite reverse}
+.blobs i:nth-child(3){width:260px;height:260px;background:var(--berry);opacity:.25;left:40%;bottom:-120px;animation:drift 12s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(50px,-40px) scale(1.1)}}
+.hero-txt{position:relative;z-index:1}
+.tag{display:inline-block;background:var(--white);color:var(--berry);font-weight:700;padding:.5rem 1rem;border-radius:999px;margin-bottom:1.6rem;box-shadow:0 6px 0 var(--pink2)}
+.hero h1 .wob{display:inline-block;color:var(--pink);animation:wob 2.6s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-6px)}}
+.hero h1 em{color:var(--berry)}
+.lead{font-size:1.15rem;color:var(--mut);max-width:560px;margin:1.6rem 0 2.2rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.open{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;background:var(--white);padding:.6rem 1rem;border-radius:999px;font-weight:600;font-size:.95rem}
+.pulse{width:12px;height:12px;border-radius:50%;background:#2BB673;box-shadow:0 0 0 0 rgba(43,182,115,.6);animation:pulse 1.8s infinite}
+.pulse.off{background:#E0604E}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(43,182,115,0)}}
+
+/* hero scoop */
+.hero-scoop{position:relative;justify-self:center;width:min(440px,80vw);aspect-ratio:1;z-index:1;animation:floatS 6s ease-in-out infinite}
+@keyframes floatS{50%{transform:translateY(-18px) rotate(3deg)}}
+.cone{position:absolute;left:50%;bottom:6%;width:44%;height:50%;transform:translateX(-50%);background:linear-gradient(180deg,#E8B26B,#B9762F);clip-path:polygon(0 0,100% 0,50% 100%);border-radius:0 0 10px 10px;box-shadow:inset -10px 0 0 rgba(0,0,0,.08)}
+.cone::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(60deg,transparent 0 12px,rgba(120,60,10,.25) 12px 14px);clip-path:inherit}
+.ball{position:absolute;border-radius:50%;left:50%;transform:translateX(-50%);box-shadow:inset -18px -14px 0 rgba(0,0,0,.1),0 18px 30px -12px rgba(58,20,70,.35)}
+.b1{width:72%;aspect-ratio:1;bottom:40%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#FF8FB0,#FF5C8A);animation:bounceB 3.2s ease-in-out infinite}
+.b2{width:62%;aspect-ratio:1;bottom:66%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#B07CE0,#7B2D8E);animation:bounceB 3.2s .4s ease-in-out infinite}
+.b3{width:50%;aspect-ratio:1;bottom:86%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#FFD58A,#FFB547);animation:bounceB 3.2s .8s ease-in-out infinite}
+@keyframes bounceB{50%{transform:translateX(-50%) translateY(-10px) scale(1.03)}}
+.drip{position:absolute;width:14px;height:40px;border-radius:0 0 10px 10px;background:#FF5C8A;left:30%;bottom:38%;animation:drop 2.6s ease-in infinite}
+.drip.d2{left:64%;background:#B07CE0;animation-delay:1.3s}
+@keyframes drop{0%{transform:translateY(0);opacity:1}80%{transform:translateY(16px);opacity:1}100%{transform:translateY(22px);opacity:0}}
+.sparkle{position:absolute;color:var(--mango);font-size:2rem;animation:spark 2.4s ease-in-out infinite}
+.s1{left:6%;top:14%}.s2{right:8%;top:38%;animation-delay:.8s;color:var(--mint)}.s3{left:20%;bottom:10%;animation-delay:1.6s;color:var(--pink)}
+@keyframes spark{50%{transform:scale(1.5) rotate(40deg);opacity:.5}}
+.scroll{position:absolute;left:6vw;bottom:2.4rem;width:24px;height:44px;border:2px solid var(--berry);border-radius:20px}
+.scroll span{display:block;width:6px;height:8px;margin:7px auto;border-radius:3px;background:var(--pink);animation:scrollDot 1.6s infinite}
+@keyframes scrollDot{0%{transform:translateY(0);opacity:1}100%{transform:translateY(16px);opacity:0}}
+@media(max-width:960px){.scroll{display:none}}
+
+/* ticker */
+.ticker{background:var(--berry);color:var(--white);padding:1.2rem 0;overflow:hidden;transform:rotate(-1.5deg) scale(1.03)}
+.ticker-track{display:flex;gap:1.8rem;width:max-content;animation:tick 26s linear infinite;font-family:var(--display);font-weight:600;font-size:1.8rem;align-items:center}
+.ticker-track i{font-style:normal;color:var(--mango);font-size:1rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* sabores */
+.picker{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center;background:var(--white);border-radius:36px;padding:3rem;margin-bottom:3rem;box-shadow:0 20px 0 -6px var(--pink2)}
+@media(max-width:860px){.picker{grid-template-columns:1fr;padding:2rem}}
+.picker-scoop{position:relative;aspect-ratio:1;max-width:320px;margin:auto;width:100%}
+.picker-scoop i{position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);transition:background .6s,transform .6s var(--bounce);box-shadow:inset -16px -12px 0 rgba(0,0,0,.12),0 22px 30px -14px rgba(58,20,70,.4)}
+.picker-scoop i:nth-child(2){width:50%;top:32%;transform:translate(-50%,-50%) scale(1)}
+.picker-scoop.swap i{transform:translate(-50%,-50%) scale(.88) rotate(-6deg)}
+.pk{font-family:var(--display);font-weight:600;color:var(--pink);text-transform:uppercase;letter-spacing:.12em;font-size:.85rem}
+.picker-info h3{font-size:clamp(2rem,4vw,3rem);margin:.4rem 0}
+.picker-info p{color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.chip{border:0;background:var(--cream);color:var(--plum);font:600 .95rem var(--sans);padding:.7rem 1.2rem;border-radius:999px;cursor:pointer;transition:transform .3s var(--bounce),background .3s,color .3s}
+.chip:hover{transform:translateY(-3px)}
+.chip.is-on{background:var(--plum);color:var(--white)}
+.flavors{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1000px){.flavors{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.flavors{grid-template-columns:1fr}}
+.flavor{background:var(--white);border-radius:26px;padding:1.6rem;position:relative;overflow:hidden;transition:transform .5s var(--bounce),box-shadow .4s;box-shadow:0 6px 0 var(--pink2)}
+.flavor:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:0 14px 0 var(--pink2)}
+.flavor::after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:var(--c);opacity:.18;right:-50px;top:-50px;transition:transform .6s var(--ease)}
+.flavor:hover::after{transform:scale(1.4)}
+.fl-dot{display:block;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 8%,transparent 9%),var(--c);box-shadow:inset -6px -5px 0 rgba(0,0,0,.12);margin-bottom:1rem;transition:transform .5s var(--bounce)}
+.flavor:hover .fl-dot{transform:rotate(-20deg) scale(1.15)}
+.flavor p{color:var(--mut);font-size:.95rem}
+.flavor.hide{display:none}
+.flavor.show{animation:pop .5s var(--bounce)}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+
+/* experiencia */
+.experiencia{background:var(--plum);color:var(--cream);border-radius:60px 60px 0 0}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:860px){.exp-grid{grid-template-columns:1fr}}
+.exp-txt h2 em{color:var(--mango)}
+.exp-txt>p{font-size:1.15rem;opacity:.85;margin:1.2rem 0 2rem;max-width:520px}
+.perks{list-style:none;display:grid;gap:.9rem}
+.perks li{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.08);padding:1rem 1.2rem;border-radius:20px;font-weight:500;transition:transform .4s var(--bounce),background .3s}
+.perks li:hover{transform:translateX(10px);background:rgba(255,255,255,.14)}
+.perks span{font-size:1.6rem}
+.stack{position:relative;aspect-ratio:1;max-width:420px;margin:auto;width:100%}
+.sc{position:absolute;border-radius:50%;box-shadow:inset -18px -14px 0 rgba(0,0,0,.12);animation:stackFloat 5s ease-in-out infinite}
+.sc1{width:60%;aspect-ratio:1;left:20%;top:10%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#FF8FB0,#FF5C8A)}
+.sc2{width:52%;aspect-ratio:1;left:4%;top:45%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#FFD58A,#FFB547);animation-delay:-1.5s}
+.sc3{width:48%;aspect-ratio:1;right:4%;top:50%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#B07CE0,#7B2D8E);animation-delay:-3s}
+@keyframes stackFloat{50%{transform:translateY(-14px) rotate(4deg)}}
+
+/* onde */
+.onde{background:var(--cream)}
+.onde-card{display:grid;grid-template-columns:1fr 1fr;border-radius:36px;overflow:hidden;background:var(--berry);color:var(--white);max-width:1200px;margin:auto}
+@media(max-width:860px){.onde-card{grid-template-columns:1fr}}
+.onde-info{padding:3.4rem}
+.onde-info h2 em{color:var(--mango)}
+.addr{font-size:1.15rem;margin:1rem 0 1.6rem;opacity:.95}
+.hours{display:grid;gap:.6rem;margin-bottom:.8rem}
+.hours div{display:flex;justify-content:space-between;background:rgba(255,255,255,.1);padding:.8rem 1.1rem;border-radius:16px}
+.hours b{color:var(--mango)}
+.note-light{font-size:.85rem;opacity:.75}
+.onde-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+.onde-map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+
+/* visita */
+.visita{text-align:center}
+.visita .lead{margin-inline:auto;color:var(--mut)}
+.visita-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1000px;margin:2.8rem auto 0}
+@media(max-width:800px){.visita-cards{grid-template-columns:1fr}}
+.vcard{background:var(--white);border-radius:28px;padding:2.2rem 1.4rem;display:grid;gap:.4rem;justify-items:center;box-shadow:0 8px 0 var(--pink2);transition:transform .5s var(--bounce),box-shadow .4s}
+.vcard:hover{transform:translateY(-10px) rotate(-2deg);box-shadow:0 18px 0 var(--pink2)}
+.vcard span{font-size:2.4rem;transition:transform .5s var(--bounce)}
+.vcard:hover span{transform:scale(1.25) rotate(-12deg)}
+.vcard b{font-family:var(--display);font-size:1.4rem}
+.vcard small{color:var(--mut)}
+
+.footer{background:var(--ink);color:var(--cream);padding:4rem 6vw 2.4rem;text-align:center}
+.foot-logo{font-family:var(--display);font-weight:700;font-size:clamp(3.5rem,12vw,9rem);color:var(--pink);line-height:1;letter-spacing:-.02em}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2rem;opacity:.8;font-size:.9rem}
+.foot-row a:hover{color:var(--mango)}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ===== new cover ===== */
+.hero{grid-template-columns:1.05fr .95fr;background:linear-gradient(115deg,var(--cream) 55%,#FCE3F0 55%)}
+.hero h1{font-family:var(--display);font-size:clamp(3.2rem,7.4vw,6.6rem);color:var(--berry);line-height:.92}
+.hero h1 .wob{color:var(--pink)}
+.hero h1 em{color:var(--pink)}
+.nav{background:transparent}
+.nav.solid{background:rgba(255,248,231,.95)}
+.logo{color:var(--berry);font-size:2.2rem;letter-spacing:-.03em}
+.logo-scoop{background:linear-gradient(140deg,var(--pink),var(--mint))}
+.links a{color:var(--berry);font-weight:600}
+.btn{background:linear-gradient(120deg,var(--berry),var(--pink));box-shadow:0 10px 0 #3E0624}
+.btn:hover{box-shadow:0 13px 0 #3E0624}
+.btn-line{color:var(--berry);box-shadow:inset 0 0 0 3px var(--berry)}
+.hero-scoop{width:min(480px,86vw)}
+.hero-scoop::before{content:"";position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(circle,#2EC4C8 0 30%,transparent 31%);opacity:.22;animation:halo 6s ease-in-out infinite}
+@keyframes halo{50%{transform:scale(1.06)}}
+.tag{background:var(--mango);color:var(--berry);box-shadow:0 6px 0 var(--pink2)}
+.blobs i:nth-child(1){background:var(--mint);opacity:.35}
+.blobs i:nth-child(2){background:var(--mango);opacity:.6}
+.blobs i:nth-child(3){background:var(--pink);opacity:.22}
+.open{box-shadow:0 8px 0 var(--pink2)}
+.scroll{border-color:var(--berry)}
+.ticker{background:var(--berry)}
+.ticker-track i{color:var(--mint)}
+.ticker-track{color:var(--cream)}
+.experiencia{background:var(--berry)}
+.onde-card{background:var(--berry)}
+.footer{background:var(--berry)}
+.foot-logo{color:var(--mango)}
+@media(max-width:960px){.hero{background:var(--cream)}}
+.btn-line{background:transparent;color:var(--berry);box-shadow:inset 0 0 0 3px var(--berry)}
+.btn-line:hover{background:var(--berry);color:var(--cream);box-shadow:inset 0 0 0 3px var(--berry)}
+.hero-scoop::before{display:none}
+
+/* real photos + logo */
+.logo img{height:46px;width:auto;display:block}
+.foot-logo img{height:110px;width:auto;display:block;margin:0 auto}
+.hero-photo{position:relative;justify-self:center;width:min(440px,86vw);aspect-ratio:1}
+.arch{position:absolute;inset:6% 6% 6% 6%;border-radius:50% 50% 36% 36%/42% 42% 58% 58%;overflow:hidden;box-shadow:0 40px 70px -30px rgba(92,10,54,.55);animation:floatS 7s ease-in-out infinite}
+.arch img{width:100%;height:100%;object-fit:cover}
+.float{position:absolute;width:118px;height:118px;border-radius:50%;overflow:hidden;border:6px solid var(--white);box-shadow:0 18px 30px -14px rgba(92,10,54,.6);animation:floatS 5s ease-in-out infinite}
+.float img{width:100%;height:100%;object-fit:cover}
+.f1{right:-4%;top:-4%;animation-delay:-1s}
+.f2{left:-6%;bottom:8%;animation-delay:-2.5s;width:104px;height:104px}
+.f3{right:-2%;bottom:-2%;animation-delay:-3.5s;width:96px;height:96px}
+.galeria{background:var(--cream);padding-top:4rem}
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:260px;gap:1rem}
+@media(max-width:800px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:200px}.gal figure:first-child{grid-column:1/-1}}
+.gal figure{position:relative;margin:0;border-radius:26px;overflow:hidden;transition:transform .5s var(--bounce)}
+.gal figure:hover{transform:translateY(-8px) rotate(-1deg)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.gal figure:hover img{transform:scale(1.08)}
+.gal figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--mango);color:var(--berry);font-weight:700;font-size:.85rem;padding:.35rem .8rem;border-radius:999px}
+
+/* unidades */
+.units{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:1100px}
+@media(max-width:760px){.units{grid-template-columns:1fr}}
+.unit{background:var(--white);border-radius:22px;padding:1.3rem 1.5rem;box-shadow:0 6px 0 var(--pink2);display:grid;gap:.2rem;transition:transform .4s var(--bounce),box-shadow .3s}
+.unit:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 12px 0 var(--pink2)}
+.unit b{font-family:var(--display);font-size:1.3rem;color:var(--berry)}
+.unit span{color:var(--mut);font-size:.95rem}
+.onde-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.onde .note{margin-top:1.6rem}
+.novidades{background:var(--cream);padding-top:0}
+.gal2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media(max-width:760px){.gal2{grid-template-columns:1fr}}
+.gal2 figure{position:relative;margin:0;border-radius:26px;overflow:hidden;height:340px;transition:transform .5s var(--bounce)}
+.gal2 figure:hover{transform:translateY(-8px)}
+.gal2 img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.gal2 figure:hover img{transform:scale(1.07)}
+.gal2 figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--mango);color:var(--berry);font-weight:700;font-size:.85rem;padding:.35rem .8rem;border-radius:999px}
+
+/* logo without colored background, beige areas */
+body{background:#F3E6D2}
+.hero{background:linear-gradient(115deg,#F3E6D2 55%,#EBD6BB 55%)}
+.galeria,.novidades,.onde,.visita{background:#F3E6D2}
+.nav.solid{background:rgba(243,230,210,.95)}
+.footer{background:var(--berry)}
+.blobs{display:none}
+.hero::after{content:none}
+.hero-photo .float{box-shadow:0 14px 24px -12px rgba(92,10,54,.45)}
+/* footer matches the site: beige background and the same logo */
+.footer{background:#F3E6D2;color:var(--berry);border-top:1px solid rgba(92,10,54,.12)}
+.foot-logo img{height:64px;width:auto}
+.foot-row{color:var(--berry);opacity:.85}
+.foot-row a:hover{color:var(--pink)}
+
+/* ===== Monte o seu (scroll-driven) ===== */
+.monte{padding:0;height:260vh;background:var(--cream)}
+.monte-sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:0 6vw;overflow:hidden}
+@media(max-width:860px){.monte-sticky{grid-template-columns:1fr;gap:1rem;padding-top:5rem}}
+.monte-title{font-size:clamp(2.6rem,5.6vw,4.8rem);position:relative;min-height:2.2em}
+.monte-title .ms,.monte-sub .ms{position:absolute;left:0;top:0;opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .7s var(--ease);white-space:nowrap}
+.monte-title{display:block}
+.monte-sub{position:relative;min-height:3.2em;color:var(--mut);font-size:1.15rem;margin-top:1.4rem}
+.monte-sub .ms{white-space:normal;width:100%;max-width:520px}
+.monte-title .ms.on,.monte-sub .ms.on{opacity:1;transform:none}
+.monte-title .ms:nth-child(1){color:var(--berry)}
+.monte-title .ms.on{color:var(--pink)}
+.steps-bar{list-style:none;display:flex;gap:.6rem;margin-top:2rem;flex-wrap:wrap}
+.steps-bar li{font-weight:700;color:var(--mut);padding:.5rem 1rem;border-radius:999px;border:2px solid var(--line);transition:background .4s,color .4s,border-color .4s}
+.steps-bar li.on{background:var(--berry);color:var(--cream);border-color:var(--berry)}
+.monte-stage{position:relative;width:min(460px,80vw);aspect-ratio:1;justify-self:center}
+.m-cone{position:absolute;left:50%;bottom:4%;width:42%;height:44%;transform:translateX(-50%);background:linear-gradient(180deg,#E8B26B,#B9762F);clip-path:polygon(0 0,100% 0,50% 100%)}
+.m-ball{position:absolute;left:50%;border-radius:50%;transform:translateX(-50%) scale(0);transition:transform .9s var(--bounce);box-shadow:inset -18px -14px 0 rgba(0,0,0,.12),0 20px 30px -14px rgba(92,10,54,.45)}
+.mb1{width:64%;aspect-ratio:1;bottom:36%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#FF8FB0,#B0268C)}
+.mb2{width:54%;aspect-ratio:1;bottom:60%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#B07CE0,#5C0A36);transition-delay:.15s}
+.mb3{width:44%;aspect-ratio:1;bottom:80%;background:radial-gradient(circle at 35% 30%,#fff 0 6%,transparent 7%),linear-gradient(140deg,#FFE27A,#FFB547);transition-delay:.3s}
+.m-ball.on{transform:translateX(-50%) scale(1)}
+.m-drip{position:absolute;width:14px;height:90px;border-radius:0 0 12px 12px;background:#5C0A36;top:48%;transform:scaleY(0);transform-origin:top;transition:transform 1s var(--ease)}
+.md1{left:34%;background:#7B2D8E}.md2{left:64%;background:#5C0A36;transition-delay:.2s}
+.m-drip.on{transform:scaleY(1)}
+.m-conf{position:absolute;width:14px;height:14px;border-radius:50%;opacity:0;transition:opacity .4s,transform .6s var(--bounce)}
+.c1{left:38%;top:24%;background:#FF5C8A}.c2{left:52%;top:20%;background:#2EC4C8}.c3{left:60%;top:30%;background:#FFE27A}
+.c4{left:44%;top:34%;background:#FF8A3D}.c5{left:55%;top:14%;background:#7B2D8E}.c6{left:48%;top:28%;background:#fff;border:2px solid #5C0A36}
+.m-conf.on{opacity:1;transform:translateY(0) rotate(20deg)}
+.c1.on,.c4.on{transform:translateY(-6px)}
+.monte-stage{width:min(340px,70vw);margin-top:3rem}
+.monte-title{font-size:clamp(2.2rem,4vw,3.6rem)}
+.m-cone{bottom:0;height:34%;width:40%}
+.mb1{bottom:24%;width:58%}
+.mb2{bottom:44%;width:48%}
+.mb3{bottom:62%;width:38%}
+.m-drip{top:40%;height:70px}
+.m-conf{transform:translateY(-10px)}
+
+/* ===== editorial look (inspired by the reference, Maioca content) ===== */
+.head.ed{display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end;max-width:none}
+.head.ed .lead{margin:0;max-width:380px;justify-self:end;font-size:1.05rem;padding-bottom:.6rem}
+@media(max-width:860px){.head.ed{grid-template-columns:1fr}.head.ed .lead{justify-self:start}}
+.head.ed h2{font-size:clamp(2.8rem,6.4vw,5.6rem)}
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+@media(max-width:860px){.info-strip{grid-template-columns:1fr}}
+.info-card{background:var(--white);border-radius:24px;padding:1.6rem 1.8rem;box-shadow:0 6px 0 var(--pink2);display:grid;gap:.3rem}
+.info-card small{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;color:var(--pink);font-weight:700}
+.info-card b{font-family:var(--display);font-size:1.4rem;color:var(--berry)}
+.info-card span{color:var(--mut);font-size:.95rem}
+/* product photos: caption slides up, image breathes */
+.gal figure,.gal2 figure{cursor:pointer}
+.gal figcaption,.gal2 figcaption{transform:translateY(160%);transition:transform .5s var(--bounce)}
+.gal figure:hover figcaption,.gal2 figure:hover figcaption{transform:translateY(0)}
+.gal figure::after,.gal2 figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(92,10,54,.45));opacity:0;transition:opacity .5s}
+.gal figure:hover::after,.gal2 figure:hover::after{opacity:1}
+.gal figcaption,.gal2 figcaption{z-index:2}
+
+.unit{color:inherit}
+.map-go{font-style:normal;margin-top:.5rem;font-size:.85rem;font-weight:700;color:var(--pink);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s var(--ease)}
+.unit:hover .map-go{opacity:1;transform:none}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo"><img src="fotos/logo-maioca-transparente.png" alt="Maioca" /></a>
+  <nav class="links">
+    <a href="#onde">Onde</a><a href="#visita">Visite</a>
+  </nav>
+  <a href="#onde" class="btn btn-sm">Como chegar</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero-txt">
+    <p class="tag reveal">🍨 Sorvete paraense · Belém</p>
+    <h1 class="reveal">Aquele <span class="wob">gostinho</span><br/>de <em>quero mais.</em></h1>
+    <p class="lead reveal">Sabores da nossa terra, cremosos e gelados na medida. Açaí, tapioca e muito mais, sempre com aquele toque que só Belém tem.</p>
+    <div class="cta reveal">
+      <a href="#visita" class="btn">Escolher meu sabor <span>→</span></a>
+      <a href="#onde" class="btn btn-line">Onde fica</a>
+    </div>
+    <div class="open reveal"><span class="pulse"></span><b id="open-txt">Verificando horário…</b></div>
+  </div>
+  <div class="hero-photo reveal">
+    <div class="arch"><img src="fotos/sundae.jpg" alt="Sundae Maioca com calda de chocolate e confeitos" /></div>
+    <span class="float f1"><img src="fotos/milkshake.jpg" alt="Milkshake Maioca" /></span>
+    <span class="float f2"><img src="fotos/sorvete-chocolate.jpg" alt="Sorvete de chocolate Maioca" /></span>
+    <span class="float f3"><img src="fotos/bolo-arco-iris.jpg" alt="Bolo arco-íris Maioca" /></span>
+  </div>
+  <div class="scroll" aria-hidden="true"><span></span></div>
+</section>
+
+<section id="monte" class="monte">
+  <div class="monte-sticky">
+    <div class="monte-txt">
+      <p class="kicker">Monte o seu</p>
+      <h2 class="monte-title"><span class="ms" data-step="0">Base cremosa.</span><span class="ms" data-step="1">Cobertura.</span><span class="ms" data-step="2">Um toque de confeito.</span><span class="ms" data-step="3">Do jeitinho que você gosta.</span></h2>
+      <p class="monte-sub"><span class="ms" data-step="0">Começamos pelo sorvete da sua escolha, na medida.</span><span class="ms" data-step="1">Calda e cobertura do seu sabor favorito.</span><span class="ms" data-step="2">Granulado, confeito e o que mais der vontade.</span><span class="ms" data-step="3">Pronto para comer agora mesmo.</span></p>
+      <ol class="steps-bar"><li data-step="0">Base</li><li data-step="1">Cobertura</li><li data-step="2">Confeito</li><li data-step="3">Pronto</li></ol>
+    </div>
+    <div class="monte-stage" aria-hidden="true">
+      <div class="m-cone"></div>
+      <div class="m-ball mb1"></div><div class="m-ball mb2"></div><div class="m-ball mb3"></div>
+      <div class="m-drip md1"></div><div class="m-drip md2"></div>
+      <div class="m-conf c1"></div><div class="m-conf c2"></div><div class="m-conf c3"></div><div class="m-conf c4"></div><div class="m-conf c5"></div><div class="m-conf c6"></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Açaí</span><i>●</i><span>Tapioca</span><i>●</i><span>Cremoso</span><i>●</i><span>Gelado na medida</span><i>●</i><span>Sabor paraense</span><i>●</i><span>Mais de 50 sabores</span><i>●</i>
+    <span>Açaí</span><i>●</i><span>Tapioca</span><i>●</i><span>Cremoso</span><i>●</i><span>Gelado na medida</span><i>●</i><span>Sabor paraense</span><i>●</i><span>Mais de 50 sabores</span><i>●</i>
+  </div>
+</div>
+
+<section class="galeria">
+  <div class="head reveal"><p class="kicker">Da nossa vitrine</p><h2>Feito para <em>dar vontade.</em></h2></div>
+  <div class="gal">
+    <figure class="reveal"><img src="fotos/sundae.jpg" alt="Sundae" /><figcaption>Sundae da casa</figcaption></figure>
+    <figure class="reveal"><img src="fotos/sorvete-chocolate.jpg" alt="Sorvete de chocolate" /><figcaption>Chocolate</figcaption></figure>
+    <figure class="reveal"><img src="fotos/bolo-arco-iris.jpg" alt="Bolo arco-íris" /><figcaption>Arco-íris</figcaption></figure>
+  </div>
+</section>
+
+<section id="onde" class="onde">
+  <div class="head ed reveal">
+    <div><p class="kicker">Onde estamos</p><h2>Nossas <em>unidades.</em></h2></div>
+    <p class="lead">Escolha a unidade mais perto de você. Confirme o horário antes de ir: pode mudar em feriados.</p>
+  </div>
+  <div class="info-strip">
+    <div class="info-card reveal"><small>Horário</small><b>Confirme na sua unidade</b><span>São Brás: ter a dom, 10h às 22h</span></div>
+    <div class="info-card reveal"><small>Pedidos</small><b>WhatsApp</b><span>Retire ou peça para entrega</span></div>
+    <div class="info-card reveal"><small>Unidades</small><b>10 lojas</b><span>Belém e Ananindeua</span></div>
+  </div>
+  <ul class="units">
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Mercado+de+S%C3%A3o+Br%C3%A1s+Avenida+Governador+Jos%C3%A9+Malcher+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Mercado de São Brás no Google Maps"><b>Mercado de São Brás</b><span>Avenida Governador José Malcher · São Brás · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Cidade+Velha+Rua+Veiga+Cabral%2C+383+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Cidade Velha no Google Maps"><b>Cidade Velha</b><span>Rua Veiga Cabral, 383 · Cidade Velha · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Bernal+do+Couto+Rua+Bernal+do+Couto%2C+308+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Bernal do Couto no Google Maps"><b>Bernal do Couto</b><span>Rua Bernal do Couto, 308 · Umarizal · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Alcindo+Cacela+Av.+Alcindo+Cacela%2C+866+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Alcindo Cacela no Google Maps"><b>Alcindo Cacela</b><span>Av. Alcindo Cacela, 866 · Umarizal · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Cidade+Nova+Cidade+Nova%2C+22+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Cidade Nova no Google Maps"><b>Cidade Nova</b><span>Cidade Nova, 22 · Coqueiro · Ananindeua – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Jo%C3%A3o+Paulo+II+Av.+Jo%C3%A3o+Paulo+II%2C+523+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir João Paulo II no Google Maps"><b>João Paulo II</b><span>Av. João Paulo II, 523 · Marco · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Duque+Travessa+Curuz%C3%BA%2C+1377+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Duque no Google Maps"><b>Duque</b><span>Travessa Curuzú, 1377 · Pedreira · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Shopping+Metr%C3%B3pole+2%C2%BA+piso+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Shopping Metrópole no Google Maps"><b>Shopping Metrópole</b><span>2º piso · Coqueiro · Ananindeua – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Dr.+Moraes+Av.+Dr.+Moraes%2C+581%2C+loja+03+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Dr. Moraes no Google Maps"><b>Dr. Moraes</b><span>Av. Dr. Moraes, 581, loja 03 · Batista Campos · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+      <li><a class="unit reveal" href="https://www.google.com/maps/search/?api=1&query=Maioca+Tavares+Bastos+Av.+Tavares+Bastos%2C+1410+Bel%C3%A9m" target="_blank" rel="noopener" aria-label="Abrir Tavares Bastos no Google Maps"><b>Tavares Bastos</b><span>Av. Tavares Bastos, 1410 · Marambaia · Belém – PA</span><em class="map-go">Abrir no mapa ↗</em></a></li>
+  </ul>
+  <p class="note">* Endereços reunidos de informações públicas. Confirmar cada unidade e o horário com a Maioca antes de publicar.</p>
+  <div class="onde-btns">
+    <a href="https://wa.me/[55DDDNUMERO]" target="_blank" rel="noopener" class="btn btn-sm">WhatsApp</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Maioca+Bel%C3%A9m" target="_blank" rel="noopener" class="btn btn-sm btn-line">Ver no Google Maps ↗</a>
+  </div>
+</section>
+
+<section class="novidades">
+  <div class="head ed reveal"><div><p class="kicker">Da casa</p><h2>Leve <em>para casa.</em></h2></div><p class="lead">Brigadeiros e picolés para levar, feitos com o mesmo capricho.</p></div>
+  <div class="gal2">
+    <figure class="reveal"><img src="fotos/brigadeiros.jpg" alt="Brigadeiros de chocolate com granulado" /><figcaption>Brigadeiros</figcaption></figure>
+    <figure class="reveal"><img src="fotos/picoles-mix.jpg" alt="Mix de picolés Maioca" /><figcaption>Picolés e mix</figcaption></figure>
+  </div>
+</section>
+
+
+<section id="visita" class="visita">
+  <div class="head center reveal">
+    <p class="kicker">Visite</p>
+    <h2>Já deu <em>vontade?</em></h2>
+    <p class="lead">Chegue sem reserva ou peça pelo WhatsApp para retirar.</p>
+  </div>
+  <div class="visita-cards">
+    <a class="vcard reveal" href="#onde"><span>📍</span><b>Como chegar</b><small>Mercado de São Brás</small></a>
+    <a class="vcard reveal" href="https://www.instagram.com/[@maioca]" target="_blank" rel="noopener"><span>📸</span><b>Instagram</b><small>@[maioca]</small></a>
+    <a class="vcard reveal" href="https://wa.me/[55DDDNUMERO]" target="_blank" rel="noopener"><span>💬</span><b>Pedidos</b><small>WhatsApp</small></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-logo"><img src="fotos/logo-maioca-transparente.png" alt="Maioca" /></div>
+  <div class="foot-row">
+    <span>© 2026 Maioca · Belém – PA · CNPJ [00.000.000/0001-00]</span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => {
+  nav.classList.toggle('solid', scrollY > 30);
+  bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight));
+}, { passive: true });
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => { const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal')); el.style.transitionDelay = (sib.indexOf(el) % 4) * 90 + 'ms'; io.observe(el); });
+
+/* open now? Belém time, Tue–Sun 10h–22h */
+const openEl = document.getElementById('open-txt'), dot = document.querySelector('.open .pulse');
+function openNow() {
+  const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Belem', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(new Date());
+  const day = parts.find(p => p.type === 'weekday').value, h = +parts.find(p => p.type === 'hour').value % 24;
+  const open = day !== 'Mon' && h >= 10 && h < 22;
+  openEl.textContent = open ? 'Aberto agora · venha se refrescar' : 'Fechado agora · volte amanhã (ter a dom, 10h às 22h)';
+  dot.classList.toggle('off', !open);
+}
+openNow(); setInterval(openNow, 60000);
+
+/* hero cone: scoop follows cursor a little */
+const hs = document.querySelector('.hero-scoop');
+if (hs && !reduce && matchMedia('(hover:hover)').matches) addEventListener('mousemove', e => {
+  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+  hs.style.transform = `translate(${x * 20}px, ${y * 14}px)`;
+});
+
+/* tilt on flavor cards */
+if (!reduce) document.querySelectorAll('.flavor').forEach(el => {
+  el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; el.style.transform = `perspective(700px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateY(-6px)`; });
+  el.addEventListener('mouseleave', () => el.style.transform = '');
+});
+
+/* ticker speeds up with scroll */
+const tk = document.querySelector('.ticker-track');
+if (tk && !reduce) { let last = scrollY, sp = 0; addEventListener('scroll', () => { sp += Math.abs(scrollY - last) * .02; last = scrollY; }, { passive: true }); (function loop() { sp *= .95; tk.style.animationDuration = Math.max(8, 26 - sp) + 's'; requestAnimationFrame(loop); })(); }
+
+/* Monte o seu: steps driven by scroll */
+const mSec=document.getElementById('monte');
+if(mSec){
+  const ms=[...mSec.querySelectorAll('.ms')], bars=[...mSec.querySelectorAll('.steps-bar li')];
+  const balls=[...mSec.querySelectorAll('.m-ball')], drips=[...mSec.querySelectorAll('.m-drip')], confs=[...mSec.querySelectorAll('.m-conf')];
+  const stepOf=p=>p<.2?0:p<.45?1:p<.7?2:3;
+  function paintMonte(){
+    const r=mSec.getBoundingClientRect(), total=mSec.offsetHeight-innerHeight;
+    const p=Math.min(Math.max(-r.top/total,0),1), s=stepOf(p);
+    ms.forEach(el=>el.classList.toggle('on',+el.dataset.step===s));
+    bars.forEach(el=>el.classList.toggle('on',+el.dataset.step<=s));
+    balls.forEach((b,i)=>b.classList.toggle('on',s>=0 && p>i*.06));
+    drips.forEach((d,i)=>d.classList.toggle('on',s>=1));
+    confs.forEach((c,i)=>c.classList.toggle('on',s>=2));
+  }
+  addEventListener('scroll',()=>requestAnimationFrame(paintMonte),{passive:true});
+  paintMonte();
+}
+
+/* product photos: gentle parallax tilt */
+if(!reduce) document.querySelectorAll('.gal figure, .gal2 figure').forEach(f=>{
+  f.addEventListener('mousemove',e=>{const r=f.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;f.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;});
+  f.addEventListener('mouseleave',()=>f.style.transform='');
+});
+
+</script>
+</body>
+</html>

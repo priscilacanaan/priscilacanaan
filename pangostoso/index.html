@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2B1A10" />
+<title>PanGostoso — Indústria de Panificação em Belém do Pará</title>
+<meta name="description" content="PanGostoso, indústria de panificação de Belém do Pará: pães, bolos e sabores do Norte com gosto de padaria. Fornecemos para supermercados, padarias e food service na Grande Belém." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="loading">
+<div class="preloader" aria-hidden="true">
+  <div class="pl-loaf"><span></span><span></span><span></span></div>
+  <p class="pl-txt">Assando<b class="pl-dots"><i>.</i><i>.</i><i>.</i></b></p>
+  <p class="pl-pct"><b id="pl-n">0</b>%</p>
+</div>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav">
+  <a href="#topo" class="logo">
+    <span class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48"><path d="M6 30c0-10 8-18 18-18s18 8 18 18v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><path class="cut" d="M16 20l-3 6M24 18v7M32 20l3 6"/></svg>
+    </span>
+    <span>Pan<b>Gostoso</b></span>
+  </a>
+  <nav class="links">
+    <a href="#produtos">Produtos</a>
+    <a href="#processo">Como fazemos</a>
+    <a href="#clientes">Para quem</a>
+    <a href="#historia">Nossa história</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <a href="#contato" class="btn btn-sm mag">Seja um cliente</a>
+</header>
+
+<main id="topo">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-text">
+    <p class="tag reveal">🌾 Indústria de panificação · Belém do Pará</p>
+    <h1>
+      <span class="w">Pão</span>
+      <span class="w">de</span>
+      <span class="w">padaria,</span>
+      <span class="w accent">em escala</span>
+      <span class="w accent rot"><b class="on">de indústria.</b><b>de Belém.</b><b>de verdade.</b><b>de família.</b></span>
+    </h1>
+    <p class="sub reveal">Massa com fermentação lenta, forno no ponto certo e entrega pontual. Feita em Belém, a PanGostoso abastece supermercados, padarias e restaurantes da Grande Belém com pães que o cliente reconhece pelo cheiro.</p>
+    <div class="cta reveal">
+      <a href="#contato" class="btn mag">Quero revender <span>→</span></a>
+      <a href="#produtos" class="btn btn-ghost">Ver produtos</a>
+    </div>
+  </div>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="oven">
+      <div class="oven-window">
+        <div class="loaf rise"><span class="score"></span><span class="score"></span><span class="score"></span></div>
+        <div class="steam s1"></div><div class="steam s2"></div><div class="steam s3"></div>
+      </div>
+      <div class="oven-panel"><span class="knob"></span><span class="knob"></span><span class="temp"><b data-temp>180</b>°C</span></div>
+    </div>
+    <div class="badge-round">
+      <svg viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+      <text><textPath href="#c" textLength="480" lengthAdjust="spacing">SAIU DO FORNO · QUENTINHO · DELÍCIA · </textPath></text></svg>
+      <span>🔥</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESTEIRA (conveyor) -->
+<div class="belt" aria-hidden="true">
+  <div class="belt-track">
+    <span>🍞 Pão de forma</span><span>🥖 Pão francês congelado</span><span>🧀 Pão de queijo</span><span>🥯 Bisnaguinha</span><span>🍰 Bolos</span><span>🥪 Pão de hambúrguer</span><span>🍞 Torradas</span><span>🥐 Folhados</span><span>🌰 Pão de castanha-do-pará</span><span>🍰 Bolo de cupuaçu</span>
+    <span>🍞 Pão de forma</span><span>🥖 Pão francês congelado</span><span>🧀 Pão de queijo</span><span>🥯 Bisnaguinha</span><span>🍰 Bolos</span><span>🥪 Pão de hambúrguer</span><span>🍞 Torradas</span><span>🥐 Folhados</span><span>🌰 Pão de castanha-do-pará</span><span>🍰 Bolo de cupuaçu</span>
+  </div>
+  <div class="belt-rollers"></div>
+</div>
+
+<!-- NÚMEROS -->
+<section class="numbers">
+  <div class="num reveal"><b data-count="40">0</b><span>toneladas de massa por dia</span></div>
+  <div class="num reveal"><b data-count="35">0</b><span>produtos no catálogo</span></div>
+  <div class="num reveal"><b data-count="500">0</b><span>pontos de venda atendidos</span></div>
+  <div class="num reveal"><b data-count="24">0</b><span>horas de produção, todo dia</span></div>
+  <p class="note">* Números de exemplo — trocar pelos reais da PanGostoso.</p>
+</section>
+
+<!-- LETREIRO -->
+<div class="bigmarq" aria-hidden="true">
+  <div class="bm-row r1"><span>Quentinho</span><i>✺</i><span>Fresquinho</span><i>✺</i><span>Delícia</span><i>✺</i><span>Feito em Belém</span><i>✺</i><span>Quentinho</span><i>✺</i><span>Fresquinho</span><i>✺</i><span>Delícia</span><i>✺</i><span>Feito em Belém</span><i>✺</i></div>
+  <div class="bm-row r2"><span>Castanha</span><i>✺</i><span>Cupuaçu</span><i>✺</i><span>Pudim</span><i>✺</i><span>Macaxeira</span><i>✺</i><span>Castanha</span><i>✺</i><span>Cupuaçu</span><i>✺</i><span>Pudim</span><i>✺</i><span>Macaxeira</span><i>✺</i></div>
+</div>
+
+<!-- PRODUTOS -->
+<section id="produtos" class="products">
+  <div class="head">
+    <p class="tag">Nossas linhas</p>
+    <h2 class="split">Escolha pela <em>fome.</em></h2>
+  </div>
+  <div class="filters" role="tablist">
+    <button class="f is-on" data-f="todos">Todos</button>
+    <button class="f" data-f="paes">Pães</button>
+    <button class="f" data-f="congelados">Congelados</button>
+    <button class="f" data-f="doces">Doces</button>
+    <button class="f" data-f="para">Sabores do Pará</button>
+    <button class="f" data-f="food">Food service</button>
+  </div>
+  <div class="grid">
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#F3C98B">
+      <div class="p-img"><img src="fotos/pao-de-forma.jpg" alt="Pão de forma PanGostoso" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍞</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Pão de forma tradicional</h3><p>Miolo macio, casca fina. Integral, sem casca e multigrãos.</p><span class="spec">500 g · validade 10 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados food" style="--bg:#E9B872">
+      <div class="p-img"><img src="fotos/pao-frances.jpg" alt="Pão francês congelado" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥖</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Pão francês congelado</h3><p>Sai do freezer, 8 minutos no forno e o casquinho estala como de padaria.</p><span class="spec">Caixa 5 kg · ultracongelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados" style="--bg:#F6DE9B">
+      <div class="p-img"><img src="fotos/pao-de-queijo.jpg" alt="Pão de queijo congelado" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🧀</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Pão de queijo</h3><p>Polvilho e queijo de verdade. Tradicional, coquetel e recheado.</p><span class="spec">1 kg · 25 a 30 unidades</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#F0C38F">
+      <div class="p-img"><img src="fotos/bisnaguinha.jpg" alt="Bisnaguinha" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥯</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Bisnaguinha</h3><p>A queridinha da lancheira. Fofinha, levemente adocicada.</p><span class="spec">300 g · 15 unidades</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#EBA98A">
+      <div class="p-img"><img src="fotos/bolo.jpg" alt="Bolos PanGostoso" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍰</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Bolos caseiros</h3><p>Fubá, cenoura com chocolate, laranja e formigueiro. Receita de vó.</p><span class="spec">400 g · validade 15 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="food paes" style="--bg:#E7B07A">
+      <div class="p-img"><img src="fotos/hamburguer.jpg" alt="Pão de hambúrguer" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍔</span></div>
+      <div class="p-body"><span class="cat">Food service</span><h3>Pão de hambúrguer & hot dog</h3><p>Brioche, australiano e tradicional, no tamanho que a sua cozinha pede.</p><span class="spec">Pacotes de 6 a 48 un.</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#F2C9A0">
+      <div class="p-img"><img src="fotos/folhados.jpg" alt="Folhados e croissants" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥐</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Croissants & folhados</h3><p>Massa laminada com manteiga, prontos para assar no ponto de venda.</p><span class="spec">Caixa 2 kg · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#DDB27F">
+      <div class="p-img"><img src="fotos/torradas.jpg" alt="Torradas" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍞</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Torradas</h3><p>Tradicional, integral e com alho. Crocância que dura no pote.</p><span class="spec">160 g · validade 6 meses</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="para paes" style="--bg:#C9A27A">
+      <div class="p-img"><img src="fotos/pao-castanha.jpg" alt="Pão de castanha-do-pará" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🌰</span></div>
+      <div class="p-body"><span class="cat">Sabores do Pará</span><h3>Pão de castanha-do-pará</h3><p>Massa integral com castanha picada. Crocante por fora, perfumado por dentro.</p><span class="spec">450 g · validade 7 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="para doces" style="--bg:#F2D27A">
+      <div class="p-img"><img src="fotos/bolo-cupuacu.jpg" alt="Bolo de cupuaçu" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍰</span></div>
+      <div class="p-body"><span class="cat">Sabores do Pará</span><h3>Bolo de cupuaçu</h3><p>Fofo, azedinho e doce na medida, com polpa de cupuaçu da região.</p><span class="spec">400 g · validade 12 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="para doces" style="--bg:#B98AA8">
+      <div class="p-img"><img src="fotos/bolo-macaxeira.jpg" alt="Bolo de macaxeira" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍠</span></div>
+      <div class="p-body"><span class="cat">Sabores do Pará</span><h3>Bolo de macaxeira & tapioca</h3><p>Receita de interior, com coco e tapioca. Combina com o café da tarde.</p><span class="spec">500 g · validade 10 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#F7D9A0">
+      <div class="p-img"><img src="fotos/pudim.jpg" alt="Pudim" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍮</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Pudim</h3><p>Cremoso, com calda de caramelo. Pronto para servir.</p><span class="spec">Unidade 500 g · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados" style="--bg:#F2C38F">
+      <div class="p-img"><img src="fotos/salgados.jpg" alt="Salgados" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥟</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Salgados</h3><p>Coxinha, empada e outros salgados prontos para assar ou fritar.</p><span class="spec">Caixa 1 kg · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados" style="--bg:#F6DE9B">
+      <div class="p-img"><img src="fotos/canudinhos.jpg" alt="Canudinhos" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥐</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Canudinhos</h3><p>Massa crocante e recheio cremoso. Assados na hora.</p><span class="spec">Pacote 400 g · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#DDB27F">
+      <div class="p-img"><img src="fotos/paes-integrais.jpg" alt="Pães integrais" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🌾</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Pães integrais</h3><p>Fibras e sabor de grão. Opção saudável para todo dia.</p><span class="spec">Pacote 500 g · validade 10 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#EBA98A">
+      <div class="p-img"><img src="fotos/biscoitos.jpg" alt="Biscoitos" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍪</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Biscoitos</h3><p>Amanteigados e crocantes, em vários sabores.</p><span class="spec">Pacote 400 g · validade 6 meses</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#E9B872">
+      <div class="p-img"><img src="fotos/panetone.jpg" alt="Panetone" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🎄</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Panetone</h3><p>Fermentação longa, frutas cristalizadas e textura fofa.</p><span class="spec">Unidade 500 g · validade 60 dias</span></div>
+    </article>
+  </div>
+  <p class="note">* Linha de produtos de exemplo — ajustar ao catálogo real. Fotos entram sozinhas na pasta <code>fotos/</code>.</p>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo" class="process">
+  <div class="head light">
+    <p class="tag">Como fazemos</p>
+    <h2 class="split">Do trigo <em>à mesa.</em></h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-line"><span class="tl-fill"></span></div>
+    <div class="step reveal"><span class="ico">🌾</span><h3>1. Farinha selecionada</h3><p>Trigo de moinhos parceiros, com laudo de cada lote antes de entrar na fábrica.</p></div>
+    <div class="step reveal"><span class="ico">🫓</span><h3>2. Massa que descansa</h3><p>Fermentação lenta e controlada. É ela que dá o sabor e a casca de padaria.</p></div>
+    <div class="step reveal"><span class="ico">🔥</span><h3>3. Forno no ponto</h3><p>Fornos de esteira com temperatura monitorada minuto a minuto — e embalagens pensadas para o calor e a umidade de Belém.</p></div>
+    <div class="step reveal"><span class="ico">❄️</span><h3>4. Embalado ou congelado</h3><p>Resfriamento rápido para manter o frescor até chegar ao cliente.</p></div>
+    <div class="step reveal"><span class="ico">🚚</span><h3>5. Entrega na hora</h3><p>Frota própria com rota diária pela Grande Belém. Pão fresco na prateleira antes de abrir a loja.</p></div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section id="clientes" class="clients">
+  <div class="head">
+    <p class="tag">Para quem fornecemos</p>
+    <h2 class="split">Seu negócio, <em>nosso forno.</em></h2>
+  </div>
+  <div class="cl-grid">
+    <div class="cl reveal tilt"><span class="cl-emo">🛒</span><h3>Supermercados</h3><p>Linha embalada com código de barras, exposição e reposição programada.</p><a href="#contato">Falar com comercial →</a></div>
+    <div class="cl reveal tilt"><span class="cl-emo">🥖</span><h3>Padarias</h3><p>Congelados pré-assados para ter pão quentinho o dia todo, sem padeiro de madrugada.</p><a href="#contato">Pedir amostra →</a></div>
+    <div class="cl reveal tilt"><span class="cl-emo">🍽️</span><h3>Restaurantes & food service</h3><p>Pães de hambúrguer, mini-pães e pão de queijo em embalagem para cozinha.</p><a href="#contato">Ver tabela →</a></div>
+    <div class="cl reveal tilt"><span class="cl-emo">☕</span><h3>Cafés & conveniência</h3><p>Folhados e pão de queijo para assar na hora e vender com cheirinho.</p><a href="#contato">Quero revender →</a></div>
+  </div>
+</section>
+
+<!-- QUALIDADE -->
+<section class="quality">
+  <div class="q-text reveal">
+    <p class="tag">Qualidade</p>
+    <h2 class="split">Segurança<br/>de indústria,<br/><em>gosto de casa.</em></h2>
+    <p>Fábrica com boas práticas de fabricação, rastreabilidade por lote e equipe de controle de qualidade acompanhando cada fornada.</p>
+  </div>
+  <ul class="seals">
+    <li class="reveal"><b>BPF</b><span>Boas Práticas de Fabricação</span></li>
+    <li class="reveal"><b>SIF / Anvisa</b><span>Registro e rotulagem em dia</span></li>
+    <li class="reveal"><b>Lote</b><span>Rastreabilidade completa</span></li>
+    <li class="reveal"><b>Sem gordura trans</b><span>Nas linhas de pães</span></li>
+  </ul>
+  <p class="note">* Confirmar certificações e registros reais antes de publicar.</p>
+</section>
+
+<!-- HISTÓRIA -->
+<section id="historia" class="story">
+  <div class="story-img reveal">
+    <img src="fotos/fabrica.jpg" alt="Fábrica PanGostoso" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()">
+    <span class="ph">fotos/fabrica.jpg</span>
+  </div>
+  <div class="story-text">
+    <p class="tag">Nossa história</p>
+    <h2 class="split">Tudo começou,<br/><em>com um forno.</em></h2>
+    <p class="reveal">Escreva aqui a história real: quem fundou, em que ano, onde ficava a primeira padaria e como ela virou indústria. Histórias de família e de bairro são o que fazem uma marca de pão ser lembrada.</p>
+    <div class="years">
+      <div class="y reveal"><b>[ano]</b><span>Primeira padaria</span></div>
+      <div class="y reveal"><b>[ano]</b><span>Primeira fábrica</span></div>
+      <div class="y reveal"><b>Hoje</b><span>[número] clientes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ONDE ENTREGAMOS -->
+<section class="coverage">
+  <div class="cov-text">
+    <p class="tag">Onde entregamos</p>
+    <h2 class="split">Da cidade das<br/>mangueiras,<br/><em>pra Grande</em><br/><em>Belém.</em></h2>
+    <p class="reveal">Rotas diárias saindo da nossa fábrica em Belém. Passe o mouse para ver cada cidade.</p>
+    <ul class="cities">
+      <li class="reveal"><b>Belém</b><span>Entrega diária</span></li>
+      <li class="reveal"><b>Ananindeua</b><span>Entrega diária</span></li>
+      <li class="reveal"><b>Marituba</b><span>Entrega diária</span></li>
+      <li class="reveal"><b>Benevides</b><span>3× por semana</span></li>
+      <li class="reveal"><b>Santa Bárbara do Pará</b><span>3× por semana</span></li>
+      <li class="reveal"><b>Castanhal</b><span>2× por semana</span></li>
+    </ul>
+    <p class="note">* Rotas e frequências de exemplo — confirmar com a logística.</p>
+  </div>
+  <div class="cov-map reveal" aria-hidden="true">
+    <svg viewBox="0 0 400 320">
+      <path class="river" d="M0,60 C80,40 120,90 170,80 S260,30 400,50"/>
+      <path class="river r2" d="M0,250 C60,230 90,280 150,270"/>
+      <g class="route"><path d="M90,170 L150,150 L190,160 L230,140 L290,150 L360,120"/></g>
+      <g class="pins">
+        <g transform="translate(90,170)"><circle r="12" class="pulse"/><circle r="7"/><text y="30">Belém</text></g>
+        <g transform="translate(150,150)"><circle r="5"/><text y="-14">Ananindeua</text></g>
+        <g transform="translate(190,160)"><circle r="5"/><text y="24">Marituba</text></g>
+        <g transform="translate(230,140)"><circle r="5"/><text y="-14">Benevides</text></g>
+        <g transform="translate(290,150)"><circle r="5"/><text y="24">Sta. Bárbara</text></g>
+        <g transform="translate(360,120)"><circle r="5"/><text y="-14">Castanhal</text></g>
+      </g>
+      <g class="truck"><text font-size="22">🚚</text></g>
+    </svg>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contact">
+  <div class="contact-card reveal">
+    <h2 class="split">Vamos de PanGostoso<br/><em>na sua prateleira?</em></h2>
+    <p>Conte sobre o seu negócio e o comercial retorna com tabela e amostras.</p>
+    <form class="form" onsubmit="event.preventDefault(); this.classList.add('sent');">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="text" placeholder="Empresa" required />
+      <input type="tel" placeholder="WhatsApp" required />
+      <input type="text" placeholder="Cidade / Estado" required />
+      <select required>
+        <option value="">Tipo de negócio</option>
+        <option>Supermercado</option><option>Padaria</option><option>Restaurante / food service</option><option>Café / conveniência</option><option>Distribuidor</option><option>Outro</option>
+      </select>
+      <button class="btn" type="submit">Enviar →</button>
+      <p class="lgpd">Ao enviar, você concorda com a nossa <a href="privacidade.html">Política de Privacidade</a>. Usamos seus dados só para responder ao seu contato.</p>
+      <p class="ok">Recebemos! Nosso comercial vai chamar você no WhatsApp. 🍞</p>
+    </form>
+  </div>
+  <div class="contact-info reveal">
+    <h3>Fábrica</h3>
+    <p>[Endereço da fábrica]<br/>Belém – PA</p>
+    <h3>Comercial</h3>
+    <p><a href="tel:+559100000000">[(91) 0000-0000]</a><br/><a href="mailto:comercial@pangostoso.com.br">[comercial@pangostoso.com.br]</a></p>
+    <h3>Trabalhe conosco</h3>
+    <p>Padeiros, confeiteiros, motoristas e operadores: <a href="mailto:rh@pangostoso.com.br">[rh@pangostoso.com.br]</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-big">Pan<b>Gostoso</b></div>
+  <div class="footer-row">
+    <span>© 2026 PanGostoso Indústria de Panificação · Belém – PA · CNPJ [00.000.000/0001-00]</span>
+    <span class="social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></span>
+    <span class="social"><a href="privacidade.html">Política de Privacidade</a><a href="termos.html">Termos de Uso</a></span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/559100000000" target="_blank" rel="noopener" aria-label="WhatsApp comercial">
+  <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
+</a>
+
+<div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <span class="ck-emo" aria-hidden="true">🍪</span>
+  <p><b>A gente usa cookies</b> (os digitais, infelizmente 😄) para o site funcionar e entender como você navega. Você escolhe. Saiba mais na nossa <a href="privacidade.html#cookies" class="ck-link">Política de Privacidade</a>.</p>
+  <div class="ck-btns">
+    <button class="ck-no" type="button">Só os essenciais</button>
+    <button class="ck-yes" type="button">Aceitar todos</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

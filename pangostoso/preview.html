@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#2B1A10" />
+<title>PanGostoso — Indústria de Panificação em Belém do Pará</title>
+<meta name="description" content="PanGostoso, indústria de panificação de Belém do Pará: pães, bolos e sabores do Norte com gosto de padaria. Fornecemos para supermercados, padarias e food service na Grande Belém." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --crust:#2B1A10;
+  --crust2:#4A2C18;
+  --cream:#FFF6E8;
+  --dough:#F7E6C8;
+  --wheat:#E9B04C;
+  --oven:#D9481F;
+  --acai:#4B1D3F;
+  --leaf:#2F6B3A;
+  --display:"Caprasimo",Georgia,serif;
+  --sans:"Bricolage Grotesque",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --bounce:cubic-bezier(.5,1.6,.4,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--crust);font-family:var(--sans);font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--oven)}
+code{background:var(--dough);padding:.1rem .35rem;border-radius:4px}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 5vw;transition:background .4s,box-shadow .4s,padding .4s}
+.nav.solid{background:rgba(255,246,232,.92);backdrop-filter:blur(10px);box-shadow:0 6px 30px -18px rgba(43,26,16,.5);padding:.6rem 5vw}
+.logo{display:flex;align-items:center;gap:.55rem;font-family:var(--display);font-size:1.6rem;color:var(--crust)}
+.logo b{font-weight:400;color:var(--oven)}
+.logo-mark svg{width:42px;height:42px;display:block}
+.logo-mark path{fill:var(--wheat);stroke:var(--crust);stroke-width:2.5;stroke-linejoin:round}
+.logo-mark .cut{fill:none;stroke-linecap:round}
+.logo:hover .logo-mark svg{animation:wobble .6s var(--bounce)}
+@keyframes wobble{30%{transform:rotate(-10deg) scale(1.1)}60%{transform:rotate(8deg)}}
+.links{display:flex;gap:1.6rem;font-weight:600}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:50%;bottom:-6px;width:6px;height:6px;border-radius:50%;background:var(--oven);transform:translateX(-50%) scale(0);transition:transform .3s var(--bounce)}
+.links a:hover::after{transform:translateX(-50%) scale(1)}
+@media(max-width:980px){.links{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--oven);color:var(--cream);font-weight:700;padding:1rem 1.6rem;border-radius:999px;border:0;font-family:inherit;font-size:1rem;cursor:pointer;
+  box-shadow:0 6px 0 #9E2F10;transition:transform .2s,box-shadow .2s,background .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 9px 0 #9E2F10}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #9E2F10}
+.btn span{transition:transform .3s var(--ease)}
+.btn:hover span{transform:translateX(5px)}
+.btn-ghost{background:transparent;color:var(--crust);box-shadow:inset 0 0 0 2px var(--crust)}
+.btn-ghost:hover{background:var(--crust);color:var(--cream);box-shadow:inset 0 0 0 2px var(--crust)}
+.btn-sm{padding:.65rem 1.2rem;font-size:.9rem;white-space:nowrap;box-shadow:0 4px 0 #9E2F10}
+
+/* shared */
+section{padding:7rem 5vw;position:relative;z-index:2}
+.tag{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;background:var(--dough);color:var(--crust2);padding:.45rem .9rem;border-radius:999px;margin-bottom:1.2rem}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.5vw,4.6rem);line-height:1;letter-spacing:-.01em}
+.head{margin-bottom:2.5rem}
+.note{font-size:.8rem;opacity:.55;margin-top:1.8rem}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:2rem;padding-top:8rem;overflow:hidden}
+@media(max-width:960px){.hero{grid-template-columns:1fr;padding-top:7rem}}
+.hero-glow{position:absolute;right:-15%;top:10%;width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(233,176,76,.55),rgba(217,72,31,.18) 45%,transparent 70%);filter:blur(10px);animation:heat 6s ease-in-out infinite}
+@keyframes heat{50%{transform:scale(1.08);opacity:.85}}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3rem,6vw,5.6rem);line-height:.98;letter-spacing:-.01em;position:relative}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(60px) scale(.6) rotate(-6deg);animation:pop .8s var(--bounce) forwards}
+.hero h1 .w:nth-child(1){animation-delay:.1s}.hero h1 .w:nth-child(2){animation-delay:.2s}.hero h1 .w:nth-child(3){animation-delay:.3s}
+.hero h1 .w:nth-child(4){animation-delay:.5s}.hero h1 .w:nth-child(5){animation-delay:.6s}
+.hero h1 .accent{color:var(--oven)}
+@keyframes pop{to{opacity:1;transform:none}}
+.sub{font-size:1.2rem;line-height:1.6;max-width:560px;margin:1.6rem 0 2.2rem;position:relative}
+.cta{display:flex;flex-wrap:wrap;gap:1rem;position:relative}
+
+/* oven art */
+.hero-art{position:relative;display:grid;place-items:center;min-height:460px}
+.oven{width:min(400px,86vw);background:var(--crust);border-radius:34px;padding:22px 22px 16px;box-shadow:0 40px 80px -30px rgba(43,26,16,.7),inset 0 -8px 0 rgba(0,0,0,.25);transform:rotate(-3deg)}
+.oven-window{position:relative;height:250px;border-radius:20px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 100%,#FFB347 0%,#E2571E 45%,#5A1E0A 100%);box-shadow:inset 0 0 0 6px #1a0f08,inset 0 0 40px rgba(0,0,0,.6)}
+.oven-window::before{content:"";position:absolute;left:10%;right:10%;bottom:46px;height:4px;background:#1a0f08;border-radius:2px;box-shadow:0 -120px 0 #1a0f08}
+.oven-window::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.18) 0 18%,transparent 18% 100%);pointer-events:none}
+.loaf{position:absolute;left:50%;bottom:50px;width:190px;height:95px;margin-left:-95px;border-radius:95px 95px 22px 22px;
+  background:radial-gradient(ellipse at 50% 20%,#F2C27A,#C8792E 60%,#8A4A16);transform-origin:bottom center;box-shadow:inset 0 -10px 20px rgba(80,30,5,.4)}
+.loaf.rise{animation:rise 4.5s var(--ease) infinite}
+@keyframes rise{0%{transform:scale(.72,.5);filter:brightness(1.3) saturate(.6)}55%{transform:scale(1,1);filter:brightness(1) saturate(1)}85%,100%{transform:scale(1,1);filter:brightness(.92)}}
+.score{position:absolute;top:28px;width:38px;height:8px;border-radius:6px;background:#F7D9A3;transform:rotate(-25deg);opacity:.9}
+.score:nth-child(1){left:38px}.score:nth-child(2){left:78px}.score:nth-child(3){left:118px}
+.steam{position:absolute;bottom:140px;width:22px;height:60px;border-radius:50%;background:rgba(255,255,255,.35);filter:blur(8px);animation:steam 3s ease-out infinite;opacity:0}
+.s1{left:38%}.s2{left:50%;animation-delay:1s}.s3{left:62%;animation-delay:2s}
+@keyframes steam{0%{opacity:0;transform:translateY(20px) scaleX(.6)}30%{opacity:1}100%{opacity:0;transform:translateY(-90px) scaleX(1.6)}}
+.oven-panel{display:flex;align-items:center;gap:.8rem;margin-top:14px;padding:0 6px}
+.knob{width:30px;height:30px;border-radius:50%;background:conic-gradient(#555,#999,#555,#999,#555);border:3px solid #1a0f08;animation:turn 6s linear infinite}
+.knob:nth-child(2){animation-duration:9s;animation-direction:reverse}
+@keyframes turn{to{transform:rotate(360deg)}}
+.temp{margin-left:auto;font-family:ui-monospace,Menlo,monospace;color:#FF8A3D;background:#120a05;padding:.35rem .7rem;border-radius:8px;font-size:1.1rem;text-shadow:0 0 8px #FF6A1A}
+.badge-round{position:absolute;left:6%;top:2%;z-index:3;background:var(--wheat);border-radius:50%;box-shadow:0 12px 30px -12px rgba(43,26,16,.6);width:112px;height:112px;display:grid;place-items:center}
+.badge-round svg{position:absolute;inset:0;animation:turn 16s linear infinite}
+.badge-round text{font-size:17px;font-weight:800;fill:var(--crust)}
+.badge-round span{font-size:1.7rem;animation:flick 1.2s ease-in-out infinite alternate}
+@keyframes flick{to{transform:scale(1.15) rotate(6deg)}}
+@media(max-width:600px){.badge-round{width:90px;height:90px;left:-6px}}
+
+/* conveyor belt */
+.belt{position:relative;z-index:2;background:var(--crust);color:var(--cream);padding:1.3rem 0 0;overflow:hidden}
+.belt-track{display:flex;gap:1rem;width:max-content;animation:belt 35s linear infinite;padding-bottom:1rem}
+.belt-track span{background:var(--crust2);border:2px solid #6B4429;padding:.7rem 1.3rem;border-radius:16px;font-weight:700;font-size:1.05rem;white-space:nowrap;transition:transform .3s var(--bounce)}
+.belt-track span:hover{transform:translateY(-8px) rotate(-3deg);background:var(--wheat);color:var(--crust)}
+.belt:hover .belt-track{animation-play-state:paused}
+.belt-rollers{height:16px;background:repeating-linear-gradient(90deg,#1a0f08 0 18px,#5a3a22 18px 22px);animation:rollers .6s linear infinite}
+@keyframes belt{to{transform:translateX(-50%)}}
+@keyframes rollers{to{background-position:22px 0}}
+
+/* numbers */
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;padding-top:5rem;padding-bottom:4rem}
+@media(max-width:860px){.numbers{grid-template-columns:1fr 1fr}}
+.num{border-top:3px solid var(--crust);padding-top:1rem}
+.num b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(3rem,6vw,5rem);color:var(--oven);line-height:1}
+.num span{font-weight:600}
+.numbers .note{grid-column:1/-1;margin-top:0}
+
+/* products */
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+.f{border:2px solid var(--crust);background:transparent;color:var(--crust);padding:.65rem 1.2rem;border-radius:999px;font:700 .95rem var(--sans);cursor:pointer;transition:background .3s,color .3s,transform .3s var(--bounce)}
+.f:hover{transform:translateY(-3px)}
+.f.is-on{background:var(--crust);color:var(--cream)}
+.f[data-f="para"]{border-color:var(--acai);color:var(--acai)}
+.f[data-f="para"].is-on{background:var(--acai);color:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.p{background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 2px 0 rgba(43,26,16,.08);transition:transform .45s var(--bounce),box-shadow .4s,opacity .4s}
+.p:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 30px 50px -25px rgba(43,26,16,.45)}
+.p.hide{display:none}
+.p.show{animation:popIn .5s var(--bounce)}
+@keyframes popIn{from{opacity:0;transform:scale(.85)}}
+.p-img{position:relative;aspect-ratio:1/0.8;background:var(--bg);display:grid;place-items:center;overflow:hidden}
+.p-img::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.35)}
+.p-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;transition:transform .8s var(--ease)}
+.p:hover .p-img img{transform:scale(1.08)}
+.emo{position:relative;font-size:5.5rem;filter:drop-shadow(0 12px 10px rgba(43,26,16,.25));transition:transform .5s var(--bounce)}
+.p:hover .emo{transform:scale(1.18) rotate(-10deg)}
+.p-img.has-img .emo{display:none}
+.p-body{padding:1.3rem 1.4rem 1.5rem}
+.cat{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--oven)}
+.p[data-cat~="para"] .cat{color:var(--acai)}
+.p h3{font-family:var(--display);font-weight:400;font-size:1.45rem;line-height:1.1;margin:.35rem 0 .5rem}
+.p p{line-height:1.5;opacity:.8;font-size:.95rem}
+.spec{display:inline-block;margin-top:.9rem;font-size:.8rem;font-weight:700;background:var(--dough);padding:.3rem .7rem;border-radius:999px}
+
+/* process */
+.process{background:var(--crust);color:var(--cream);overflow:hidden}
+.process .tag{background:var(--crust2);color:var(--wheat)}
+.process em{color:var(--wheat)}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;padding-top:3rem}
+@media(max-width:1000px){.timeline{grid-template-columns:1fr}.tl-line{display:none}}
+.tl-line{position:absolute;top:0;left:0;right:0;height:6px;background:#5a3a22;border-radius:3px}
+.tl-fill{position:absolute;inset:0;background:linear-gradient(90deg,var(--wheat),var(--oven));border-radius:3px;transform-origin:left;transform:scaleX(var(--p,0))}
+.step{background:var(--crust2);border-radius:22px;padding:1.5rem;position:relative;transition:transform .4s var(--bounce),background .3s}
+.step::before{content:"";position:absolute;top:-3.35rem;left:1.5rem;width:18px;height:18px;border-radius:50%;background:var(--cream);border:4px solid var(--oven)}
+@media(max-width:1000px){.step::before{display:none}}
+.step:hover{transform:translateY(-8px);background:#5c3820}
+.ico{font-size:2.4rem;display:block;margin-bottom:.8rem}
+.step:hover .ico{animation:wobble .6s var(--bounce)}
+.step h3{font-family:var(--display);font-weight:400;font-size:1.35rem;margin-bottom:.5rem;color:var(--wheat)}
+.step p{line-height:1.5;opacity:.85;font-size:.95rem}
+
+/* clients */
+.cl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:1000px){.cl-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cl-grid{grid-template-columns:1fr}}
+.cl{border:2px solid var(--crust);border-radius:26px;padding:1.8rem;display:flex;flex-direction:column;gap:.7rem;background:var(--cream);transition:background .35s,transform .4s var(--bounce)}
+.cl:hover{background:var(--wheat);transform:rotate(-1.5deg) translateY(-6px)}
+.cl-emo{font-size:2.6rem}
+.cl h3{font-family:var(--display);font-weight:400;font-size:1.5rem}
+.cl p{line-height:1.5;opacity:.85;flex:1}
+.cl a{font-weight:800;color:var(--oven)}
+
+/* quality */
+.quality{background:var(--dough);display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:900px){.quality{grid-template-columns:1fr}}
+.q-text p{font-size:1.15rem;line-height:1.6;margin-top:1.2rem;max-width:520px}
+.seals{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.seals li{background:var(--cream);border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.2rem;border:3px dashed var(--crust2);transition:transform .6s var(--bounce)}
+.seals li:hover{transform:rotate(-14deg) scale(1.05);border-style:solid;border-color:var(--oven)}
+.seals b{font-family:var(--display);font-weight:400;font-size:clamp(1.2rem,2.2vw,1.8rem);color:var(--leaf)}
+.seals span{font-size:.85rem;font-weight:600;margin-top:.3rem;max-width:140px}
+.quality .note{grid-column:1/-1;margin-top:0}
+
+/* story */
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
+@media(max-width:900px){.story{grid-template-columns:1fr}}
+.story-img{position:relative;aspect-ratio:4/5;border-radius:200px 200px 26px 26px;overflow:hidden;background:linear-gradient(160deg,var(--wheat),var(--oven) 70%,var(--crust))}
+.story-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story-img .ph{position:absolute;left:1rem;bottom:1rem;background:rgba(255,255,255,.9);font-size:.75rem;padding:.35rem .7rem;border-radius:999px}
+.story-img.has-img .ph{display:none}
+.story-text>p{font-size:1.15rem;line-height:1.65;margin:1.4rem 0 2rem;max-width:560px}
+.years{display:flex;gap:1rem;flex-wrap:wrap}
+.y{background:var(--crust);color:var(--cream);border-radius:20px;padding:1rem 1.3rem;min-width:150px}
+.y b{display:block;font-family:var(--display);font-weight:400;font-size:1.8rem;color:var(--wheat)}
+.y span{font-size:.9rem;opacity:.85}
+
+/* coverage */
+.coverage{background:var(--acai);color:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;overflow:hidden}
+@media(max-width:900px){.coverage{grid-template-columns:1fr}}
+.coverage .tag{background:rgba(255,255,255,.12);color:#F2D27A}
+.coverage em{color:#F2D27A}
+.cov-text>p{font-size:1.1rem;margin:1.2rem 0 1.6rem;opacity:.9}
+.cities{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.cities li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:.8rem 1rem;display:flex;flex-direction:column;transition:background .3s,transform .3s var(--bounce)}
+.cities li:hover{background:#F2D27A;color:var(--acai);transform:translateX(6px)}
+.cities b{font-size:1.05rem}.cities span{font-size:.85rem;opacity:.8}
+.cov-map svg{width:100%;height:auto;overflow:visible}
+.river{fill:none;stroke:#7FB3C9;stroke-width:14;stroke-linecap:round;opacity:.35}
+.route path{fill:none;stroke:#F2D27A;stroke-width:3;stroke-dasharray:8 8;animation:dash 1.5s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.pins circle{fill:#F2D27A}
+.pins .pulse{fill:none;stroke:#F2D27A;stroke-width:2;animation:pulse 2s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{from{transform:scale(.6);opacity:1}to{transform:scale(2.4);opacity:0}}
+.pins text{fill:var(--cream);font:700 13px var(--sans);text-anchor:middle}
+.truck{offset-path:path("M90,165 L150,145 L190,155 L230,135 L290,145 L360,115");animation:drive 7s ease-in-out infinite alternate}
+.truck text{transform:translate(-14px,6px) scaleX(-1)}
+@keyframes drive{from{offset-distance:0%}to{offset-distance:100%}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.3fr .7fr;gap:2rem}
+@media(max-width:900px){.contact{grid-template-columns:1fr}}
+.contact-card{background:var(--oven);color:var(--cream);border-radius:34px;padding:2.6rem;position:relative;overflow:hidden}
+.contact-card::after{content:"🍞";position:absolute;right:-20px;bottom:-40px;font-size:12rem;opacity:.15;transform:rotate(-20deg);animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:rotate(-12deg) translateY(-14px)}}
+.contact-card em{color:var(--wheat)}
+.contact-card h2{font-size:clamp(2.2rem,4.4vw,3.6rem)}
+.contact-card>p{margin:1rem 0 1.6rem;font-size:1.1rem}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;position:relative;z-index:1}
+@media(max-width:560px){.form{grid-template-columns:1fr}}
+.form input,.form select{padding:1rem 1.1rem;border-radius:16px;border:0;font:500 1rem var(--sans);background:var(--cream);color:var(--crust)}
+.form input:focus,.form select:focus{outline:3px solid var(--wheat)}
+.form select{grid-column:1/-1}
+.form .btn{grid-column:1/-1;justify-content:center;background:var(--crust);box-shadow:0 6px 0 #000}
+.ok{display:none;grid-column:1/-1;font-weight:700;font-size:1.2rem}
+.form.sent>*:not(.ok){display:none}
+.form.sent .ok{display:block;animation:popIn .5s var(--bounce)}
+.contact-info{background:var(--dough);border-radius:34px;padding:2.2rem}
+.contact-info h3{font-family:var(--display);font-weight:400;font-size:1.3rem;color:var(--oven);margin:1.2rem 0 .3rem}
+.contact-info h3:first-child{margin-top:0}
+.contact-info p{line-height:1.6}
+.contact-info a{border-bottom:2px solid var(--wheat)}
+
+/* footer */
+.footer{position:relative;z-index:2;background:var(--crust);color:var(--cream);padding:4rem 5vw 6.5rem;overflow:hidden}
+.footer-big{font-family:var(--display);font-size:clamp(4rem,16vw,15rem);line-height:.9;color:var(--wheat)}
+.footer-big b{font-weight:400;color:var(--oven)}
+.footer-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2rem;opacity:.8;font-size:.9rem}
+.social{display:flex;gap:1rem}
+.social a:hover{color:var(--wheat)}
+
+/* whatsapp */
+.wa{position:fixed;right:1.3rem;bottom:1.3rem;z-index:60;width:62px;height:62px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 25px -8px rgba(0,0,0,.4);animation:bob2 3s ease-in-out infinite}
+@keyframes bob2{50%{transform:translateY(-6px)}}
+.wa svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.wa .fill{fill:currentColor;stroke:none}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(40px) scale(.97);transition:opacity .8s var(--ease),transform .8s var(--bounce)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.hero h1 .w{opacity:1;transform:none}
+}
+
+/* ===== mais dinâmico ===== */
+/* preloader */
+.preloader{position:fixed;inset:0;z-index:200;background:var(--crust);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:clip-path .9s var(--ease)}
+body:not(.loading) .preloader{clip-path:circle(0% at 50% 50%);pointer-events:none}
+.pl-loaf{position:relative;width:130px;height:64px;border-radius:65px 65px 16px 16px;background:radial-gradient(ellipse at 50% 20%,#F2C27A,#C8792E 60%,#8A4A16);transform-origin:bottom;animation:plrise 1.2s var(--bounce) infinite alternate}
+.pl-loaf span{position:absolute;top:18px;width:26px;height:6px;border-radius:4px;background:#F7D9A3;transform:rotate(-25deg)}
+.pl-loaf span:nth-child(1){left:26px}.pl-loaf span:nth-child(2){left:54px}.pl-loaf span:nth-child(3){left:82px}
+@keyframes plrise{from{transform:scale(.7,.5)}to{transform:scale(1)}}
+.pl-txt{font-family:var(--display);font-size:1.8rem}
+.pl-dots i{font-style:normal;animation:dot 1s infinite}
+.pl-dots i:nth-child(2){animation-delay:.2s}.pl-dots i:nth-child(3){animation-delay:.4s}
+@keyframes dot{50%{opacity:0}}
+.pl-pct{font-family:ui-monospace,Menlo,monospace;color:var(--wheat)}
+body.loading .hero h1 .w{animation-play-state:paused}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;right:0;height:5px;z-index:120;background:transparent}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--wheat),var(--oven));transform-origin:left;transform:scaleX(var(--sp,0))}
+
+/* rotating hero word */
+.rot{display:inline-grid !important;vertical-align:top}
+.rot b{grid-area:1/1;font-weight:400;opacity:0;transform:translateY(60%) rotate(4deg);transition:opacity .35s,transform .6s var(--bounce)}
+.rot b.on{opacity:1;transform:none;transition-delay:.1s}
+.rot b.out{opacity:0;transform:translateY(-60%) rotate(-4deg);transition:opacity .2s,transform .4s var(--ease)}
+
+/* oven follows mouse */
+.oven{transition:transform .25s ease-out}
+.loaf.rise{animation:rise 4.5s var(--ease) infinite, jiggle 4.5s ease-in-out infinite}
+@keyframes jiggle{60%{translate:0 0}64%{translate:0 -6px}68%{translate:0 0}}
+
+/* magnetic */
+.mag{transition:transform .2s ease-out,box-shadow .2s,background .3s}
+
+/* split headings */
+.split .ch{display:inline-block;opacity:0;transform:translateY(.6em) rotate(8deg);transition:opacity .5s,transform .7s var(--bounce)}
+.split.in .ch{opacity:1;transform:none}
+.split .sp{display:inline-block;width:.28em}
+
+/* big scroll marquee */
+.bigmarq{position:relative;z-index:2;padding:3rem 0;overflow:hidden;background:var(--cream)}
+.bm-row{display:flex;gap:2rem;width:max-content;align-items:center;font-family:var(--display);font-size:clamp(3rem,9vw,8rem);line-height:1.05;white-space:nowrap;will-change:transform}
+.bm-row i{font-style:normal;color:var(--oven);font-size:.5em;display:inline-block;animation:turn 6s linear infinite}
+.r1 span{color:var(--crust)}
+.r2 span{color:transparent;-webkit-text-stroke:2px var(--acai)}
+.r2 i{color:var(--acai)}
+.bm-row span{transition:color .3s}
+.r2 span:hover{color:var(--acai)}
+.r1 span:hover{color:var(--oven)}
+
+/* 3D tilt + shine */
+.tilt{transform-style:preserve-3d;will-change:transform}
+.tilt::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.45),transparent 45%);opacity:0;transition:opacity .3s}
+.tilt:hover::after{opacity:1}
+.p,.cl{position:relative}
+.p.tilting,.cl.tilting{transition:transform .08s linear,box-shadow .4s}
+
+/* section headings tag wiggle */
+.tag{transition:transform .4s var(--bounce)}
+.tag:hover{transform:rotate(-4deg) scale(1.06)}
+
+/* number bars */
+.num{position:relative}
+.num::after{content:"";position:absolute;left:0;top:-3px;height:3px;width:100%;background:var(--oven);transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease)}
+.num.in::after{transform:scaleX(1)}
+
+/* wave on footer word */
+.footer-big{display:block;white-space:nowrap;font-size:clamp(3rem,14vw,14rem)}
+.footer-big .fl{display:inline-block;transition:transform .4s var(--bounce),color .3s}
+.footer-big .fl:hover{transform:translateY(-.15em) rotate(-8deg);color:var(--cream)}
+
+@media (prefers-reduced-motion:reduce){.preloader{display:none}.split .ch{opacity:1;transform:none}}
+
+/* cookie banner (LGPD) */
+.cookies{position:fixed;left:50%;bottom:1.2rem;z-index:150;width:min(960px,calc(100% - 2rem));display:flex;align-items:center;gap:1.2rem;
+  background:var(--crust);color:var(--cream);border-radius:24px;padding:1.1rem 1.3rem;box-shadow:0 20px 50px -15px rgba(0,0,0,.55);
+  transform:translate(-50%,160%);transition:transform .7s var(--bounce)}
+.cookies.show{transform:translate(-50%,0)}
+.ck-emo{font-size:2.4rem;flex:none;animation:ckspin 3s ease-in-out infinite}
+@keyframes ckspin{50%{transform:rotate(-18deg) scale(1.08)}}
+.cookies p{font-size:.92rem;line-height:1.5;flex:1}
+.cookies p b{color:var(--wheat)}
+.ck-link{color:var(--wheat);text-decoration:underline}
+.ck-btns{display:flex;gap:.6rem;flex:none}
+.cookies button{border:0;border-radius:999px;padding:.75rem 1.2rem;font:700 .9rem var(--sans);cursor:pointer;transition:transform .2s,background .3s}
+.cookies button:hover{transform:translateY(-2px)}
+.ck-yes{background:var(--oven);color:var(--cream);box-shadow:0 4px 0 #9E2F10}
+.ck-no{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 2px rgba(255,246,232,.4)}
+.ck-no:hover{box-shadow:inset 0 0 0 2px var(--cream)}
+body.ck-open .wa{bottom:8.5rem}
+.wa{transition:bottom .5s var(--ease)}
+@media(max-width:760px){
+  .cookies{flex-direction:column;align-items:flex-start;gap:.8rem;bottom:.8rem}
+  .ck-emo{position:absolute;top:-2rem;right:1rem;font-size:2.2rem}
+  .cookies{padding-top:1.4rem}
+  .ck-btns{width:100%}.ck-btns button{flex:1}
+  body.ck-open .wa{bottom:15rem}
+}
+
+.lgpd{grid-column:1/-1;font-size:.82rem;opacity:.9}
+.lgpd a{color:var(--wheat);text-decoration:underline}
+/* quality heading: slightly smaller so "indústria" fits on one line */
+.quality .q-text h2{font-size:clamp(2.2rem,4.9vw,4.1rem)}
+
+</style>
+</head>
+<body class="loading">
+<div class="preloader" aria-hidden="true">
+  <div class="pl-loaf"><span></span><span></span><span></span></div>
+  <p class="pl-txt">Assando<b class="pl-dots"><i>.</i><i>.</i><i>.</i></b></p>
+  <p class="pl-pct"><b id="pl-n">0</b>%</p>
+</div>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav">
+  <a href="#topo" class="logo">
+    <span class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48"><path d="M6 30c0-10 8-18 18-18s18 8 18 18v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z"/><path class="cut" d="M16 20l-3 6M24 18v7M32 20l3 6"/></svg>
+    </span>
+    <span>Pan<b>Gostoso</b></span>
+  </a>
+  <nav class="links">
+    <a href="#produtos">Produtos</a>
+    <a href="#processo">Como fazemos</a>
+    <a href="#clientes">Para quem</a>
+    <a href="#historia">Nossa história</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <a href="#contato" class="btn btn-sm mag">Seja um cliente</a>
+</header>
+
+<main id="topo">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-text">
+    <p class="tag reveal">🌾 Indústria de panificação · Belém do Pará</p>
+    <h1>
+      <span class="w">Pão</span>
+      <span class="w">de</span>
+      <span class="w">padaria,</span>
+      <span class="w accent">em escala</span>
+      <span class="w accent rot"><b class="on">de indústria.</b><b>de Belém.</b><b>de verdade.</b><b>de família.</b></span>
+    </h1>
+    <p class="sub reveal">Massa com fermentação lenta, forno no ponto certo e entrega pontual. Feita em Belém, a PanGostoso abastece supermercados, padarias e restaurantes da Grande Belém com pães que o cliente reconhece pelo cheiro.</p>
+    <div class="cta reveal">
+      <a href="#contato" class="btn mag">Quero revender <span>→</span></a>
+      <a href="#produtos" class="btn btn-ghost">Ver produtos</a>
+    </div>
+  </div>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="oven">
+      <div class="oven-window">
+        <div class="loaf rise"><span class="score"></span><span class="score"></span><span class="score"></span></div>
+        <div class="steam s1"></div><div class="steam s2"></div><div class="steam s3"></div>
+      </div>
+      <div class="oven-panel"><span class="knob"></span><span class="knob"></span><span class="temp"><b data-temp>180</b>°C</span></div>
+    </div>
+    <div class="badge-round">
+      <svg viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+      <text><textPath href="#c" textLength="480" lengthAdjust="spacing">SAIU DO FORNO · QUENTINHO · DELÍCIA · </textPath></text></svg>
+      <span>🔥</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESTEIRA (conveyor) -->
+<div class="belt" aria-hidden="true">
+  <div class="belt-track">
+    <span>🍞 Pão de forma</span><span>🥖 Pão francês congelado</span><span>🧀 Pão de queijo</span><span>🥯 Bisnaguinha</span><span>🍰 Bolos</span><span>🥪 Pão de hambúrguer</span><span>🍞 Torradas</span><span>🥐 Folhados</span><span>🌰 Pão de castanha-do-pará</span><span>🍰 Bolo de cupuaçu</span>
+    <span>🍞 Pão de forma</span><span>🥖 Pão francês congelado</span><span>🧀 Pão de queijo</span><span>🥯 Bisnaguinha</span><span>🍰 Bolos</span><span>🥪 Pão de hambúrguer</span><span>🍞 Torradas</span><span>🥐 Folhados</span><span>🌰 Pão de castanha-do-pará</span><span>🍰 Bolo de cupuaçu</span>
+  </div>
+  <div class="belt-rollers"></div>
+</div>
+
+<!-- NÚMEROS -->
+<section class="numbers">
+  <div class="num reveal"><b data-count="40">0</b><span>toneladas de massa por dia</span></div>
+  <div class="num reveal"><b data-count="35">0</b><span>produtos no catálogo</span></div>
+  <div class="num reveal"><b data-count="500">0</b><span>pontos de venda atendidos</span></div>
+  <div class="num reveal"><b data-count="24">0</b><span>horas de produção, todo dia</span></div>
+  <p class="note">* Números de exemplo — trocar pelos reais da PanGostoso.</p>
+</section>
+
+<!-- LETREIRO -->
+<div class="bigmarq" aria-hidden="true">
+  <div class="bm-row r1"><span>Quentinho</span><i>✺</i><span>Fresquinho</span><i>✺</i><span>Delícia</span><i>✺</i><span>Feito em Belém</span><i>✺</i><span>Quentinho</span><i>✺</i><span>Fresquinho</span><i>✺</i><span>Delícia</span><i>✺</i><span>Feito em Belém</span><i>✺</i></div>
+  <div class="bm-row r2"><span>Castanha</span><i>✺</i><span>Cupuaçu</span><i>✺</i><span>Pudim</span><i>✺</i><span>Macaxeira</span><i>✺</i><span>Castanha</span><i>✺</i><span>Cupuaçu</span><i>✺</i><span>Pudim</span><i>✺</i><span>Macaxeira</span><i>✺</i></div>
+</div>
+
+<!-- PRODUTOS -->
+<section id="produtos" class="products">
+  <div class="head">
+    <p class="tag">Nossas linhas</p>
+    <h2 class="split">Escolha pela <em>fome.</em></h2>
+  </div>
+  <div class="filters" role="tablist">
+    <button class="f is-on" data-f="todos">Todos</button>
+    <button class="f" data-f="paes">Pães</button>
+    <button class="f" data-f="congelados">Congelados</button>
+    <button class="f" data-f="doces">Doces</button>
+    <button class="f" data-f="para">Sabores do Pará</button>
+    <button class="f" data-f="food">Food service</button>
+  </div>
+  <div class="grid">
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#F3C98B">
+      <div class="p-img"><img src="fotos/pao-de-forma.jpg" alt="Pão de forma PanGostoso" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍞</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Pão de forma tradicional</h3><p>Miolo macio, casca fina. Integral, sem casca e multigrãos.</p><span class="spec">500 g · validade 10 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados food" style="--bg:#E9B872">
+      <div class="p-img"><img src="fotos/pao-frances.jpg" alt="Pão francês congelado" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥖</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Pão francês congelado</h3><p>Sai do freezer, 8 minutos no forno e o casquinho estala como de padaria.</p><span class="spec">Caixa 5 kg · ultracongelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados" style="--bg:#F6DE9B">
+      <div class="p-img"><img src="fotos/pao-de-queijo.jpg" alt="Pão de queijo congelado" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🧀</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Pão de queijo</h3><p>Polvilho e queijo de verdade. Tradicional, coquetel e recheado.</p><span class="spec">1 kg · 25 a 30 unidades</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#F0C38F">
+      <div class="p-img"><img src="fotos/bisnaguinha.jpg" alt="Bisnaguinha" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥯</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Bisnaguinha</h3><p>A queridinha da lancheira. Fofinha, levemente adocicada.</p><span class="spec">300 g · 15 unidades</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#EBA98A">
+      <div class="p-img"><img src="fotos/bolo.jpg" alt="Bolos PanGostoso" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍰</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Bolos caseiros</h3><p>Fubá, cenoura com chocolate, laranja e formigueiro. Receita de vó.</p><span class="spec">400 g · validade 15 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="food paes" style="--bg:#E7B07A">
+      <div class="p-img"><img src="fotos/hamburguer.jpg" alt="Pão de hambúrguer" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍔</span></div>
+      <div class="p-body"><span class="cat">Food service</span><h3>Pão de hambúrguer & hot dog</h3><p>Brioche, australiano e tradicional, no tamanho que a sua cozinha pede.</p><span class="spec">Pacotes de 6 a 48 un.</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#F2C9A0">
+      <div class="p-img"><img src="fotos/folhados.jpg" alt="Folhados e croissants" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥐</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Croissants & folhados</h3><p>Massa laminada com manteiga, prontos para assar no ponto de venda.</p><span class="spec">Caixa 2 kg · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#DDB27F">
+      <div class="p-img"><img src="fotos/torradas.jpg" alt="Torradas" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍞</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Torradas</h3><p>Tradicional, integral e com alho. Crocância que dura no pote.</p><span class="spec">160 g · validade 6 meses</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="para paes" style="--bg:#C9A27A">
+      <div class="p-img"><img src="fotos/pao-castanha.jpg" alt="Pão de castanha-do-pará" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🌰</span></div>
+      <div class="p-body"><span class="cat">Sabores do Pará</span><h3>Pão de castanha-do-pará</h3><p>Massa integral com castanha picada. Crocante por fora, perfumado por dentro.</p><span class="spec">450 g · validade 7 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="para doces" style="--bg:#F2D27A">
+      <div class="p-img"><img src="fotos/bolo-cupuacu.jpg" alt="Bolo de cupuaçu" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍰</span></div>
+      <div class="p-body"><span class="cat">Sabores do Pará</span><h3>Bolo de cupuaçu</h3><p>Fofo, azedinho e doce na medida, com polpa de cupuaçu da região.</p><span class="spec">400 g · validade 12 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="para doces" style="--bg:#B98AA8">
+      <div class="p-img"><img src="fotos/bolo-macaxeira.jpg" alt="Bolo de macaxeira" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍠</span></div>
+      <div class="p-body"><span class="cat">Sabores do Pará</span><h3>Bolo de macaxeira & tapioca</h3><p>Receita de interior, com coco e tapioca. Combina com o café da tarde.</p><span class="spec">500 g · validade 10 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#F7D9A0">
+      <div class="p-img"><img src="fotos/pudim.jpg" alt="Pudim" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍮</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Pudim</h3><p>Cremoso, com calda de caramelo. Pronto para servir.</p><span class="spec">Unidade 500 g · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados" style="--bg:#F2C38F">
+      <div class="p-img"><img src="fotos/salgados.jpg" alt="Salgados" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥟</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Salgados</h3><p>Coxinha, empada e outros salgados prontos para assar ou fritar.</p><span class="spec">Caixa 1 kg · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="congelados" style="--bg:#F6DE9B">
+      <div class="p-img"><img src="fotos/canudinhos.jpg" alt="Canudinhos" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🥐</span></div>
+      <div class="p-body"><span class="cat">Congelados</span><h3>Canudinhos</h3><p>Massa crocante e recheio cremoso. Assados na hora.</p><span class="spec">Pacote 400 g · congelado</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="paes" style="--bg:#DDB27F">
+      <div class="p-img"><img src="fotos/paes-integrais.jpg" alt="Pães integrais" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🌾</span></div>
+      <div class="p-body"><span class="cat">Pães</span><h3>Pães integrais</h3><p>Fibras e sabor de grão. Opção saudável para todo dia.</p><span class="spec">Pacote 500 g · validade 10 dias</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#EBA98A">
+      <div class="p-img"><img src="fotos/biscoitos.jpg" alt="Biscoitos" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🍪</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Biscoitos</h3><p>Amanteigados e crocantes, em vários sabores.</p><span class="spec">Pacote 400 g · validade 6 meses</span></div>
+    </article>
+    <article class="p reveal tilt" data-cat="doces" style="--bg:#E9B872">
+      <div class="p-img"><img src="fotos/panetone.jpg" alt="Panetone" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()"><span class="emo">🎄</span></div>
+      <div class="p-body"><span class="cat">Doces</span><h3>Panetone</h3><p>Fermentação longa, frutas cristalizadas e textura fofa.</p><span class="spec">Unidade 500 g · validade 60 dias</span></div>
+    </article>
+  </div>
+  <p class="note">* Linha de produtos de exemplo — ajustar ao catálogo real. Fotos entram sozinhas na pasta <code>fotos/</code>.</p>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo" class="process">
+  <div class="head light">
+    <p class="tag">Como fazemos</p>
+    <h2 class="split">Do trigo <em>à mesa.</em></h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-line"><span class="tl-fill"></span></div>
+    <div class="step reveal"><span class="ico">🌾</span><h3>1. Farinha selecionada</h3><p>Trigo de moinhos parceiros, com laudo de cada lote antes de entrar na fábrica.</p></div>
+    <div class="step reveal"><span class="ico">🫓</span><h3>2. Massa que descansa</h3><p>Fermentação lenta e controlada. É ela que dá o sabor e a casca de padaria.</p></div>
+    <div class="step reveal"><span class="ico">🔥</span><h3>3. Forno no ponto</h3><p>Fornos de esteira com temperatura monitorada minuto a minuto — e embalagens pensadas para o calor e a umidade de Belém.</p></div>
+    <div class="step reveal"><span class="ico">❄️</span><h3>4. Embalado ou congelado</h3><p>Resfriamento rápido para manter o frescor até chegar ao cliente.</p></div>
+    <div class="step reveal"><span class="ico">🚚</span><h3>5. Entrega na hora</h3><p>Frota própria com rota diária pela Grande Belém. Pão fresco na prateleira antes de abrir a loja.</p></div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section id="clientes" class="clients">
+  <div class="head">
+    <p class="tag">Para quem fornecemos</p>
+    <h2 class="split">Seu negócio, <em>nosso forno.</em></h2>
+  </div>
+  <div class="cl-grid">
+    <div class="cl reveal tilt"><span class="cl-emo">🛒</span><h3>Supermercados</h3><p>Linha embalada com código de barras, exposição e reposição programada.</p><a href="#contato">Falar com comercial →</a></div>
+    <div class="cl reveal tilt"><span class="cl-emo">🥖</span><h3>Padarias</h3><p>Congelados pré-assados para ter pão quentinho o dia todo, sem padeiro de madrugada.</p><a href="#contato">Pedir amostra →</a></div>
+    <div class="cl reveal tilt"><span class="cl-emo">🍽️</span><h3>Restaurantes & food service</h3><p>Pães de hambúrguer, mini-pães e pão de queijo em embalagem para cozinha.</p><a href="#contato">Ver tabela →</a></div>
+    <div class="cl reveal tilt"><span class="cl-emo">☕</span><h3>Cafés & conveniência</h3><p>Folhados e pão de queijo para assar na hora e vender com cheirinho.</p><a href="#contato">Quero revender →</a></div>
+  </div>
+</section>
+
+<!-- QUALIDADE -->
+<section class="quality">
+  <div class="q-text reveal">
+    <p class="tag">Qualidade</p>
+    <h2 class="split">Segurança<br/>de indústria,<br/><em>gosto de casa.</em></h2>
+    <p>Fábrica com boas práticas de fabricação, rastreabilidade por lote e equipe de controle de qualidade acompanhando cada fornada.</p>
+  </div>
+  <ul class="seals">
+    <li class="reveal"><b>BPF</b><span>Boas Práticas de Fabricação</span></li>
+    <li class="reveal"><b>SIF / Anvisa</b><span>Registro e rotulagem em dia</span></li>
+    <li class="reveal"><b>Lote</b><span>Rastreabilidade completa</span></li>
+    <li class="reveal"><b>Sem gordura trans</b><span>Nas linhas de pães</span></li>
+  </ul>
+  <p class="note">* Confirmar certificações e registros reais antes de publicar.</p>
+</section>
+
+<!-- HISTÓRIA -->
+<section id="historia" class="story">
+  <div class="story-img reveal">
+    <img src="fotos/fabrica.jpg" alt="Fábrica PanGostoso" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.remove()">
+    <span class="ph">fotos/fabrica.jpg</span>
+  </div>
+  <div class="story-text">
+    <p class="tag">Nossa história</p>
+    <h2 class="split">Tudo começou,<br/><em>com um forno.</em></h2>
+    <p class="reveal">Escreva aqui a história real: quem fundou, em que ano, onde ficava a primeira padaria e como ela virou indústria. Histórias de família e de bairro são o que fazem uma marca de pão ser lembrada.</p>
+    <div class="years">
+      <div class="y reveal"><b>[ano]</b><span>Primeira padaria</span></div>
+      <div class="y reveal"><b>[ano]</b><span>Primeira fábrica</span></div>
+      <div class="y reveal"><b>Hoje</b><span>[número] clientes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ONDE ENTREGAMOS -->
+<section class="coverage">
+  <div class="cov-text">
+    <p class="tag">Onde entregamos</p>
+    <h2 class="split">Da cidade das<br/>mangueiras,<br/><em>pra Grande</em><br/><em>Belém.</em></h2>
+    <p class="reveal">Rotas diárias saindo da nossa fábrica em Belém. Passe o mouse para ver cada cidade.</p>
+    <ul class="cities">
+      <li class="reveal"><b>Belém</b><span>Entrega diária</span></li>
+      <li class="reveal"><b>Ananindeua</b><span>Entrega diária</span></li>
+      <li class="reveal"><b>Marituba</b><span>Entrega diária</span></li>
+      <li class="reveal"><b>Benevides</b><span>3× por semana</span></li>
+      <li class="reveal"><b>Santa Bárbara do Pará</b><span>3× por semana</span></li>
+      <li class="reveal"><b>Castanhal</b><span>2× por semana</span></li>
+    </ul>
+    <p class="note">* Rotas e frequências de exemplo — confirmar com a logística.</p>
+  </div>
+  <div class="cov-map reveal" aria-hidden="true">
+    <svg viewBox="0 0 400 320">
+      <path class="river" d="M0,60 C80,40 120,90 170,80 S260,30 400,50"/>
+      <path class="river r2" d="M0,250 C60,230 90,280 150,270"/>
+      <g class="route"><path d="M90,170 L150,150 L190,160 L230,140 L290,150 L360,120"/></g>
+      <g class="pins">
+        <g transform="translate(90,170)"><circle r="12" class="pulse"/><circle r="7"/><text y="30">Belém</text></g>
+        <g transform="translate(150,150)"><circle r="5"/><text y="-14">Ananindeua</text></g>
+        <g transform="translate(190,160)"><circle r="5"/><text y="24">Marituba</text></g>
+        <g transform="translate(230,140)"><circle r="5"/><text y="-14">Benevides</text></g>
+        <g transform="translate(290,150)"><circle r="5"/><text y="24">Sta. Bárbara</text></g>
+        <g transform="translate(360,120)"><circle r="5"/><text y="-14">Castanhal</text></g>
+      </g>
+      <g class="truck"><text font-size="22">🚚</text></g>
+    </svg>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contact">
+  <div class="contact-card reveal">
+    <h2 class="split">Vamos de PanGostoso<br/><em>na sua prateleira?</em></h2>
+    <p>Conte sobre o seu negócio e o comercial retorna com tabela e amostras.</p>
+    <form class="form" onsubmit="event.preventDefault(); this.classList.add('sent');">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="text" placeholder="Empresa" required />
+      <input type="tel" placeholder="WhatsApp" required />
+      <input type="text" placeholder="Cidade / Estado" required />
+      <select required>
+        <option value="">Tipo de negócio</option>
+        <option>Supermercado</option><option>Padaria</option><option>Restaurante / food service</option><option>Café / conveniência</option><option>Distribuidor</option><option>Outro</option>
+      </select>
+      <button class="btn" type="submit">Enviar →</button>
+      <p class="lgpd">Ao enviar, você concorda com a nossa <a href="privacidade.html">Política de Privacidade</a>. Usamos seus dados só para responder ao seu contato.</p>
+      <p class="ok">Recebemos! Nosso comercial vai chamar você no WhatsApp. 🍞</p>
+    </form>
+  </div>
+  <div class="contact-info reveal">
+    <h3>Fábrica</h3>
+    <p>[Endereço da fábrica]<br/>Belém – PA</p>
+    <h3>Comercial</h3>
+    <p><a href="tel:+559100000000">[(91) 0000-0000]</a><br/><a href="mailto:comercial@pangostoso.com.br">[comercial@pangostoso.com.br]</a></p>
+    <h3>Trabalhe conosco</h3>
+    <p>Padeiros, confeiteiros, motoristas e operadores: <a href="mailto:rh@pangostoso.com.br">[rh@pangostoso.com.br]</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-big">Pan<b>Gostoso</b></div>
+  <div class="footer-row">
+    <span>© 2026 PanGostoso Indústria de Panificação · Belém – PA · CNPJ [00.000.000/0001-00]</span>
+    <span class="social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">LinkedIn</a></span>
+    <span class="social"><a href="privacidade.html">Política de Privacidade</a><a href="termos.html">Termos de Uso</a></span>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/559100000000" target="_blank" rel="noopener" aria-label="WhatsApp comercial">
+  <svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg>
+</a>
+
+<div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+  <span class="ck-emo" aria-hidden="true">🍪</span>
+  <p><b>A gente usa cookies</b> (os digitais, infelizmente 😄) para o site funcionar e entender como você navega. Você escolhe. Saiba mais na nossa <a href="privacidade.html#cookies" class="ck-link">Política de Privacidade</a>.</p>
+  <div class="ck-btns">
+    <button class="ck-no" type="button">Só os essenciais</button>
+    <button class="ck-yes" type="button">Aceitar todos</button>
+  </div>
+</div>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* nav gets solid on scroll */
+const nav = document.querySelector('.nav');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 40), { passive: true });
+
+/* reveal */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const sib = [...e.target.parentElement.children].filter(c => c.classList.contains('reveal'));
+  e.target.style.transitionDelay = (sib.indexOf(e.target) % 6) * 80 + 'ms';
+  e.target.classList.add('in'); io.unobserve(e.target);
+}), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* counters */
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target, end = +el.dataset.count, t0 = performance.now();
+  const step = t => { const p = Math.min((t - t0) / 1800, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 4))); if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step); cio.unobserve(el);
+}), { threshold: .6 });
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+/* oven temperature flicker */
+const temp = document.querySelector('[data-temp]');
+if (temp && !reduce) setInterval(() => { temp.textContent = 178 + Math.round(Math.random() * 6); }, 900);
+
+/* product filters */
+const fs = [...document.querySelectorAll('.f')], ps = [...document.querySelectorAll('.p')];
+fs.forEach(b => b.addEventListener('click', () => {
+  fs.forEach(x => x.classList.toggle('is-on', x === b));
+  const f = b.dataset.f;
+  ps.forEach(p => {
+    const ok = f === 'todos' || p.dataset.cat.split(' ').includes(f);
+    p.classList.toggle('hide', !ok);
+    p.classList.remove('show'); if (ok) { void p.offsetWidth; p.classList.add('show', 'in'); }
+  });
+}));
+
+/* process line fills on scroll */
+const tl = document.querySelector('.timeline');
+function fillLine() {
+  const r = tl.getBoundingClientRect();
+  const p = Math.min(Math.max((innerHeight * .9 - r.top) / (r.height + innerHeight * .3), 0), 1);
+  tl.style.setProperty('--p', reduce ? 1 : p);
+}
+addEventListener('scroll', () => requestAnimationFrame(fillLine), { passive: true }); fillLine();
+
+/* ===== mais dinâmico ===== */
+/* preloader */
+(function(){
+  const n=document.getElementById('pl-n'); let v=0;
+  const done=()=>{ if(!document.body.classList.contains('loading'))return; n.textContent=100; setTimeout(()=>document.body.classList.remove('loading'),250); };
+  if(reduce){ document.body.classList.remove('loading'); return; }
+  const t=setInterval(()=>{ v=Math.min(v+Math.ceil(Math.random()*12),99); n.textContent=v; },70);
+  const finish=()=>{ clearInterval(t); done(); };
+  if(document.readyState==='complete') setTimeout(finish,900); else addEventListener('load',()=>setTimeout(finish,600));
+  setTimeout(finish,2500);
+})();
+
+/* scroll progress */
+const bar=document.querySelector('.progress');
+addEventListener('scroll',()=>{ bar.style.setProperty('--sp', scrollY/(document.documentElement.scrollHeight-innerHeight)); },{passive:true});
+
+/* rotating hero word */
+const rw=[...document.querySelectorAll('.rot b')]; let ri=0;
+if(!reduce) setInterval(()=>{ const c=rw[ri]; c.classList.remove('on'); c.classList.add('out'); setTimeout(()=>c.classList.remove('out'),450); ri=(ri+1)%rw.length; rw[ri].classList.add('on'); },2300);
+
+/* oven follows mouse */
+const oven=document.querySelector('.oven');
+if(oven && !reduce) addEventListener('mousemove',e=>{
+  const x=e.clientX/innerWidth-.5, y=e.clientY/innerHeight-.5;
+  oven.style.transform=`perspective(900px) rotate(-3deg) rotateY(${x*16}deg) rotateX(${-y*12}deg) translate(${x*10}px,${y*10}px)`;
+});
+
+/* magnetic buttons */
+if(!reduce) document.querySelectorAll('.mag').forEach(b=>{
+  b.addEventListener('mousemove',e=>{ const r=b.getBoundingClientRect(); b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.4}px)`; });
+  b.addEventListener('mouseleave',()=>b.style.transform='');
+});
+
+/* split headings letter by letter */
+document.querySelectorAll('.split').forEach(h=>{
+  let i=0;
+  const walk=node=>{ [...node.childNodes].forEach(ch=>{
+    if(ch.nodeType===3){ const frag=document.createDocumentFragment();
+      [...ch.nodeValue].forEach(l=>{ const s=document.createElement('span'); if(l===' '){s.className='sp';s.innerHTML='&nbsp;';} else {s.className='ch';s.textContent=l;s.style.transitionDelay=(i++*28)+'ms';} frag.appendChild(s); });
+      ch.replaceWith(frag);
+    } else walk(ch); }); };
+  walk(h);
+  const o=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ h.classList.add('in'); o.disconnect(); } }),{threshold:.4}); o.observe(h);
+});
+
+/* big marquee moves with scroll speed */
+const r1=document.querySelector('.r1'), r2=document.querySelector('.r2');
+if(r1 && !reduce){
+  let x1=0, x2=-400, vel=0, lastY=scrollY;
+  addEventListener('scroll',()=>{ vel+= (scrollY-lastY)*.15; lastY=scrollY; },{passive:true});
+  (function loop(){
+    vel*=.92; const base=.6;
+    x1-= base+Math.abs(vel); x2+= base+Math.abs(vel);
+    const w1=r1.scrollWidth/2, w2=r2.scrollWidth/2;
+    if(-x1>w1) x1+=w1; if(x2>0) x2-=w2;
+    r1.style.transform=`translateX(${x1}px) skewX(${Math.max(-12,Math.min(12,-vel))}deg)`;
+    r2.style.transform=`translateX(${x2}px) skewX(${Math.max(-12,Math.min(12,vel))}deg)`;
+    requestAnimationFrame(loop);
+  })();
+}
+
+/* 3D tilt + shine */
+if(!reduce) document.querySelectorAll('.tilt').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    el.classList.add('tilting');
+    el.style.transform=`perspective(800px) rotateY(${(x-.5)*14}deg) rotateX(${(.5-y)*12}deg) translateY(-8px)`;
+    el.style.setProperty('--mx',x*100+'%'); el.style.setProperty('--my',y*100+'%');
+  });
+  el.addEventListener('mouseleave',()=>{ el.classList.remove('tilting'); el.style.transform=''; });
+});
+
+/* footer letters */
+const fb=document.querySelector('.footer-big');
+if(fb){ fb.innerHTML=fb.innerHTML.replace(/>([^<]+)</g,(m,t)=>'>'+[...t].map(l=>`<span class="fl">${l}</span>`).join('')+'<').replace(/^([^<]+)/,(m,t)=>[...t].map(l=>`<span class="fl">${l}</span>`).join('')); }
+
+/* cookie banner (LGPD): remembers the choice */
+(function(){
+  const el=document.getElementById('cookies'); if(!el) return;
+  let saved=null; try{ saved=localStorage.getItem('pg-cookies'); }catch(e){}
+  if(saved) { el.remove(); return; }
+  const open=()=>{ el.classList.add('show'); document.body.classList.add('ck-open'); };
+  const close=choice=>{ try{ localStorage.setItem('pg-cookies',choice); }catch(e){}
+    el.classList.remove('show'); document.body.classList.remove('ck-open'); setTimeout(()=>el.remove(),800); };
+  el.querySelector('.ck-yes').addEventListener('click',()=>close('todos'));
+  el.querySelector('.ck-no').addEventListener('click',()=>close('essenciais'));
+  // appears right after the opening screen
+  const wait=setInterval(()=>{ if(!document.body.classList.contains('loading')){ clearInterval(wait); setTimeout(open,900); } },150);
+})();
+
+</script>
+</body>
+</html>

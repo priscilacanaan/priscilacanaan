@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F5F1EA" />
+<title>Consultório — Central de pessoas e agenda</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="brand"><span class="dot"></span>Consultório</div>
+    <nav class="menu">
+      <button class="nav-btn is-on" data-v="pessoas"><span>👥</span>Pessoas</button>
+    </nav>
+    <div class="side-foot">
+      <p class="mini">Dados guardados neste navegador.</p>
+      <button class="ghost" id="seed">Carregar exemplos</button>
+      <button class="ghost" id="clear">Limpar tudo</button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- PESSOAS -->
+    <section class="view is-on" id="v-pessoas">
+      <header class="top">
+        <div>
+          <p class="kicker">Central</p>
+          <h1>Pessoas</h1>
+        </div>
+        <div class="top-actions">
+          <input class="search" id="busca" placeholder="Buscar por nome" />
+          <button class="btn" id="nova-pessoa">+ Nova pessoa</button>
+        </div>
+      </header>
+      <div class="pessoas-grid">
+        <div class="lista" id="lista"></div>
+        <div class="ficha" id="ficha"><p class="vazio">Escolha uma pessoa para ver o histórico.</p></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- modal pessoa -->
+<dialog id="dlg-pessoa">
+  <form method="dialog" class="modal" id="form-pessoa">
+    <h2 id="titulo-pessoa">Nova pessoa</h2>
+    <label>Nome<input name="nome" required /></label>
+    <div class="row2">
+      <label>Telefone / WhatsApp<input name="telefone" /></label>
+      <label>E-mail<input name="email" type="email" /></label>
+    </div>
+    <div class="row2">
+      <label>Nascimento<input name="nascimento" type="date" /></label>
+      <label>Tipo de atendimento
+        <select name="tipo"><option>Individual</option><option>Casal</option><option>Avaliação neuropsicológica</option></select>
+      </label>
+    </div>
+    <label>Observações (sem dados sensíveis desnecessários)<textarea name="obs" rows="3"></textarea></label>
+    <div class="actions">
+      <button value="cancel" class="ghost" formnovalidate>Cancelar</button>
+      <button value="ok" class="btn">Salvar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- modal sessão removido -->
+
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

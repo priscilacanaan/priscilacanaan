@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0E0E12" />
+<title>Priscila Canaan — Automações com IA, websites e mídia</title>
+<meta name="description" content="Priscila Canaan: estúdio de automações com IA, criação de websites e produção de mídia. Veja o portfólio de projetos." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#0E0E12;--ink2:#17171D;--paper:#F5F4F0;--mut:#8E8E9A;--line:#26262F;--violet:#7C5CFF;--teal:#00C2A8;--coral:#FF6B4A;--display:"Space Grotesk",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;background:linear-gradient(90deg,var(--violet),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.02}
+h1{font-size:clamp(3rem,7.4vw,6.6rem)}
+h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+h3{font-size:1.5rem;letter-spacing:-.02em;margin-bottom:.5rem}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--teal),var(--coral));transform-origin:left;transform:scaleX(var(--sp,0))}
+.glow{position:fixed;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.18),transparent 60%);pointer-events:none;z-index:0;transition:transform .5s var(--ease)}
+@media(hover:none){.glow{display:none}}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 6vw;transition:background .4s,backdrop-filter .4s}
+.nav.solid{background:rgba(14,14,18,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.logo span{color:var(--teal)}
+.links{display:flex;gap:2rem;font-size:.92rem;color:var(--mut)}
+.links a{position:relative;transition:color .3s}
+.links a:hover,.links a.active{color:var(--paper)}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--violet),var(--teal));transform:scaleX(0);transition:transform .4s var(--ease)}
+.links a.active::after,.links a:hover::after{transform:scaleX(1)}
+@media(max-width:960px){.links{display:none}}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--paper);color:var(--ink);font:600 .98rem var(--sans);padding:1rem 1.6rem;border-radius:14px;border:0;cursor:pointer;transition:transform .3s var(--ease),box-shadow .4s,background .3s;position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,var(--violet),var(--teal));opacity:0;transition:opacity .4s}
+.btn>*,.btn{z-index:1}
+.btn:hover::before{opacity:1}
+.btn:hover{color:#fff;transform:translateY(-3px);box-shadow:0 18px 40px -16px rgba(124,92,255,.7)}
+.btn span{transition:transform .3s var(--ease)}.btn:hover span{transform:translateX(5px)}
+.btn-line{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-line::before{background:var(--ink2)}
+.btn-line:hover{box-shadow:inset 0 0 0 1px var(--violet)}
+.btn-sm{padding:.6rem 1.1rem;font-size:.85rem}
+section{padding:7rem 6vw;position:relative;z-index:1}
+.kicker{font-family:var(--display);font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.1rem}
+.kicker.light{color:var(--teal)}
+.head{margin-bottom:3.5rem;max-width:820px}
+.note{font-size:.82rem;color:var(--mut);margin-top:2rem}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:8rem;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:70vw;height:70vw;max-width:900px;max-height:900px;right:-20vw;top:-10vw;border-radius:50%;background:conic-gradient(from 180deg,var(--violet),var(--teal),var(--coral),var(--violet));filter:blur(120px);opacity:.25;animation:spin 30s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero>*{position:relative;z-index:1}
+.eyebrow{font-family:var(--display);font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:2rem}
+.title .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.title .ln>span{display:inline-block;transform:translateY(105%);animation:up 1.1s var(--ease) forwards}
+.title .ln:nth-child(2)>span{animation-delay:.15s}
+@keyframes up{to{transform:none}}
+.rot{display:inline-grid;vertical-align:bottom;background:linear-gradient(90deg,var(--violet),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;overflow:hidden;padding-bottom:.08em}
+.rot b{grid-area:1/1;font-weight:700;opacity:0;transform:translateY(40%);transition:opacity .5s,transform .7s var(--ease);white-space:nowrap}
+.rot b.on{opacity:1;transform:none}
+.rot b.out{opacity:0;transform:translateY(-40%);transition:opacity .25s,transform .4s var(--ease)}
+.lead{font-size:1.15rem;color:var(--mut);max-width:620px;margin:2rem 0 2.6rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.scroll{position:absolute;left:6vw;bottom:2.4rem;width:1px;height:60px;background:var(--line);overflow:hidden}
+.scroll span{display:block;width:100%;height:40%;background:var(--teal);animation:scrollline 2s ease-in-out infinite}
+@keyframes scrollline{0%{transform:translateY(-100%)}100%{transform:translateY(250%)}}
+
+/* marquee */
+.marquee{background:var(--paper);color:var(--ink);padding:1.2rem 0;overflow:hidden;position:relative;z-index:2}
+.track{display:flex;gap:2rem;width:max-content;animation:mq 30s linear infinite;font-family:var(--display);font-weight:700;font-size:1.6rem;align-items:center;letter-spacing:-.02em}
+.track i{font-style:normal;color:var(--violet);font-size:1rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);padding:0}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:var(--ink);padding:3rem 2rem;transition:background .4s}
+.stat:hover{background:var(--ink2)}
+.stat b{display:block;font-family:var(--display);font-size:clamp(2.6rem,4.6vw,4rem);font-weight:700;letter-spacing:-.04em;background:linear-gradient(90deg,var(--paper),var(--mut));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:.9rem;color:var(--mut)}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr}}
+.svc{background:var(--ink2);border:1px solid var(--line);border-radius:24px;padding:2.2rem;position:relative;overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
+.svc::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(0,194,168,.18),transparent 50%);opacity:0;transition:opacity .4s}
+.svc:hover{transform:translateY(-8px);border-color:rgba(124,92,255,.5)}
+.svc:hover::before{opacity:1}
+.svc>*{position:relative}
+.svc-n{font-family:var(--display);font-size:.9rem;color:var(--teal);font-weight:600}
+.svc h3{margin-top:2.4rem;font-size:1.8rem}
+.svc p{color:var(--mut);margin-bottom:1.4rem}
+.svc ul{list-style:none;display:grid;gap:.5rem;border-top:1px solid var(--line);padding-top:1.2rem;font-size:.92rem}
+.svc li::before{content:"→ ";color:var(--violet)}
+
+/* portfolio */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.4rem}
+.f{border:1px solid var(--line);background:transparent;color:var(--mut);padding:.6rem 1.1rem;border-radius:999px;font:500 .9rem var(--sans);cursor:pointer;transition:all .3s var(--ease)}
+.f:hover{color:var(--paper);border-color:var(--mut)}
+.f.is-on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:960px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.card{background:var(--ink2);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:block;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
+.card:hover{transform:translateY(-8px);border-color:rgba(0,194,168,.5);box-shadow:0 30px 60px -30px rgba(124,92,255,.5)}
+.card.hide{display:none}
+.card.show{animation:cIn .5s var(--ease)}
+@keyframes cIn{from{opacity:0;transform:scale(.96)}}
+.thumb{aspect-ratio:900/563;overflow:hidden;background:var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s var(--ease)}
+.card:hover .thumb img{transform:scale(1.07)}
+.info{padding:1.4rem 1.5rem 1.6rem}
+.tag{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.info h3{margin-top:.5rem;font-size:1.35rem}
+.info p{color:var(--mut);font-size:.92rem}
+
+/* sobre */
+.sobre{background:var(--ink2);border-block:1px solid var(--line)}
+.sobre-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center}
+@media(max-width:900px){.sobre-grid{grid-template-columns:1fr}}
+.sobre p:not(.kicker){color:var(--mut);font-size:1.1rem;margin-bottom:1rem;max-width:560px}
+.sobre-stack{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:flex-start}
+.sobre-stack span{border:1px solid var(--line);padding:.8rem 1.2rem;border-radius:999px;font-family:var(--display);font-weight:600;transition:transform .4s var(--ease),border-color .3s,color .3s}
+.sobre-stack span:nth-child(odd){animation:float 6s ease-in-out infinite}
+.sobre-stack span:nth-child(even){animation:float 7s ease-in-out infinite reverse}
+.sobre-stack span:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-4px)}
+@keyframes float{50%{transform:translateY(-8px)}}
+
+/* contato */
+.contato-card{display:grid;grid-template-columns:1fr 1fr;gap:4rem;background:var(--ink2);border:1px solid var(--line);border-radius:32px;padding:3.5rem;max-width:1140px;margin:auto;position:relative;overflow:hidden}
+.contato-card::before{content:"";position:absolute;right:-120px;bottom:-140px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.35),transparent 70%);animation:float 9s ease-in-out infinite;pointer-events:none}
+@media(max-width:860px){.contato-card{grid-template-columns:1fr;padding:2.2rem}}
+.contato-card>*{position:relative}
+.contato-card p{color:var(--mut);margin-top:.6rem}
+.info-list{list-style:none}
+.info-list li{display:flex;flex-direction:column;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.info-list small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.form{display:grid;gap:.8rem}
+.form input,.form select,.form textarea{padding:1rem 1.1rem;border-radius:14px;border:1px solid var(--line);background:var(--ink);color:var(--paper);font:400 1rem var(--sans);transition:border-color .3s,box-shadow .3s}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 4px rgba(124,92,255,.2)}
+.form textarea{resize:vertical}
+.form .btn{justify-content:center}
+.ok{display:none;color:var(--teal);font-family:var(--display);font-weight:600}
+.form.sent>*:not(.ok){display:none}
+.form.sent .ok{display:block}
+.footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding:2.5rem 6vw;color:var(--mut);font-size:.88rem;border-top:1px solid var(--line)}
+.footer a:hover{color:var(--paper)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.title .ln>span{transform:none}.rot b{opacity:0}.rot b:first-child{opacity:1}}
+
+.rot b{position:relative;grid-area:1/1;white-space:nowrap}
+.rot b:not(.on){visibility:hidden}
+.rot b.on{visibility:visible}
+.rot b.out{visibility:visible}
+
+/* no overlap: outgoing word disappears instantly, incoming fades in after */
+.rot b{transition:opacity .45s var(--ease) .05s,transform .45s var(--ease) .05s}
+.rot b.out{opacity:0;visibility:hidden;transform:none;transition:none}
+.rot b.on{opacity:1;visibility:visible}
+
+.thumb-ph{display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--teal),var(--coral));font-family:var(--display);font-weight:700;font-size:1.8rem;color:#fff;letter-spacing:-.02em}
+.nav-r{display:flex;align-items:center;gap:.8rem}
+.lang{display:flex;gap:.2rem;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--ink2)}
+.lang button{border:0;background:none;color:var(--mut);font:600 .75rem var(--sans);padding:.4rem .7rem;border-radius:999px;cursor:pointer;transition:background .3s,color .3s}
+.lang button.is-on{background:var(--paper);color:var(--ink)}
+@media(max-width:960px){.nav-r .btn{display:none}}
+/* rotating word: all options stack in the same spot */
+.rot{display:inline-grid !important;vertical-align:bottom;overflow:visible;padding-bottom:.08em;white-space:nowrap}
+.rot b{grid-area:1/1;white-space:nowrap}
+
+/* mini apps */
+.miniapps{background:var(--ink2);border-block:1px solid var(--line)}
+.miniapps .lead{color:var(--mut);max-width:620px;margin-top:1rem}
+.app-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+@media(max-width:900px){.app-grid{grid-template-columns:1fr}}
+.app-card{background:var(--ink);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
+.app-card:hover{transform:translateY(-6px);border-color:rgba(0,194,168,.5)}
+.app-frame{height:380px;background:#fff;position:relative}
+.app-frame iframe{width:100%;height:100%;border:0;display:block}
+.app-info{padding:1.4rem 1.6rem 1.6rem}
+.app-info h3{font-size:1.4rem;margin:.5rem 0 .3rem}
+.app-info p{color:var(--mut);font-size:.95rem;margin-bottom:.8rem}
+.app-open{color:var(--teal);font-weight:600;font-size:.92rem}
+.app-open:hover{color:var(--paper)}
+
+.app-ph{background:linear-gradient(135deg,#7C5CFF,#00C2A8);display:grid;place-items:center;position:relative;overflow:hidden}
+.app-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.app-ph-txt{font-family:'Space Grotesk';font-weight:700;font-size:2.2rem;color:#fff;text-align:center;padding:1rem;letter-spacing:-.02em;text-shadow:0 4px 20px rgba(0,0,0,.25)}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo">priscila<span>.</span>canaan</a>
+  <nav class="links">
+    <a href="#servicos" data-s="servicos" data-i="n_serv">Serviços</a><a href="#portfolio" data-s="portfolio" data-i="n_port">Portfólio</a><a href="#sobre" data-s="sobre" data-i="n_sobre">Sobre</a><a href="#contato" data-s="contato" data-i="n_cont">Contato</a>
+  </nav>
+  <div class="nav-r">
+    <div class="lang" role="group" aria-label="Idioma"><button data-lang="pt" class="is-on">PT</button><button data-lang="en">EN</button><button data-lang="es">ES</button></div>
+    <a href="#contato" class="btn btn-sm" data-i="n_btn">Vamos conversar</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <p class="eyebrow reveal" data-i="eyebrow">Estúdio · IA · Web · Mídia</p>
+  <h1 class="title">
+    <span class="ln"><span data-i="t1">Soluções em</span></span>
+    <span class="ln"><span class="rot"><b class="on">Automations.</b><b>Websites.</b><b>Systems.</b><b>AI.</b><b>Media.</b></span></span>
+  </h1>
+  <p class="lead reveal" data-i="lead">Eu crio automações com inteligência artificial, sites que vendem e conteúdos que contam a sua história. Tudo pensado para o seu negócio funcionar melhor, todo dia.</p>
+  <div class="cta reveal">
+    <a href="#contato" class="btn"><span data-i="cta1">Quero um projeto</span> <span>→</span></a>
+    <a href="#portfolio" class="btn btn-line" data-i="cta2">Ver portfólio</a>
+  </div>
+  <div class="scroll" aria-hidden="true"><span></span></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span data-i="m1">Automação com IA</span><i>◆</i><span data-i="m2">Websites</span><i>◆</i><span data-i="m3">Mídia e conteúdo</span><i>◆</i><span data-i="m4">Atendimento com IA</span><i>◆</i><span data-i="m5">Landing pages</span><i>◆</i><span data-i="m6">Vídeo e identidade</span><i>◆</i>
+    <span data-i="m1">Automação com IA</span><i>◆</i><span data-i="m2">Websites</span><i>◆</i><span data-i="m3">Mídia e conteúdo</span><i>◆</i><span data-i="m4">Atendimento com IA</span><i>◆</i><span data-i="m5">Landing pages</span><i>◆</i><span data-i="m6">Vídeo e identidade</span><i>◆</i>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="stat reveal"><b data-count="6">0</b><span data-i="s1">projetos no portfólio</span></div>
+  <div class="stat reveal"><b data-count="3">0</b><span data-i="s2">frentes de trabalho</span></div>
+  <div class="stat reveal"><b data-count="3">0</b><span data-i="s3">idiomas nos projetos</span></div>
+  <div class="stat reveal"><b>100%</b><span data-i="s4">sites responsivos</span></div>
+</section>
+
+<section id="servicos" class="servicos">
+  <div class="head reveal">
+    <p class="kicker" data-i="k_serv">Serviços</p>
+    <h2 data-i="t_serv">Três frentes, <em>uma só visão.</em></h2>
+  </div>
+  <div class="svc-grid">
+    <article class="svc reveal">
+      <span class="svc-n">01</span>
+      <h3 data-i="sv1">Automações com IA</h3>
+      <p data-i="svp1">Fluxos que atendem, organizam e respondem por você. Menos tarefa repetitiva, mais tempo para o que importa.</p>
+      <ul><li data-i="svl1">Atendimento automatizado</li><li data-i="svl2">Integração de sistemas</li><li data-i="svl3">Relatórios e fluxos</li></ul>
+    </article>
+    <article class="svc reveal">
+      <span class="svc-n">02</span>
+      <h3 data-i="sv2">Websites</h3>
+      <p data-i="svp2">Sites rápidos, bonitos e pensados para converter. Do institucional à landing page de campanha.</p>
+      <ul><li data-i="svl4">Sites institucionais</li><li data-i="svl5">Landing pages</li><li data-i="svl6">Mobile first</li></ul>
+    </article>
+    <article class="svc reveal">
+      <span class="svc-n">03</span>
+      <h3 data-i="sv3">Mídia</h3>
+      <p data-i="svp3">Conteúdo visual e em vídeo que traduz a sua marca, com uma identidade consistente em todos os canais.</p>
+      <ul><li data-i="svl7">Vídeo e motion</li><li data-i="svl8">Identidade visual</li><li data-i="svl9">Conteúdo para redes</li></ul>
+    </article>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+  <div class="head reveal">
+    <p class="kicker" data-i="k_port">Portfólio</p>
+    <h2 data-i="t_port">Projetos <em>feitos.</em></h2>
+  </div>
+  <div class="filters reveal">
+    <button class="f is-on" data-f="todos" data-i="f_all">Todos</button>
+    <button class="f" data-f="web" data-i="f_web">Websites</button>
+    <button class="f" data-f="ia" data-i="f_ia">Automação e IA</button>
+    <button class="f" data-f="midia" data-i="f_midia">Mídia</button>
+  </div>
+  <div class="grid">
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/2a657a7d81b106a9be0c79890aec97d0ac968fa7/pangostoso/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/pangostoso.jpg" alt="PanGostoso" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_pan">Website · Indústria</span><h3>PanGostoso</h3><p data-i="d_pan">Site de indústria de panificação em Belém, com forno animado e linha regional.</p></div>
+    </a>
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/turnberry-backbone/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/turnberry.jpg" alt="Backbone Business Services" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_turn">Website · Serviços</span><h3>Backbone Business Services</h3><p data-i="d_turn">Escritório de contabilidade e serviços em três idiomas, com contagem de prazos.</p></div>
+    </a>
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/bestfit-umarizal/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/bestfit.jpg" alt="Best Fit Academia" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_bf">Website · Academia</span><h3>Best Fit Academia</h3><p data-i="d_bf">Site de academia com planos, quadro de aulas e agendamento pelo WhatsApp.</p></div>
+    </a>
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/manoella-neuropsico/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/manoella.jpg" alt="Manoella Canaan" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_mano">Website · Psicologia</span><h3>Manoella Canaan</h3><p data-i="d_mano">Site de psicóloga com atendimento, avaliação neuropsicológica e contato.</p></div>
+    </a>
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/dbt-amazonia/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/dbt.jpg" alt="DBT Amazônia" loading="lazy" /></div>
+      <div class="info"><span class="tag" data-i="tg_dbt">Website · Curso</span><h3>DBT Amazônia</h3><p data-i="d_dbt">Site de curso de treino de habilidades DBT, com identidade em verde e rosa.</p></div>
+    </a>
+    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/claude/focused-albattani-kp9gs3/ana-catarina/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/ana-catarina.jpg" alt="Ana Catarina" loading="lazy" style="object-position:center 30%" /></div>
+      <div class="info"><span class="tag" data-i="tg_ana">Website · Filosofia e IA</span><h3>Ana Catarina</h3><p data-i="d_ana">Site de filósofa residente do AI Collective, em português, inglês e francês.</p></div>
+    </a>
+  </div>
+  <p class="note reveal" data-i="note">Os projetos estão em versão de apresentação. Os dados de contato e os textos de cada cliente são confirmados antes da publicação.</p>
+</section>
+
+<section id="miniapps" class="miniapps">
+  <div class="head reveal">
+    <p class="kicker" data-i="k_mini">Mini apps</p>
+    <h2 data-i="t_mini">Ferramentas <em>para testar.</em></h2>
+    <p class="lead" data-i="p_mini">Quatro mini apps criados para uso direto: abra no próprio site ou use aqui mesmo.</p>
+  </div>
+  <div class="app-grid">
+    <article class="app-card reveal">
+      <div class="app-frame app-ph"><img src="fotos/apps/discpro.png" alt="Print do mini app DISC Pro" loading="lazy" onerror="this.remove()" /><div class="app-ph-txt"><span>DISC Pro</span></div></div>
+      <div class="app-info"><span class="tag">Perfil</span><h3>DISC Pro</h3><p>Perfil comportamental DISC</p><a class="app-open" href="https://sites.google.com/view/discpro/in%C3%ADcio" target="_blank" rel="noopener">Abrir mini app ↗</a></div>
+    </article>
+    <article class="app-card reveal">
+      <div class="app-frame app-ph"><img src="fotos/apps/organization-360.png" alt="Print do mini app Organization 360" loading="lazy" onerror="this.remove()" /><div class="app-ph-txt"><span>Organization 360</span></div></div>
+      <div class="app-info"><span class="tag">Diagnóstico</span><h3>Organization 360</h3><p>Diagnóstico organizacional 360</p><a class="app-open" href="https://sites.google.com/view/organization-360/in%C3%ADcio" target="_blank" rel="noopener">Abrir mini app ↗</a></div>
+    </article>
+    <article class="app-card reveal">
+      <div class="app-frame app-ph"><img src="fotos/apps/d-lgpd-psi.png" alt="Print do mini app D-LGPD Psi" loading="lazy" onerror="this.remove()" /><div class="app-ph-txt"><span>D-LGPD Psi</span></div></div>
+      <div class="app-info"><span class="tag">LGPD</span><h3>D-LGPD Psi</h3><p>LGPD para psicólogos</p><a class="app-open" href="https://sites.google.com/view/d-lgpd-psi/in%C3%ADcio" target="_blank" rel="noopener">Abrir mini app ↗</a></div>
+    </article>
+    <article class="app-card reveal">
+      <div class="app-frame app-ph"><img src="fotos/apps/compreendendoseufilho.png" alt="Print do mini app Compreendendo seu filho" loading="lazy" onerror="this.remove()" /><div class="app-ph-txt"><span>Compreendendo seu filho</span></div></div>
+      <div class="app-info"><span class="tag">Orientação</span><h3>Compreendendo seu filho</h3><p>Orientação para pais</p><a class="app-open" href="https://sites.google.com/view/compreendendoseufilho/in%C3%ADcio" target="_blank" rel="noopener">Abrir mini app ↗</a></div>
+    </article>
+  </div>
+</section>
+
+<section id="sobre" class="sobre">
+  <div class="sobre-grid">
+    <div class="reveal">
+      <p class="kicker" data-i="k_sobre">Sobre</p>
+      <h2 data-i="t_sobre">Tecnologia com <em>cara humana.</em></h2>
+      <p data-i="p_sobre1">Trabalho com o que faz a diferença no dia a dia do seu negócio: automatizar o que é repetitivo, criar presença digital que converte e contar a sua história com qualidade.</p>
+      <p data-i="p_sobre2">Cada projeto começa entendendo a rotina de quem usa. Só depois eu escolho a ferramenta.</p>
+    </div>
+    <div class="sobre-stack reveal">
+      <span data-i="st1">Automação</span><span data-i="st2">IA generativa</span><span data-i="st3">Sites responsivos</span><span data-i="st4">Vídeo</span><span data-i="st5">Identidade visual</span><span data-i="st6">Integrações</span>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-card reveal">
+    <div>
+      <p class="kicker light" data-i="k_cont">Contato</p>
+      <h2 data-i="t_cont">Vamos criar <em>algo juntas?</em></h2>
+      <p data-i="p_cont">Conte sobre o seu projeto. Respondo para combinar uma conversa.</p>
+      <ul class="info info-list">
+        <li><small data-i="l_mail">E-mail</small>[contato@exemplo.com]</li>
+        <li><small>WhatsApp</small><a href="https://wa.me/[55DDDNUMERO]" target="_blank" rel="noopener">[(00) 00000-0000]</a></li>
+        <li><small>Instagram</small>[@instagram]</li>
+      </ul>
+    </div>
+    <form class="form" id="form">
+      <input type="text" placeholder="Seu nome" data-ph="f_name" required />
+      <input type="email" placeholder="E-mail" data-ph="f_mail" required />
+      <select required>
+        <option value="" data-i="o_0">O que você precisa?</option>
+        <option data-i="o_1">Automação com IA</option><option data-i="o_2">Website</option><option data-i="o_3">Mídia e conteúdo</option><option data-i="o_4">Mais de uma frente</option>
+      </select>
+      <textarea rows="3" placeholder="Conte um pouco sobre o projeto" data-ph="f_msg"></textarea>
+      <button class="btn" type="submit" data-i="f_btn">Enviar →</button>
+      <p class="ok" data-i="f_ok">Recebido! Respondo em breve.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span data-i="foot">© 2026 Priscila Canaan · Estúdio de automações com IA, websites e mídia</span>
+  <span><a href="privacidade.html" data-i="fl_priv">Privacidade</a> · <a href="termos.html" data-i="fl_terms">Termos de Uso</a> · <a href="#topo" data-i="fl_top">Topo ↑</a></span>
+</footer>
+
+<script>
+/* PT is the source text in index.html. EN and ES below. */
+window.I18N = {
+en:{
+n_serv:"Services",k_mini:"Mini apps",t_mini:"Tools <em>to try.</em>",p_mini:"Four mini apps built for direct use: open them on their own site or use them right here.",n_port:"Portfolio",n_sobre:"About",n_cont:"Contact",n_btn:"Let's talk",
+eyebrow:"Studio · AI · Web · Media",t1:"Solutions in",
+lead:"I build AI-powered automations, websites that sell and content that tells your story. Everything designed so your business works better, every day.",
+cta1:"Start a project",cta2:"See the portfolio",
+m1:"AI automation",m2:"Websites",m3:"Media and content",m4:"AI customer service",m5:"Landing pages",m6:"Video and identity",
+s1:"projects in the portfolio",s2:"fronts of work",s3:"languages in the projects",s4:"responsive websites",
+k_serv:"Services",t_serv:"Three fronts, <em>one vision.</em>",
+sv1:"AI automation",svp1:"Flows that answer, organize and respond for you. Less repetitive work, more time for what matters.",svl1:"Automated customer service",svl2:"System integrations",svl3:"Reports and workflows",
+sv2:"Websites",svp2:"Fast, beautiful sites designed to convert. From corporate sites to campaign landing pages.",svl4:"Corporate websites",svl5:"Landing pages",svl6:"Mobile first",
+sv3:"Media",svp3:"Visual and video content that translates your brand, with a consistent identity across every channel.",svl7:"Video and motion",svl8:"Visual identity",svl9:"Social content",
+k_port:"Portfolio",t_port:"Projects <em>delivered.</em>",
+f_all:"All",f_web:"Websites",f_ia:"AI and automation",f_midia:"Media",
+tg_venturex:"Website · Coworking",d_venturex:"Coworking site in black and yellow, with animations and a Spanish version.",
+tg_pan:"Website · Manufacturer",d_pan:"Website for a bakery manufacturer in Belém, with an animated oven and a regional product line.",
+tg_turn:"Website · Services",d_turn:"Accounting and business services firm in three languages, with deadline countdowns.",
+tg_bf:"Website · Gym",d_bf:"Gym website with plans, class schedule and booking through WhatsApp.",
+tg_mano:"Website · Psychology",d_mano:"Psychologist's website with services, neuropsychological assessment and contact.",
+tg_dbt:"Website · Course",d_dbt:"Website for a DBT skills training course, with a green and pink identity.",
+tg_ana:"Website · Philosophy and AI",d_ana:"Website for the resident philosopher of the AI Collective, in Portuguese, English and French.",
+tg_exp:"Project · Ideas",d_exp:"[Project description: to be confirmed with Priscila.]",
+note:"The projects are in presentation version. Contact details and each client's text are confirmed before publishing.",
+k_sobre:"About",t_sobre:"Technology with <em>a human face.</em>",
+p_sobre1:"I work on what makes a difference in your business day to day: automating what is repetitive, building a digital presence that converts and telling your story with quality.",
+p_sobre2:"Every project starts by understanding the routine of the people who use it. Only then do I choose the tool.",
+st1:"Automation",st2:"Generative AI",st3:"Responsive sites",st4:"Video",st5:"Visual identity",st6:"Integrations",
+k_cont:"Contact",t_cont:"Let's build <em>something together?</em>",p_cont:"Tell me about your project. I'll reply to arrange a conversation.",
+l_mail:"E-mail",f_name:"Your name",f_mail:"E-mail",f_msg:"Tell me a bit about the project",
+o_0:"What do you need?",o_1:"AI automation",o_2:"Website",o_3:"Media and content",o_4:"More than one front",
+f_btn:"Send →",f_ok:"Received! I'll reply soon.",
+foot:"© 2026 Priscila Canaan · AI automation, websites and media studio",fl_priv:"Privacy",fl_terms:"Terms of Use",fl_top:"Top ↑"
+},
+es:{
+n_serv:"Servicios",k_mini:"Mini apps",t_mini:"Herramientas <em>para probar.</em>",p_mini:"Cuatro mini apps creados para uso directo: ábrelos en su propio sitio o úsalos aquí mismo.",n_port:"Portafolio",n_sobre:"Sobre mí",n_cont:"Contacto",n_btn:"Hablemos",
+eyebrow:"Estudio · IA · Web · Medios",t1:"Soluciones en",
+lead:"Creo automatizaciones con inteligencia artificial, sitios web que venden y contenidos que cuentan tu historia. Todo pensado para que tu negocio funcione mejor, todos los días.",
+cta1:"Quiero un proyecto",cta2:"Ver portafolio",
+m1:"Automatización con IA",m2:"Sitios web",m3:"Medios y contenido",m4:"Atención con IA",m5:"Landing pages",m6:"Video e identidad",
+s1:"proyectos en el portafolio",s2:"frentes de trabajo",s3:"idiomas en los proyectos",s4:"sitios web adaptables",
+k_serv:"Servicios",t_serv:"Tres frentes, <em>una sola visión.</em>",
+sv1:"Automatización con IA",svp1:"Flujos que atienden, organizan y responden por ti. Menos tareas repetitivas, más tiempo para lo que importa.",svl1:"Atención automatizada",svl2:"Integración de sistemas",svl3:"Informes y flujos",
+sv2:"Sitios web",svp2:"Sitios rápidos, bonitos y pensados para convertir. Desde sitios institucionales hasta landing pages de campaña.",svl4:"Sitios institucionales",svl5:"Landing pages",svl6:"Mobile first",
+sv3:"Medios",svp3:"Contenido visual y en video que traduce tu marca, con una identidad coherente en todos los canales.",svl7:"Video y motion",svl8:"Identidad visual",svl9:"Contenido para redes",
+k_port:"Portafolio",t_port:"Proyectos <em>realizados.</em>",
+f_all:"Todos",f_web:"Sitios web",f_ia:"IA y automatización",f_midia:"Medios",
+tg_venturex:"Sitio web · Coworking",d_venturex:"Sitio de coworking en negro y amarillo, con animaciones y versión en español.",
+tg_pan:"Sitio web · Industria",d_pan:"Sitio de una industria de panificación en Belém, con horno animado y línea regional.",
+tg_turn:"Sitio web · Servicios",d_turn:"Sitio de una firma de contabilidad y servicios en tres idiomas, con cuenta regresiva de plazos.",
+tg_bf:"Sitio web · Gimnasio",d_bf:"Sitio de gimnasio con planes, horario de clases y reservas por WhatsApp.",
+tg_mano:"Sitio web · Psicología",d_mano:"Sitio de psicóloga con atención, evaluación neuropsicológica y contacto.",
+tg_dbt:"Sitio web · Curso",d_dbt:"Sitio de un curso de entrenamiento de habilidades DBT, con identidad en verde y rosa.",
+tg_ana:"Sitio web · Filosofía e IA",d_ana:"Sitio de la filósofa residente del AI Collective, en portugués, inglés y francés.",
+tg_exp:"Proyecto · Ideas",d_exp:"[Descripción del proyecto: confirmar con Priscila.]",
+note:"Los proyectos están en versión de presentación. Los datos de contacto y los textos de cada cliente se confirman antes de publicar.",
+k_sobre:"Sobre mí",t_sobre:"Tecnología con <em>rostro humano.</em>",
+p_sobre1:"Trabajo en lo que marca la diferencia en el día a día de tu negocio: automatizar lo repetitivo, crear una presencia digital que convierta y contar tu historia con calidad.",
+p_sobre2:"Cada proyecto empieza entendiendo la rutina de quien lo usa. Solo después elijo la herramienta.",
+st1:"Automatización",st2:"IA generativa",st3:"Sitios adaptables",st4:"Video",st5:"Identidad visual",st6:"Integraciones",
+k_cont:"Contacto",t_cont:"¿Creamos <em>algo juntas?</em>",p_cont:"Cuéntame sobre tu proyecto. Respondo para coordinar una conversación.",
+l_mail:"Correo",f_name:"Tu nombre",f_mail:"Correo",f_msg:"Cuéntame un poco sobre el proyecto",
+o_0:"¿Qué necesitas?",o_1:"Automatización con IA",o_2:"Sitio web",o_3:"Medios y contenido",o_4:"Más de un frente",
+f_btn:"Enviar →",f_ok:"¡Recibido! Te respondo pronto.",
+foot:"© 2026 Priscila Canaan · Estudio de automatización con IA, sitios web y medios",fl_priv:"Privacidad",fl_terms:"Términos de uso",fl_top:"Arriba ↑"
+}};
+
+</script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => {
+  nav.classList.toggle('solid', scrollY > 30);
+  bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight));
+}, { passive: true });
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => {
+  const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+  el.style.transitionDelay = (sib.indexOf(el) % 4) * 90 + 'ms';
+  io.observe(el);
+});
+
+const rw = [...document.querySelectorAll('.rot b')]; let ri = 0;
+if (!reduce) setInterval(() => { const c = rw[ri]; c.classList.remove('on'); c.classList.add('out'); setTimeout(() => c.classList.remove('out'), 400); ri = (ri + 1) % rw.length; rw[ri].classList.add('on'); }, 2600);
+
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const el = e.target, end = +el.dataset.count, t0 = performance.now();
+  const step = t => { const p = Math.min((t - t0) / 1400, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step); cio.unobserve(el);
+}), { threshold: .6 });
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+const fs = [...document.querySelectorAll('.f')], cards = [...document.querySelectorAll('.card')];
+fs.forEach(b => b.addEventListener('click', () => {
+  fs.forEach(x => x.classList.toggle('is-on', x === b));
+  const f = b.dataset.f;
+  cards.forEach(c => { const ok = f === 'todos' || c.dataset.cat === f; c.classList.toggle('hide', !ok); c.classList.remove('show'); if (ok) { void c.offsetWidth; c.classList.add('show'); } });
+}));
+
+const secIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) document.querySelectorAll('.links a').forEach(a => a.classList.toggle('active', a.dataset.s === e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' });
+['servicos', 'portfolio', 'sobre', 'contato'].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+
+const glow = document.querySelector('.glow');
+if (!reduce) addEventListener('mousemove', e => { glow.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; });
+document.querySelectorAll('.svc').forEach(s => s.addEventListener('mousemove', e => { const r = s.getBoundingClientRect(); s.style.setProperty('--mx', (e.clientX - r.left) + 'px'); s.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+
+document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+/* ---------- idioma: PT (fonte), EN, ES ---------- */
+const srcTxt = new Map();
+document.querySelectorAll('[data-i]').forEach(el => srcTxt.set(el, el.innerHTML));
+document.querySelectorAll('[data-ph]').forEach(el => srcTxt.set(el, el.placeholder));
+function setLang(l) {
+  const d = (window.I18N && I18N[l]) || {};
+  document.querySelectorAll('[data-i]').forEach(el => { const k = el.dataset.i; el.innerHTML = (l === 'pt' || !d[k]) ? srcTxt.get(el) : d[k]; });
+  document.querySelectorAll('[data-ph]').forEach(el => { const k = el.dataset.ph; el.placeholder = (l === 'pt' || !d[k]) ? srcTxt.get(el) : d[k]; });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('is-on', b.dataset.lang === l));
+  document.documentElement.lang = l === 'pt' ? 'pt-BR' : l;
+  document.title = l === 'pt' ? 'Priscila Canaan — Automações com IA, websites e mídia' : l === 'en' ? 'Priscila Canaan — AI automation, websites and media' : 'Priscila Canaan — Automatización con IA, sitios web y medios';
+  try { localStorage.setItem('pc-lang', l); } catch (e) {}
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+let savedL = null; try { savedL = localStorage.getItem('pc-lang'); } catch (e) {}
+const navL = (navigator.language || 'pt').slice(0, 2);
+setLang(new URLSearchParams(location.search).get('lang') || savedL || (['en', 'es'].includes(navL) ? navL : 'pt'));
+
+</script>
+</body>
+</html>
