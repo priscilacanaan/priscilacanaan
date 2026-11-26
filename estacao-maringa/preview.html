@@ -357,6 +357,13 @@ h2 em{-webkit-text-fill-color:var(--lime)}
 .hero .hero-badge{position:absolute !important;right:6vw !important;top:20vh !important;bottom:auto !important;left:auto !important;width:200px !important;z-index:3 !important}
 .hero .hero-badge img{width:100% !important;height:auto !important}
 
+/* brighter top of the hero: darker only toward the bottom */
+.hero::after{background:linear-gradient(180deg,rgba(7,7,7,0) 0%,rgba(7,7,7,.35) 45%,rgba(7,7,7,.9) 100%) !important}
+.hero-photo img{filter:brightness(1.1) contrast(1.05)}
+/* top of the hero fully lit; darkness only behind the text on the left */
+.hero::after{content:"";background:linear-gradient(90deg,rgba(7,7,7,.7) 0%,rgba(7,7,7,0) 45%) !important;opacity:1 !important}
+.hero .hero-photo img{opacity:1 !important;filter:none !important}
+
 </style>
 </head>
 <body>
@@ -463,20 +470,20 @@ h2 em{-webkit-text-fill-color:var(--lime)}
       <h3>Básico</h3>
       <p class="price"><span>R$</span><b>[--]</b><small>/mês</small></p>
       <ul><li>Musculação</li><li>Avaliação física</li><li>Horário comercial</li></ul>
-      <a href="#aula" class="btn btn-ghost">Quero esse</a>
+      <a href="#aula" data-plano="Básico" class="btn btn-ghost">Quero esse</a>
     </div>
     <div class="plan featured reveal">
       <span class="ribbon">Mais escolhido</span>
       <h3>Completo</h3>
       <p class="price"><span>R$</span><b>[--]</b><small>/mês</small></p>
       <ul><li>Musculação e aulas coletivas</li><li>Acesso amplo</li><li>Avaliação periódica</li></ul>
-      <a href="#aula" class="btn">Quero esse →</a>
+      <a href="#aula" data-plano="Completo" class="btn">Quero esse →</a>
     </div>
     <div class="plan reveal">
       <h3>Premium</h3>
       <p class="price"><span>R$</span><b>[--]</b><small>/mês</small></p>
       <ul><li>Tudo do Completo</li><li>Treino personalizado</li><li>Acompanhamento mensal</li></ul>
-      <a href="#aula" class="btn btn-ghost">Quero esse</a>
+      <a href="#aula" data-plano="Premium" class="btn btn-ghost">Quero esse</a>
     </div>
   </div>
   <p class="note">* Valores ainda não definidos. Preencher com a tabela oficial.</p>
@@ -489,7 +496,8 @@ h2 em{-webkit-text-fill-color:var(--lime)}
       <h2>Vem treinar <em>com a gente.</em></h2>
       <p>Deixe seus dados e a equipe marca o melhor horário para você conhecer a academia.</p>
     </div>
-    <form class="form" id="form">
+    <form class="form" id="form" data-wa-number="[55DDDNUMERO]">
+      <input type="hidden" name="plano" value="" />
       <input type="text" placeholder="Seu nome" required />
       <input type="tel" placeholder="WhatsApp" required />
       <select required>
@@ -625,6 +633,19 @@ document.querySelectorAll('h2').forEach(el=>hio.observe(el));
 
 /* stagger reveal in grids */
 document.querySelectorAll('.cards, .plans, .gal-grid').forEach(g=>[...g.children].forEach((el,i)=>el.style.transitionDelay=(i*90)+'ms'));
+
+/* aula experimental: plan buttons pre-fill the form; form opens WhatsApp with the details */
+document.querySelectorAll('[data-plano]').forEach(a=>a.addEventListener('click',()=>{ const f=document.getElementById('form'); if(f) f.plano.value=a.dataset.plano; }));
+const estForm=document.getElementById('form');
+if(estForm) estForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  const num=estForm.dataset.waNumber.replace(/\D/g,'');
+  const v=n=>(estForm.querySelector(n)?.value||'').trim();
+  const plano=estForm.plano.value;
+  const texto=`Olá! Quero marcar uma aula experimental na Academia Estação Maringá.\nNome: ${v('input[type=text]')}\nWhatsApp: ${v('input[type=tel]')}\nObjetivo: ${v('select')}`+(plano?`\nPlano de interesse: ${plano}`:'');
+  if(num.length>=12) window.open('https://api.whatsapp.com/send?phone='+num+'&text='+encodeURIComponent(texto),'_blank');
+  estForm.classList.add('sent');
+});
 
 </script>
 </body>

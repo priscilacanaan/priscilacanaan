@@ -92,3 +92,16 @@ document.querySelectorAll('h2').forEach(el=>hio.observe(el));
 
 /* stagger reveal in grids */
 document.querySelectorAll('.cards, .plans, .gal-grid').forEach(g=>[...g.children].forEach((el,i)=>el.style.transitionDelay=(i*90)+'ms'));
+
+/* aula experimental: plan buttons pre-fill the form; form opens WhatsApp with the details */
+document.querySelectorAll('[data-plano]').forEach(a=>a.addEventListener('click',()=>{ const f=document.getElementById('form'); if(f) f.plano.value=a.dataset.plano; }));
+const estForm=document.getElementById('form');
+if(estForm) estForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  const num=estForm.dataset.waNumber.replace(/\D/g,'');
+  const v=n=>(estForm.querySelector(n)?.value||'').trim();
+  const plano=estForm.plano.value;
+  const texto=`Olá! Quero marcar uma aula experimental na Academia Estação Maringá.\nNome: ${v('input[type=text]')}\nWhatsApp: ${v('input[type=tel]')}\nObjetivo: ${v('select')}`+(plano?`\nPlano de interesse: ${plano}`:'');
+  if(num.length>=12) window.open('https://api.whatsapp.com/send?phone='+num+'&text='+encodeURIComponent(texto),'_blank');
+  estForm.classList.add('sent');
+});

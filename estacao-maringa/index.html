@@ -115,20 +115,20 @@
       <h3>Básico</h3>
       <p class="price"><span>R$</span><b>[--]</b><small>/mês</small></p>
       <ul><li>Musculação</li><li>Avaliação física</li><li>Horário comercial</li></ul>
-      <a href="#aula" class="btn btn-ghost">Quero esse</a>
+      <a href="#aula" data-plano="Básico" class="btn btn-ghost">Quero esse</a>
     </div>
     <div class="plan featured reveal">
       <span class="ribbon">Mais escolhido</span>
       <h3>Completo</h3>
       <p class="price"><span>R$</span><b>[--]</b><small>/mês</small></p>
       <ul><li>Musculação e aulas coletivas</li><li>Acesso amplo</li><li>Avaliação periódica</li></ul>
-      <a href="#aula" class="btn">Quero esse →</a>
+      <a href="#aula" data-plano="Completo" class="btn">Quero esse →</a>
     </div>
     <div class="plan reveal">
       <h3>Premium</h3>
       <p class="price"><span>R$</span><b>[--]</b><small>/mês</small></p>
       <ul><li>Tudo do Completo</li><li>Treino personalizado</li><li>Acompanhamento mensal</li></ul>
-      <a href="#aula" class="btn btn-ghost">Quero esse</a>
+      <a href="#aula" data-plano="Premium" class="btn btn-ghost">Quero esse</a>
     </div>
   </div>
   <p class="note">* Valores ainda não definidos. Preencher com a tabela oficial.</p>
@@ -141,7 +141,8 @@
       <h2>Vem treinar <em>com a gente.</em></h2>
       <p>Deixe seus dados e a equipe marca o melhor horário para você conhecer a academia.</p>
     </div>
-    <form class="form" id="form">
+    <form class="form" id="form" data-wa-number="[55DDDNUMERO]">
+      <input type="hidden" name="plano" value="" />
       <input type="text" placeholder="Seu nome" required />
       <input type="tel" placeholder="WhatsApp" required />
       <select required>
