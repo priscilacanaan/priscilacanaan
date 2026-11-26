@@ -203,6 +203,11 @@ section{padding:7rem 6vw;position:relative}
 .casa-img:hover img{transform:scale(1.04)}
 @media(max-width:900px){.casa-grid{grid-template-columns:1fr !important}}
 
+.casa-grid{align-items:start !important}
+.casa-grid .reveal:not(.casa-img){padding-top:.4rem}
+.casa .facts{margin-top:2rem;grid-template-columns:repeat(3,1fr)}
+@media(max-width:700px){.casa .facts{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -245,12 +250,13 @@ section{padding:7rem 6vw;position:relative}
       <p>Fundada em 1997, a Nippobraz é uma empresa especializada na venda de peixes, mariscos e produtos japoneses.</p>
       <p>Também temos o registro no Ministério da Agricultura (S.I.F.) e implantamos programas de autocontrole e de qualidade.</p>
       <p>Tudo isso para oferecer os produtos com a melhor qualidade possível para nossos clientes.</p>
-    </div>
+    
     <ul class="facts reveal">
       <li><b>1997</b><span>ano de fundação</span></li>
       <li><b>S.I.F.</b><span>registro no Ministério da Agricultura</span></li>
       <li><b>3</b><span>unidades em Belém</span></li>
     </ul>
+    </div>
   </div>
 </section>
 
