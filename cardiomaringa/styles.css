@@ -179,3 +179,7 @@ section{padding:6.5rem 6vw;position:relative}
 .nav .links a{color:rgba(255,255,255,.88)}
 .nav .links a:hover{color:#fff}
 .nav .links a::after{background:#FFC9D0}
+
+.doc-ph.has-photo{background:linear-gradient(180deg,#EEF5F8,#fff);padding:0;overflow:hidden;aspect-ratio:4/4.2;display:block}
+.doc-ph.has-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .9s var(--ease)}
+.doc:hover .doc-ph.has-photo img{transform:scale(1.05)}
