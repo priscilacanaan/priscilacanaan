@@ -28,4 +28,20 @@ let saved = null; try { saved = localStorage.getItem('ac-lang'); } catch (e) {}
 const nav2 = (navigator.language || 'pt').slice(0, 2);
 setLang(new URLSearchParams(location.search).get('lang') || saved || (['en', 'fr'].includes(nav2) ? nav2 : 'pt'));
 
-document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+/* envio do formulário: abre o WhatsApp com a mensagem preenchida */
+const WA_NUMBER = '33635236254'; /* +33 06 35 23 62 54 — confirmar se é o número do WhatsApp */
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  const subj = f.querySelector('#subj');
+  const lines = [
+    '*' + subj.options[subj.selectedIndex].text + '*',
+    '',
+    'Nome: ' + f.querySelector('input[type=text]').value.trim(),
+    'E-mail: ' + f.querySelector('input[type=email]').value.trim(),
+    '',
+    f.querySelector('textarea').value.trim()
+  ];
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+  f.classList.add('sent');
+});
