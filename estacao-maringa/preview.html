@@ -364,6 +364,11 @@ h2 em{-webkit-text-fill-color:var(--lime)}
 .hero::after{content:"";background:linear-gradient(90deg,rgba(7,7,7,.7) 0%,rgba(7,7,7,0) 45%) !important;opacity:1 !important}
 .hero .hero-photo img{opacity:1 !important;filter:none !important}
 
+.scroll{display:none !important}
+/* background layers never block clicks */
+.hero::after,.hero-photo,.hero-photo img,.hero-badge{pointer-events:none !important}
+.hero-cta,.hero-cta a,.hero-title,.hero-sub,.hero .kicker{position:relative;z-index:4}
+
 </style>
 </head>
 <body>
@@ -393,7 +398,6 @@ h2 em{-webkit-text-fill-color:var(--lime)}
     <a href="#modalidades" class="btn btn-ghost">Ver modalidades</a>
   </div>
   <div class="hero-badge reveal" aria-hidden="true"><img class="badge25" src="fotos/selo-25-anos.png" alt="" /></div>
-  <div class="scroll" aria-hidden="true">role para baixo</div>
 </section>
 
 <div class="marquee" aria-hidden="true">
