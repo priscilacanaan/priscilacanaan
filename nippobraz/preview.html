@@ -131,6 +131,33 @@ section{padding:7rem 6vw;position:relative}
 .foot-row a:hover{color:var(--gold)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
+/* sobre + produtos + unidades (texto e fotos do site da casa) */
+.produtos{background:var(--paper);color:var(--ink)}
+.produtos .head h2 em{color:var(--red)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+@media(max-width:800px){.prod-grid{grid-template-columns:1fr}}
+.prod{display:grid;grid-template-columns:200px 1fr;gap:1.4rem;align-items:center;border:2px solid var(--red);border-radius:14px;padding:1rem;background:#fff;transition:transform .5s var(--ease)}
+.prod:hover{transform:translateY(-6px)}
+@media(max-width:520px){.prod{grid-template-columns:1fr}}
+.prod img{width:100%;height:180px;object-fit:cover;border-radius:10px}
+.prod h3{color:var(--red);font-size:1.6rem;margin-bottom:.4rem}
+.prod p{color:#5a524c;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.4rem}
+.chips span{border:1px solid var(--red);color:var(--red);padding:.5rem 1rem;border-radius:999px;font-size:.9rem;font-weight:600}
+.casa p{margin-bottom:.9rem}
+.units{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:1000px){.units{grid-template-columns:1fr}}
+.unit{border:1px solid var(--line);background:var(--ink2);padding:2rem;border-radius:4px;display:flex;flex-direction:column;gap:.8rem;transition:border-color .4s,transform .4s var(--ease)}
+.unit:hover{border-color:var(--gold);transform:translateY(-6px)}
+.tagu{align-self:flex-start;background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .6rem}
+.unit h3{font-size:1.9rem}
+.addr{color:#CFC7BE}
+.uw{color:var(--gold);font-size:.9rem}
+.unit .hours{border:0;margin:0}
+.unit .hours li{padding:.6rem 0}
+.ig{text-align:center;margin-top:2.4rem}
+.local .map{display:none}
+
 </style>
 </head>
 <body>
@@ -139,7 +166,7 @@ section{padding:7rem 6vw;position:relative}
 <header class="nav" id="nav">
   <a href="#top" class="logo"><img src="fotos/logo-nippobraz.png" alt="Nippobraz" /></a>
   <nav class="links">
-    <a href="#cardapio">Cardápio</a><a href="#casa">A casa</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
+    <a href="#cardapio">Cardápio</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
   </nav>
   <a href="#pedido" class="btn btn-sm">Peça agora</a>
 </header>
@@ -193,16 +220,32 @@ section{padding:7rem 6vw;position:relative}
 <section id="casa" class="casa">
   <div class="casa-grid">
     <div class="reveal">
-      <p class="kicker">A casa</p>
-      <h2>Tradição <em>japonesa,</em> olhar contemporâneo.</h2>
-      <p>[História da Nippobraz: quando começou, quem cuida da cozinha e o que torna a casa diferente. Escrever com as informações reais.]</p>
+      <p class="kicker">Sobre nós</p>
+      <h2>Desde <em>1997.</em></h2>
+      <p>Fundada em 1997, a Nippobraz é uma empresa especializada na venda de peixes, mariscos e produtos japoneses.</p>
+      <p>Também temos o registro no Ministério da Agricultura (S.I.F.) e implantamos programas de autocontrole e de qualidade.</p>
+      <p>Tudo isso para oferecer os produtos com a melhor qualidade possível para nossos clientes.</p>
     </div>
     <ul class="facts reveal">
-      <li><b>[Ano]</b><span>desde quando atendemos</span></li>
-      <li><b>[X]</b><span>pratos no cardápio</span></li>
-      <li><b>Fresco</b><span>cortes preparados todo dia</span></li>
+      <li><b>1997</b><span>ano de fundação</span></li>
+      <li><b>S.I.F.</b><span>registro no Ministério da Agricultura</span></li>
+      <li><b>3</b><span>unidades em Belém</span></li>
     </ul>
   </div>
+</section>
+
+<section id="produtos" class="produtos">
+  <div class="head reveal">
+    <p class="kicker">Produtos</p>
+    <h2>Conheça nossos <em>principais produtos.</em></h2>
+  </div>
+  <div class="prod-grid">
+    <article class="prod reveal"><img src="fotos/prod-soju.jpg" alt="Soju" /><div><h3>Soju</h3><p>Bebida destilada transparente de origem coreana, geralmente consumida pura. O teor alcoólico varia entre 16,8% e 53%.</p></div></article>
+    <article class="prod reveal"><img src="fotos/prod-lula.jpg" alt="Lula" /><div><h3>Lula</h3><p>Trabalhamos com uma variedade enorme de lulas. Textura macia e sabor suave: anéis, lulas inteiras, tubos ou lula defumada.</p></div></article>
+    <article class="prod reveal"><img src="fotos/prod-salmao.jpg" alt="Salmão" /><div><h3>Salmão</h3><p>Carne saborosa e textura suculenta. Versátil e premium, perfeito para grelhar, para sashimi fresco ou para receitas elaboradas.</p></div></article>
+    <article class="prod reveal"><img src="fotos/prod-polvo.jpg" alt="Polvo" /><div><h3>Polvo</h3><p>Carne tenra e sabor único. Escolha entre polvo inteiro eviscerado, tentáculos ou polvo pré-cozido para sashimi.</p></div></article>
+  </div>
+  <div class="chips reveal"><span>Cogumelos</span><span>Vegetais e saladas</span><span>Tofu defumado</span><span>Nori</span><span>Bebidas japonesas</span><span>Produtos asiáticos</span></div>
 </section>
 
 <section id="pedido" class="pedido">
@@ -225,25 +268,35 @@ section{padding:7rem 6vw;position:relative}
 </section>
 
 <section id="local" class="local">
-  <div class="local-grid">
-    <div class="reveal">
-      <p class="kicker">Local e horário</p>
-      <h2>Venha <em>nos visitar.</em></h2>
-      <p class="addr">[Endereço completo]<br/>[Cidade – UF]</p>
-      <ul class="hours">
-        <li><span>Terça a domingo</span><b>[18:00 – 23:00]</b></li>
-        <li><span>Segunda</span><b>fechado</b></li>
-      </ul>
-      <p class="note">* Confirmar horário e endereço com a casa.</p>
-      <div class="local-btns">
-        <a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=55[DDDNUMERO]&text=Oi%2C%20quero%20fazer%20um%20pedido" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn btn-sm btn-line" href="https://www.google.com/maps/search/?api=1&query=Nippobraz" target="_blank" rel="noopener">Google Maps ↗</a>
-      </div>
-    </div>
-    <div class="map reveal">
-      <iframe title="Mapa Nippobraz" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Nippobraz&output=embed"></iframe>
-    </div>
+  <div class="head reveal">
+    <p class="kicker">Unidades e horários</p>
+    <h2>Onde <em>nos encontrar.</em></h2>
   </div>
+  <div class="units">
+    <article class="unit reveal">
+      <span class="tagu">Atacado</span>
+      <h3>Matriz</h3>
+      <p class="addr">Tv. Apinagés, nº 479<br/>entre Pariquis e Caripunas · Batista Campos</p>
+      <p class="uw">A matriz funciona somente para atacado no momento.</p>
+      <ul class="hours"><li><span>Seg a sex</span><b>08:30 – 17:30</b></li><li><span>Sábado</span><b>08:30 – 12:30</b></li></ul>
+      <a class="btn btn-sm btn-line" href="tel:+559132184500">(91) 3218-4500</a>
+    </article>
+    <article class="unit reveal">
+      <span class="tagu">Varejo</span>
+      <h3>Conselheiro</h3>
+      <p class="addr">Av. Conselheiro Furtado, nº 593<br/>Batista Campos</p>
+      <ul class="hours"><li><span>Seg a sex</span><b>09:00 – 18:00</b></li><li><span>Sábado</span><b>08:00 – 12:00</b></li></ul>
+      <a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=5591992544283&text=Oi%2C%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener">WhatsApp (91) 99254-4283</a>
+    </article>
+    <article class="unit reveal">
+      <span class="tagu">Varejo</span>
+      <h3>BR-316</h3>
+      <p class="addr">Rod. BR 316, km 3, s/nº<br/>Coqueiro</p>
+      <ul class="hours"><li><span>Seg a sex</span><b>08:00 – 17:00</b></li><li><span>Sábado</span><b>08:00 – 12:00</b></li></ul>
+      <a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=5591992656779&text=Oi%2C%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener">WhatsApp (91) 99265-6779</a>
+    </article>
+  </div>
+  <div class="ig reveal"><a class="btn btn-line" href="https://www.instagram.com/nippobraz/" target="_blank" rel="noopener">Siga no Instagram @nippobraz ↗</a></div>
 </section>
 
 </main>
@@ -280,7 +333,7 @@ document.querySelectorAll('.add').forEach(b => b.addEventListener('click', () =>
 }));
 
 /* form: opens WhatsApp with the order details */
-const WA = '55[DDDNUMERO]';
+const WA = '5591992544283';
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target;

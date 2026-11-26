@@ -118,3 +118,30 @@ section{padding:7rem 6vw;position:relative}
 .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2.4rem;color:var(--mut);font-size:.88rem}
 .foot-row a:hover{color:var(--gold)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* sobre + produtos + unidades (texto e fotos do site da casa) */
+.produtos{background:var(--paper);color:var(--ink)}
+.produtos .head h2 em{color:var(--red)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+@media(max-width:800px){.prod-grid{grid-template-columns:1fr}}
+.prod{display:grid;grid-template-columns:200px 1fr;gap:1.4rem;align-items:center;border:2px solid var(--red);border-radius:14px;padding:1rem;background:#fff;transition:transform .5s var(--ease)}
+.prod:hover{transform:translateY(-6px)}
+@media(max-width:520px){.prod{grid-template-columns:1fr}}
+.prod img{width:100%;height:180px;object-fit:cover;border-radius:10px}
+.prod h3{color:var(--red);font-size:1.6rem;margin-bottom:.4rem}
+.prod p{color:#5a524c;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.4rem}
+.chips span{border:1px solid var(--red);color:var(--red);padding:.5rem 1rem;border-radius:999px;font-size:.9rem;font-weight:600}
+.casa p{margin-bottom:.9rem}
+.units{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:1000px){.units{grid-template-columns:1fr}}
+.unit{border:1px solid var(--line);background:var(--ink2);padding:2rem;border-radius:4px;display:flex;flex-direction:column;gap:.8rem;transition:border-color .4s,transform .4s var(--ease)}
+.unit:hover{border-color:var(--gold);transform:translateY(-6px)}
+.tagu{align-self:flex-start;background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .6rem}
+.unit h3{font-size:1.9rem}
+.addr{color:#CFC7BE}
+.uw{color:var(--gold);font-size:.9rem}
+.unit .hours{border:0;margin:0}
+.unit .hours li{padding:.6rem 0}
+.ig{text-align:center;margin-top:2.4rem}
+.local .map{display:none}

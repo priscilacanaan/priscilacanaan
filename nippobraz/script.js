@@ -21,7 +21,7 @@ document.querySelectorAll('.add').forEach(b => b.addEventListener('click', () =>
 }));
 
 /* form: opens WhatsApp with the order details */
-const WA = '55[DDDNUMERO]';
+const WA = '5591992544283';
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target;
