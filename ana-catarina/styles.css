@@ -156,3 +156,5 @@ section{padding:7rem 6vw;position:relative}
 .chooser .btn-line{box-shadow:inset 0 0 0 1px var(--ink)}
 .form select{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:14px;background:var(--bg);font:400 1rem var(--sans);color:var(--ink)}
 .form select:focus{outline:none;border-color:var(--accent)}
+.areas .cards{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.areas .cards{grid-template-columns:1fr}}
