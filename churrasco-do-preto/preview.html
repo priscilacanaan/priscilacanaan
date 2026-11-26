@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0A0808" />
+<title>Churrasco do Preto — Steak desde 2004</title>
+<meta name="description" content="Churrasco do Preto: steak, espetos, porções e combos desde 2004. Churrasco de verdade, com açaí e drinks." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#0A0808;--ink2:#15100E;--card:#1C1513;--line:#3A2A24;--ember:#E0472B;--ember2:#B5301A;--gold:#F2B33D;--cream:#F4E9DC;--mut:#A99A8F;--display:"Oswald",Impact,sans-serif;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--ember)}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-transform:uppercase;line-height:1;letter-spacing:.01em}
+h1{font-size:clamp(3.2rem,8vw,7rem)}
+h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+h3{font-size:1.5rem;color:var(--gold);margin-bottom:.8rem}
+.note{font-size:.82rem;color:var(--mut);margin-top:1.4rem}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--ember2),var(--gold));transform-origin:left;transform:scaleX(var(--sp,0))}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.kicker{font-family:var(--display);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:30px;height:2px;background:var(--ember)}
+.head{margin-bottom:2.8rem;max-width:820px}
+section{padding:6.5rem 6vw;position:relative}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(120deg,var(--ember),var(--ember2));color:#fff;font:600 .98rem var(--sans);padding:1rem 1.6rem;border-radius:4px;border:0;cursor:pointer;transition:transform .3s var(--ease),box-shadow .4s;box-shadow:0 14px 28px -14px rgba(224,71,43,.8)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 20px 36px -14px rgba(224,71,43,.95)}
+.btn span{transition:transform .3s var(--ease)}.btn:hover span{transform:translateX(5px)}
+.btn-line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(244,233,220,.5)}
+.btn-line:hover{background:var(--cream);color:var(--ink)}
+.btn-sm{padding:.7rem 1.2rem;font-size:.86rem;box-shadow:none}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 6vw;background:rgba(10,8,8,.35);backdrop-filter:blur(12px);border-bottom:1px solid rgba(242,179,61,.12);transition:background .3s}
+.nav.solid{background:rgba(10,8,8,.92)}
+.logo img{height:58px;width:auto;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.links{display:flex;gap:1.8rem;font-family:var(--display);font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)}
+.links a{position:relative;transition:color .3s}.links a:hover{color:var(--gold)}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--ember);transform:scaleX(0);transition:transform .4s var(--ease)}
+.links a:hover::after{transform:scaleX(1)}
+@media(max-width:980px){.links{display:none}}
+
+/* ember layer */
+.ember-layer{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.ember-layer i{position:absolute;bottom:-10px;width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px 2px rgba(242,179,61,.7);animation:rise linear infinite;opacity:0}
+.ember-layer i:nth-child(1){left:8%;animation-duration:9s}
+.ember-layer i:nth-child(2){left:24%;animation-duration:12s;animation-delay:-3s;width:3px;height:3px}
+.ember-layer i:nth-child(3){left:46%;animation-duration:10s;animation-delay:-6s}
+.ember-layer i:nth-child(4){left:66%;animation-duration:13s;animation-delay:-2s;width:4px;height:4px}
+.ember-layer i:nth-child(5){left:84%;animation-duration:11s;animation-delay:-8s}
+.ember-layer i:nth-child(6){left:94%;animation-duration:14s;animation-delay:-5s;width:3px;height:3px}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-110vh) translateX(20px);opacity:0}}
+section,.hero,.footer{position:relative;z-index:2}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:11rem 6vw 6rem;overflow:hidden;isolation:isolate}
+.hero-photo{position:absolute;inset:0;z-index:-2}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.08)}}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,8,8,.94) 12%,rgba(10,8,8,.4) 70%),linear-gradient(0deg,var(--ink) 0%,transparent 40%)}
+.hero-txt{position:relative;max-width:820px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block;transform:translateY(110%);animation:up 1s var(--ease) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.15s}
+@keyframes up{to{transform:none}}
+.hero .lead{color:#E1D2C4;font-size:1.15rem;max-width:560px;margin:1.6rem 0 2.4rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.since{position:absolute;right:6vw;bottom:12vh;text-align:center;background:rgba(28,21,19,.7);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:6px;padding:1.2rem 1.6rem;display:grid;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.since b{font-family:var(--display);font-size:3rem;color:var(--gold);line-height:1}
+.since span{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+@media(max-width:900px){.since{display:none}}
+
+/* ticker */
+.ticker{background:var(--ember);color:#fff;padding:1rem 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.03);position:relative;z-index:3}
+.track{display:flex;gap:1.8rem;width:max-content;animation:tk 28s linear infinite;font-family:var(--display);font-size:1.6rem;text-transform:uppercase;align-items:center}
+.track i{font-style:normal;color:var(--gold);font-size:.9rem}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* steak */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.split p{color:var(--mut);margin-bottom:1rem}
+.prices{list-style:none;margin-top:1.6rem;display:grid;gap:.6rem}
+.prices li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-bottom:1px dashed var(--line);padding:.9rem 0;font-size:1.05rem;transition:transform .4s var(--ease),color .3s}
+.prices li:hover{transform:translateX(8px);color:var(--gold)}
+.prices small,.espeto-list small,.mcol small{color:var(--mut);font-size:.8rem;margin-left:.4rem}
+.prices b{font-family:var(--display);color:var(--gold);font-weight:500;font-size:1.2rem;white-space:nowrap}
+.photo{margin:0;border-radius:8px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 70px -40px rgba(224,71,43,.5);transition:transform .6s var(--ease)}
+.photo:hover{transform:translateY(-6px)}
+.photo img{width:100%;display:block;transition:transform 1.2s var(--ease)}
+.photo:hover img{transform:scale(1.04)}
+
+/* espetos */
+.espetos{background:var(--ink2)}
+.espeto-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media(max-width:900px){.espeto-grid{grid-template-columns:1fr}}
+.espeto-grid .big{margin:0;position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);min-height:520px}
+.espeto-grid .big img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform 1.2s var(--ease)}
+.espeto-grid .big:hover img{transform:scale(1.06)}
+.espeto-grid figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--gold);color:var(--ink);font-family:var(--display);text-transform:uppercase;padding:.4rem .8rem;border-radius:3px;font-size:.9rem}
+.espeto-list ul{list-style:none;margin-bottom:2rem;display:grid;gap:.4rem}
+.espeto-list li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px dashed var(--line);transition:transform .35s var(--ease)}
+.espeto-list li:hover{transform:translateX(6px)}
+.espeto-list b{font-family:var(--display);color:var(--gold);font-weight:500;white-space:nowrap}
+
+/* combos */
+.combo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:1000px){.combo-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.combo-grid{grid-template-columns:1fr}}
+.combo{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2rem;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:.6rem;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
+.combo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ember);transform:scaleY(0);transform-origin:top;transition:transform .6s var(--ease)}
+.combo:hover{transform:translateY(-8px);border-color:var(--ember2);box-shadow:0 30px 50px -30px rgba(224,71,43,.6)}
+.combo:hover::before{transform:scaleY(1)}
+.combo .ser{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.combo p{color:var(--mut);font-size:.95rem}
+.combo b{margin-top:auto;font-family:var(--display);font-size:2rem;color:var(--gold);font-weight:500;padding-top:.6rem}
+.combo.feat{background:linear-gradient(160deg,#2A1410,var(--card));border-color:var(--ember2)}
+.wide{margin:3rem 0 0;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.wide img{width:100%;max-height:520px;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.wide:hover img{transform:scale(1.03)}
+
+/* cardápio */
+.cardapio{background:var(--ink2)}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+@media(max-width:1200px){.menu-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.menu-grid{grid-template-columns:1fr}}
+.mcol{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.6rem}
+.mcol h3{border-bottom:2px solid var(--ember);padding-bottom:.6rem;margin-bottom:1rem}
+.mcol .sub{font-size:.82rem;color:var(--mut);margin:-.4rem 0 1rem}
+.mcol ul{list-style:none;display:grid;gap:.2rem;margin-bottom:1.6rem}
+.mcol li{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;font-size:.9rem;padding:.35rem 0;border-bottom:1px dotted rgba(244,233,220,.12);transition:color .3s,transform .3s var(--ease)}
+.mcol li:hover{color:var(--gold);transform:translateX(4px)}
+.mcol li b{font-family:var(--display);font-weight:500;color:var(--gold);font-size:1rem;white-space:nowrap}
+.mcol .note{margin-top:.4rem}
+
+/* contato */
+.contato{background:var(--ink)}
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:900px){.contato-grid{grid-template-columns:1fr}}
+.contato h2 em{color:var(--gold)}
+.info{list-style:none;margin:1.6rem 0;display:grid;gap:1rem}
+.info li{display:grid;gap:.1rem;border-bottom:1px solid var(--line);padding-bottom:.9rem;font-size:1.05rem}
+.info small{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember)}
+.info a:hover{color:var(--gold)}
+.pay{color:var(--mut);font-size:.92rem}
+
+.footer{background:#050404;padding:4rem 6vw 2.4rem;text-align:center;border-top:1px solid var(--line)}
+.foot-logo{height:110px;width:auto;margin:0 auto}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2.2rem;font-size:.86rem;color:var(--mut);padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.08)}
+.foot-row a:hover{color:var(--gold)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.ember-layer{display:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+<div class="ember-layer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo"><img src="fotos/logo.png" alt="Churrasco do Preto" /></a>
+  <nav class="links">
+    <a href="#steak">Steak</a><a href="#espetos">Espetos</a><a href="#combos">Combos</a><a href="#cardapio">Cardápio</a><a href="#contato">Contato</a>
+  </nav>
+  <a href="#cardapio" class="btn btn-sm">Ver cardápio</a>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-photo"><img src="fotos/corte-steak.jpg" alt="Chef cortando steak" /></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-txt">
+    <p class="kicker reveal">Steak · Churrasco · Desde 2004</p>
+    <h1 class="reveal"><span class="ln"><span>O fogo que</span></span> <span class="ln"><span>faz a <em>diferença.</em></span></span></h1>
+    <p class="lead reveal">Cortes selecionados, espetos na brasa e porções para dividir. Um churrasco feito com calma, para você sentir o gosto em cada mordida.</p>
+    <div class="cta reveal">
+      <a href="#cardapio" class="btn">Ver o cardápio <span>→</span></a>
+      <a href="#combos" class="btn btn-line">Combos para grupos</a>
+    </div>
+  </div>
+  <div class="since reveal"><b>2004</b><span>Desde</span></div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>Steak</span><i>✦</i><span>Espetos na brasa</span><i>✦</i><span>Porções</span><i>✦</i><span>Combos</span><i>✦</i><span>Açaí</span><i>✦</i><span>Drinks</span><i>✦</i>
+    <span>Steak</span><i>✦</i><span>Espetos na brasa</span><i>✦</i><span>Porções</span><i>✦</i><span>Combos</span><i>✦</i><span>Açaí</span><i>✦</i><span>Drinks</span><i>✦</i>
+  </div>
+</div>
+
+<section id="steak" class="steak">
+  <div class="split">
+    <div class="reveal">
+      <p class="kicker">Steak</p>
+      <h2>Cortes para <em>dividir</em> ou comer sozinho.</h2>
+      <p>Todos os steaks acompanham 4 acompanhamentos à sua escolha.</p>
+      <ul class="prices">
+        <li><span>Fraldinha <small>aprox. 400g</small></span><b>R$ 75,00</b></li>
+        <li><span>Maminha <small>aprox. 400g</small></span><b>R$ 79,00</b></li>
+        <li><span>Bife chorizo <small>aprox. 400g</small></span><b>R$ 80,00</b></li>
+        <li><span>Prime rib <small>aprox. 500g</small></span><b>R$ 115,00</b></li>
+        <li><span>T-bone <small>aprox. 500g</small></span><b>R$ 120,00</b></li>
+      </ul>
+    </div>
+    <figure class="photo reveal"><img src="fotos/steak-chapa.jpg" alt="Steak na chapa com linguiça e acompanhamentos" loading="lazy" /></figure>
+  </div>
+</section>
+
+<section id="espetos" class="espetos">
+  <div class="head reveal">
+    <p class="kicker">Espetos</p>
+    <h2>Na brasa, <em>no ponto.</em></h2>
+  </div>
+  <div class="espeto-grid">
+    <figure class="reveal big"><img src="fotos/espeto.jpg" alt="Espeto misto na brasa" loading="lazy" /><figcaption>Espeto misto</figcaption></figure>
+    <div class="espeto-list reveal">
+      <h3>Espetos grandes</h3>
+      <ul>
+        <li><span>Frango grande</span><b>R$ 38,00</b></li>
+        <li><span>Mistão <small>carne, frango e linguiça</small></span><b>R$ 40,00</b></li>
+        <li><span>Carne com frango</span><b>R$ 42,00</b></li>
+        <li><span>Carne com linguiça</span><b>R$ 43,00</b></li>
+        <li><span>Carne grande</span><b>R$ 45,00</b></li>
+        <li><span>Costelinha bovina <small>aprox. 550g</small></span><b>R$ 45,00</b></li>
+        <li><span>Espeto black <small>porco, charque, carne, linguiça e frango</small></span><b>R$ 52,00</b></li>
+      </ul>
+      <h3>Espetos pequenos</h3>
+      <ul>
+        <li><span>Coração de frango / boi</span><b>R$ 15,00</b></li>
+        <li><span>Linguiça toscana / calabresa</span><b>R$ 15,00</b></li>
+        <li><span>Filé de frango</span><b>R$ 17,00</b></li>
+        <li><span>Filé</span><b>R$ 30,00</b></li>
+        <li><span>Camarão rosa</span><b>R$ 43,00</b></li>
+        <li><span>Filé com queijo e bacon</span><b>R$ 47,00</b></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">* Espetos pequenos não acompanham guarnição.</p>
+</section>
+
+<section id="combos" class="combos">
+  <div class="head reveal">
+    <p class="kicker">Combos</p>
+    <h2>Para a mesa <em>toda.</em></h2>
+  </div>
+  <div class="combo-grid">
+    <article class="combo reveal"><span class="ser">Serve 2 pessoas</span><h3>Combo Mix</h3><p>Serve 2 pessoas.</p><b>R$ 139,00</b></article>
+    <article class="combo reveal"><span class="ser">Serve 3 pessoas</span><h3>Combo Oie</h3><p>6 acompanhamentos à escolha.</p><b>R$ 239,00</b></article>
+    <article class="combo reveal feat"><span class="ser">Serve 4 a 5 pessoas</span><h3>Combo Galã</h3><p>8 acompanhamentos à escolha.</p><b>R$ 280,00</b></article>
+    <article class="combo reveal"><span class="ser">Serve 4 pessoas</span><h3>Combo Firme no Boi</h3><p>Para quem gosta de carne de verdade.</p><b>R$ 249,50</b></article>
+    <article class="combo reveal"><span class="ser">Serve 5 a 6 pessoas</span><h3>Combo Fora do Normal</h3><p>10 acompanhamentos à escolha.</p><b>R$ 339,00</b></article>
+  </div>
+  <figure class="wide reveal"><img src="fotos/frango-prato.jpg" alt="Prato com frango grelhado, arroz, farofa e acompanhamentos" loading="lazy" /></figure>
+</section>
+
+<section id="cardapio" class="cardapio">
+  <div class="head reveal">
+    <p class="kicker">Cardápio completo</p>
+    <h2>Tudo que <em>tem na casa.</em></h2>
+    <p class="note">* Preços conforme o cardápio impresso. Couvert artístico de R$ 5,00 por pessoa. 10% de serviço opcional.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="mcol reveal">
+      <h3>Entrada</h3>
+      <ul>
+        <li><span>Choripam</span><b>R$ 16,00</b></li>
+        <li><span>Pão de alho</span><b>R$ 17,00</b></li>
+        <li><span>Pão de alho com bacon</span><b>R$ 18,00</b></li>
+        <li><span>Queijo coalho / assado</span><b>R$ 20,00</b></li>
+        <li><span>Bolinho de macaxeira</span><b>R$ 25,00</b></li>
+        <li><span>Batata recheada <small>bacon, calabresa e requeijão</small></span><b>R$ 35,00</b></li>
+        <li><span>Batata recheada de camarão</span><b>R$ 45,00</b></li>
+        <li><span>Batata recheada de filé mignon</span><b>R$ 45,00</b></li>
+      </ul>
+      <h3>Tira gosto</h3>
+      <ul>
+        <li><span>Porção de batata frita</span><b>R$ 19,00</b></li>
+        <li><span>Porção de macaxeira</span><b>R$ 19,00</b></li>
+        <li><span>Batata com cheddar e bacon</span><b>R$ 28,00</b></li>
+        <li><span>Bolinho de bacalhau</span><b>R$ 40,00</b></li>
+        <li><span>Porções de frios</span><b>R$ 45,00</b></li>
+        <li><span>Camarão empanado</span><b>R$ 72,00</b></li>
+      </ul>
+    </div>
+    <div class="mcol reveal">
+      <h3>Completos</h3>
+      <p class="sub">Acompanham baião ou arroz, ou feijão tropeiro, purê, farofa, vinagrete e salada de maionese.</p>
+      <ul>
+        <li><span>Coração de frango</span><b>R$ 25,00</b></li>
+        <li><span>Coração de boi</span><b>R$ 25,00</b></li>
+        <li><span>Linguiça toscana</span><b>R$ 25,00</b></li>
+        <li><span>Calabresa</span><b>R$ 25,00</b></li>
+        <li><span>Porco (picanha suína)</span><b>R$ 27,00</b></li>
+        <li><span>Carne (contra filé)</span><b>R$ 29,00</b></li>
+        <li><span>Língua</span><b>R$ 28,00</b></li>
+        <li><span>Bisteca</span><b>R$ 35,00</b></li>
+        <li><span>Porco com bacon</span><b>R$ 35,00</b></li>
+        <li><span>Charque</span><b>R$ 38,00</b></li>
+        <li><span>Filé</span><b>R$ 42,00</b></li>
+        <li><span>Cupim <small>aprox. 300g</small></span><b>R$ 45,00</b></li>
+        <li><span>Filé com bacon</span><b>R$ 52,00</b></li>
+        <li><span>Picanha pequena <small>aprox. 300g</small></span><b>R$ 68,00</b></li>
+        <li><span>Misto 1 (carne e frango)</span><b>R$ 27,00</b></li>
+        <li><span>Misto 2 (carne, frango e linguiça)</span><b>R$ 29,00</b></li>
+        <li><span>Filé de peito de frango</span><b>R$ 32,00</b></li>
+        <li><span>Frango com bacon</span><b>R$ 47,00</b></li>
+        <li><span>Filé com queijo</span><b>R$ 48,00</b></li>
+        <li><span>Camarão</span><b>R$ 52,00</b></li>
+        <li><span>Filé com queijo e bacon</span><b>R$ 53,00</b></li>
+      </ul>
+    </div>
+    <div class="mcol reveal">
+      <h3>Porções</h3>
+      <ul>
+        <li><span>Arroz</span><b>R$ 10,00</b></li>
+        <li><span>Macarrão</span><b>R$ 11,00</b></li>
+        <li><span>Vinagrete</span><b>R$ 11,00</b></li>
+        <li><span>Farofa</span><b>R$ 11,00</b></li>
+        <li><span>Purê</span><b>R$ 11,00</b></li>
+        <li><span>Salada</span><b>R$ 11,00</b></li>
+        <li><span>Baião</span><b>R$ 13,00</b></li>
+        <li><span>Feijão tropeiro</span><b>R$ 14,00</b></li>
+        <li><span>Farofa de ovo</span><b>R$ 18,00</b></li>
+        <li><span>Guarnição <small>baião ou arroz, purê, farofa, vinagrete, salada</small></span><b>R$ 18,00</b></li>
+        <li><span>Farofa black <small>ovo, cebola e bacon</small></span><b>R$ 28,00</b></li>
+        <li><span>Farofa envolvente</span><b>R$ 30,00</b></li>
+      </ul>
+      <h3>Sobremesa</h3>
+      <ul>
+        <li><span>Creme de abacaxi</span><b>R$ 13,00</b></li>
+        <li><span>Pudim</span><b>R$ 13,00</b></li>
+        <li><span>Torta de limão</span><b>R$ 13,00</b></li>
+      </ul>
+    </div>
+    <div class="mcol reveal">
+      <h3>Bebidas</h3>
+      <ul>
+        <li><span>Refrigerante 2L</span><b>R$ 13,00</b></li>
+        <li><span>Refrigerante 1,5L</span><b>R$ 11,00</b></li>
+        <li><span>Refrigerante lata</span><b>R$ 7,00</b></li>
+        <li><span>Suco (caju, acerola, goiaba, maracujá e outros)</span><b>R$ 12,00</b></li>
+        <li><span>Água 500 ml</span><b>R$ 5,00</b></li>
+        <li><span>Cerveja Bohemia</span><b>R$ 12,50</b></li>
+        <li><span>Cerveja Brahma</span><b>R$ 13,00</b></li>
+        <li><span>Cerveja Skol Pilsen</span><b>R$ 14,00</b></li>
+        <li><span>Cerveja Budweiser</span><b>R$ 14,50</b></li>
+        <li><span>Cerveja Original</span><b>R$ 15,00</b></li>
+        <li><span>Cerveja Stella</span><b>R$ 16,00</b></li>
+        <li><span>Cerveja Beck's</span><b>R$ 16,50</b></li>
+        <li><span>Drink (Caipirinha, Mojito, Caipiroska)</span><b>R$ 22,00 – 25,00</b></li>
+        <li><span>Whisky Sour / Gin tônica</span><b>R$ 35,00</b></li>
+        <li><span>Tropical Gin</span><b>R$ 40,00</b></li>
+      </ul>
+      <p class="note">Temos açaí. Consulte as opções na casa.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-grid">
+    <div class="reveal">
+      <p class="kicker">Contato</p>
+      <h2>Venha <em>comer bem.</em></h2>
+      <ul class="info">
+        <li><small>Instagram</small><a href="https://www.instagram.com/churrascodopreto" target="_blank" rel="noopener">@churrascodopreto</a></li>
+        <li><small>Facebook</small><a href="https://www.facebook.com/churrascodopreto" target="_blank" rel="noopener">Churrasco do Preto</a></li>
+        <li><small>Endereço</small>[endereço completo]</li>
+        <li><small>Horário</small>[a confirmar com a casa]</li>
+      </ul>
+      <p class="pay">Aceitamos cartões de crédito e débito.</p>
+    </div>
+    <div class="reveal">
+      <figure class="photo"><img src="fotos/steak-chapa.jpg" alt="Steak na chapa" loading="lazy" /></figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <img src="fotos/logo.png" alt="Churrasco do Preto" class="foot-logo" />
+  <div class="foot-row">
+    <span>© 2026 Churrasco do Preto · CNPJ [00.000.000/0001-00]</span>
+    <a href="#top">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 30); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => { const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal')); el.style.transitionDelay = (sib.indexOf(el) % 4) * 90 + 'ms'; io.observe(el); });
+
+</script>
+</body>
+</html>
