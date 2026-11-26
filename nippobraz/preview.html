@@ -191,6 +191,10 @@ section{padding:7rem 6vw;position:relative}
 
 .units{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .todo{background:var(--gold);color:var(--ink);padding:0 .35rem;border-radius:3px;font-size:.85em}
+/* layout: Matriz full row, the other four lojas in a 2x2 grid */
+.units{grid-template-columns:repeat(2,1fr) !important}
+.units .unit:first-child{grid-column:1 / -1}
+@media(max-width:800px){.units{grid-template-columns:1fr !important}.units .unit:first-child{grid-column:auto}}
 
 </style>
 </head>
@@ -320,8 +324,7 @@ section{padding:7rem 6vw;position:relative}
       <ul class="hours"><li><span>Seg a sex</span><b>08:00 – 17:00</b></li><li><span>Sábado</span><b>08:00 – 12:00</b></li></ul>
       <a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=5591992656779&text=Oi%2C%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener">WhatsApp (91) 99265-6779</a>
     </article>
-  </div>
-
+  
     <article class="unit reveal">
       <span class="tagu">Loja</span>
       <h3>Umarizal</h3>
@@ -336,6 +339,7 @@ section{padding:7rem 6vw;position:relative}
       <ul class="hours"><li><span>Horário</span><b>[a confirmar]</b></li></ul>
       <a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&query=Nippobraz+S%C3%A3o+Br%C3%A1s+Bel%C3%A9m" target="_blank" rel="noopener">Abrir no Google Maps ↗</a>
     </article>
+  </div>
   <div class="ig reveal"><a class="btn btn-line" href="https://www.instagram.com/nippobraz/" target="_blank" rel="noopener">Siga no Instagram @nippobraz ↗</a></div>
 </section>
 

@@ -179,3 +179,7 @@ section{padding:7rem 6vw;position:relative}
 
 .units{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .todo{background:var(--gold);color:var(--ink);padding:0 .35rem;border-radius:3px;font-size:.85em}
+/* layout: Matriz full row, the other four lojas in a 2x2 grid */
+.units{grid-template-columns:repeat(2,1fr) !important}
+.units .unit:first-child{grid-column:1 / -1}
+@media(max-width:800px){.units{grid-template-columns:1fr !important}.units .unit:first-child{grid-column:auto}}
