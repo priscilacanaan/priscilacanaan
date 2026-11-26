@@ -8,3 +8,9 @@ if (!reduce) document.querySelectorAll('.mag').forEach(b => {
   b.addEventListener('mouseleave', () => b.style.transform = '');
 });
 document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+/* procedimentos tabs */
+document.querySelectorAll('.ptab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.ptab').forEach(x=>x.classList.toggle('is-on',x===t));
+  document.querySelectorAll('.ppanel').forEach((p,i)=>p.classList.toggle('is-on',i==t.dataset.i));
+}));

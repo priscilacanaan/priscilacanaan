@@ -130,3 +130,21 @@ section{padding:6.5rem 6vw;position:relative}
 .foot-row a:hover{color:#fff}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.ecg-line{stroke-dashoffset:0}}
+
+/* procedimentos */
+.procedimentos{background:#fff}
+.pgrid{display:grid;grid-template-columns:260px 1fr;gap:1.6rem;align-items:start}
+@media(max-width:860px){.pgrid{grid-template-columns:1fr}}
+.ptabs{display:grid;gap:.6rem}
+.ptab{text-align:left;background:#fff;border:1px solid var(--line);border-radius:12px;padding:.9rem 1.1rem;font:700 .92rem var(--sans);color:var(--mut);cursor:pointer;transition:all .35s var(--ease)}
+.ptab:hover{transform:translateX(5px);color:var(--navy)}
+.ptab.is-on{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 12px 24px -14px rgba(215,38,61,.8)}
+.ppanels{position:relative;background:var(--ice);border:1px solid var(--line);border-radius:20px;padding:2rem;min-height:380px}
+.ppanel{display:none;animation:pIn .6s var(--ease)}
+.ppanel.is-on{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:start}
+@media(max-width:700px){.ppanel.is-on{grid-template-columns:1fr}}
+@keyframes pIn{from{opacity:0;transform:translateY(14px)}}
+.pimg{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(135deg,var(--navy2),var(--navy));display:grid;place-items:center;color:#CFE3EC;font-style:italic;font-family:var(--display);text-align:center;padding:1rem}
+.ptxt h3{color:var(--navy)}
+.ptxt p{color:var(--mut);margin-top:.7rem}
+.ptxt .prep{font-size:.9rem;color:var(--navy);border-top:1px solid var(--line);padding-top:.8rem;margin-top:1rem}
