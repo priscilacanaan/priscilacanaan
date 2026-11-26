@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#E9E1D6" />
+<title>Provador Fit — Veja a roupa em você antes de comprar</title>
+<meta name="description" content="Provador virtual: envie sua foto, escolha a peça e veja como ela fica em você." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--sand:#E9E1D6;--sand2:#DCCFBF;--ink:#1B1915;--mut:#6F655A;--card:#F6F1EA;--line:#CFC2B1;--accent:#8A5A3B;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.02}
+h1{font-size:clamp(3.4rem,8vw,7rem)}
+h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+section{padding:6.5rem 6vw;position:relative}
+.kicker{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:1rem}
+.sub{color:var(--mut);font-size:1.08rem;max-width:620px;margin-top:1.2rem}
+.head{margin-bottom:3rem;max-width:760px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--sand);font:500 .95rem var(--sans);padding:.95rem 1.6rem;border-radius:2px;border:0;cursor:pointer;transition:transform .3s var(--ease),background .3s}
+.btn:hover{transform:translateY(-2px);background:var(--accent)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--sand)}
+.btn-sm{padding:.7rem 1.2rem;font-size:.88rem}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 6vw;transition:background .4s,box-shadow .4s}
+.nav.solid{background:rgba(233,225,214,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:600}
+.links{display:flex;gap:2rem;font-size:.92rem;color:var(--mut)}
+.links a:hover{color:var(--ink)}
+@media(max-width:900px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:3rem;padding-top:9rem;background:linear-gradient(90deg,var(--sand),var(--sand2))}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.hero .sub{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--ink);max-width:520px}
+.cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
+.hero-art{position:relative;height:70vh;min-height:420px}
+.ghost{position:absolute;border-radius:200px 200px 24px 24px;background:linear-gradient(170deg,#F6F1EA,#CDBDA8);box-shadow:0 30px 60px -30px rgba(27,25,21,.4);animation:float 7s ease-in-out infinite}
+.g1{width:42%;height:82%;left:4%;top:8%}
+.g2{width:42%;height:82%;left:30%;top:0;animation-delay:-2s;background:linear-gradient(170deg,#3A3530,#1B1915)}
+.g3{width:34%;height:62%;left:62%;top:30%;animation-delay:-4s;background:linear-gradient(170deg,#9FB3A0,#6F8A6C)}
+@keyframes float{50%{transform:translateY(-14px)}}
+
+/* band */
+.band{background:var(--ink);color:var(--sand);padding:1rem 0;overflow:hidden;transform:rotate(-1deg) scale(1.02)}
+.track{display:flex;gap:1.6rem;width:max-content;animation:tk 26s linear infinite;font-family:var(--serif);font-size:1.5rem;align-items:center}
+.track i{font-style:normal;color:#C9A27E;font-size:.9rem}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* provador */
+.fit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start}
+@media(max-width:900px){.fit-grid{grid-template-columns:1fr}}
+.stage{position:relative;background:var(--card);border:1px solid var(--line);border-radius:6px;aspect-ratio:3/4;max-height:76vh;width:100%;overflow:hidden;margin:0 auto;touch-action:none;user-select:none}
+.empty{position:absolute;inset:0;display:grid;place-items:center}
+.drop{display:grid;justify-items:center;gap:.4rem;cursor:pointer;padding:2rem;text-align:center;border:1px dashed var(--line);border-radius:6px;margin:1.2rem;inset:0;width:calc(100% - 2.4rem);height:calc(100% - 2.4rem);align-content:center;transition:background .3s,border-color .3s}
+.drop:hover{background:#FBF8F3;border-color:var(--accent)}
+.plus{font-family:var(--serif);font-size:3.4rem;color:var(--accent);line-height:1}
+.drop b{font-weight:600}
+.drop small{color:var(--mut)}
+#person{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+#garment{position:absolute;left:50%;top:30%;width:60%;transform:translate(-50%,-50%);cursor:grab;touch-action:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.18));transition:filter .3s}
+#garment:active{cursor:grabbing}
+#garment.dragging{filter:drop-shadow(0 18px 24px rgba(0,0,0,.28))}
+.tools{margin-top:1.4rem;display:grid;gap:1rem}
+.tools label{display:grid;gap:.4rem;font-size:.85rem;color:var(--mut)}
+.tools input[type=range]{width:100%;accent-color:var(--ink)}
+.tool-btns{display:flex;flex-wrap:wrap;gap:.6rem}
+
+.picker{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:2rem}
+.picker-t{font-family:var(--serif);font-size:1.6rem;margin-bottom:1.2rem}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.item{border:1px solid var(--line);border-radius:6px;background:#FBF8F3;padding:.8rem;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.item:hover{transform:translateY(-3px)}
+.item.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.item img{width:100%;aspect-ratio:1;object-fit:contain;display:block;background:transparent}
+.item span{display:block;font-size:.9rem;margin-top:.4rem;font-weight:500}
+.item small{color:var(--mut)}
+.note{font-size:.82rem;color:var(--mut);margin-top:1.4rem}
+
+/* colecao */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+@media(max-width:1000px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.p{background:var(--card);border-radius:4px;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s;cursor:pointer}
+.p:hover{transform:translateY(-6px);box-shadow:0 26px 40px -28px rgba(27,25,21,.5)}
+.p-img{aspect-ratio:3/4;background:linear-gradient(180deg,#F6F1EA,#E6DCCD);display:grid;place-items:center}
+.p-img img{width:70%;transition:transform .6s var(--ease)}
+.p:hover .p-img img{transform:scale(1.05)}
+.p-info{padding:1rem 1.1rem 1.2rem}
+.p-info h3{font-family:var(--serif);font-size:1.4rem;font-weight:600}
+.p-info p{color:var(--mut);font-size:.9rem}
+.p-info .price{margin-top:.4rem;font-weight:600}
+.p-info .try{margin-top:.8rem;font-size:.85rem;color:var(--accent);font-weight:600}
+
+/* categorias */
+.categorias{background:var(--card)}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+@media(max-width:900px){.cats{grid-template-columns:1fr 1fr}}
+.cat{display:grid;gap:.7rem;transition:transform .4s var(--ease)}
+.cat:hover{transform:translateY(-4px)}
+.cat-img{aspect-ratio:3/4;border-radius:4px;background:#E6DCCD;background-size:60%;background-position:center;background-repeat:no-repeat}
+.cat span{font-family:var(--serif);font-size:1.3rem;font-weight:600}
+
+.contato{background:var(--ink);color:var(--sand);text-align:center}
+.contato h2{font-size:clamp(2.4rem,5vw,4rem)}
+.contato em{color:#C9A27E}
+.contato .sub{color:#CFC5B8;margin:1.2rem auto 0}
+.footer{background:#0F0E0C;color:#A9A093;padding:2.4rem 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo">[Sua marca]</a>
+  <nav class="links"><a href="#provador">Provador</a><a href="#colecao">Coleção</a><a href="#categorias">Categorias</a><a href="#contato">Contato</a></nav>
+  <a href="#provador" class="btn btn-sm">Experimentar</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="hero-txt">
+    <p class="kicker reveal">Provador virtual</p>
+    <h1 class="reveal">Veja antes de <em>vestir.</em></h1>
+    <p class="sub reveal">Envie uma foto sua, escolha a peça e veja como ela fica no seu corpo, antes de comprar.</p>
+    <div class="cta reveal"><a href="#provador" class="btn">Provar agora →</a><a href="#colecao" class="btn btn-line">Ver a coleção</a></div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="ghost g1"></div><div class="ghost g2"></div><div class="ghost g3"></div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="track"><span>Provador virtual</span><i>✦</i><span>Troca grátis</span><i>✦</i><span>Entrega para todo o Brasil</span><i>✦</i><span>Parcelamento sem juros</span><i>✦</i><span>Provador virtual</span><i>✦</i><span>Troca grátis</span><i>✦</i><span>Entrega para todo o Brasil</span><i>✦</i><span>Parcelamento sem juros</span><i>✦</i></div></div>
+
+<section id="provador" class="provador">
+  <div class="head reveal">
+    <p class="kicker">Provador</p>
+    <h2>Como fica <em>em você?</em></h2>
+    <p class="sub">1) Envie uma foto de corpo inteiro, de frente, com boa luz. 2) Escolha a peça. 3) Arraste e ajuste até encaixar.</p>
+  </div>
+  <div class="fit-grid">
+    <div class="stage-wrap reveal">
+      <div class="stage" id="stage">
+        <div class="empty" id="empty">
+          <label class="drop" for="file">
+            <span class="plus">+</span>
+            <b>Envie sua foto</b>
+            <small>JPG ou PNG, de corpo inteiro</small>
+          </label>
+        </div>
+        <img id="person" alt="Sua foto" hidden />
+        <img id="garment" alt="" draggable="false" hidden />
+      </div>
+      <div class="tools" id="tools" hidden>
+        <label>Tamanho <input type="range" id="size" min="20" max="120" value="60" /></label>
+        <label>Transparência <input type="range" id="op" min="30" max="100" value="92" /></label>
+        <div class="tool-btns">
+          <button class="btn btn-line btn-sm" id="reset" type="button">Trocar foto</button>
+          <button class="btn btn-sm" id="save" type="button">Baixar imagem</button>
+        </div>
+      </div>
+      <input type="file" id="file" accept="image/*" hidden />
+    </div>
+
+    <div class="picker reveal">
+      <p class="picker-t">Escolha a peça</p>
+      <div class="items" id="items"></div>
+      <p class="note">Arraste a peça sobre a foto para posicionar. As peças aqui são ilustrativas: troque pelas fotos dos seus produtos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="colecao" class="colecao">
+  <div class="head reveal">
+    <p class="kicker">Coleção</p>
+    <h2>Para o <em>dia a dia.</em></h2>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="categorias" class="categorias">
+  <div class="head reveal"><h2>Escolha por <em>categoria</em></h2></div>
+  <div class="cats">
+    <a href="#colecao" class="cat reveal"><div class="cat-img" data-cat="camiseta"></div><span>Camisetas</span></a>
+    <a href="#colecao" class="cat reveal"><div class="cat-img" data-cat="polo"></div><span>Polos</span></a>
+    <a href="#colecao" class="cat reveal"><div class="cat-img" data-cat="camisa"></div><span>Camisas</span></a>
+    <a href="#colecao" class="cat reveal"><div class="cat-img" data-cat="moletom"></div><span>Moletons</span></a>
+  </div>
+</section>
+
+<section id="contato" class="contato reveal">
+  <p class="kicker">Contato</p>
+  <h2>Dúvidas sobre <em>tamanho?</em></h2>
+  <p class="sub">Fale com a gente pelo WhatsApp: [(00) 00000-0000]</p>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 [Sua marca]</span>
+  <span><a href="#topo">Topo ↑</a></span>
+</footer>
+
+<script>
+/* Provador: silhuetas de roupa como exemplo. Troque por PNGs sem fundo dos seus produtos. */
+const PRODUCTS = [
+  { id: 'camiseta-preta', name: 'Camiseta Essencial', kind: 'camiseta', color: '#1B1915', price: 'R$ 89,90' },
+  { id: 'camiseta-off', name: 'Camiseta Off White', kind: 'camiseta', color: '#EFE8DC', price: 'R$ 89,90' },
+  { id: 'polo-verde', name: 'Polo Oliva', kind: 'polo', color: '#5D6B4A', price: 'R$ 139,90' },
+  { id: 'polo-preto', name: 'Polo Noite', kind: 'polo', color: '#2A2724', price: 'R$ 139,90' },
+  { id: 'camisa-azul', name: 'Camisa Linho Azul', kind: 'camisa', color: '#A9BCD0', price: 'R$ 259,90' },
+  { id: 'camisa-branca', name: 'Camisa Linho Branca', kind: 'camisa', color: '#F4F1EA', price: 'R$ 259,90' },
+  { id: 'moletom-cinza', name: 'Moletom Cinza', kind: 'moletom', color: '#8D8A84', price: 'R$ 219,90' },
+  { id: 'moletom-terra', name: 'Moletom Terra', kind: 'moletom', color: '#8A5A3B', price: 'R$ 219,90' },
+];
+
+/* silhueta SVG (300x340) por tipo de peça */
+function garmentSVG(kind, color) {
+  const shapes = {
+    camiseta: `<path d="M95 38 L38 66 L10 138 L56 158 L66 128 L66 322 L234 322 L234 128 L244 158 L290 138 L262 66 L205 38 Q150 78 95 38 Z" fill="${color}"/>`,
+    polo: `<path d="M95 38 L38 66 L10 138 L56 158 L66 128 L66 322 L234 322 L234 128 L244 158 L290 138 L262 66 L205 38 Q150 78 95 38 Z" fill="${color}"/>
+      <path d="M95 38 Q150 92 205 38 L196 30 L150 60 L104 30 Z" fill="${shade(color, -18)}"/>
+      <line x1="150" y1="70" x2="150" y2="112" stroke="${shade(color, -30)}" stroke-width="3"/>
+      <circle cx="150" cy="84" r="2.5" fill="${shade(color, -40)}"/><circle cx="150" cy="100" r="2.5" fill="${shade(color, -40)}"/>`,
+    camisa: `<path d="M100 36 L40 58 L8 250 L54 258 L64 150 L64 322 L236 322 L236 150 L246 258 L292 250 L260 58 L200 36 Q150 70 100 36 Z" fill="${color}"/>
+      <path d="M100 36 Q150 92 200 36 L184 30 L150 72 L116 30 Z" fill="${shade(color, -14)}"/>
+      <line x1="150" y1="92" x2="150" y2="322" stroke="${shade(color, -22)}" stroke-width="2"/>
+      ${[120,150,180,210,240,270].map(y => `<circle cx="150" cy="${y}" r="2.2" fill="${shade(color, -35)}"/>`).join('')}`,
+    moletom: `<path d="M110 30 Q150 6 190 30 L238 60 L292 146 L250 166 L236 130 L236 322 L64 322 L64 130 L50 166 L8 146 L62 60 Z" fill="${color}"/>
+      <path d="M110 30 Q150 6 190 30 Q176 74 150 74 Q124 74 110 30 Z" fill="${shade(color, -16)}"/>
+      <path d="M118 96 L182 96 L186 150 L114 150 Z" fill="${shade(color, -10)}"/>
+      <line x1="140" y1="104" x2="138" y2="140" stroke="${shade(color, -35)}" stroke-width="2"/><line x1="160" y1="104" x2="162" y2="140" stroke="${shade(color, -35)}" stroke-width="2"/>`,
+  };
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">${shapes[kind]}</svg>`;
+}
+function shade(hex, amt) {
+  const n = parseInt(hex.slice(1), 16);
+  const f = c => Math.max(0, Math.min(255, c + amt));
+  return '#' + [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(f).map(v => v.toString(16).padStart(2, '0')).join('');
+}
+const svgURL = (kind, color) => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(garmentSVG(kind, color));
+
+/* renderiza o grid de produtos e o seletor do provador */
+const grid = document.getElementById('grid'), items = document.getElementById('items');
+PRODUCTS.forEach((p, i) => {
+  const url = svgURL(p.kind, p.color);
+  grid.insertAdjacentHTML('beforeend', `<article class="p reveal" data-id="${p.id}"><div class="p-img"><img src="${url}" alt="${p.name}" loading="lazy"/></div><div class="p-info"><h3>${p.name}</h3><p class="price">${p.price}</p><p class="try">Experimentar no provador →</p></div></article>`);
+  items.insertAdjacentHTML('beforeend', `<button class="item${i === 0 ? ' on' : ''}" data-id="${p.id}" type="button"><img src="${url}" alt="${p.name}"/><span>${p.name}</span><small>${p.price}</small></button>`);
+});
+document.querySelectorAll('.cat-img').forEach(el => {
+  const kind = { camiseta: 'camiseta', polo: 'polo', camisa: 'camisa', moletom: 'moletom' }[el.dataset.cat];
+  const p = PRODUCTS.find(x => x.kind === kind);
+  el.style.backgroundImage = `url("${svgURL(kind, p.color)}")`;
+});
+
+/* provador */
+const stage = document.getElementById('stage'), empty = document.getElementById('empty');
+const person = document.getElementById('person'), garment = document.getElementById('garment');
+const tools = document.getElementById('tools'), fileIn = document.getElementById('file');
+const sizeIn = document.getElementById('size'), opIn = document.getElementById('op');
+let current = PRODUCTS[0];
+
+function setGarment(id) {
+  current = PRODUCTS.find(p => p.id === id);
+  garment.src = svgURL(current.kind, current.color);
+  document.querySelectorAll('.item').forEach(b => b.classList.toggle('on', b.dataset.id === id));
+  if (!person.hidden) garment.hidden = false;
+}
+items.addEventListener('click', e => { const b = e.target.closest('.item'); if (b) setGarment(b.dataset.id); });
+grid.addEventListener('click', e => {
+  const c = e.target.closest('.p'); if (!c) return;
+  setGarment(c.dataset.id);
+  document.getElementById('provador').scrollIntoView({ behavior: 'smooth' });
+});
+
+fileIn.addEventListener('change', () => {
+  const f = fileIn.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    person.src = r.result; person.hidden = false; empty.hidden = true;
+    garment.hidden = false; tools.hidden = false;
+    garment.style.left = '50%'; garment.style.top = '30%';
+    sizeIn.value = 45; garment.style.width = '45%'; opIn.value = 92; garment.style.opacity = .92;
+    setGarment(current.id);
+  };
+  r.readAsDataURL(f);
+});
+document.getElementById('reset').addEventListener('click', () => {
+  fileIn.value = ''; person.hidden = true; garment.hidden = true; empty.hidden = false; tools.hidden = true;
+});
+sizeIn.addEventListener('input', () => { garment.style.width = sizeIn.value + '%'; });
+opIn.addEventListener('input', () => { garment.style.opacity = opIn.value / 100; });
+
+/* arrastar a peça (mouse e toque) */
+let drag = null;
+garment.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  const r = stage.getBoundingClientRect();
+  drag = { dx: e.clientX - garment.getBoundingClientRect().left - garment.offsetWidth / 2 - 0, dy: e.clientY - garment.getBoundingClientRect().top - garment.offsetHeight / 2, r };
+  garment.setPointerCapture(e.pointerId); garment.classList.add('dragging');
+});
+garment.addEventListener('pointermove', e => {
+  if (!drag) return;
+  const r = stage.getBoundingClientRect();
+  const x = ((e.clientX - drag.dx - r.left) / r.width) * 100;
+  const y = ((e.clientY - drag.dy - r.top) / r.height) * 100;
+  garment.style.left = Math.max(0, Math.min(100, x)) + '%';
+  garment.style.top = Math.max(0, Math.min(100, y)) + '%';
+});
+const endDrag = () => { drag = null; garment.classList.remove('dragging'); };
+garment.addEventListener('pointerup', endDrag);
+garment.addEventListener('pointercancel', endDrag);
+
+/* baixar a imagem com a peça aplicada */
+document.getElementById('save').addEventListener('click', () => {
+  if (person.hidden) return;
+  const nw = person.naturalWidth, nh = person.naturalHeight;
+  const cv = document.createElement('canvas'); cv.width = nw; cv.height = nh;
+  const ctx = cv.getContext('2d');
+  ctx.drawImage(person, 0, 0, nw, nh);
+  /* posição e tamanho da peça no stage (object-fit: contain) */
+  const sr = stage.getBoundingClientRect();
+  const scale = Math.min(sr.width / nw, sr.height / nh);
+  const dw = nw * scale, dh = nh * scale;
+  const ox = (sr.width - dw) / 2, oy = (sr.height - dh) / 2;
+  const gw = garment.offsetWidth / scale, gh = (garment.offsetWidth * 340 / 300) / scale;
+  const cx = (parseFloat(garment.style.left) / 100) * sr.width;
+  const cy = (parseFloat(garment.style.top) / 100) * sr.height;
+  const gx = (cx - ox) / scale, gy = (cy - oy) / scale;
+  const img = new Image();
+  img.onload = () => {
+    ctx.globalAlpha = parseFloat(garment.style.opacity || 1);
+    ctx.drawImage(img, gx - gw / 2, gy - gh / 2, gw, gh);
+    const a = document.createElement('a');
+    a.download = 'provador-fit.png'; a.href = cv.toDataURL('image/png'); a.click();
+  };
+  img.src = garment.src;
+});
+
+/* reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 30), { passive: true });
+
+</script>
+</body>
+</html>
