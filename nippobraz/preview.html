@@ -158,6 +158,22 @@ section{padding:7rem 6vw;position:relative}
 .ig{text-align:center;margin-top:2.4rem}
 .local .map{display:none}
 
+/* delivery */
+.delivery{background:var(--ink2)}
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media(max-width:860px){.del-grid{grid-template-columns:1fr}}
+.rules{list-style:none;display:grid;gap:1rem}
+.rules li{border-left:3px solid var(--red);padding:1rem 1.4rem;background:var(--ink);display:grid;gap:.2rem;transition:transform .4s var(--ease)}
+.rules li:hover{transform:translateX(8px)}
+.rules b{font-family:var(--display);font-size:1.4rem;color:var(--gold)}
+.rules span{color:#CFC7BE}
+.areas h3{font-size:1.6rem;margin-bottom:1rem;color:var(--paper)}
+.areas ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.areas li{border:1px solid var(--line);padding:.7rem 1rem;color:#CFC7BE;transition:border-color .3s,color .3s}
+.areas li:hover{border-color:var(--red);color:var(--paper)}
+.del-cta{margin-top:3rem;padding:2.4rem;border:1px solid var(--red);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem}
+.del-cta p{font-family:var(--display);font-size:1.3rem}
+
 </style>
 </head>
 <body>
@@ -166,9 +182,9 @@ section{padding:7rem 6vw;position:relative}
 <header class="nav" id="nav">
   <a href="#top" class="logo"><img src="fotos/logo-nippobraz.png" alt="Nippobraz" /></a>
   <nav class="links">
-    <a href="#cardapio">Cardápio</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
+    <a href="#cardapio">Cardápio</a><a href="#delivery">Delivery</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
   </nav>
-  <a href="#pedido" class="btn btn-sm">Peça agora</a>
+  <a href="#delivery" class="btn btn-sm">Delivery</a>
 </header>
 
 <main id="top">
@@ -264,6 +280,30 @@ section{padding:7rem 6vw;position:relative}
       <textarea name="obs" rows="3" placeholder="Observações (alergias, sem wasabi, etc.)"></textarea>
       <button class="btn" type="submit">Enviar pelo WhatsApp →</button>
     </form>
+  </div>
+</section>
+
+<section id="delivery" class="delivery">
+  <div class="head reveal">
+    <p class="kicker">Delivery</p>
+    <h2>Como funciona <em>o delivery?</em></h2>
+  </div>
+  <div class="del-grid">
+    <ul class="rules reveal">
+      <li><b>Valor mínimo</b><span>R$ 100,00</span></li>
+      <li><b>Taxa fixa</b><span>R$ 10,00</span></li>
+      <li><b>Cadastro</b><span>é preciso fazer um cadastro simples no nosso sistema</span></li>
+    </ul>
+    <div class="areas reveal">
+      <h3>Bairros atendidos</h3>
+      <ul>
+        <li>Batista Campos</li><li>Reduto</li><li>Canudos</li><li>Fátima</li><li>Pedreira</li><li>Umarizal</li><li>São Brás</li><li>Nazaré</li><li>Marco</li>
+      </ul>
+    </div>
+  </div>
+  <div class="del-cta reveal">
+    <p>É só entrar em contato com o WhatsApp:</p>
+    <a class="btn" href="https://api.whatsapp.com/send?phone=5591993550290&text=Oi%2C%20quero%20fazer%20um%20pedido%20delivery" target="_blank" rel="noopener">(91) 99355-0290 →</a>
   </div>
 </section>
 
