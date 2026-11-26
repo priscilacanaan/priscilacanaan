@@ -350,6 +350,12 @@ h2 em{-webkit-text-fill-color:var(--lime)}
 .hero-photo img{object-position:center 15%;opacity:.9}
 .hero::after{background:linear-gradient(90deg,rgba(7,7,7,.75) 15%,rgba(7,7,7,.05) 75%)}
 @media(max-width:900px){.hero{padding-top:9rem}}
+/* force hero layers (overrides inherited rules) */
+.hero .hero-photo{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;z-index:0 !important;margin:0 !important}
+.hero .hero-photo img{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:cover !important;object-position:center 15% !important;opacity:.9 !important}
+.hero::after{z-index:1 !important}
+.hero .hero-badge{position:absolute !important;right:6vw !important;top:20vh !important;bottom:auto !important;left:auto !important;width:200px !important;z-index:3 !important}
+.hero .hero-badge img{width:100% !important;height:auto !important}
 
 </style>
 </head>
