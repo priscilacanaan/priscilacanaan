@@ -344,6 +344,13 @@ h2 em{-webkit-text-fill-color:var(--lime)}
 .gal:hover img{transform:scale(1.07);filter:saturate(1.2)}
 .gal figcaption{position:absolute;left:1rem;bottom:1rem;background:var(--lime);color:#000;font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;padding:.35rem .7rem;border-radius:4px}
 
+/* header spacing: keep the title below the menu and let the facade show */
+.hero{padding-top:13rem;justify-content:flex-end;padding-bottom:12vh}
+.hero-title{font-size:clamp(4.5rem,13vw,11rem);line-height:.9}
+.hero-photo img{object-position:center 15%;opacity:.9}
+.hero::after{background:linear-gradient(90deg,rgba(7,7,7,.75) 15%,rgba(7,7,7,.05) 75%)}
+@media(max-width:900px){.hero{padding-top:9rem}}
+
 </style>
 </head>
 <body>
@@ -365,8 +372,7 @@ h2 em{-webkit-text-fill-color:var(--lime)}
   <div class="hero-bg" aria-hidden="true"><i></i><i></i></div>
   <p class="kicker reveal">Sport Center · Maringá – PR</p>
   <h1 class="hero-title">
-    <span class="ln"><span>25 ANOS</span></span>
-    <span class="ln"><span>DE <em class="outline">ESTAÇÃO</em></span></span>
+    <span class="ln"><span><em class="outline">ESTAÇÃO</em></span></span>
   </h1>
   <p class="hero-sub reveal">Musculação, aulas coletivas e acompanhamento de perto. Uma academia que cresce junto com quem treina aqui há anos.</p>
   <div class="hero-cta reveal">
