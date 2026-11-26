@@ -148,3 +148,9 @@ section{padding:6.5rem 6vw;position:relative}
 .ptxt h3{color:var(--navy)}
 .ptxt p{color:var(--mut);margin-top:.7rem}
 .ptxt .prep{font-size:.9rem;color:var(--navy);border-top:1px solid var(--line);padding-top:.8rem;margin-top:1rem}
+
+.map{max-width:1140px;margin:2rem auto 0;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.14);height:340px}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.map-btn{margin-top:1.2rem;background:#fff;color:var(--navy);box-shadow:none}
+.map-btn:hover{background:#FFC9D0}
+.info a{border-bottom:1px solid rgba(255,255,255,.4)}
