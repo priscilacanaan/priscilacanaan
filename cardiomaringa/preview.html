@@ -184,13 +184,21 @@ section{padding:6.5rem 6vw;position:relative}
 .wa-float .fill{fill:currentColor;stroke:none}
 @keyframes waRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}100%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
 
+/* glassy transparent top bar with the logo */
+.nav{background:rgba(14,42,58,.38);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 8px 32px -12px rgba(0,0,0,.35)}
+.nav.solid{background:rgba(14,42,58,.55);box-shadow:0 8px 32px -12px rgba(0,0,0,.45)}
+.logo img{height:54px;width:auto;display:block}
+.nav .links a{color:rgba(255,255,255,.88)}
+.nav .links a:hover{color:#fff}
+.nav .links a::after{background:#FFC9D0}
+
 </style>
 </head>
 <body>
 <div class="progress" aria-hidden="true"><span></span></div>
 
 <header class="nav" id="nav">
-  <a href="#top" class="logo"><span class="heart" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6.2 5c2 0 3.5 1.1 4.3 2.4h3C14.3 6.1 15.8 5 17.8 5c3.5 0 5.3 3.4 3.8 6.8C19.5 16.4 12 21 12 21z"/></svg></span>Cardio<b>maringá</b></a>
+  <a href="#top" class="logo"><img src="fotos/logo-cardiomaringa.png" alt="Cardiomaringá — Centro de Cardiologia e Hipertensão Arterial" /></a>
   <nav class="links">
     <a href="#clinica">A clínica</a><a href="#equipe">Médicos</a><a href="#procedimentos">Exames</a><a href="#atendimento">Atendimento</a><a href="#contato">Contato</a>
   </nav>

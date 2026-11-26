@@ -171,3 +171,11 @@ section{padding:6.5rem 6vw;position:relative}
 .wa-float svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
 .wa-float .fill{fill:currentColor;stroke:none}
 @keyframes waRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}100%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+
+/* glassy transparent top bar with the logo */
+.nav{background:rgba(14,42,58,.38);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid rgba(255,255,255,.18);box-shadow:0 8px 32px -12px rgba(0,0,0,.35)}
+.nav.solid{background:rgba(14,42,58,.55);box-shadow:0 8px 32px -12px rgba(0,0,0,.45)}
+.logo img{height:54px;width:auto;display:block}
+.nav .links a{color:rgba(255,255,255,.88)}
+.nav .links a:hover{color:#fff}
+.nav .links a::after{background:#FFC9D0}
