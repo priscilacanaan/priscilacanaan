@@ -73,7 +73,19 @@
     <article class="prod reveal"><img src="fotos/prod-salmao.jpg" alt="Salmão" /><div><h3>Salmão</h3><p>Carne saborosa e textura suculenta. Versátil e premium, perfeito para grelhar, para sashimi fresco ou para receitas elaboradas.</p></div></article>
     <article class="prod reveal"><img src="fotos/prod-polvo.jpg" alt="Polvo" /><div><h3>Polvo</h3><p>Carne tenra e sabor único. Escolha entre polvo inteiro eviscerado, tentáculos ou polvo pré-cozido para sashimi.</p></div></article>
   </div>
-  <div class="chips reveal"><span>Cogumelos</span><span>Vegetais e saladas</span><span>Tofu defumado</span><span>Nori</span><span>Bebidas japonesas</span><span>Produtos asiáticos</span></div>
+  <div class="chips reveal">
+    <button class="chip-btn" data-info="cogumelos">Cogumelos</button>
+    <button class="chip-btn" data-info="vegetais">Vegetais e saladas</button>
+    <button class="chip-btn" data-info="tofu">Tofu defumado</button>
+    <button class="chip-btn" data-info="nori">Nori</button>
+    <button class="chip-btn" data-info="bebidas">Bebidas japonesas</button>
+    <button class="chip-btn" data-info="asiaticos">Produtos asiáticos</button>
+  </div>
+  <dialog id="prod-dlg" class="prod-dlg">
+    <button class="dlg-x" type="button" aria-label="Fechar">×</button>
+    <img id="dlg-img" alt="" />
+    <div class="dlg-txt"><h3 id="dlg-title"></h3><p id="dlg-text"></p><a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=5591992544283&text=Oi%2C%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos" target="_blank" rel="noopener">Pedir informações →</a></div>
+  </dialog>
 </section>
 
 <section id="pedido" class="pedido">

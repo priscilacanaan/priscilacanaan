@@ -174,6 +174,21 @@ section{padding:7rem 6vw;position:relative}
 .del-cta{margin-top:3rem;padding:2.4rem;border:1px solid var(--red);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem}
 .del-cta p{font-family:var(--display);font-size:1.3rem}
 
+.chip-btn{border:1px solid var(--red);color:var(--red);background:transparent;padding:.5rem 1rem;border-radius:999px;font:600 .9rem var(--sans);cursor:pointer;transition:background .3s,color .3s,transform .3s var(--ease)}
+.chip-btn:hover{background:var(--red);color:#fff;transform:translateY(-2px)}
+.prod-dlg{border:0;border-radius:6px;padding:0;max-width:720px;width:calc(100% - 2rem);background:#fff;color:var(--ink);box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
+.prod-dlg::backdrop{background:rgba(0,0,0,.7)}
+.prod-dlg[open]{animation:dlgIn .4s var(--ease)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(16px)}}
+.prod-dlg img{width:100%;max-height:340px;object-fit:cover;display:block}
+.dlg-txt{padding:1.6rem 1.8rem 2rem;display:grid;gap:.8rem}
+.dlg-txt h3{color:var(--red);font-size:1.9rem}
+.dlg-txt p{color:#5a524c;line-height:1.6}
+.dlg-txt .btn{justify-self:start}
+.dlg-x{position:absolute;right:.8rem;top:.6rem;background:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.5rem;cursor:pointer;color:var(--ink);z-index:2}
+
+.prod-dlg{position:fixed;inset:0;margin:auto;height:fit-content}
+
 </style>
 </head>
 <body>
@@ -238,7 +253,19 @@ section{padding:7rem 6vw;position:relative}
     <article class="prod reveal"><img src="fotos/prod-salmao.jpg" alt="Salmão" /><div><h3>Salmão</h3><p>Carne saborosa e textura suculenta. Versátil e premium, perfeito para grelhar, para sashimi fresco ou para receitas elaboradas.</p></div></article>
     <article class="prod reveal"><img src="fotos/prod-polvo.jpg" alt="Polvo" /><div><h3>Polvo</h3><p>Carne tenra e sabor único. Escolha entre polvo inteiro eviscerado, tentáculos ou polvo pré-cozido para sashimi.</p></div></article>
   </div>
-  <div class="chips reveal"><span>Cogumelos</span><span>Vegetais e saladas</span><span>Tofu defumado</span><span>Nori</span><span>Bebidas japonesas</span><span>Produtos asiáticos</span></div>
+  <div class="chips reveal">
+    <button class="chip-btn" data-info="cogumelos">Cogumelos</button>
+    <button class="chip-btn" data-info="vegetais">Vegetais e saladas</button>
+    <button class="chip-btn" data-info="tofu">Tofu defumado</button>
+    <button class="chip-btn" data-info="nori">Nori</button>
+    <button class="chip-btn" data-info="bebidas">Bebidas japonesas</button>
+    <button class="chip-btn" data-info="asiaticos">Produtos asiáticos</button>
+  </div>
+  <dialog id="prod-dlg" class="prod-dlg">
+    <button class="dlg-x" type="button" aria-label="Fechar">×</button>
+    <img id="dlg-img" alt="" />
+    <div class="dlg-txt"><h3 id="dlg-title"></h3><p id="dlg-text"></p><a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=5591992544283&text=Oi%2C%20quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos" target="_blank" rel="noopener">Pedir informações →</a></div>
+  </dialog>
 </section>
 
 <section id="pedido" class="pedido">
@@ -341,6 +368,27 @@ document.getElementById('form').addEventListener('submit', e => {
     const texto = `Olá! Vim pelo site da Nippobraz e quero mais informações.\nNome: ${f.querySelector('input[type=text]').value}\nWhatsApp: ${f.querySelector('input[type=tel]').value}\nEntrega: ${f.entrega.value}\nMensagem: ${f.obs.value}`;
   window.open('https://api.whatsapp.com/send?phone=' + WA + '&text=' + encodeURIComponent(texto), '_blank');
 });
+
+/* product chips open an info window */
+const INFO={
+ cogumelos:{t:'Cogumelos',img:'fotos/prod-cogumelos.jpg',x:'Nossa variedade de cogumelos é um convite à experiência culinária. De Portobello a Cogumelo Sujo, Eringi, Shiitake, Shimeji, Enoki e Funghi, oferecemos uma seleção que abrange desde sabores terrosos até notas intensas de nozes.'},
+ vegetais:{t:'Vegetais e saladas',img:'fotos/prod-vegetais.jpg',x:'De folhas verdes crocantes a cenouras vibrantes, pimentões coloridos e tomates suculentos, nossa seleção de produtos é a base perfeita para suas refeições saudáveis e deliciosas.'},
+ tofu:{t:'Tofu defumado',img:'fotos/prod-tofu.jpg',x:'O tofu é a estrela da culinária saudável e versátil. Com destaque para o tofu defumado, nossa seleção oferece uma variedade de opções para todos os gostos. Seja grelhado, cozido ou incorporado em suas receitas favoritas, é a escolha certa para uma alimentação equilibrada e rica em proteínas.'},
+ nori:{t:'Nori',img:'fotos/prod-nori.jpg',x:'O nori é uma joia da culinária japonesa, conhecido por seu sabor delicado e versatilidade. A alga marinha é a base perfeita para sushis e temakis, e também pode ser usada em snacks crocantes ou como toque especial em sopas.'},
+ bebidas:{t:'Bebidas japonesas',img:'',x:'[Descrição das bebidas japonesas disponíveis na loja.]'},
+ asiaticos:{t:'Produtos asiáticos',img:'',x:'[Descrição dos produtos asiáticos disponíveis na loja.]'}
+};
+const dlg=document.getElementById('prod-dlg');
+document.querySelectorAll('.chip-btn').forEach(b=>b.addEventListener('click',()=>{
+  const d=INFO[b.dataset.info];
+  document.getElementById('dlg-title').textContent=d.t;
+  document.getElementById('dlg-text').textContent=d.x;
+  const im=document.getElementById('dlg-img');
+  if(d.img){im.src=d.img;im.alt=d.t;im.style.display='block';}else{im.removeAttribute('src');im.style.display='none';}
+  dlg.showModal();
+}));
+dlg.querySelector('.dlg-x').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{ if(e.target===dlg) dlg.close(); });
 
 </script>
 </body>

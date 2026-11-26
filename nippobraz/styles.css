@@ -161,3 +161,18 @@ section{padding:7rem 6vw;position:relative}
 .areas li:hover{border-color:var(--red);color:var(--paper)}
 .del-cta{margin-top:3rem;padding:2.4rem;border:1px solid var(--red);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem}
 .del-cta p{font-family:var(--display);font-size:1.3rem}
+
+.chip-btn{border:1px solid var(--red);color:var(--red);background:transparent;padding:.5rem 1rem;border-radius:999px;font:600 .9rem var(--sans);cursor:pointer;transition:background .3s,color .3s,transform .3s var(--ease)}
+.chip-btn:hover{background:var(--red);color:#fff;transform:translateY(-2px)}
+.prod-dlg{border:0;border-radius:6px;padding:0;max-width:720px;width:calc(100% - 2rem);background:#fff;color:var(--ink);box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
+.prod-dlg::backdrop{background:rgba(0,0,0,.7)}
+.prod-dlg[open]{animation:dlgIn .4s var(--ease)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(16px)}}
+.prod-dlg img{width:100%;max-height:340px;object-fit:cover;display:block}
+.dlg-txt{padding:1.6rem 1.8rem 2rem;display:grid;gap:.8rem}
+.dlg-txt h3{color:var(--red);font-size:1.9rem}
+.dlg-txt p{color:#5a524c;line-height:1.6}
+.dlg-txt .btn{justify-self:start}
+.dlg-x{position:absolute;right:.8rem;top:.6rem;background:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.5rem;cursor:pointer;color:var(--ink);z-index:2}
+
+.prod-dlg{position:fixed;inset:0;margin:auto;height:fit-content}
