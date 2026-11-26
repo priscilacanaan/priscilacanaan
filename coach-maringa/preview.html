@@ -158,6 +158,17 @@ section{padding:7rem 6vw;position:relative}
 .foot-row a:hover{color:var(--acid)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.hero h1 .line>span{transform:none}}
 
+/* WhatsApp: form button and floating side tab */
+.btn-wa{background:#25D366;color:#fff;justify-content:center;margin-top:.4rem}
+.btn-wa:hover{box-shadow:0 0 0 6px rgba(37,211,102,.2),0 20px 40px -16px rgba(37,211,102,.6)}
+.av-card .btn-wa{background:var(--ink);color:#25D366}
+.wa-side{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:70;display:flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.9rem 1rem .9rem 1.1rem;border-radius:18px 0 0 18px;font-weight:800;font-size:.9rem;box-shadow:-10px 14px 30px -12px rgba(37,211,102,.6);transition:padding .4s var(--ease)}
+.wa-side:hover{padding-right:1.6rem}
+.wa-side svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linejoin:round;flex:none}
+.wa-side .fill{fill:#fff;stroke:none}
+.wa-side span{writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.08em;text-transform:uppercase;font-size:.72rem}
+@media(max-width:600px){.wa-side span{display:none}}
+
 </style>
 </head>
 <body>
@@ -266,6 +277,7 @@ section{padding:7rem 6vw;position:relative}
       </select>
       <button class="btn" type="submit">Agendar avaliação →</button>
       <p class="ok">Recebido! A equipe entra em contato para marcar. 💪</p>
+      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=554433056976&text=Oi%21%20Vi%20o%20site%20da%20Coach%20Fitness%20e%20quero%20marcar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Chamar no WhatsApp</a>
     </form>
   </div>
 </section>
@@ -285,6 +297,8 @@ section{padding:7rem 6vw;position:relative}
 </section>
 
 </main>
+
+<a class="wa-side" href="https://api.whatsapp.com/send?phone=554433056976&text=Oi%21%20Vi%20o%20site%20da%20Coach%20Fitness%20e%20quero%20marcar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/><path class="fill" d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2L9 9.5z"/></svg><span>WhatsApp</span></a>
 
 <footer class="footer">
   <div class="foot-logo">COACH<span>.</span></div>
