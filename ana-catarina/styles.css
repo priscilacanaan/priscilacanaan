@@ -116,3 +116,43 @@ section{padding:7rem 6vw;position:relative}
 .links a:hover{transform:translateY(-2px)}
 .portrait{box-shadow:0 30px 60px -36px rgba(29,27,25,.5);transition:transform .6s var(--ease),box-shadow .6s}
 .portrait:hover{transform:translateY(-6px);box-shadow:0 40px 70px -34px rgba(29,27,25,.6)}
+
+/* ===== nova estrutura: áreas, serviços, workshops, pesquisa ===== */
+.hero h1{max-width:980px}
+.loc{font-size:.9rem;color:var(--mut);margin:-1.4rem 0 2.4rem;letter-spacing:.02em}
+.cards a.card{color:inherit;display:block}
+.areas .cards .card h3{font-size:1.45rem}
+.sub{color:var(--mut);max-width:680px;margin-top:1rem;font-size:1.08rem}
+.services{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr}}
+.svc{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:2.4rem;display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .4s}
+.svc:hover{transform:translateY(-5px);border-color:var(--accent)}
+.svc h3{font-size:1.6rem}
+.aud{font-size:.92rem;color:var(--accent);font-style:italic;margin:.2rem 0 1.2rem;font-family:var(--serif)}
+.chips{list-style:none;display:grid;gap:.55rem;margin-bottom:1.8rem}
+.chips li{color:var(--mut);padding-left:1.2rem;position:relative}
+.chips li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.svc .btn,.ws .btn{margin-top:auto;align-self:flex-start}
+.btn-sm{padding:.7rem 1.2rem;font-size:.88rem}
+.workshops{background:var(--bg)}
+.ws-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+@media(max-width:1000px){.ws-grid{grid-template-columns:1fr}}
+.ws{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:2.2rem;display:flex;flex-direction:column;gap:.7rem;transition:transform .5s var(--ease),box-shadow .5s}
+.ws:hover{transform:translateY(-6px);box-shadow:0 30px 50px -36px rgba(29,27,25,.5)}
+.ws h3{font-size:1.4rem}
+.ws p{color:var(--mut)}
+.ws .meta{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.ws-n{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.1rem}
+.research{margin-top:5rem;max-width:900px;margin-left:auto;margin-right:auto;text-align:left;border-top:1px solid rgba(251,250,247,.15);padding-top:3.5rem}
+.research .kicker{color:#c98a63}
+.r-bio{font-size:1.15rem;color:#d9d2c8;max-width:760px}
+.feat-r{margin-top:2.4rem;border:1px solid rgba(251,250,247,.2);border-radius:22px;padding:2.2rem;background:rgba(251,250,247,.04)}
+.feat-r .ws-n{color:#c98a63;display:block;margin-bottom:.6rem}
+.feat-r h3{font-family:var(--serif);font-size:1.7rem;color:var(--paper)}
+.stats{margin-top:.8rem;color:#c98a63;font-weight:600;letter-spacing:.02em}
+.pensamento .research{color:var(--paper)}
+.chooser{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.chooser .btn-line{box-shadow:inset 0 0 0 1px var(--ink)}
+.form select{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:14px;background:var(--bg);font:400 1rem var(--sans);color:var(--ink)}
+.form select:focus{outline:none;border-color:var(--accent)}

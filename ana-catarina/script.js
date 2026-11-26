@@ -4,7 +4,12 @@ addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 30); 
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => { const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal')); el.style.transitionDelay = (sib.indexOf(el) % 4) * 100 + 'ms'; io.observe(el); });
 const secIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) document.querySelectorAll('.links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' });
-['sobre', 'trabalho', 'pensamento', 'contato'].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+['sobre', 'services', 'research', 'contato'].forEach(id => { const el = document.getElementById(id); if (el) secIO.observe(el); });
+
+/* botões "Request a proposal" etc.: escolhem o assunto no formulário de contato */
+document.querySelectorAll('[data-req]').forEach(b => b.addEventListener('click', () => {
+  const sel = document.getElementById('subj'); if (sel) sel.value = b.dataset.req;
+}));
 
 /* language switch: PT is the source text; EN/FR come from i18n.js */
 const src = new Map();
