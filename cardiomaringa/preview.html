@@ -63,7 +63,18 @@ section{padding:6.5rem 6vw;position:relative}
 .hero-txt{position:relative;z-index:1}
 .hero .lead{font-size:1.15rem;color:var(--mut);max-width:560px;margin:1.6rem 0 2.2rem}
 .cta{display:flex;flex-wrap:wrap;gap:1rem}
-.ecg{position:relative;z-index:1;width:100%;max-width:560px;justify-self:center}
+.ecg{position:relative;z-index:1;width:100%;max-width:560px;justify-self:center;display:grid;place-items:center}
+.vital{position:relative;width:min(440px,80vw);aspect-ratio:1;display:grid;place-items:center}
+.vital .ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(215,38,61,.25);animation:ring 3.2s ease-out infinite}
+.vital .ring:nth-child(2){animation-delay:1.1s}
+.vital .ring:nth-child(3){animation-delay:2.2s}
+@keyframes ring{0%{transform:scale(.45);opacity:.9}100%{transform:scale(1.15);opacity:0}}
+.vital .heart-big{width:46%;height:46%;animation:heartbeat 1.6s ease-in-out infinite;filter:drop-shadow(0 18px 30px rgba(215,38,61,.35))}
+.vital .heart-big svg{width:100%;height:100%;fill:url(#hg)}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.12)}28%{transform:scale(1)}42%{transform:scale(1.07)}56%{transform:scale(1)}}
+.vital .trace{position:absolute;left:0;right:0;bottom:10%;width:100%;height:auto;overflow:visible}
+.vital .trace path{fill:none;stroke:var(--navy);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:600;stroke-dashoffset:600;animation:trace 2.4s linear infinite}
+@keyframes trace{to{stroke-dashoffset:-600}}
 .ecg svg{width:100%;height:auto;overflow:visible}
 .ecg-line{fill:none;stroke:var(--red);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.6s var(--ease) .4s forwards,glow 2.6s ease-in-out 3s infinite}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -194,9 +205,12 @@ section{padding:6.5rem 6vw;position:relative}
     </div>
   </div>
   <div class="ecg reveal" aria-hidden="true">
-    <svg viewBox="0 0 600 200"><path class="ecg-line" d="M0 100 H170 L190 100 L205 40 L225 170 L245 85 L265 100 H600"/></svg>
+    <div class="vital">
+      <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+      <div class="heart-big"><svg viewBox="0 0 24 24"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8394F"/><stop offset="1" stop-color="#A81C2E"/></linearGradient></defs><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6.2 5c2 0 3.5 1.1 4.3 2.4h3C14.3 6.1 15.8 5 17.8 5c3.5 0 5.3 3.4 3.8 6.8C19.5 16.4 12 21 12 21z"/></svg></div>
+      <svg class="trace" viewBox="0 0 400 60"><path d="M0 30 H120 L135 30 L145 8 L158 52 L170 22 L182 30 H400"/></svg>
+    </div>
   </div>
-  <div class="since reveal"><b>2006</b><span>desde</span></div>
 </section>
 
 <div class="ticker" aria-hidden="true">
@@ -209,8 +223,8 @@ section{padding:6.5rem 6vw;position:relative}
 <section id="clinica" class="clinica">
   <div class="split">
     <div class="reveal">
-      <p class="kicker">A clínica</p>
-      <h2>Conforto e <em>segurança</em> em cada visita.</h2>
+      <p class="kicker">História da clínica</p>
+      <h2>Desde <em>2006,</em> conforto e segurança em cada visita.</h2>
       <p>A Clínica de Cardiologia e Hipertensão Arterial Cardiomaringá foi criada em 2006 com a união de médicos especialistas em cardiologia. Suas instalações contam com equipamentos informatizados de última geração para auxiliar o diagnóstico, buscando o máximo de conforto e segurança.</p>
       <ul class="facts">
         <li><b>Instalações novas e modernas</b></li>
