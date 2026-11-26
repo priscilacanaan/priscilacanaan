@@ -176,3 +176,6 @@ section{padding:7rem 6vw;position:relative}
 .dlg-x{position:absolute;right:.8rem;top:.6rem;background:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:1.5rem;cursor:pointer;color:var(--ink);z-index:2}
 
 .prod-dlg{position:fixed;inset:0;margin:auto;height:fit-content}
+
+.units{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.todo{background:var(--gold);color:var(--ink);padding:0 .35rem;border-radius:3px;font-size:.85em}
