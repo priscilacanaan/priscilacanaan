@@ -182,7 +182,7 @@ section{padding:7rem 6vw;position:relative}
 <header class="nav" id="nav">
   <a href="#top" class="logo"><img src="fotos/logo-nippobraz.png" alt="Nippobraz" /></a>
   <nav class="links">
-    <a href="#cardapio">Cardápio</a><a href="#delivery">Delivery</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
+    <a href="#delivery">Delivery</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
   </nav>
   <a href="#delivery" class="btn btn-sm">Delivery</a>
 </header>
@@ -196,7 +196,7 @@ section{padding:7rem 6vw;position:relative}
     <h1 class="reveal"><span class="jp">日本</span><br/>Sabor do Japão<br/><em>na sua mesa.</em></h1>
     <p class="lead reveal">Cortes frescos, arroz no ponto e pratos feitos com cuidado, do jeito tradicional e com um toque moderno.</p>
     <div class="cta reveal">
-      <a href="#cardapio" class="btn">Ver cardápio <span>→</span></a>
+      <a href="#produtos" class="btn">Ver produtos <span>→</span></a>
       <a href="#pedido" class="btn btn-line">Fazer pedido</a>
     </div>
   </div>
@@ -209,29 +209,6 @@ section{padding:7rem 6vw;position:relative}
     <span>Sushi</span><i>◆</i><span>Sashimi</span><i>◆</i><span>Temaki</span><i>◆</i><span>Hot roll</span><i>◆</i><span>Yakisoba</span><i>◆</i><span>Combinados</span><i>◆</i>
   </div>
 </div>
-
-<section id="cardapio" class="menu">
-  <div class="head reveal">
-    <p class="kicker">Cardápio</p>
-    <h2>Escolha <em>com calma.</em></h2>
-    <p class="note">* Itens e preços de exemplo: trocar pelo cardápio real da Nippobraz.</p>
-  </div>
-  <div class="tabs reveal" role="tablist">
-    <button class="tab is-on" data-f="all">Todos</button>
-    <button class="tab" data-f="sushi">Sushi & sashimi</button>
-    <button class="tab" data-f="quente">Quentes</button>
-    <button class="tab" data-f="combo">Combinados</button>
-  </div>
-  <div class="dishes">
-    <article class="dish reveal" data-cat="sushi"><span class="dn">01</span><h3>Sushi variado</h3><p>Seleção do chef com peixes frescos e arroz temperado.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Sushi variado">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="sushi"><span class="dn">02</span><h3>Sashimi</h3><p>Fatias finas de peixe fresco, servidas geladas.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Sashimi">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="sushi"><span class="dn">03</span><h3>Temaki</h3><p>Cone de alga crocante com arroz e recheio à escolha.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Temaki">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="quente"><span class="dn">04</span><h3>Hot roll</h3><p>Rolinho empanado e frito, com cobertura cremosa.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Hot roll">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="quente"><span class="dn">05</span><h3>Yakisoba</h3><p>Macarrão salteado com legumes e molho tradicional.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Yakisoba">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="combo"><span class="dn">06</span><h3>Combinado 30 peças</h3><p>Mix de sushi, sashimi e hot roll para compartilhar.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Combinado 30 peças">+ pedido</button></div></article>
-  </div>
-  <div class="cart reveal" id="cart"><span id="cart-n">0</span> item(ns) no pedido <a href="#pedido" class="btn btn-sm">Finalizar</a></div>
-</section>
 
 <section id="casa" class="casa">
   <div class="casa-grid">
@@ -268,8 +245,8 @@ section{padding:7rem 6vw;position:relative}
   <div class="pedido-card reveal">
     <div>
       <p class="kicker light">Pedido</p>
-      <h2>Faça seu <em>pedido.</em></h2>
-      <p>Monte o pedido no cardápio e envie pelo WhatsApp, ou mande uma mensagem para tirar dúvidas.</p>
+      <h2>Fale com a <em>nossa equipe.</em></h2>
+      <p>Conte o que você precisa e a equipe responde pelo WhatsApp com preços e condições.</p>
     </div>
     <form class="form" id="form">
       <input type="text" placeholder="Seu nome" required />
@@ -277,7 +254,7 @@ section{padding:7rem 6vw;position:relative}
       <select name="entrega" required>
         <option value="">Retirada ou entrega?</option><option>Retirada</option><option>Entrega</option><option>Comer no local</option>
       </select>
-      <textarea name="obs" rows="3" placeholder="Observações (alergias, sem wasabi, etc.)"></textarea>
+      <textarea name="obs" rows="3" placeholder="O que você procura? (ex.: salmão para 10 kg)"></textarea>
       <button class="btn" type="submit">Enviar pelo WhatsApp →</button>
     </form>
   </div>
@@ -356,29 +333,12 @@ addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 30); 
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => { const sib = [...el.parentElement.children].filter(c => c.classList.contains('reveal')); el.style.transitionDelay = (sib.indexOf(el) % 4) * 90 + 'ms'; io.observe(el); });
 
-/* menu filter */
-const tabs = [...document.querySelectorAll('.tab')], dishes = [...document.querySelectorAll('.dish')];
-tabs.forEach(t => t.addEventListener('click', () => {
-  tabs.forEach(x => x.classList.toggle('is-on', x === t));
-  dishes.forEach(d => d.classList.toggle('hide', t.dataset.f !== 'all' && d.dataset.cat !== t.dataset.f));
-}));
-
-/* order cart: add items, then send by WhatsApp */
-const order = [];
-const cart = document.getElementById('cart'), cartN = document.getElementById('cart-n');
-document.querySelectorAll('.add').forEach(b => b.addEventListener('click', () => {
-  order.push(b.dataset.item); cartN.textContent = order.length;
-  b.classList.add('done'); b.textContent = '✓ adicionado';
-  cart.classList.add('show');
-}));
-
 /* form: opens WhatsApp with the order details */
 const WA = '5591992544283';
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target;
-  const itens = order.length ? order.map(i => '- ' + i).join('\n') : '(sem itens selecionados)';
-  const texto = `Olá! Quero fazer um pedido na Nippobraz.\nNome: ${f.querySelector('input[type=text]').value}\nWhatsApp: ${f.querySelector('input[type=tel]').value}\nEntrega: ${f.entrega.value}\nItens:\n${itens}\nObs: ${f.obs.value}`;
+    const texto = `Olá! Vim pelo site da Nippobraz e quero mais informações.\nNome: ${f.querySelector('input[type=text]').value}\nWhatsApp: ${f.querySelector('input[type=tel]').value}\nEntrega: ${f.entrega.value}\nMensagem: ${f.obs.value}`;
   window.open('https://api.whatsapp.com/send?phone=' + WA + '&text=' + encodeURIComponent(texto), '_blank');
 });
 

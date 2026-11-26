@@ -17,7 +17,7 @@
 <header class="nav" id="nav">
   <a href="#top" class="logo"><img src="fotos/logo-nippobraz.png" alt="Nippobraz" /></a>
   <nav class="links">
-    <a href="#cardapio">Cardápio</a><a href="#delivery">Delivery</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
+    <a href="#delivery">Delivery</a><a href="#casa">Sobre</a><a href="#produtos">Produtos</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
   </nav>
   <a href="#delivery" class="btn btn-sm">Delivery</a>
 </header>
@@ -31,7 +31,7 @@
     <h1 class="reveal"><span class="jp">日本</span><br/>Sabor do Japão<br/><em>na sua mesa.</em></h1>
     <p class="lead reveal">Cortes frescos, arroz no ponto e pratos feitos com cuidado, do jeito tradicional e com um toque moderno.</p>
     <div class="cta reveal">
-      <a href="#cardapio" class="btn">Ver cardápio <span>→</span></a>
+      <a href="#produtos" class="btn">Ver produtos <span>→</span></a>
       <a href="#pedido" class="btn btn-line">Fazer pedido</a>
     </div>
   </div>
@@ -44,29 +44,6 @@
     <span>Sushi</span><i>◆</i><span>Sashimi</span><i>◆</i><span>Temaki</span><i>◆</i><span>Hot roll</span><i>◆</i><span>Yakisoba</span><i>◆</i><span>Combinados</span><i>◆</i>
   </div>
 </div>
-
-<section id="cardapio" class="menu">
-  <div class="head reveal">
-    <p class="kicker">Cardápio</p>
-    <h2>Escolha <em>com calma.</em></h2>
-    <p class="note">* Itens e preços de exemplo: trocar pelo cardápio real da Nippobraz.</p>
-  </div>
-  <div class="tabs reveal" role="tablist">
-    <button class="tab is-on" data-f="all">Todos</button>
-    <button class="tab" data-f="sushi">Sushi & sashimi</button>
-    <button class="tab" data-f="quente">Quentes</button>
-    <button class="tab" data-f="combo">Combinados</button>
-  </div>
-  <div class="dishes">
-    <article class="dish reveal" data-cat="sushi"><span class="dn">01</span><h3>Sushi variado</h3><p>Seleção do chef com peixes frescos e arroz temperado.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Sushi variado">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="sushi"><span class="dn">02</span><h3>Sashimi</h3><p>Fatias finas de peixe fresco, servidas geladas.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Sashimi">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="sushi"><span class="dn">03</span><h3>Temaki</h3><p>Cone de alga crocante com arroz e recheio à escolha.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Temaki">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="quente"><span class="dn">04</span><h3>Hot roll</h3><p>Rolinho empanado e frito, com cobertura cremosa.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Hot roll">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="quente"><span class="dn">05</span><h3>Yakisoba</h3><p>Macarrão salteado com legumes e molho tradicional.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Yakisoba">+ pedido</button></div></article>
-    <article class="dish reveal" data-cat="combo"><span class="dn">06</span><h3>Combinado 30 peças</h3><p>Mix de sushi, sashimi e hot roll para compartilhar.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Combinado 30 peças">+ pedido</button></div></article>
-  </div>
-  <div class="cart reveal" id="cart"><span id="cart-n">0</span> item(ns) no pedido <a href="#pedido" class="btn btn-sm">Finalizar</a></div>
-</section>
 
 <section id="casa" class="casa">
   <div class="casa-grid">
@@ -103,8 +80,8 @@
   <div class="pedido-card reveal">
     <div>
       <p class="kicker light">Pedido</p>
-      <h2>Faça seu <em>pedido.</em></h2>
-      <p>Monte o pedido no cardápio e envie pelo WhatsApp, ou mande uma mensagem para tirar dúvidas.</p>
+      <h2>Fale com a <em>nossa equipe.</em></h2>
+      <p>Conte o que você precisa e a equipe responde pelo WhatsApp com preços e condições.</p>
     </div>
     <form class="form" id="form">
       <input type="text" placeholder="Seu nome" required />
@@ -112,7 +89,7 @@
       <select name="entrega" required>
         <option value="">Retirada ou entrega?</option><option>Retirada</option><option>Entrega</option><option>Comer no local</option>
       </select>
-      <textarea name="obs" rows="3" placeholder="Observações (alergias, sem wasabi, etc.)"></textarea>
+      <textarea name="obs" rows="3" placeholder="O que você procura? (ex.: salmão para 10 kg)"></textarea>
       <button class="btn" type="submit">Enviar pelo WhatsApp →</button>
     </form>
   </div>
