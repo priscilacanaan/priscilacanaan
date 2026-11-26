@@ -206,3 +206,15 @@ section{padding:7rem 6vw;position:relative}
 .loja-grid figure:hover img{transform:scale(1.07)}
 .loja-grid figcaption{position:absolute;left:.8rem;bottom:.8rem;background:var(--gold);color:var(--ink);font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;padding:.3rem .6rem;border-radius:3px}
 .loja-galeria{background:var(--ink2)}
+
+/* cookie banner */
+.cookies{position:fixed;left:50%;bottom:1.2rem;z-index:150;width:min(900px,calc(100% - 2rem));display:flex;align-items:center;gap:1.2rem;background:#151313;color:var(--paper);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:4px;padding:1rem 1.3rem;box-shadow:0 20px 50px -15px rgba(0,0,0,.7);transform:translate(-50%,160%);transition:transform .7s var(--ease)}
+.cookies.show{transform:translate(-50%,0)}
+.cookies p{flex:1;font-size:.92rem;line-height:1.5;color:#CFC7BE}
+.cookies p b{color:var(--gold)}
+.ck-btns{display:flex;gap:.5rem;flex:none}
+.cookies button{border:0;border-radius:2px;padding:.7rem 1.1rem;font:600 .88rem var(--sans);cursor:pointer;transition:transform .2s}
+.cookies button:hover{transform:translateY(-2px)}
+.ck-yes{background:var(--red);color:#fff}
+.ck-no{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 1px rgba(246,241,234,.35)}
+@media(max-width:700px){.cookies{flex-direction:column;align-items:stretch}.ck-btns button{flex:1}}
