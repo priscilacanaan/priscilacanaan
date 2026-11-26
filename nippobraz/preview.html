@@ -196,6 +196,13 @@ section{padding:7rem 6vw;position:relative}
 .units .unit:first-child{grid-column:1 / -1}
 @media(max-width:800px){.units{grid-template-columns:1fr !important}.units .unit:first-child{grid-column:auto}}
 
+/* about section: mural photo */
+.casa-grid{grid-template-columns:.9fr 1.1fr !important}
+.casa-img{margin:0;border-radius:4px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(200,16,46,.4)}
+.casa-img img{width:100%;height:auto;display:block;transition:transform 1.2s var(--ease)}
+.casa-img:hover img{transform:scale(1.04)}
+@media(max-width:900px){.casa-grid{grid-template-columns:1fr !important}}
+
 </style>
 </head>
 <body>
@@ -231,6 +238,7 @@ section{padding:7rem 6vw;position:relative}
 
 <section id="casa" class="casa">
   <div class="casa-grid">
+    <figure class="casa-img reveal"><img src="fotos/referencia-mural.jpg" alt="Mural japonês com Monte Fuji, cerejeiras e carpas no salão da Nippobraz" /></figure>
     <div class="reveal">
       <p class="kicker">Sobre nós</p>
       <h2>Desde <em>1997.</em></h2>
