@@ -187,3 +187,10 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .grid .destaque .info{display:flex;flex-direction:column;justify-content:center;padding:2.4rem}
 .grid .destaque h3{font-size:2.2rem}
 @media(max-width:960px){.grid .destaque{grid-template-columns:1fr}}
+
+/* capas dinâmicas: Green Eletrônica and Maura Jardins */
+.capa-dyn .thumb{position:relative;overflow:hidden}
+.capa-dyn .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transform-origin:center top;transition:transform 1.6s var(--ease),filter .6s}
+.capa-dyn:hover .thumb img{transform:scale(1.12) translateY(-4%);filter:saturate(1.15)}
+.capa-dyn .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%);transition:transform 1.1s var(--ease);pointer-events:none}
+.capa-dyn:hover .thumb::after{transform:translateX(120%)}

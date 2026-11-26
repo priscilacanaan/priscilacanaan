@@ -200,6 +200,13 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 .grid .destaque h3{font-size:2.2rem}
 @media(max-width:960px){.grid .destaque{grid-template-columns:1fr}}
 
+/* capas dinâmicas: Green Eletrônica and Maura Jardins */
+.capa-dyn .thumb{position:relative;overflow:hidden}
+.capa-dyn .thumb img{width:100%;height:100%;object-fit:cover;object-position:top;transform-origin:center top;transition:transform 1.6s var(--ease),filter .6s}
+.capa-dyn:hover .thumb img{transform:scale(1.12) translateY(-4%);filter:saturate(1.15)}
+.capa-dyn .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%);transition:transform 1.1s var(--ease);pointer-events:none}
+.capa-dyn:hover .thumb::after{transform:translateX(120%)}
+
 </style>
 </head>
 <body>
@@ -241,7 +248,7 @@ section{padding:7rem 6vw;position:relative;z-index:1}
 </div>
 
 <section class="stats">
-  <div class="stat reveal"><b data-count="8">0</b><span data-i="s1">projetos no portfólio</span></div>
+  <div class="stat reveal"><b data-count="10">0</b><span data-i="s1">projetos no portfólio</span></div>
   <div class="stat reveal"><b data-count="3">0</b><span data-i="s2">frentes de trabalho</span></div>
   <div class="stat reveal"><b data-count="3">0</b><span data-i="s3">idiomas nos projetos</span></div>
   <div class="stat reveal"><b>100%</b><span data-i="s4">sites responsivos</span></div>
@@ -318,12 +325,12 @@ section{padding:7rem 6vw;position:relative;z-index:1}
       <div class="thumb"><img src="fotos/nippobraz.png" alt="Site Nippobraz" loading="lazy" style="object-fit:contain;background:#0B0B0B;padding:2rem" /></div>
       <div class="info"><span class="tag">Website · Loja asiática</span><h3>Nippobraz</h3><p>Site de loja de produtos asiáticos, com produtos, delivery e unidades.</p></div>
     </a>
-    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/87b6084a33da3870ed87618e440a2f139ca212a3/site-green/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/green-fachada.jpg" alt="Site Green Eletrônica" loading="lazy" /></div>
+    <a class="card reveal capa-dyn" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/87b6084a33da3870ed87618e440a2f139ca212a3/site-green/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/green-capa.jpg" alt="Site Green Eletrônica" loading="lazy" /></div>
       <div class="info"><span class="tag">Website · Assistência técnica</span><h3>Green Eletrônica</h3><p>Conserto de TV, lavadora e micro-ondas em Belém, com site de atendimento.</p></div>
     </a>
-    <a class="card reveal" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/49c8a298f12dc63c631d60e1ad4629715213ff41/site-maura/index.html" target="_blank" rel="noopener">
-      <div class="thumb"><img src="fotos/maura-jardineira.jpg" alt="Site Maura Jardins" loading="lazy" /></div>
+    <a class="card reveal capa-dyn" data-cat="web" href="https://raw.githack.com/priscilacanaan/priscilacanaan/49c8a298f12dc63c631d60e1ad4629715213ff41/site-maura/index.html" target="_blank" rel="noopener">
+      <div class="thumb"><img src="fotos/maura-capa.jpg" alt="Site Maura Jardins" loading="lazy" /></div>
       <div class="info"><span class="tag">Website · Paisagismo</span><h3>Maura Jardins</h3><p>Paisagismo e jardinagem em Belém, com plantas tropicais, vasos e floreiras.</p></div>
     </a>
   </div>
