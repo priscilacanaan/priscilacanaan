@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0B0B0B" />
+<title>Nippobraz — Culinária japonesa</title>
+<meta name="description" content="Nippobraz: culinária japonesa com sushi, sashimi e pratos da casa. Peça pelo WhatsApp ou venha nos visitar." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo"><img src="fotos/logo-nippobraz.png" alt="Nippobraz" /></a>
+  <nav class="links">
+    <a href="#cardapio">Cardápio</a><a href="#casa">A casa</a><a href="#pedido">Pedido</a><a href="#local">Local</a>
+  </nav>
+  <a href="#pedido" class="btn btn-sm">Peça agora</a>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-txt">
+    <p class="kicker reveal">Culinária japonesa</p>
+    <h1 class="reveal"><span class="jp">日本</span><br/>Sabor do Japão<br/><em>na sua mesa.</em></h1>
+    <p class="lead reveal">Cortes frescos, arroz no ponto e pratos feitos com cuidado, do jeito tradicional e com um toque moderno.</p>
+    <div class="cta reveal">
+      <a href="#cardapio" class="btn">Ver cardápio <span>→</span></a>
+      <a href="#pedido" class="btn btn-line">Fazer pedido</a>
+    </div>
+  </div>
+  <div class="torii" aria-hidden="true"><img src="fotos/logo-nippobraz.png" alt="" /></div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Sushi</span><i>◆</i><span>Sashimi</span><i>◆</i><span>Temaki</span><i>◆</i><span>Hot roll</span><i>◆</i><span>Yakisoba</span><i>◆</i><span>Combinados</span><i>◆</i>
+    <span>Sushi</span><i>◆</i><span>Sashimi</span><i>◆</i><span>Temaki</span><i>◆</i><span>Hot roll</span><i>◆</i><span>Yakisoba</span><i>◆</i><span>Combinados</span><i>◆</i>
+  </div>
+</div>
+
+<section id="cardapio" class="menu">
+  <div class="head reveal">
+    <p class="kicker">Cardápio</p>
+    <h2>Escolha <em>com calma.</em></h2>
+    <p class="note">* Itens e preços de exemplo: trocar pelo cardápio real da Nippobraz.</p>
+  </div>
+  <div class="tabs reveal" role="tablist">
+    <button class="tab is-on" data-f="all">Todos</button>
+    <button class="tab" data-f="sushi">Sushi & sashimi</button>
+    <button class="tab" data-f="quente">Quentes</button>
+    <button class="tab" data-f="combo">Combinados</button>
+  </div>
+  <div class="dishes">
+    <article class="dish reveal" data-cat="sushi"><span class="dn">01</span><h3>Sushi variado</h3><p>Seleção do chef com peixes frescos e arroz temperado.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Sushi variado">+ pedido</button></div></article>
+    <article class="dish reveal" data-cat="sushi"><span class="dn">02</span><h3>Sashimi</h3><p>Fatias finas de peixe fresco, servidas geladas.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Sashimi">+ pedido</button></div></article>
+    <article class="dish reveal" data-cat="sushi"><span class="dn">03</span><h3>Temaki</h3><p>Cone de alga crocante com arroz e recheio à escolha.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Temaki">+ pedido</button></div></article>
+    <article class="dish reveal" data-cat="quente"><span class="dn">04</span><h3>Hot roll</h3><p>Rolinho empanado e frito, com cobertura cremosa.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Hot roll">+ pedido</button></div></article>
+    <article class="dish reveal" data-cat="quente"><span class="dn">05</span><h3>Yakisoba</h3><p>Macarrão salteado com legumes e molho tradicional.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Yakisoba">+ pedido</button></div></article>
+    <article class="dish reveal" data-cat="combo"><span class="dn">06</span><h3>Combinado 30 peças</h3><p>Mix de sushi, sashimi e hot roll para compartilhar.</p><div class="dp"><b>R$ [--]</b><button class="add" type="button" data-item="Combinado 30 peças">+ pedido</button></div></article>
+  </div>
+  <div class="cart reveal" id="cart"><span id="cart-n">0</span> item(ns) no pedido <a href="#pedido" class="btn btn-sm">Finalizar</a></div>
+</section>
+
+<section id="casa" class="casa">
+  <div class="casa-grid">
+    <div class="reveal">
+      <p class="kicker">A casa</p>
+      <h2>Tradição <em>japonesa,</em> olhar contemporâneo.</h2>
+      <p>[História da Nippobraz: quando começou, quem cuida da cozinha e o que torna a casa diferente. Escrever com as informações reais.]</p>
+    </div>
+    <ul class="facts reveal">
+      <li><b>[Ano]</b><span>desde quando atendemos</span></li>
+      <li><b>[X]</b><span>pratos no cardápio</span></li>
+      <li><b>Fresco</b><span>cortes preparados todo dia</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="pedido" class="pedido">
+  <div class="pedido-card reveal">
+    <div>
+      <p class="kicker light">Pedido</p>
+      <h2>Faça seu <em>pedido.</em></h2>
+      <p>Monte o pedido no cardápio e envie pelo WhatsApp, ou mande uma mensagem para tirar dúvidas.</p>
+    </div>
+    <form class="form" id="form">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="tel" placeholder="WhatsApp" required />
+      <select name="entrega" required>
+        <option value="">Retirada ou entrega?</option><option>Retirada</option><option>Entrega</option><option>Comer no local</option>
+      </select>
+      <textarea name="obs" rows="3" placeholder="Observações (alergias, sem wasabi, etc.)"></textarea>
+      <button class="btn" type="submit">Enviar pelo WhatsApp →</button>
+    </form>
+  </div>
+</section>
+
+<section id="local" class="local">
+  <div class="local-grid">
+    <div class="reveal">
+      <p class="kicker">Local e horário</p>
+      <h2>Venha <em>nos visitar.</em></h2>
+      <p class="addr">[Endereço completo]<br/>[Cidade – UF]</p>
+      <ul class="hours">
+        <li><span>Terça a domingo</span><b>[18:00 – 23:00]</b></li>
+        <li><span>Segunda</span><b>fechado</b></li>
+      </ul>
+      <p class="note">* Confirmar horário e endereço com a casa.</p>
+      <div class="local-btns">
+        <a class="btn btn-sm" href="https://api.whatsapp.com/send?phone=55[DDDNUMERO]&text=Oi%2C%20quero%20fazer%20um%20pedido" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-sm btn-line" href="https://www.google.com/maps/search/?api=1&query=Nippobraz" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+    <div class="map reveal">
+      <iframe title="Mapa Nippobraz" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Nippobraz&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <img src="fotos/logo-nippobraz.png" alt="Nippobraz" class="foot-logo" />
+  <div class="foot-row">
+    <span>© 2026 Nippobraz · CNPJ [00.000.000/0001-00]</span>
+    <a href="#top">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
