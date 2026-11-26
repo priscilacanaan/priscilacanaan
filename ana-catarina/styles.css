@@ -158,3 +158,6 @@ section{padding:7rem 6vw;position:relative}
 .form select:focus{outline:none;border-color:var(--accent)}
 .areas .cards{grid-template-columns:1fr 1fr}
 @media(max-width:900px){.areas .cards{grid-template-columns:1fr}}
+
+.book-link em{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;transition:opacity .3s}
+.book-link:hover em{opacity:.75}
