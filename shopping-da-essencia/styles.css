@@ -217,3 +217,7 @@ section{padding:6.5rem 6vw;position:relative}
 .progress{top:36px}
 .hero{padding-top:10rem}
 @media(max-width:560px){.topbar{font-size:.78rem}.topbar b{display:none}}
+
+/* botão de orçamento no menu: azul, verde no hover */
+.btn-orc{background:var(--blue);transition:background .3s,transform .3s var(--ease),box-shadow .4s}
+.btn-orc:hover{background:var(--green);box-shadow:0 14px 24px -12px rgba(0,168,120,.9)}
