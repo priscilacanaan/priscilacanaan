@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#1F4E9A" />
+<title>Shopping da Essência — Perfumaria, essências e matéria-prima</title>
+<meta name="description" content="Shopping da Essência: essências, perfumaria, cosméticos, limpeza e químicos para piscina. Lojas em Belém, Imperatriz e São Luís. Oficinas em grupos pequenos." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--blue:#1F4E9A;--blue2:#163A74;--green:#2E9E6B;--ink:#16202E;--mut:#5C6878;--bg:#F7F8FA;--card:#FFFFFF;--line:#E3E7EE;--wood:#C9A36B;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--blue)}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:1.08}
+h1{font-size:clamp(2.8rem,6.6vw,5.6rem)}
+h2{font-size:clamp(2.2rem,4.4vw,3.6rem)}
+h3{font-size:1.3rem;margin-bottom:.4rem}
+section{padding:6.5rem 6vw;position:relative}
+.kicker{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--blue);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:22px;height:2px;background:var(--green)}
+.sub{color:var(--mut);max-width:620px;margin-top:1rem;font-size:1.05rem}
+.head{margin-bottom:3rem;max-width:780px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--blue);color:#fff;font-weight:600;font-size:.95rem;padding:.95rem 1.6rem;border-radius:999px;transition:transform .3s var(--ease),background .3s,box-shadow .4s;box-shadow:0 12px 24px -14px rgba(31,78,154,.9)}
+.btn:hover{transform:translateY(-2px);background:var(--blue2)}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-sm{padding:.7rem 1.2rem;font-size:.88rem;box-shadow:none}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));transform-origin:left;transform:scaleX(var(--sp,0))}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 6vw;transition:background .4s,box-shadow .4s;color:#fff}
+.nav.solid{background:rgba(255,255,255,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.logo{display:flex;align-items:center;gap:.6rem;font-size:1.05rem}
+.mark{width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.3rem}
+.logo b{font-weight:800}
+.links{display:flex;gap:1.8rem;font-weight:600;font-size:.92rem}
+.links a{position:relative}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--green);transform:scaleX(0);transition:transform .4s var(--ease)}
+.links a:hover::after{transform:scaleX(1)}
+@media(max-width:900px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:9rem 6vw 6rem;color:#fff;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.08)}}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,32,64,.92) 15%,rgba(22,58,116,.55) 70%,rgba(22,58,116,.35))}
+.hero-txt{position:relative;max-width:760px}
+.hero .kicker{color:#9FD8BC}
+.hero .kicker::before{background:#9FD8BC}
+.hero h1{font-weight:800}
+.swap{display:inline-block;position:relative;color:#9FD8BC;min-width:5.5ch}
+.swap .w{position:absolute;left:0;top:0;opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease);white-space:nowrap}
+.swap .w.is-on{opacity:1;transform:none;position:relative}
+.lead{font-size:1.15rem;color:#DCE6F5;max-width:600px;margin:1.6rem 0 2.4rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.hero .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8)}
+.hero .btn-line:hover{background:#fff;color:var(--ink)}
+/* gotas flutuando (essências) */
+.drops{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.drops i{position:absolute;bottom:-40px;width:14px;height:18px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 35% 30%,#fff,#9FD8BC 40%,rgba(46,158,107,.2));opacity:0;animation:rise linear infinite}
+.drops i:nth-child(1){left:58%;animation-duration:9s}
+.drops i:nth-child(2){left:66%;animation-duration:12s;animation-delay:-3s;width:10px;height:13px}
+.drops i:nth-child(3){left:74%;animation-duration:10s;animation-delay:-6s}
+.drops i:nth-child(4){left:82%;animation-duration:14s;animation-delay:-2s;width:18px;height:22px}
+.drops i:nth-child(5){left:90%;animation-duration:11s;animation-delay:-8s}
+.drops i:nth-child(6){left:50%;animation-duration:13s;animation-delay:-5s;width:9px;height:12px}
+.drops i:nth-child(7){left:95%;animation-duration:15s;animation-delay:-9s}
+.drops i:nth-child(8){left:62%;animation-duration:16s;animation-delay:-11s;width:8px;height:11px}
+@keyframes rise{0%{transform:translateY(0) scale(.8);opacity:0}12%{opacity:.85}100%{transform:translateY(-110vh) translateX(18px) scale(1.1);opacity:0}}
+
+/* band */
+.band{background:var(--blue);color:#fff;padding:1rem 0;overflow:hidden}
+.track{display:flex;gap:1.6rem;width:max-content;animation:tk 28s linear infinite;font-weight:700;font-size:1.1rem;letter-spacing:.04em;align-items:center}
+.track i{font-style:normal;color:#9FD8BC;font-size:.7rem}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* produtos */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.cat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.cat-grid{grid-template-columns:1fr}}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;position:relative;overflow:hidden;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
+.cat::before{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.cat:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 26px 40px -30px rgba(31,78,154,.6)}
+.cat:hover::before{transform:scaleX(1)}
+.cat .n{font-size:.8rem;font-weight:700;color:var(--green);letter-spacing:.1em}
+.cat h3{margin-top:.6rem}
+.cat p{color:var(--mut);font-size:.96rem}
+
+/* galeria */
+.galeria{padding-top:0}
+.g-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:1.2rem}
+@media(max-width:800px){.g-grid{grid-template-columns:1fr}}
+.g{margin:0;position:relative;border-radius:18px;overflow:hidden;min-height:340px}
+.g img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.g:hover img{transform:scale(1.05)}
+.g figcaption{position:absolute;left:1rem;bottom:1rem;background:#fff;color:var(--ink);font-weight:700;font-size:.85rem;padding:.4rem .9rem;border-radius:999px}
+
+/* oficinas */
+.oficinas{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ofi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.ofi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.ofi-grid{grid-template-columns:1fr}}
+.ofi{background:var(--bg);border-radius:18px;padding:2rem;border-left:4px solid var(--green);transition:transform .5s var(--ease),background .4s}
+.ofi:hover{transform:translateY(-5px);background:#EEF4FB}
+.ofi p{color:var(--mut);font-size:.96rem}
+.ofi-cta{margin-top:2.6rem}
+
+/* lojas */
+.loja-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:960px){.loja-grid{grid-template-columns:1fr}}
+.loja{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s}
+.loja:hover{transform:translateY(-6px);box-shadow:0 26px 40px -30px rgba(22,58,116,.5)}
+.city{display:inline-block;align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:#E6F5EE;color:#1E7A50;padding:.35rem .8rem;border-radius:999px;margin-bottom:1rem}
+.info{list-style:none;display:grid;gap:.9rem;margin:1rem 0 1.4rem;font-size:.95rem}
+.info small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.info a:hover{color:var(--blue)}
+.map{margin-top:auto;font-weight:700;color:var(--blue)}
+.map:hover{text-decoration:underline}
+.fachada{margin:3rem 0 0;border-radius:18px;overflow:hidden;max-height:460px}
+.fachada img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.fachada:hover img{transform:scale(1.03)}
+
+/* contato */
+.contato{background:var(--blue);color:#fff}
+.contato-box{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.contato-box{grid-template-columns:1fr}}
+.contato .kicker{color:#9FD8BC}
+.contato .kicker::before{background:#9FD8BC}
+.contato em{color:#9FD8BC}
+.contato .sub{color:#DCE6F5}
+.contato-actions{display:grid;gap:1rem}
+.contato .btn{background:#fff;color:var(--blue);box-shadow:none;justify-content:center}
+.contato .btn:hover{background:#E6F5EE}
+.contato .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8);justify-content:center}
+.contato .btn-line:hover{background:#fff;color:var(--blue)}
+
+.footer{background:var(--ink);color:#A9B4C4;padding:2.2rem 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.9rem}
+.footer a:hover{color:#fff}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo"><span class="mark">e</span><span>Shopping da <b>Essência</b></span></a>
+  <nav class="links"><a href="#produtos">Produtos</a><a href="#oficinas">Oficinas</a><a href="#lojas">Lojas</a><a href="#contato">Contato</a></nav>
+  <a href="#contato" class="btn btn-sm">Falar no WhatsApp</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="hero-bg"><img src="fotos/prateleira-essencias.jpg" alt="Prateleiras com essências e frascos" /></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="drops" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hero-txt">
+    <p class="kicker reveal">Essências · Perfumaria · Matéria-prima</p>
+    <h1 class="reveal">Crie seu <span class="swap"><span class="w is-on">perfume</span><span class="w">cosmético</span><span class="w">sabonete</span><span class="w">aroma</span></span>.<br/>Do jeito que você imaginou.</h1>
+    <p class="lead reveal">Base, essência e química para fazer shampoo, condicionador, hidratante, sabão, amaciante, velas e perfumes, com orientação em oficinas de turmas pequenas.</p>
+    <div class="cta reveal"><a href="#produtos" class="btn">Ver produtos →</a><a href="#oficinas" class="btn btn-line">Quero uma oficina</a></div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="track"><span>Essências</span><i>●</i><span>Cosméticos</span><i>●</i><span>Limpeza</span><i>●</i><span>Piscina</span><i>●</i><span>Velas</span><i>●</i><span>Oficinas</span><i>●</i><span>Essências</span><i>●</i><span>Cosméticos</span><i>●</i><span>Limpeza</span><i>●</i><span>Piscina</span><i>●</i><span>Velas</span><i>●</i><span>Oficinas</span><i>●</i></div></div>
+
+<section id="produtos" class="produtos">
+  <div class="head reveal">
+    <p class="kicker">Produtos</p>
+    <h2>Tudo para <em>criar</em> e limpar.</h2>
+  </div>
+  <div class="cat-grid">
+    <article class="cat reveal"><span class="n">01</span><h3>Cosméticos</h3><p>Bases para shampoo, condicionador, creme e hidratante.</p></article>
+    <article class="cat reveal"><span class="n">02</span><h3>Perfumaria e essências</h3><p>Essências para perfumes, velas e aromas de todos os tipos.</p></article>
+    <article class="cat reveal"><span class="n">03</span><h3>Lavanderia</h3><p>Matéria-prima para sabão de roupa e amaciante.</p></article>
+    <article class="cat reveal"><span class="n">04</span><h3>Velas e aromas</h3><p>Bases, pavios e essências para velas artesanais.</p></article>
+    <article class="cat reveal"><span class="n">05</span><h3>Químicos para piscina</h3><p>Produtos químicos para manutenção de piscinas.</p></article>
+    <article class="cat reveal"><span class="n">06</span><h3>Matérias-primas</h3><p>Ingredientes e insumos para quem produz em casa ou no negócio.</p></article>
+  </div>
+</section>
+
+<section class="galeria">
+  <div class="g-grid">
+    <figure class="g big reveal"><img src="fotos/balcao.jpg" alt="Balcão da loja com vitrines e prateleiras" loading="lazy" /><figcaption>Loja Belém</figcaption></figure>
+    <figure class="g reveal"><img src="fotos/materias-primas.jpg" alt="Prateleira com matérias-primas em embalagens" loading="lazy" /><figcaption>Matérias-primas</figcaption></figure>
+  </div>
+</section>
+
+<section id="oficinas" class="oficinas">
+  <div class="head reveal">
+    <p class="kicker">Oficinas</p>
+    <h2>Aprenda fazendo, <em>em turmas pequenas.</em></h2>
+    <p class="sub">Aulas práticas com poucos alunos, para você sair sabendo trabalhar com cada produto.</p>
+  </div>
+  <div class="ofi-grid">
+    <article class="ofi reveal"><h3>Shampoo e condicionador</h3><p>Da base à finalização, com ajuste de textura e perfume.</p></article>
+    <article class="ofi reveal"><h3>Cremes e hidratantes</h3><p>Emulsões simples para uso pessoal ou pequena produção.</p></article>
+    <article class="ofi reveal"><h3>Perfumaria com essências</h3><p>Composição de aromas e fixação para perfumes.</p></article>
+    <article class="ofi reveal"><h3>Velas aromáticas</h3><p>Bases, pavio, essência e acabamento.</p></article>
+    <article class="ofi reveal"><h3>Sabão e amaciante</h3><p>Preparo com segurança e dosagem correta.</p></article>
+    <article class="ofi reveal"><h3>Químicos para piscina</h3><p>Uso seguro, dosagem e manutenção.</p></article>
+  </div>
+  <div class="ofi-cta reveal"><a href="#contato" class="btn">Reservar vaga no WhatsApp →</a></div>
+</section>
+
+<section id="lojas" class="lojas">
+  <div class="head reveal">
+    <p class="kicker">Lojas</p>
+    <h2>Três cidades, <em>uma essência.</em></h2>
+  </div>
+  <div class="loja-grid">
+    <article class="loja reveal">
+      <span class="city">Imperatriz · MA</span>
+      <h3>Shopping da Essência</h3>
+      <ul class="info">
+        <li><small>Endereço</small>Av. Dorgival Pinheiro de Sousa, 1303B · Centro, Imperatriz – MA, 65913-469</li>
+        <li><small>Horário</small>Seg a sex, 8h às 18h · Sáb, 8h às 12h</li>
+        <li><small>Telefone</small><a href="tel:+5599984244882">(99) 98424-4882</a></li>
+        <li><small>Avaliação</small>★ 4,8 · 25 avaliações</li>
+      </ul>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&query=Av.+Dorgival+Pinheiro+de+Sousa,+1303B,+Imperatriz+MA" target="_blank" rel="noopener">Abrir no mapa →</a>
+    </article>
+    <article class="loja reveal">
+      <span class="city">Belém · PA</span>
+      <h3>Shopping da Essência</h3>
+      <ul class="info">
+        <li><small>Endereço</small>[endereço da loja de Belém]</li>
+        <li><small>Horário</small>[horário de funcionamento]</li>
+        <li><small>Telefone</small>[(91) 00000-0000]</li>
+      </ul>
+    </article>
+    <article class="loja reveal">
+      <span class="city">São Luís · MA</span>
+      <h3>Shopping da Essência</h3>
+      <ul class="info">
+        <li><small>Endereço</small>[endereço da loja de São Luís]</li>
+        <li><small>Horário</small>[horário de funcionamento]</li>
+        <li><small>Telefone</small>[(98) 00000-0000]</li>
+      </ul>
+    </article>
+  </div>
+  <figure class="fachada reveal"><img src="fotos/fachada.jpg" alt="Fachada do Shopping da Essência" loading="lazy" /></figure>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-box reveal">
+    <div>
+      <p class="kicker">Contato</p>
+      <h2>Quer criar <em>algo seu?</em></h2>
+      <p class="sub">Chame no WhatsApp para tirar dúvidas sobre produtos, indicar essências ou reservar uma oficina.</p>
+    </div>
+    <div class="contato-actions">
+      <a class="btn" href="https://wa.me/5599984244882?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20produtos%20e%20oficinas." target="_blank" rel="noopener">WhatsApp Imperatriz →</a>
+      <a class="btn btn-line" href="https://instagram.com/shoppingdaessencia" target="_blank" rel="noopener">@shoppingdaessencia</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Shopping da Essência</span>
+  <span><a href="#topo">Topo ↑</a></span>
+</footer>
+
+<script>
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 40); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+/* palavras que trocam no hero: perfume, cosmético, sabonete, aroma */
+const words = document.querySelectorAll('.swap .w');
+let wi = 0;
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  setInterval(() => {
+    words[wi].classList.remove('is-on');
+    wi = (wi + 1) % words.length;
+    words[wi].classList.add('is-on');
+  }, 2200);
+}
+
+</script>
+</body>
+</html>
