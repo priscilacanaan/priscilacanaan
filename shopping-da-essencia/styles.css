@@ -134,3 +134,6 @@ section{padding:6.5rem 6vw;position:relative}
 .footer{background:var(--ink);color:#A9B4C4;padding:2.2rem 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.9rem}
 .footer a:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.g.wide{grid-column:1/-1;min-height:300px}
+.g.wide img{object-position:center 60%}
