@@ -206,3 +206,14 @@ section{padding:6.5rem 6vw;position:relative}
 .cat p{flex:1}
 .cat .ver{font-weight:700;font-size:.88rem;color:var(--blue);margin-top:.4rem}
 .cat:hover .ver{text-decoration:underline}
+
+/* barra do topo com o app especial */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:70;height:36px;display:flex;align-items:center;justify-content:center;gap:.7rem;background:var(--blue);color:#fff;font-size:.86rem;font-weight:600;letter-spacing:.01em;transition:background .3s}
+.topbar:hover{background:var(--blue2)}
+.topbar b{background:#fff;color:var(--blue);padding:.2rem .7rem;border-radius:999px;font-weight:800;font-size:.8rem}
+.tb-dot{width:8px;height:8px;border-radius:50%;background:#9FD8BC;box-shadow:0 0 0 0 rgba(159,216,188,.8);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(159,216,188,.7)}70%{box-shadow:0 0 0 8px rgba(159,216,188,0)}100%{box-shadow:0 0 0 0 rgba(159,216,188,0)}}
+.nav{top:36px}
+.progress{top:36px}
+.hero{padding-top:10rem}
+@media(max-width:560px){.topbar{font-size:.78rem}.topbar b{display:none}}
