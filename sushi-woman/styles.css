@@ -112,3 +112,6 @@ section{padding:6.5rem 6vw;position:relative}
 @keyframes puff{0%{transform:translateY(10%) scale(.5);opacity:0}20%{opacity:.8}100%{transform:translateY(-120%) translateX(14%) scale(1.8);opacity:0}}
 @media(max-width:900px){.woman{opacity:.35;right:-8vw;width:70vw}}
 @media(prefers-reduced-motion:reduce){.woman img,.smoke i{animation:none}}
+
+.logo img{height:72px;width:72px;object-fit:contain;display:block}
+.f-logo{height:110px;width:110px;object-fit:contain}
