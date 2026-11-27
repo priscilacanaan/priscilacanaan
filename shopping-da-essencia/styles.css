@@ -180,14 +180,22 @@ section{padding:6.5rem 6vw;position:relative}
 .dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;transform:none;pointer-events:auto}
 .dd-menu a{display:block;padding:.75rem .9rem;border-radius:10px;font-size:.92rem;font-weight:600;color:var(--ink)}
 .dd-menu a:hover{background:#E6F5EE;color:var(--blue)}
-/* seção catálogo */
-.catalogo{background:var(--card);border-top:1px solid var(--line);padding-bottom:4rem}
-.cat-list{display:grid;gap:.9rem;max-width:860px}
-.cat-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:16px;padding:1.2rem 1.5rem;font-weight:700;font-size:1.05rem;transition:transform .4s var(--ease),border-color .3s,background .3s}
-.cat-item:hover{transform:translateX(6px);border-color:var(--blue);background:#EEF4FB}
-.cat-item b{color:var(--green);font-size:1.3rem}
 
 /* menu do catálogo: permanece aberto 1s após o cursor sair */
 .dd::after{content:"";position:absolute;left:-14px;right:-14px;top:100%;height:20px}
 .dd-menu{transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s linear 1s;visibility:hidden}
 .dd:hover .dd-menu,.dd:focus-within .dd-menu{visibility:visible;transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s linear 0s}
+
+/* seção catálogo (cards estilo catálogo) */
+.catalogo{background:var(--card);border-top:1px solid var(--line);padding-bottom:4rem}
+.cat-list{display:grid;gap:1rem;max-width:880px}
+.cat-item{display:flex;align-items:center;gap:1.2rem;background:#fff;border:1px solid var(--line);border-left:5px solid var(--green);border-radius:18px;padding:1rem 1.4rem 1rem 1rem;box-shadow:0 10px 24px -20px rgba(22,58,116,.5);transition:transform .4s var(--ease),box-shadow .4s,border-color .3s}
+.cat-item:hover{transform:translateX(6px);box-shadow:0 18px 30px -18px rgba(22,58,116,.5);border-color:var(--blue)}
+.ci-ic{flex:none;width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,#F7A531,#E07A12);display:grid;place-items:center;font-size:1.7rem;box-shadow:0 10px 18px -10px rgba(224,122,18,.9)}
+.ci-tx{display:grid;gap:.15rem;flex:1;min-width:0}
+.ci-tx b{font-size:1.08rem;font-weight:800;color:#16352A;line-height:1.25}
+.ci-tx small{color:#4C7A63;font-weight:600;font-size:.9rem}
+.ci-go{flex:none;width:44px;height:44px;border-radius:50%;background:#E6F5EE;color:#1E7A50;display:grid;place-items:center;font-weight:800;transition:background .3s,color .3s,transform .3s var(--ease)}
+.cat-item:hover .ci-go{background:var(--green);color:#fff;transform:translateX(3px)}
+/* marca priscila.canaan no rodapé */
+.pc-logo{height:26px;width:auto;display:inline-block;vertical-align:middle;filter:none}
