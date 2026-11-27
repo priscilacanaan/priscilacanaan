@@ -199,6 +199,11 @@ section{padding:6.5rem 6vw;position:relative}
 .cat-item:hover{transform:translateX(6px);border-color:var(--blue);background:#EEF4FB}
 .cat-item b{color:var(--green);font-size:1.3rem}
 
+/* menu do catálogo: permanece aberto 1s após o cursor sair */
+.dd::after{content:"";position:absolute;left:-14px;right:-14px;top:100%;height:20px}
+.dd-menu{transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s linear 1s;visibility:hidden}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{visibility:visible;transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s linear 0s}
+
 </style>
 </head>
 <body>
