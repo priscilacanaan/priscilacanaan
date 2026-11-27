@@ -122,6 +122,14 @@ section{padding:6.5rem 6vw;position:relative}
 .contato .btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
 .contato .btn-line:hover{background:var(--ink);color:var(--lime)}
 
+/* botão WhatsApp flutuante */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.8);transition:transform .3s var(--ease)}
+.wa-float svg{width:32px;height:32px}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:wa 2.4s ease-out infinite}
+@keyframes wa{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
+@media(max-width:560px){.wa-float{right:14px;bottom:14px}}
+
 </style>
 </head>
 <body>
@@ -244,5 +252,8 @@ document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDel
 })();
 
 </script>
+<a class="wa-float" href="https://wa.me/5591992703928?text=Ol%C3%A1!%20Quero%20meu%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.8 6.5L3 29l6.7-1.8c1.9 1 4.1 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.7c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1.1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.1 10.4 10.1 5.3 16 5.3S26.9 10.4 26.9 16 21.9 26.7 16 26.7zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
 </body>
 </html>
