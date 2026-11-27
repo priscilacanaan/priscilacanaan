@@ -171,3 +171,18 @@ section{padding:6.5rem 6vw;position:relative}
 .ck-yes{background:var(--blue);color:#fff}
 @keyframes up{from{opacity:0;transform:translateY(16px)}}
 @media(max-width:560px){.cookies{left:12px;right:12px;bottom:12px;max-width:none}.wa-float{right:14px;bottom:86px}}
+
+/* menu suspenso do catálogo */
+.dd{position:relative}
+.dd-t{display:inline-flex;align-items:center;gap:.3rem}
+.caret{font-size:.7rem;opacity:.8}
+.dd-menu{position:absolute;top:calc(100% + 16px);left:-14px;min-width:330px;background:#fff;color:var(--ink);border-radius:16px;padding:.6rem;box-shadow:0 24px 50px -20px rgba(0,0,0,.35);opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;transform:none;pointer-events:auto}
+.dd-menu a{display:block;padding:.75rem .9rem;border-radius:10px;font-size:.92rem;font-weight:600;color:var(--ink)}
+.dd-menu a:hover{background:#E6F5EE;color:var(--blue)}
+/* seção catálogo */
+.catalogo{background:var(--card);border-top:1px solid var(--line);padding-bottom:4rem}
+.cat-list{display:grid;gap:.9rem;max-width:860px}
+.cat-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:16px;padding:1.2rem 1.5rem;font-weight:700;font-size:1.05rem;transition:transform .4s var(--ease),border-color .3s,background .3s}
+.cat-item:hover{transform:translateX(6px);border-color:var(--blue);background:#EEF4FB}
+.cat-item b{color:var(--green);font-size:1.3rem}

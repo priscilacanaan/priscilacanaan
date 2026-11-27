@@ -14,7 +14,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 /* faixa azul: repete as palavras até cobrir a tela inteira, sem espaço vazio */
-const WORDS = ['Velas','Oficinas','Essências','Cosméticos','Limpeza','Piscina','Argila','Becker','Perfumes árabes e similares','Bicarbonato de sódio','Base de perfume','Frascos','Vidros','Vasilhames'];
+const WORDS = ['Ingredientes Saneantes','Essências Hidrossolúveis e Desinfetantes','Óleo Vegetal e Óleo Essencial','Produtos Químicos','Ingredientes Cosméticos'];
 function buildBand() {
   const track = document.querySelector('.band .track');
   if (!track) return;
