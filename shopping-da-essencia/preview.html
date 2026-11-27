@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
-:root{--blue:#1F4E9A;--blue2:#163A74;--green:#2E9E6B;--ink:#16202E;--mut:#5C6878;--bg:#F7F8FA;--card:#FFFFFF;--line:#E3E7EE;--wood:#C9A36B;--ease:cubic-bezier(.2,.7,.2,1)}
+:root{--blue:#1B4A94;--blue2:#163A74;--green:#00A878;--ink:#16202E;--mut:#5C6878;--bg:#F7F8FA;--card:#FFFFFF;--line:#E3E7EE;--wood:#C9A36B;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -127,8 +127,8 @@ section{padding:6.5rem 6vw;position:relative}
 .info a:hover{color:var(--blue)}
 .map{margin-top:auto;font-weight:700;color:var(--blue)}
 .map:hover{text-decoration:underline}
-.fachada{margin:3rem 0 0;border-radius:18px;overflow:hidden;max-height:460px}
-.fachada img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.fachada{margin:3rem 0 0;border-radius:18px;overflow:hidden}
+.fachada img{width:100%;height:auto;max-height:620px;object-fit:cover;object-position:center 88%;display:block;transition:transform 1.2s var(--ease)}
 .fachada:hover img{transform:scale(1.03)}
 
 /* contato */
@@ -155,6 +155,8 @@ section{padding:6.5rem 6vw;position:relative}
 .logo img{height:68px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
 .foot-logo{height:64px;width:auto;margin-bottom:.8rem;display:block}
 .nav.solid .logo img{filter:none}
+
+.loja .info a{color:var(--blue);font-weight:600}
 
 </style>
 </head>
@@ -236,10 +238,7 @@ section{padding:6.5rem 6vw;position:relative}
       <span class="city">Imperatriz · MA</span>
       <h3>Shopping da Essência</h3>
       <ul class="info">
-        <li><small>Endereço</small>Av. Dorgival Pinheiro de Sousa, 1303B · Centro, Imperatriz – MA, 65913-469</li>
-        <li><small>Horário</small>Seg a sex, 8h às 18h · Sáb, 8h às 12h</li>
-        <li><small>Telefone</small><a href="tel:+5599984244882">(99) 98424-4882</a></li>
-        <li><small>Avaliação</small>★ 4,8 · 25 avaliações</li>
+        <li><small>Endereço</small>Av. Dorgival Pinheiro de Sousa, 1303B · Centro, Imperatriz – MA, 65913-469</li><li><small>Horário</small>Seg a sex, 8h às 18h · Sáb, 8h às 12h</li><li><small>Telefone</small><a href="tel:+5599984244882">(99) 98424-4882</a></li><li><small>WhatsApp</small><a href="https://wa.me/5599984244882?text=Ol%C3%A1!%20Quero%20saber%20mais." target="_blank" rel="noopener">(99) 98424-4882</a></li><li><small>Avaliação</small>★ 4,8 · 25 avaliações</li>
       </ul>
       <a class="map" href="https://www.google.com/maps/search/?api=1&query=Av.+Dorgival+Pinheiro+de+Sousa,+1303B,+Imperatriz+MA" target="_blank" rel="noopener">Abrir no mapa →</a>
     </article>
@@ -247,9 +246,7 @@ section{padding:6.5rem 6vw;position:relative}
       <span class="city">Belém · PA</span>
       <h3>Shopping da Essência</h3>
       <ul class="info">
-        <li><small>Endereço</small>Av. Gov. José Malcher, 3007 · São Brás, Belém – PA, 66090-100</li>
-        <li><small>Horário</small>Seg a sex, 8h às 17h · Sáb, 8h às 12h · Dom, fechado</li>
-        <li><small>Principais produtos</small>Químicos em geral e insumos fracionados · Bases para cosméticos e saneantes · Óleos vegetais e essenciais · Essências oleosas e aromatizantes · Embalagens e frascos</li>
+        <li><small>Endereço</small>Av. Gov. José Malcher, 3007 · São Brás, Belém – PA, 66090-100</li><li><small>Horário</small>Seg a sex, 8h às 17h · Sáb, 8h às 12h · Dom, fechado</li><li><small>Telefone</small>[(91) 0000-0000]</li><li><small>WhatsApp</small>[número de WhatsApp a confirmar]</li><li><small>Principais produtos</small>Químicos em geral e insumos fracionados · Bases para cosméticos e saneantes · Óleos vegetais e essenciais · Essências oleosas e aromatizantes · Embalagens e frascos</li>
       </ul>
       <a class="map" href="https://www.google.com/maps/search/?api=1&query=Av.+Gov.+Jos%C3%A9+Malcher,+3007,+Bel%C3%A9m+PA" target="_blank" rel="noopener">Abrir no mapa →</a>
     </article>
@@ -257,10 +254,7 @@ section{padding:6.5rem 6vw;position:relative}
       <span class="city">São Luís · MA</span>
       <h3>Unidade Centro</h3>
       <ul class="info">
-        <li><small>Endereço</small>R. Oswaldo Cruz · Centro, São Luís – MA, 65020-250</li>
-        <li><small>Horário</small>Abre às 8h</li>
-        <li><small>Telefone</small><a href="tel:+559841414081">(98) 4141-4081</a></li>
-        <li><small>Avaliação</small>★ 4,2 · 31 avaliações</li>
+        <li><small>Endereço</small>R. Oswaldo Cruz · Centro, São Luís – MA, 65020-250</li><li><small>Horário</small>Seg a sex, 8h às 17h · Sáb, 8h às 12h · Dom, fechado</li><li><small>Telefone</small><a href="tel:+559841414081">(98) 4141-4081</a></li><li><small>WhatsApp</small>[número de WhatsApp a confirmar]</li><li><small>Avaliação</small>★ 4,2 · 31 avaliações</li>
       </ul>
       <a class="map" href="https://www.google.com/maps/place/Shopping+da+Ess%C3%AAncia+-+Rua+Grande/@-2.5306816,-44.3026448,17z/data=!3m1!4b1!4m6!3m5!1s0x7f68fd0149af113:0x21d28e58dcd42f2a!8m2!3d-2.5306816!4d-44.3000645!16s%2Fg%2F11lm15tz15" target="_blank" rel="noopener">Abrir no mapa →</a>
     </article>
@@ -268,14 +262,12 @@ section{padding:6.5rem 6vw;position:relative}
       <span class="city">São Luís · MA</span>
       <h3>Unidade São Cristóvão</h3>
       <ul class="info">
-        <li><small>Endereço</small>Rua 31 de Dezembro, 23 · São Cristóvão, São Luís – MA, 65055-660</li>
-        <li><small>Horário</small>Seg a sex, 8h às 17h · Sáb, 8h às 12h</li>
-        <li><small>Telefone</small><a href="tel:+5598991261301">(98) 99126-1301</a></li>
+        <li><small>Endereço</small>Rua 31 de Dezembro, 23 · São Cristóvão, São Luís – MA, 65055-660</li><li><small>Horário</small>Seg a sex, 8h às 17h · Sáb, 8h às 12h · Dom, fechado</li><li><small>Telefone</small><a href="tel:+5598991261301">(98) 99126-1301</a></li><li><small>WhatsApp</small><a href="https://wa.me/5598991261301?text=Ol%C3%A1!" target="_blank" rel="noopener">(98) 99126-1301</a></li>
       </ul>
       <a class="map" href="https://www.google.com/maps/place/Shopping+da+Ess%C3%AAncia/@-2.5712313,-44.2352615,17z/data=!3m1!4b1!4m6!3m5!1s0x7f69b57504841df:0xb8a8b895aac5f285!8m2!3d-2.5712313!4d-44.2326812!16s%2Fg%2F11my42q_jt" target="_blank" rel="noopener">Abrir no mapa →</a>
     </article>
   </div>
-  <figure class="fachada reveal"><img src="fotos/fachada.jpg" alt="Fachada do Shopping da Essência" loading="lazy" /></figure>
+  <figure class="fachada reveal"><img src="fotos/sao-cristovao-entrada.jpg" alt="Porta de entrada do Shopping da Essência" loading="lazy" /></figure>
 </section>
 
 <section id="contato" class="contato">
