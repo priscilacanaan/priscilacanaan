@@ -103,7 +103,7 @@ section{padding:6.5rem 6vw;position:relative}
 .ofi-cta{margin-top:2.6rem}
 
 /* lojas */
-.loja-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.loja-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
 @media(max-width:960px){.loja-grid{grid-template-columns:1fr}}
 .loja{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:2rem;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s}
 .loja:hover{transform:translateY(-6px);box-shadow:0 26px 40px -30px rgba(22,58,116,.5)}
