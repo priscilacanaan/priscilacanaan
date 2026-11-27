@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#E1251B" />
+<title>Sushi Woman Belém — Rodízio de sushi, o melhor sushi de Belém</title>
+<meta name="description" content="Sushi Woman: rodízio de sushi em Belém, eleito o melhor sushi 20/21. Unidades na Diogo Móia e na Conselheiro Furtado. Peça pelo iFood ou WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--red:#E1251B;--red2:#A8140E;--ink:#120E0E;--card:#1C1717;--cream:#FFF6EE;--mut:#A9A09B;--line:#2F2727;--display:"Bowlby One",Impact,sans-serif;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:normal;color:var(--red)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;text-transform:uppercase}
+h1{font-size:clamp(3rem,7.4vw,6.4rem)}
+h2{font-size:clamp(2.2rem,4.6vw,3.8rem)}
+h3{font-size:1.4rem;margin-bottom:.4rem}
+section{padding:6.5rem 6vw;position:relative}
+.kicker{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--red);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:26px;height:3px;background:var(--red)}
+.sub{color:var(--mut);max-width:600px;margin-top:1rem;font-size:1.05rem}
+.head{margin-bottom:3rem;max-width:780px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--red);color:#fff;font-weight:800;font-size:.95rem;padding:1rem 1.7rem;border-radius:999px;transition:transform .3s var(--ease),background .3s,box-shadow .4s;box-shadow:0 14px 26px -14px rgba(225,37,27,.9)}
+.btn:hover{transform:translateY(-3px);background:var(--red2)}
+.btn-line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 2px rgba(255,246,238,.6)}
+.btn-line:hover{background:var(--cream);color:var(--ink)}
+.btn-sm{padding:.7rem 1.2rem;font-size:.88rem;box-shadow:none}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90}
+.progress span{display:block;height:100%;background:var(--red);transform-origin:left;transform:scaleX(var(--sp,0))}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 6vw;transition:background .4s,box-shadow .4s}
+.nav.solid{background:rgba(18,14,14,.94);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line)}
+.logo img{height:64px;width:auto;display:block}
+.links{display:flex;gap:1.8rem;font-weight:600;font-size:.92rem}
+.links a{position:relative;transition:color .3s}
+.links a:hover{color:var(--red)}
+@media(max-width:960px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:9rem 6vw 6rem;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.07)}}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(18,14,14,.95) 12%,rgba(18,14,14,.55) 65%,rgba(18,14,14,.35)),linear-gradient(0deg,var(--ink),transparent 40%)}
+.hero-txt{position:relative;max-width:760px}
+.red{color:var(--red)}
+.lead{font-size:1.15rem;color:#E4D9D2;max-width:580px;margin:1.6rem 0 2.4rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+
+/* band */
+.band{background:var(--red);color:#fff;padding:1rem 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.03);position:relative;z-index:3}
+.track{display:flex;width:max-content;animation:tk 30s linear infinite;font-family:var(--display);font-size:1.3rem;text-transform:uppercase;align-items:center;gap:1.4rem}
+.track i{font-style:normal;font-size:.7rem;color:var(--ink)}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* rodízio */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+@media(max-width:900px){.feat-grid{grid-template-columns:1fr}}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2.2rem;transition:transform .5s var(--ease),border-color .3s}
+.feat:hover{transform:translateY(-6px);border-color:var(--red)}
+.feat .n{font-family:var(--display);font-size:1.6rem;color:var(--red)}
+.feat p{color:var(--mut)}
+
+/* galeria */
+.galeria{background:#0C0909}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+@media(max-width:900px){.g-grid{grid-template-columns:repeat(2,1fr)}}
+.g{margin:0;aspect-ratio:1;overflow:hidden;border-radius:16px;background:var(--card)}
+.g img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s var(--ease)}
+.g:hover img{transform:scale(1.08)}
+
+/* unidades */
+.uni-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+@media(max-width:860px){.uni-grid{grid-template-columns:1fr}}
+.uni{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:2.4rem;display:flex;flex-direction:column;gap:.5rem;transition:transform .5s var(--ease),border-color .3s}
+.uni:hover{transform:translateY(-6px);border-color:var(--red)}
+.city{display:inline-block;align-self:flex-start;background:var(--red);color:#fff;font-weight:800;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .8rem;border-radius:999px}
+.uni p{color:var(--mut)}
+.map{margin-top:auto;padding-top:.8rem;font-weight:700;color:var(--red)}
+
+/* contato */
+.contato{background:var(--red);color:#fff}
+.contato .kicker{color:#fff}
+.contato .kicker::before{background:#fff}
+.contato h2 em{color:var(--ink)}
+.contato .sub{color:#FFE3DC}
+.contato-box{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.contato-box{grid-template-columns:1fr}}
+.contato-actions{display:grid;gap:1rem}
+.contato .btn{background:var(--ink);justify-content:center;box-shadow:none}
+.contato .btn:hover{background:#2A2222}
+.contato .btn-line{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);justify-content:center}
+.contato .btn-line:hover{background:#fff;color:var(--red)}
+
+.footer{background:#080606;padding:3rem 6vw 2.2rem;text-align:center}
+.f-logo{height:90px;width:auto;margin:0 auto}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);color:var(--mut);font-size:.88rem;text-align:left}
+.foot-row a:hover{color:var(--red)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo"><img src="fotos/logo.png" alt="Sushi Woman" /></a>
+  <nav class="links"><a href="#rodizio">Rodízio</a><a href="#galeria">Galeria</a><a href="#unidades">Unidades</a><a href="#contato">Contato</a></nav>
+  <a href="https://www.ifood.com.br/delivery/belem-pa/sushi-woman-sushi-delivery-umarizal/c2f191be-418c-4ce4-9073-50d3a476422f" target="_blank" rel="noopener" class="btn btn-sm">Pedir no iFood</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="hero-bg"><img src="fotos/banner.jpg" alt="Poke com salmão, kani e cebola roxa" /></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-txt">
+    <p class="kicker reveal">Rodízio de sushi · Belém</p>
+    <h1 class="reveal">Sushi que <span class="red">faz feliz.</span></h1>
+    <p class="lead reveal">Eleito o melhor sushi 20/21 e 3º no Festival Estrela Azul 2026. Rodízio com muita variedade, poke, drinks e sobremesa para fechar.</p>
+    <div class="cta reveal"><a href="#rodizio" class="btn">Ver o rodízio →</a><a href="#unidades" class="btn btn-line">Nossas unidades</a></div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="track"><span>Rodízio de sushi</span><i>●</i><span>Poke</span><i>●</i><span>Temaki</span><i>●</i><span>Drinks</span><i>●</i><span>Sobremesa</span><i>●</i><span>Melhor sushi 20/21</span><i>●</i><span>Rodízio de sushi</span><i>●</i><span>Poke</span><i>●</i><span>Temaki</span><i>●</i><span>Drinks</span><i>●</i><span>Sobremesa</span><i>●</i><span>Melhor sushi 20/21</span><i>●</i></div></div>
+
+<section id="rodizio" class="rodizio">
+  <div class="head reveal"><p class="kicker">Rodízio</p><h2>Pede, prova, <em>repete.</em></h2></div>
+  <div class="feat-grid">
+    <article class="feat reveal"><span class="n">01</span><h3>Sushi e sashimi</h3><p>Hot skin, uramaki, salmão e muito mais no rodízio.</p></article>
+    <article class="feat reveal"><span class="n">02</span><h3>Poke</h3><p>Tigela com salmão, kani, cebola roxa e temperos da casa.</p></article>
+    <article class="feat reveal"><span class="n">03</span><h3>Drinks e sobremesa</h3><p>Drinks autorais e sobremesa para fechar a noite.</p></article>
+  </div>
+</section>
+
+<section id="galeria" class="galeria">
+  <div class="head reveal"><p class="kicker">Galeria</p><h2>Feito para <em>compartilhar.</em></h2></div>
+  <div class="g-grid">
+    <figure class="g reveal"><img src="fotos/t1.jpg" alt="Sushi com salmão e cream cheese" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t2.jpg" alt="Sushi com salmão" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t3.jpg" alt="Uramaki com molho" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t4.jpg" alt="Poke na tigela" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t5.jpg" alt="Sushi com molho" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t6.jpg" alt="Tartare de salmão" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t7.jpg" alt="Drinks e sushi" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t8.jpg" alt="Rolls servidos na mesa" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t9.jpg" alt="Poke com salmão e kani" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t10.jpg" alt="Sushi com salmão e molho" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t11.jpg" alt="Sushi e pratos" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/t12.jpg" alt="Uramaki com molho" loading="lazy" /></figure>
+  </div>
+</section>
+
+<section id="unidades" class="unidades">
+  <div class="head reveal"><p class="kicker">Unidades</p><h2>Dois endereços <em>em Belém.</em></h2></div>
+  <div class="uni-grid">
+    <article class="uni reveal"><span class="city">Umarizal</span><h3>Rua Diogo Móia, 731</h3><p>Rodízio de sushi e delivery pelo iFood.</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Rua+Diogo+Moia+731+Belem" target="_blank" rel="noopener">Abrir no mapa →</a></article>
+    <article class="uni reveal"><span class="city">Batista Campos</span><h3>Av. Conselheiro Furtado, 2768</h3><p>Rodízio de sushi e delivery.</p><a class="map" href="https://www.google.com/maps/search/?api=1&query=Av+Conselheiro+Furtado+2768+Belem" target="_blank" rel="noopener">Abrir no mapa →</a></article>
+  </div>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-box reveal">
+    <div>
+      <p class="kicker">Contato</p>
+      <h2>Bora <em>comer?</em></h2>
+      <p class="sub">Peça pelo iFood ou chame no WhatsApp para reservar a mesa e tirar dúvidas.</p>
+    </div>
+    <div class="contato-actions">
+      <a class="btn" href="https://www.ifood.com.br/delivery/belem-pa/sushi-woman-sushi-delivery-umarizal/c2f191be-418c-4ce4-9073-50d3a476422f" target="_blank" rel="noopener">Pedir no iFood →</a>
+      <a class="btn btn-line" href="https://wa.me/5591980715468" target="_blank" rel="noopener">WhatsApp · (91) 98071-5468</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <img src="fotos/logo.png" alt="Sushi Woman" class="f-logo" />
+  <div class="foot-row"><span>© 2026 Sushi Woman · Belém</span><a href="#topo">Topo ↑</a></div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 40); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+
+</script>
+</body>
+</html>
