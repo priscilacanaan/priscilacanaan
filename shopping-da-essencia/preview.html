@@ -158,6 +158,32 @@ section{padding:6.5rem 6vw;position:relative}
 
 .loja .info a{color:var(--blue);font-weight:600}
 
+/* rodapé */
+.footer{display:grid;gap:1.6rem;padding:2.6rem 6vw 2rem}
+.foot-main{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.4rem}
+.f-logo img{height:64px;width:auto;display:block;filter:brightness(1.1)}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.4rem;font-size:.92rem}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.08);font-size:.88rem}
+.made b{color:#fff;font-weight:700}
+.made b i{font-style:normal;color:var(--green)}
+.made a:hover b{color:var(--green)}
+/* botão WhatsApp flutuante */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.8);transition:transform .3s var(--ease)}
+.wa-float svg{width:32px;height:32px}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:wa 2.4s ease-out infinite}
+@keyframes wa{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
+/* banner de cookies */
+.cookies{position:fixed;left:22px;bottom:22px;z-index:85;max-width:360px;background:#fff;color:var(--ink);border-radius:16px;padding:1.2rem 1.3rem;box-shadow:0 20px 40px -18px rgba(0,0,0,.35);font-size:.9rem;display:grid;gap:.9rem;animation:up .6s var(--ease)}
+.cookies[hidden]{display:none}
+.cookies p a{color:var(--blue);font-weight:700;text-decoration:underline}
+.ck-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.ck-btns button{border:0;border-radius:999px;padding:.6rem 1.1rem;font:600 .85rem var(--body,"Manrope",sans-serif);cursor:pointer}
+.ck-no{background:#EEF2F7;color:var(--ink)}
+.ck-yes{background:var(--blue);color:#fff}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+@media(max-width:560px){.cookies{left:12px;right:12px;bottom:12px;max-width:none}.wa-float{right:14px;bottom:86px}}
+
 </style>
 </head>
 <body>
@@ -207,7 +233,6 @@ section{padding:6.5rem 6vw;position:relative}
     <figure class="g reveal"><img src="fotos/sao-luis-arco.jpg" alt="Corredor da loja de São Luís com estantes de essências" loading="lazy" /><figcaption>São Luís · Centro</figcaption></figure>
     <figure class="g reveal"><img src="fotos/sao-cristovao-entrada.jpg" alt="Entrada da loja de São Cristóvão" loading="lazy" /><figcaption>São Luís · São Cristóvão</figcaption></figure>
     <figure class="g reveal"><img src="fotos/sao-luis-balcao.jpg" alt="Balcão da loja de São Luís" loading="lazy" /><figcaption>São Luís · Atendimento</figcaption></figure>
-    <figure class="g wide reveal"><img src="fotos/imperatriz-equipamentos.jpg" alt="Copos graduados e funis para as oficinas" loading="lazy" /><figcaption>Imperatriz · equipamentos das oficinas</figcaption></figure>
   </div>
 </section>
 
@@ -280,7 +305,6 @@ section{padding:6.5rem 6vw;position:relative}
     <div class="contato-actions">
       <a class="btn" href="https://wa.me/5599984244882?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20produtos%20e%20oficinas." target="_blank" rel="noopener">WhatsApp Imperatriz →</a>
       <a class="btn btn-line" href="https://shoppingdaessencia.com.br" target="_blank" rel="noopener">shoppingdaessencia.com.br</a>
-      <a class="btn btn-line" href="https://instagram.com/shoppingdaessencia" target="_blank" rel="noopener">@shoppingdaessencia</a>
     </div>
   </div>
 </section>
@@ -288,10 +312,28 @@ section{padding:6.5rem 6vw;position:relative}
 </main>
 
 <footer class="footer">
-  <span>© 2026 Shopping da Essência</span>
-  <span><a href="#topo">Topo ↑</a></span>
+  <div class="foot-main">
+    <a href="#topo" class="logo f-logo"><img src="fotos/logo-essencia.png" alt="Shopping da Essência" /></a>
+    <nav class="foot-links">
+      <a href="privacidade.html">Política de Privacidade</a>
+      <a href="termos.html">Termos de Uso</a>
+      <a href="https://www.instagram.com/shoppingdaessencia/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#topo">Topo ↑</a>
+    </nav>
+  </div>
+  <div class="foot-row">
+    <span>© 2026 Shopping da Essência</span>
+    <span class="made">Site feito com carinho por <a href="https://raw.githack.com/priscilacanaan/priscilacanaan/141a57d/portfolio-priscila/index.html" target="_blank" rel="noopener"><b>priscila<i>.</i>canaan</b></a></span>
+  </div>
 </footer>
 
+<a class="wa-float" href="https://wa.me/5599984244882?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20produtos%20e%20oficinas." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.8 6.5L3 29l6.7-1.8c1.9 1 4.1 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.7c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1.1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.1 10.4 10.1 5.3 16 5.3S26.9 10.4 26.9 16 21.9 26.7 16 26.7zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+<div class="cookies" id="cookies" role="dialog" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies para o site funcionar e entender como você navega. <a href="privacidade.html#cookies">Saiba mais</a>.</p>
+  <div class="ck-btns"><button class="ck-no" type="button">Só essenciais</button><button class="ck-yes" type="button">Aceitar</button></div>
+</div>
 <script>
 const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
 addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 40); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
@@ -325,6 +367,16 @@ function buildBand() {
 }
 buildBand();
 let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildBand, 200); });
+
+/* banner de cookies (escolha salva em localStorage) */
+(function(){
+  const box = document.getElementById('cookies'); if (!box) return;
+  let v = null; try { v = localStorage.getItem('se-cookies'); } catch (e) {}
+  if (!v) box.hidden = false;
+  const save = val => { try { localStorage.setItem('se-cookies', val); } catch (e) {} box.hidden = true; };
+  box.querySelector('.ck-yes').addEventListener('click', () => save('todos'));
+  box.querySelector('.ck-no').addEventListener('click', () => save('essenciais'));
+})();
 
 </script>
 </body>

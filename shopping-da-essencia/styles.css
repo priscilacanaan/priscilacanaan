@@ -145,3 +145,29 @@ section{padding:6.5rem 6vw;position:relative}
 .nav.solid .logo img{filter:none}
 
 .loja .info a{color:var(--blue);font-weight:600}
+
+/* rodapé */
+.footer{display:grid;gap:1.6rem;padding:2.6rem 6vw 2rem}
+.foot-main{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.4rem}
+.f-logo img{height:64px;width:auto;display:block;filter:brightness(1.1)}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.4rem;font-size:.92rem}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.08);font-size:.88rem}
+.made b{color:#fff;font-weight:700}
+.made b i{font-style:normal;color:var(--green)}
+.made a:hover b{color:var(--green)}
+/* botão WhatsApp flutuante */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.8);transition:transform .3s var(--ease)}
+.wa-float svg{width:32px;height:32px}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:wa 2.4s ease-out infinite}
+@keyframes wa{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
+/* banner de cookies */
+.cookies{position:fixed;left:22px;bottom:22px;z-index:85;max-width:360px;background:#fff;color:var(--ink);border-radius:16px;padding:1.2rem 1.3rem;box-shadow:0 20px 40px -18px rgba(0,0,0,.35);font-size:.9rem;display:grid;gap:.9rem;animation:up .6s var(--ease)}
+.cookies[hidden]{display:none}
+.cookies p a{color:var(--blue);font-weight:700;text-decoration:underline}
+.ck-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.ck-btns button{border:0;border-radius:999px;padding:.6rem 1.1rem;font:600 .85rem var(--body,"Manrope",sans-serif);cursor:pointer}
+.ck-no{background:#EEF2F7;color:var(--ink)}
+.ck-yes{background:var(--blue);color:#fff}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+@media(max-width:560px){.cookies{left:12px;right:12px;bottom:12px;max-width:none}.wa-float{right:14px;bottom:86px}}
