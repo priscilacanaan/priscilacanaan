@@ -67,8 +67,10 @@ section{padding:6.5rem 6vw;position:relative}
 
 /* band */
 .band{background:var(--blue);color:#fff;padding:1rem 0;overflow:hidden}
-.track{display:flex;gap:1.6rem;width:max-content;animation:tk 28s linear infinite;font-weight:700;font-size:1.1rem;letter-spacing:.04em;align-items:center}
-.track i{font-style:normal;color:#9FD8BC;font-size:.7rem}
+.track{display:flex;width:max-content;animation:tk 40s linear infinite;font-weight:700;font-size:1.1rem;letter-spacing:.04em}
+.grp{display:flex;align-items:center;gap:1.6rem;flex:none;padding-right:1.6rem}
+.grp span{white-space:nowrap}
+.grp i{font-style:normal;color:#9FD8BC;font-size:.7rem}
 @keyframes tk{to{transform:translateX(-50%)}}
 
 /* produtos */

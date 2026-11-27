@@ -12,3 +12,21 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     words[wi].classList.add('is-on');
   }, 2200);
 }
+
+/* faixa azul: repete as palavras até cobrir a tela inteira, sem espaço vazio */
+const WORDS = ['Velas','Oficinas','Essências','Cosméticos','Limpeza','Piscina','Argila','Becker','Perfumes árabes e similares','Bicarbonato de sódio','Base de perfume','Frascos','Vidros','Vasilhames'];
+function buildBand() {
+  const track = document.querySelector('.band .track');
+  if (!track) return;
+  const makeGroup = () => {
+    const g = document.createElement('div'); g.className = 'grp';
+    WORDS.forEach(w => { const s = document.createElement('span'); s.textContent = w; g.append(s, Object.assign(document.createElement('i'), { textContent: '●' })); });
+    return g;
+  };
+  track.innerHTML = '';
+  let g = makeGroup(); track.append(g);
+  while (g.offsetWidth < innerWidth) { const c = makeGroup(); g.append(...c.childNodes); }
+  const copy = g.cloneNode(true); track.append(copy);
+}
+buildBand();
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildBand, 200); });

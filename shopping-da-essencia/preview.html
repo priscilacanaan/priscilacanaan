@@ -79,8 +79,10 @@ section{padding:6.5rem 6vw;position:relative}
 
 /* band */
 .band{background:var(--blue);color:#fff;padding:1rem 0;overflow:hidden}
-.track{display:flex;gap:1.6rem;width:max-content;animation:tk 28s linear infinite;font-weight:700;font-size:1.1rem;letter-spacing:.04em;align-items:center}
-.track i{font-style:normal;color:#9FD8BC;font-size:.7rem}
+.track{display:flex;width:max-content;animation:tk 40s linear infinite;font-weight:700;font-size:1.1rem;letter-spacing:.04em}
+.grp{display:flex;align-items:center;gap:1.6rem;flex:none;padding-right:1.6rem}
+.grp span{white-space:nowrap}
+.grp i{font-style:normal;color:#9FD8BC;font-size:.7rem}
 @keyframes tk{to{transform:translateX(-50%)}}
 
 /* produtos */
@@ -179,7 +181,7 @@ section{padding:6.5rem 6vw;position:relative}
   </div>
 </section>
 
-<div class="band" aria-hidden="true"><div class="track"><span>Essências</span><i>●</i><span>Cosméticos</span><i>●</i><span>Limpeza</span><i>●</i><span>Piscina</span><i>●</i><span>Velas</span><i>●</i><span>Oficinas</span><i>●</i><span>Essências</span><i>●</i><span>Cosméticos</span><i>●</i><span>Limpeza</span><i>●</i><span>Piscina</span><i>●</i><span>Velas</span><i>●</i><span>Oficinas</span><i>●</i></div></div>
+<div class="band" aria-hidden="true"><div class="track"></div></div>
 
 <section id="produtos" class="produtos">
   <div class="head reveal">
@@ -309,6 +311,24 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     words[wi].classList.add('is-on');
   }, 2200);
 }
+
+/* faixa azul: repete as palavras até cobrir a tela inteira, sem espaço vazio */
+const WORDS = ['Velas','Oficinas','Essências','Cosméticos','Limpeza','Piscina','Argila','Becker','Perfumes árabes e similares','Bicarbonato de sódio','Base de perfume','Frascos','Vidros','Vasilhames'];
+function buildBand() {
+  const track = document.querySelector('.band .track');
+  if (!track) return;
+  const makeGroup = () => {
+    const g = document.createElement('div'); g.className = 'grp';
+    WORDS.forEach(w => { const s = document.createElement('span'); s.textContent = w; g.append(s, Object.assign(document.createElement('i'), { textContent: '●' })); });
+    return g;
+  };
+  track.innerHTML = '';
+  let g = makeGroup(); track.append(g);
+  while (g.offsetWidth < innerWidth) { const c = makeGroup(); g.append(...c.childNodes); }
+  const copy = g.cloneNode(true); track.append(copy);
+}
+buildBand();
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildBand, 200); });
 
 </script>
 </body>
