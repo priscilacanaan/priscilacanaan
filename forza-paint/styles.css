@@ -117,3 +117,6 @@ section{padding:6.5rem 6vw;position:relative}
 .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:wa 2.4s ease-out infinite}
 @keyframes wa{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
 @media(max-width:560px){.wa-float{right:14px;bottom:14px}}
+
+.made{display:inline-flex;align-items:center;gap:.6rem}
+.pc-logo{height:24px;width:auto;display:inline-block;vertical-align:middle}
