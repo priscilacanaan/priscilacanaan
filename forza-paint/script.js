@@ -20,7 +20,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDel
         const y = H * l.y + Math.sin(k * 6.28 * 1.2 + t * l.sp + l.off) * l.amp * devicePixelRatio + Math.sin(k * 12 + t * 0.7) * 14 * devicePixelRatio;
         x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
       }
-      ctx.strokeStyle = 'rgba(198,255,0,0.45)'; ctx.lineWidth = 1.6 * devicePixelRatio; ctx.shadowColor = '#C6FF00'; ctx.shadowBlur = 10; ctx.stroke();
+      ctx.strokeStyle = 'rgba(198,255,0,0.35)'; ctx.lineWidth = 1.6 * devicePixelRatio; ctx.shadowColor = '#C6FF00'; ctx.shadowBlur = 10; ctx.stroke();
     });
     t += 0.012; requestAnimationFrame(frame);
   }

@@ -54,11 +54,11 @@ section{padding:6.5rem 6vw;position:relative}
 .hero-bg{position:absolute;inset:0;z-index:-3}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:kb 24s ease-in-out infinite alternate;filter:grayscale(.35) contrast(1.05)}
 @keyframes kb{to{transform:scale(1.08)}}
-.hero-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(10,10,10,.96) 12%,rgba(10,10,10,.6) 65%,rgba(10,10,10,.35)),linear-gradient(0deg,var(--ink),transparent 40%)}
-#trails{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-.hero-txt{position:relative;max-width:820px}
+.hero-shade{position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse 60% 55% at 22% 50%,rgba(10,10,10,.92),rgba(10,10,10,.4) 70%,transparent),linear-gradient(90deg,rgba(10,10,10,.85) 10%,rgba(10,10,10,.35) 70%,rgba(10,10,10,.2)),linear-gradient(0deg,var(--ink),transparent 40%)}
+#trails{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.55}
+.hero-txt{position:relative;max-width:820px;z-index:2;text-shadow:0 2px 18px rgba(0,0,0,.85)}
 .hero .lead{font-size:1.2rem;color:#D6D6D2;max-width:580px;margin:1.6rem 0 2.6rem}
-.neon{color:var(--lime);text-shadow:0 0 18px rgba(198,255,0,.6),0 0 40px rgba(198,255,0,.3);animation:flick 4s infinite}
+.neon{color:var(--lime);text-shadow:0 0 18px rgba(198,255,0,.55),0 2px 18px rgba(0,0,0,.9);animation:flick 4s infinite}
 @keyframes flick{0%,92%,100%{opacity:1}94%{opacity:.7}96%{opacity:1}}
 .cta{display:flex;flex-wrap:wrap;gap:1rem}
 .wave{position:absolute;bottom:-1px;left:0;width:100%;height:120px;z-index:1}
@@ -138,9 +138,9 @@ section{padding:6.5rem 6vw;position:relative}
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="hero-txt">
     <p class="kicker reveal">Funilaria · Pintura · Estética · PPF</p>
-    <h1 class="reveal">Seu erro é <span class="neon">nosso projeto.</span></h1>
-    <p class="lead reveal">Da batida ao brilho de exposição. Funilaria, pintura, estética automotiva, película e PPF com acabamento de vitrine.</p>
-    <div class="cta reveal"><a href="#contato" class="btn">Agendar avaliação →</a><a href="#servicos" class="btn btn-line">Ver serviços</a></div>
+    <h1 class="reveal">Seu carro do jeito que <span class="neon">você sonhou.</span></h1>
+    <p class="lead reveal">Já passou por um susto na batida? A gente resolve. Funilaria, pintura, estética, película e PPF feitos com carinho e capricho. Traga seu carro e saia apaixonado de novo.</p>
+    <div class="cta reveal"><a href="#contato" class="btn">Quero meu orçamento →</a><a href="#servicos" class="btn btn-line">Conhecer os serviços</a></div>
   </div>
   <svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0,80 C240,10 360,150 600,80 C840,10 960,150 1200,80 C1320,40 1400,70 1440,60 L1440,160 L0,160 Z" fill="#0A0A0A"/></svg>
 </section>
@@ -232,7 +232,7 @@ document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDel
         const y = H * l.y + Math.sin(k * 6.28 * 1.2 + t * l.sp + l.off) * l.amp * devicePixelRatio + Math.sin(k * 12 + t * 0.7) * 14 * devicePixelRatio;
         x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
       }
-      ctx.strokeStyle = 'rgba(198,255,0,0.45)'; ctx.lineWidth = 1.6 * devicePixelRatio; ctx.shadowColor = '#C6FF00'; ctx.shadowBlur = 10; ctx.stroke();
+      ctx.strokeStyle = 'rgba(198,255,0,0.35)'; ctx.lineWidth = 1.6 * devicePixelRatio; ctx.shadowColor = '#C6FF00'; ctx.shadowBlur = 10; ctx.stroke();
     });
     t += 0.012; requestAnimationFrame(frame);
   }
