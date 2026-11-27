@@ -137,3 +137,7 @@ section{padding:6.5rem 6vw;position:relative}
 
 .g.wide{grid-column:1/-1;min-height:300px}
 .g.wide img{object-position:center 60%}
+
+.logo img{height:68px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+.foot-logo{height:64px;width:auto;margin-bottom:.8rem;display:block}
+.nav.solid .logo img{filter:none}
