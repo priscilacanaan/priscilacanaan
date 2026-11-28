@@ -109,3 +109,6 @@ section{padding:6rem 6vw;position:relative}
 @keyframes wa{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
 @media(max-width:560px){.wa-float{right:14px;bottom:14px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+.made a{background:#000 !important}
+.made a:hover{background:#1a1a1a !important}
