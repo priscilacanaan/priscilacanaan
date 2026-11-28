@@ -154,6 +154,15 @@ section{padding:6rem 6vw;position:relative}
 .rec-grid img{width:100%;display:block;transition:transform 1.2s var(--ease)}
 .rec-grid figure:hover img{transform:scale(1.04)}
 
+.loja-fotos{background:var(--cream)}
+.lf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:860px){.lf-grid{grid-template-columns:1fr 1fr}}
+.lf{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 20px 40px -30px rgba(94,42,36,.5)}
+.lf.big{grid-row:span 2;aspect-ratio:auto}
+@media(max-width:860px){.lf.big{grid-row:auto}}
+.lf img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.lf:hover img{transform:scale(1.06)}
+
 </style>
 </head>
 <body>
@@ -204,6 +213,17 @@ section{padding:6rem 6vw;position:relative}
       <h2>Brincar também <em>faz parte.</em></h2>
       <p class="sub">Espaço de recreação com circuito e atividades para o seu pet se exercitar e se divertir com a equipe.</p>
     </div>
+  </div>
+</section>
+
+<section class="loja-fotos">
+  <div class="head reveal"><p class="kicker">Nossa unidade</p><h2>Umarizal, <em>de portas abertas.</em></h2></div>
+  <div class="lf-grid">
+    <figure class="lf big reveal"><img src="fotos/loja-fachada.jpg" alt="Fachada da Pet & Co na Umarizal" loading="lazy" /></figure>
+    <figure class="lf reveal"><img src="fotos/loja-interior.jpg" alt="Interior da loja com produtos" loading="lazy" /></figure>
+    <figure class="lf reveal"><img src="fotos/loja-produtos.jpg" alt="Prateleiras com produtos para pets" loading="lazy" /></figure>
+    <figure class="lf reveal"><img src="fotos/loja-recreacao.jpg" alt="Área de recreação" loading="lazy" /></figure>
+    <figure class="lf reveal"><img src="fotos/loja-cachorros.jpg" alt="Cães no balcão da loja" loading="lazy" /></figure>
   </div>
 </section>
 

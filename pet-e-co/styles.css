@@ -141,3 +141,12 @@ section{padding:6rem 6vw;position:relative}
 .rec-grid figure{margin:0;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(94,42,36,.6)}
 .rec-grid img{width:100%;display:block;transition:transform 1.2s var(--ease)}
 .rec-grid figure:hover img{transform:scale(1.04)}
+
+.loja-fotos{background:var(--cream)}
+.lf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:860px){.lf-grid{grid-template-columns:1fr 1fr}}
+.lf{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 20px 40px -30px rgba(94,42,36,.5)}
+.lf.big{grid-row:span 2;aspect-ratio:auto}
+@media(max-width:860px){.lf.big{grid-row:auto}}
+.lf img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.lf:hover img{transform:scale(1.06)}
