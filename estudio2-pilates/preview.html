@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#8E1F7A" />
+<title>Estúdio 2 Pilates — Aula experimental em Belém</title>
+<meta name="description" content="Estúdio 2 Pilates em Belém: aulas de pilates com equipamentos Cadillac, Reformer e Barrel. Novo espaço na Travessa 14 de Março. Agende sua aula experimental." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--plum:#8E1F7A;--plum2:#6B1759;--lilac:#A77BB0;--lilac2:#F4E8F2;--ink:#2B1A27;--mut:#7A6276;--line:#E8D6E4;--serif:"Dancing Script",cursive;--sans:"Montserrat",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#FFF9FC;color:var(--ink);font-family:var(--sans);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-family:var(--serif);font-style:normal;color:var(--plum);font-size:1.15em}
+h1,h2{font-family:var(--sans);font-weight:600;line-height:1.12;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,5.6vw,4.8rem);color:#fff}
+h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--ink)}
+section{padding:6rem 6vw;position:relative}
+.kicker{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--plum);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:26px;height:2px;background:var(--plum)}
+.sub{color:var(--mut);max-width:600px;margin-top:1rem;font-size:1.03rem}
+.head{margin-bottom:2.8rem;max-width:760px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--plum);color:#fff;font-weight:600;font-size:.92rem;padding:1rem 1.7rem;border-radius:999px;transition:transform .3s var(--ease),background .3s,box-shadow .4s;box-shadow:0 14px 26px -14px rgba(142,31,122,.8)}
+.btn:hover{transform:translateY(-3px);background:var(--plum2)}
+.btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8)}
+.btn-line:hover{background:#fff;color:var(--plum)}
+.btn-sm{padding:.65rem 1.2rem;font-size:.85rem;box-shadow:none}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--lilac),var(--plum));transform-origin:left;transform:scaleX(var(--sp,0))}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.5rem 6vw;transition:background .4s,box-shadow .4s;color:#fff}
+.nav.solid{background:rgba(255,249,252,.95);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line);color:var(--ink)}
+.logo img{height:58px;width:auto;display:block;filter:brightness(0) invert(1)}
+.nav.solid .logo img{filter:none}
+.links{display:flex;gap:1.8rem;font-size:.86rem;font-weight:500}
+.links a{transition:color .3s;opacity:.92}
+.links a:hover{color:var(--lilac);opacity:1}
+@media(max-width:900px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:9rem 6vw 6rem;overflow:hidden;color:#fff;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.06)}}
+.hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(60,14,50,.92) 12%,rgba(107,23,89,.6) 65%,rgba(107,23,89,.35)),linear-gradient(0deg,rgba(43,26,39,.7),transparent 40%)}
+.hero-txt{position:relative;max-width:720px}
+.hero .kicker{color:#E7C4E0}
+.hero .kicker::before{background:#E7C4E0}
+.hero h1 em{color:#F6D8F0}
+.lead{font-size:1.08rem;color:#F2E2EE;max-width:560px;margin:1.6rem 0 2.2rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+
+/* band */
+.band{background:var(--plum);color:#fff;padding:.95rem 0;overflow:hidden}
+.track{display:flex;width:max-content;animation:tk 30s linear infinite;font-family:var(--serif);font-size:1.6rem;align-items:center;gap:1.4rem}
+.track i{font-style:normal;color:var(--lilac);font-size:.8rem}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* sobre */
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.sobre-grid{grid-template-columns:1fr}}
+.sobre figure{margin:0;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(107,23,89,.5)}
+.sobre img{width:100%;display:block;transition:transform 1.2s var(--ease)}
+.sobre figure:hover img{transform:scale(1.04)}
+.pills{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.pills li{border:1.5px solid var(--lilac);color:var(--plum);padding:.5rem 1.1rem;border-radius:999px;font-size:.85rem;font-weight:600;transition:background .3s,color .3s}
+.pills li:hover{background:var(--plum);color:#fff}
+
+/* galeria */
+.galeria{background:var(--lilac2)}
+.g-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:340px;gap:1rem;max-width:1000px;margin:auto}
+@media(max-width:760px){.g-grid{grid-template-columns:1fr}}
+.g{margin:0;border-radius:24px;overflow:hidden}
+.g.tall{grid-row:span 2}
+.g img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.g:hover img{transform:scale(1.05)}
+
+/* mídia */
+.midia{background:#FFF9FC}
+.entrevista{margin:0 auto;max-width:520px;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(107,23,89,.5)}
+.entrevista img{width:100%;display:block}
+
+/* contato */
+.contato{background:var(--plum);color:#fff}
+.contato-box{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.contato-box{grid-template-columns:1fr}}
+.contato .kicker{color:#E7C4E0}
+.contato .kicker::before{background:#E7C4E0}
+.contato h2{color:#fff}
+.contato h2 em{color:#F6D8F0}
+.info{list-style:none;margin-top:1.6rem;display:grid;gap:1rem}
+.info li{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:.8rem;font-size:.97rem}
+.info small{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#E7C4E0;font-weight:600}
+.info a:hover{color:#F6D8F0;text-decoration:underline}
+.contato-actions{display:grid;gap:1rem}
+.contato .btn{background:#fff;color:var(--plum);box-shadow:none;justify-content:center}
+.contato .btn:hover{background:#F6E6F2}
+
+.footer{background:var(--plum2);color:#E7C4E0;padding:3rem 6vw 2.2rem;text-align:center}
+.f-logo{height:90px;width:auto;margin:0 auto;filter:brightness(0) invert(1)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.15);font-size:.85rem;text-align:left}
+.made{display:inline-flex;align-items:center;gap:.6rem}
+.made a{display:inline-flex;background:#fff;padding:.4rem .8rem;border-radius:999px}
+.pc-logo{height:20px;width:auto;display:inline-block;vertical-align:middle}
+.foot-row a:hover{color:#fff}
+
+/* whatsapp flutuante */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.8);transition:transform .3s var(--ease)}
+.wa-float svg{width:32px;height:32px}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:wa 2.4s ease-out infinite}
+@keyframes wa{from{transform:scale(1);opacity:.8}to{transform:scale(1.5);opacity:0}}
+@media(max-width:560px){.wa-float{right:14px;bottom:14px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo"><img src="fotos/logo.png" alt="Estúdio 2 Pilates" /></a>
+  <nav class="links"><a href="#sobre">O estúdio</a><a href="#galeria">Galeria</a><a href="#midia">Na mídia</a><a href="#contato">Contato</a></nav>
+  <a href="https://wa.me/559181330405?text=Ol%C3%A1!%20Quero%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener" class="btn btn-sm">Aula experimental</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="hero-bg"><img src="fotos/capa.jpg" alt="Novo espaço Estúdio 2 Pilates" /></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-txt">
+    <p class="kicker reveal">Pilates · Belém</p>
+    <h1 class="reveal">Novo espaço, <em>mesmo cuidado.</em></h1>
+    <p class="lead reveal">Aulas de pilates com equipamentos Cadillac, Reformer e Barrel, em um espaço novo na Travessa 14 de Março. Venha sentir a diferença na sua primeira aula.</p>
+    <div class="cta reveal"><a href="https://wa.me/559181330405?text=Ol%C3%A1!%20Quero%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener" class="btn">Agendar aula experimental →</a><a href="#sobre" class="btn btn-line">Conhecer o estúdio</a></div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><div class="track"><span>Pilates</span><i>●</i><span>Cadillac</span><i>●</i><span>Reformer</span><i>●</i><span>Barrel</span><i>●</i><span>Aula experimental</span><i>●</i><span>Pilates</span><i>●</i><span>Cadillac</span><i>●</i><span>Reformer</span><i>●</i><span>Barrel</span><i>●</i><span>Aula experimental</span><i>●</i></div></div>
+
+<section id="sobre" class="sobre">
+  <div class="sobre-grid">
+    <div class="reveal">
+      <p class="kicker">O estúdio</p>
+      <h2>Equilíbrio, força e <em>consciência corporal.</em></h2>
+      <p class="sub">Aulas em grupo e individuais, com acompanhamento de perto para cada aluno. O novo espaço tem salas amplas, equipamentos de madeira e um ambiente acolhedor.</p>
+      <ul class="pills"><li>Cadillac</li><li>Reformer</li><li>Barrel</li><li>Aula experimental</li></ul>
+    </div>
+    <figure class="reveal"><img src="fotos/pilates-pernas.jpg" alt="Aluna em exercício no Barrel" loading="lazy" /></figure>
+  </div>
+</section>
+
+<section id="galeria" class="galeria">
+  <div class="head reveal"><p class="kicker">Galeria</p><h2>Movimento e <em>técnica.</em></h2></div>
+  <div class="g-grid">
+    <figure class="g reveal tall"><img src="fotos/rede-roxa.jpg" alt="Aula com rede de pilates aéreo" loading="lazy" /></figure>
+    <figure class="g reveal"><img src="fotos/pilates-pernas.jpg" alt="Exercício no Barrel" loading="lazy" /></figure>
+  </div>
+</section>
+
+<section id="midia" class="midia">
+  <div class="head reveal"><p class="kicker">Na mídia</p><h2>Pilates que <em>chama atenção.</em></h2></div>
+  <figure class="entrevista reveal"><img src="fotos/entrevista.jpg" alt="Entrevista na Estúdio 2 Pilates" loading="lazy" /></figure>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-box reveal">
+    <div>
+      <p class="kicker">Contato</p>
+      <h2>Venha <em>conhecer.</em></h2>
+      <ul class="info">
+        <li><small>Endereço</small><a href="https://www.google.com/maps/search/?api=1&amp;query=Travessa+14+de+Marco+1155+Belem+PA" target="_blank" rel="noopener">Travessa 14 de Março, nº 1155, Sala 103 · Ed. Urbe 14 · entre Boaventura e Domingos Marreiros · Belém – PA, 66055-210</a></li>
+        <li><small>Telefone</small><a href="tel:+559130875041">(91) 3087-5041</a></li>
+        <li><small>WhatsApp</small><a href="https://wa.me/559181330405" target="_blank" rel="noopener">(91) 98133-0405</a></li>
+        <li><small>E-mail</small><a href="mailto:estudio2pilates@gmail.com">estudio2pilates@gmail.com</a></li>
+      </ul>
+    </div>
+    <div class="contato-actions">
+      <a class="btn" href="https://wa.me/559181330405?text=Ol%C3%A1!%20Quero%20agendar%20uma%20aula%20experimental." target="_blank" rel="noopener">Agendar aula experimental →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <img src="fotos/logo.png" alt="Estúdio 2 Pilates" class="f-logo" />
+  <div class="foot-row"><span>© 2026 Estúdio 2 Pilates · Belém</span><span class="made">Site feito com carinho por <a href="https://raw.githack.com/priscilacanaan/priscilacanaan/141a57d/portfolio-priscila/index.html" target="_blank" rel="noopener"><img class="pc-logo" src="fotos/priscila-canaan.png" alt="priscila.canaan" /></a></span><a href="#topo">Topo ↑</a></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/559181330405?text=Ol%C3%A1!" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.8 6.5L3 29l6.7-1.8c1.9 1 4.1 1.6 6.3 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.7c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1.1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.1 10.4 10.1 5.3 16 5.3S26.9 10.4 26.9 16 21.9 26.7 16 26.7zm6-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1 3.4 1.4 3.4.9 4 .9.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+
+<script>
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 40); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+
+</script>
+</body>
+</html>
