@@ -112,3 +112,14 @@ section{padding:6rem 6vw;position:relative}
 
 .made a{background:#000 !important}
 .made a:hover{background:#1a1a1a !important}
+
+.legal a{text-decoration:underline}
+.legal a:hover{color:#fff}
+.cookies{position:fixed;left:22px;bottom:22px;z-index:85;max-width:360px;background:#fff;color:var(--ink);border-radius:16px;padding:1.2rem 1.3rem;box-shadow:0 20px 40px -18px rgba(0,0,0,.35);font-size:.88rem;display:grid;gap:.9rem}
+.cookies[hidden]{display:none}
+.cookies p a{color:var(--plum);font-weight:700;text-decoration:underline}
+.ck-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.ck-btns button{border:0;border-radius:999px;padding:.6rem 1.1rem;font:600 .85rem var(--sans);cursor:pointer}
+.ck-no{background:#F1E6EE;color:var(--ink)}
+.ck-yes{background:var(--plum);color:#fff}
+@media(max-width:560px){.cookies{left:12px;right:12px;bottom:12px;max-width:none}.wa-float{bottom:86px}}

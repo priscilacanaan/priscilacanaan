@@ -15,3 +15,13 @@ function buildBand() {
 }
 buildBand();
 let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildBand, 200); });
+
+/* banner de cookies */
+(function(){
+  const box = document.getElementById('cookies'); if (!box) return;
+  let v = null; try { v = localStorage.getItem('e2-cookies'); } catch (e) {}
+  if (!v) box.hidden = false;
+  const save = val => { try { localStorage.setItem('e2-cookies', val); } catch (e) {} box.hidden = true; };
+  box.querySelector('.ck-yes').addEventListener('click', () => save('todos'));
+  box.querySelector('.ck-no').addEventListener('click', () => save('essenciais'));
+})();
