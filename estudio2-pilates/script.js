@@ -2,3 +2,16 @@ const nav = document.getElementById('nav'), bar = document.querySelector('.progr
 addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 40); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+
+/* faixa roxa: repete as palavras até cobrir a tela inteira */
+const BAND_WORDS = ['Pilates','Cadillac','Reformer','Barrel','Aula experimental','Belém','Novo espaço'];
+function buildBand() {
+  const track = document.querySelector('.band .track'); if (!track) return;
+  const makeGroup = () => { const g = document.createElement('div'); g.className = 'grp'; BAND_WORDS.forEach(w => { const s = document.createElement('span'); s.textContent = w; g.append(s, Object.assign(document.createElement('i'), { textContent: '●' })); }); return g; };
+  track.innerHTML = '';
+  const g = makeGroup(); track.append(g);
+  while (g.offsetWidth < innerWidth) { const c = makeGroup(); g.append(...c.childNodes); }
+  track.append(g.cloneNode(true));
+}
+buildBand();
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildBand, 200); });

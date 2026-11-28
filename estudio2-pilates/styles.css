@@ -47,8 +47,10 @@ section{padding:6rem 6vw;position:relative}
 
 /* band */
 .band{background:var(--plum);color:#fff;padding:.95rem 0;overflow:hidden}
-.track{display:flex;width:max-content;animation:tk 30s linear infinite;font-family:var(--serif);font-size:1.6rem;align-items:center;gap:1.4rem}
-.track i{font-style:normal;color:var(--lilac);font-size:.8rem}
+.track{display:flex;width:max-content;animation:tk 40s linear infinite;font-family:var(--serif);font-size:1.6rem;align-items:center}
+.grp{display:flex;align-items:center;gap:1.4rem;flex:none;padding-right:1.4rem}
+.grp span{white-space:nowrap}
+.grp i{font-style:normal;color:var(--lilac);font-size:.8rem}
 @keyframes tk{to{transform:translateX(-50%)}}
 
 /* sobre */
