@@ -128,3 +128,7 @@ section{padding:6rem 6vw;position:relative}
 .meio-img{margin:0 auto;max-width:1100px;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(107,23,89,.5)}
 .meio-img img{width:100%;display:block;transition:transform 1.2s var(--ease)}
 .meio-img:hover img{transform:scale(1.03)}
+
+.hours-list{display:grid;gap:.2rem;margin-top:.3rem}
+.hours-list span{font-size:.9rem;opacity:.85}
+.hours-list b{font-weight:600;font-size:1rem}
