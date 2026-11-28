@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0E4A5C" />
+<title>Dr. Rui Mascarenhas — Urologia e cirurgia robótica · Belém</title>
+<meta name="description" content="Dr. Rui Mascarenhas, urologista em Belém especialista em uro-oncologia e cirurgia robótica. Clínica do Cálculo Renal, Ed. Evolution, Umarizal." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--teal:#0E4A5C;--teal2:#0A3442;--sea:#2A8C9E;--sand:#F5F1EA;--ink:#14262D;--mut:#5C6F77;--line:#DCE5E8;--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--sea)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1}
+h1{font-size:clamp(2.6rem,5.4vw,4.6rem);color:var(--teal)}
+h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--teal)}
+h3{font-size:1.25rem;color:var(--teal);margin-bottom:.3rem}
+section{padding:6rem 6vw;position:relative}
+.kicker{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--sea);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:26px;height:2px;background:var(--sea)}
+.head{margin-bottom:2.8rem;max-width:760px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--teal);color:#fff;font-weight:600;font-size:.95rem;padding:1rem 1.7rem;border-radius:4px;transition:transform .3s var(--ease),background .3s;box-shadow:0 14px 26px -16px rgba(14,74,92,.8)}
+.btn:hover{transform:translateY(-2px);background:var(--teal2)}
+.btn-line{background:transparent;color:var(--teal);box-shadow:inset 0 0 0 1.5px var(--teal)}
+.btn-line:hover{background:var(--teal);color:#fff}
+.btn-sm{padding:.65rem 1.2rem;font-size:.88rem;box-shadow:none}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90}
+.progress span{display:block;height:100%;background:var(--sea);transform-origin:left;transform:scaleX(var(--sp,0))}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 6vw;transition:background .4s,box-shadow .4s}
+.nav.solid{background:rgba(245,241,234,.95);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line)}
+.logo{font-family:var(--serif);font-size:1.3rem;color:var(--teal)}
+.logo b{font-weight:600;color:var(--sea)}
+.links{display:flex;gap:1.9rem;font-size:.92rem;color:var(--mut)}
+.links a:hover{color:var(--teal)}
+@media(max-width:900px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3.5rem;padding-top:9rem;background:radial-gradient(circle at 15% 20%,#FFFFFF,var(--sand) 60%)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}}
+.lead{font-size:1.1rem;color:var(--mut);max-width:560px;margin:1.5rem 0 2.2rem}
+.cta{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-img{margin:0;border-radius:6px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(14,74,92,.5)}
+.hero-img img{width:100%;display:block;aspect-ratio:571/740;object-fit:cover;transition:transform 1.4s var(--ease)}
+.hero-img:hover img{transform:scale(1.03)}
+
+/* sobre */
+.sobre{background:#fff}
+.sobre-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:4rem;align-items:center;max-width:1150px;margin:auto}
+@media(max-width:900px){.sobre-grid{grid-template-columns:1fr}}
+.sobre p{color:var(--mut);margin-bottom:1rem}
+.sobre figure{margin:0;overflow:hidden;border-radius:6px}
+.sobre img{width:100%;display:block;transition:transform 1.2s var(--ease)}
+.sobre figure:hover img{transform:scale(1.04)}
+
+/* números */
+.numeros{background:var(--teal);color:#fff;padding:4rem 6vw}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1100px;margin:auto;text-align:center}
+@media(max-width:800px){.num-grid{grid-template-columns:1fr 1fr}}
+.num-grid b{display:block;font-family:var(--serif);font-size:2.6rem;font-weight:500;color:#9ED8E2}
+.num-grid span{font-size:.9rem;color:#CFE6EC}
+
+/* formação */
+.formacao{background:var(--sand)}
+.timeline{list-style:none;position:relative;max-width:760px;padding-left:2rem;margin-bottom:3rem}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--sea)}
+.timeline li{position:relative;padding:.3rem 0 1.4rem;transition:transform .4s var(--ease)}
+.timeline li::before{content:"";position:absolute;left:-2rem;top:.6rem;width:13px;height:13px;border-radius:50%;background:var(--sand);border:2px solid var(--sea)}
+.timeline li:hover{transform:translateX(6px)}
+.yr{display:block;font-size:.78rem;font-weight:600;letter-spacing:.12em;color:var(--sea);margin-bottom:.2rem}
+.timeline p{color:var(--ink)}
+.palestra{margin:0;max-width:600px;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(14,74,92,.5)}
+.palestra img{width:100%;display:block}
+
+/* tratamentos */
+.trat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:1000px){.trat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.trat-grid{grid-template-columns:1fr}}
+.trat{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.6rem;transition:transform .4s var(--ease),border-color .3s}
+.trat:hover{transform:translateY(-5px);border-color:var(--sea)}
+.trat p{color:var(--mut);font-size:.93rem}
+.cirurgia{margin:3rem auto 0;max-width:720px;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(14,74,92,.5)}
+.cirurgia img{width:100%;display:block}
+.tratamentos{background:#fff}
+
+/* contato */
+.contato{background:var(--teal);color:#fff}
+.contato-box{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.contato-box{grid-template-columns:1fr}}
+.contato .kicker{color:#9ED8E2}
+.contato .kicker::before{background:#9ED8E2}
+.contato h2{color:#fff}
+.contato h2 em{color:#9ED8E2}
+.info{list-style:none;margin-top:1.6rem;display:grid;gap:1rem}
+.info li{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:.8rem;font-size:.97rem}
+.info small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#9ED8E2;font-weight:600}
+.info a:hover{color:#9ED8E2;text-decoration:underline}
+.contato-actions{display:grid}
+.contato .btn{background:#fff;color:var(--teal);justify-content:center;box-shadow:none}
+.contato .btn:hover{background:#E5F3F6}
+
+.footer{background:var(--teal2);color:#9FB7BF;padding:2.2rem 6vw;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.88rem}
+.footer a:hover{color:#fff}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.reveal{opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#topo" class="logo">Dr. Rui <b>Mascarenhas</b></a>
+  <nav class="links"><a href="#sobre">Sobre</a><a href="#formacao">Formação</a><a href="#tratamentos">Tratamentos</a><a href="#contato">Contato</a></nav>
+  <a href="https://wa.me/5591984101314?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener" class="btn btn-sm">Agendar consulta</a>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="hero-txt">
+    <p class="kicker reveal">Urologia · Belém</p>
+    <h1 class="reveal">Cuidado urológico com <em>precisão e tecnologia.</em></h1>
+    <p class="lead reveal">Urologista especialista em uro-oncologia e cirurgia robótica. Atendimento na Clínica do Cálculo Renal e cirurgias no Hospital Porto Dias e no Hospital Beneficente Portuguesa.</p>
+    <div class="cta reveal"><a href="https://wa.me/5591984101314?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener" class="btn">Agendar consulta →</a><a href="#tratamentos" class="btn btn-line">Principais tratamentos</a></div>
+  </div>
+  <figure class="hero-img reveal"><img src="fotos/robo.jpg" alt="Dr. Rui Mascarenhas com o sistema da Vinci" /></figure>
+</section>
+
+<section id="sobre" class="sobre">
+  <div class="sobre-grid">
+    <div class="reveal">
+      <p class="kicker">Sobre</p>
+      <h2>Medicina de <em>precisão</em> e cuidado humano.</h2>
+      <p>Graduado em medicina pela Universidade do Estado do Pará (2000–2005), realizou residência em cirurgia geral e urologia na Santa Casa de São Paulo (2006–2012). Membro titular da Sociedade Brasileira de Urologia (TiSBU, 2012).</p>
+      <p>Mestre (2012–2016) e doutorando (2016–atual) em Oncologia e Ciências Médicas pela UFPA. Professor de urologia do curso de medicina da Universidade do Estado do Pará e preceptor da residência de urologia do Hospital das Clínicas Gaspar Viana.</p>
+      <p>Coordenador da Liga Acadêmica de Urologia do Pará e presidente da Sociedade Brasileira de Urologia, seção Pará (2022–2023). Sócio fundador da Clínica do Cálculo Renal e membro do corpo clínico do Hospital Porto Dias e do Hospital Beneficente Portuguesa.</p>
+    </div>
+    <figure class="reveal"><img src="fotos/clinica.jpg" alt="Dr. Rui Mascarenhas na Clínica do Cálculo Renal" loading="lazy" /></figure>
+  </div>
+</section>
+
+<section class="numeros">
+  <div class="num-grid">
+    <div class="reveal"><b>2000</b><span>ingresso em medicina</span></div>
+    <div class="reveal"><b>2012</b><span>título TiSBU</span></div>
+    <div class="reveal"><b>2016</b><span>mestrado em ciências médicas</span></div>
+    <div class="reveal"><b>2022</b><span>presidência da SBU-PA</span></div>
+  </div>
+</section>
+
+<section id="formacao" class="formacao">
+  <div class="head reveal"><p class="kicker">Formação</p><h2>Do estudo à <em>prática.</em></h2></div>
+  <ul class="timeline">
+    <li class="reveal"><span class="yr">2000–2005</span><p>Graduação em Medicina, Universidade do Estado do Pará</p></li>
+    <li class="reveal"><span class="yr">2006–2008</span><p>Residência em Cirurgia Geral, Santa Casa de São Paulo</p></li>
+    <li class="reveal"><span class="yr">2009–2012</span><p>Residência em Urologia, Santa Casa de São Paulo</p></li>
+    <li class="reveal"><span class="yr">2012–2016</span><p>Mestrado em Oncologia e Ciências Médicas, UFPA</p></li>
+    <li class="reveal"><span class="yr">2016–atual</span><p>Doutorado em Oncologia e Ciências Médicas, UFPA</p></li>
+  </ul>
+  <figure class="palestra reveal"><img src="fotos/palestra.jpg" alt="Dr. Rui Mascarenhas em palestra" loading="lazy" /></figure>
+</section>
+
+<section id="tratamentos" class="tratamentos">
+  <div class="head reveal"><p class="kicker">Tratamentos</p><h2>Principais <em>atendimentos.</em></h2></div>
+  <div class="trat-grid">
+    <article class="trat reveal"><h3>Câncer urológico</h3><p>Próstata, rim e bexiga.</p></article>
+    <article class="trat reveal"><h3>Cálculo renal</h3><p>Litíase urinária.</p></article>
+    <article class="trat reveal"><h3>Hiperplasia prostática</h3><p>Hiperplasia prostática benigna.</p></article>
+    <article class="trat reveal"><h3>Disfunção erétil</h3><p>Impotência.</p></article>
+    <article class="trat reveal"><h3>Ejaculação precoce</h3><p>Avaliação e tratamento.</p></article>
+    <article class="trat reveal"><h3>Fimose</h3><p>Tratamento cirúrgico e clínico.</p></article>
+    <article class="trat reveal"><h3>Vasectomia</h3><p>Planejamento familiar.</p></article>
+    <article class="trat reveal"><h3>Cirurgia robótica</h3><p>Cirurgias com sistema da Vinci.</p></article>
+  </div>
+  <figure class="cirurgia reveal"><img src="fotos/cirurgia.jpg" alt="Equipe em cirurgia" loading="lazy" /></figure>
+</section>
+
+<section id="contato" class="contato">
+  <div class="contato-box reveal">
+    <div>
+      <p class="kicker">Contato</p>
+      <h2>Agende <em>sua consulta.</em></h2>
+      <ul class="info">
+        <li><small>Endereço</small>Ed. Evolution · Tv. Dom Romualdo de Seixas, 1476 · Salas 1105/1106 · Umarizal, Belém – PA, 66055-200</li>
+        <li><small>WhatsApp</small><a href="https://wa.me/5591984101314" target="_blank" rel="noopener">(91) 98410-1314</a></li>
+        <li><small>Instagram</small><a href="https://www.instagram.com/dr.ruimascarenhas/" target="_blank" rel="noopener">@dr.ruimascarenhas</a></li>
+        <li><small>Doctoralia</small><a href="https://www.doctoralia.com.br/perfil/rui-mascarenhas" target="_blank" rel="noopener">Perfil e avaliações</a></li>
+      </ul>
+    </div>
+    <div class="contato-actions">
+      <a class="btn" href="https://wa.me/5591984101314?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener">Chamar no WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Dr. Rui Mascarenhas · Urologia · Belém</span>
+  <a href="#topo">Topo ↑</a>
+</footer>
+
+<script>
+const nav = document.getElementById('nav'), bar = document.querySelector('.progress');
+addEventListener('scroll', () => { nav.classList.toggle('solid', scrollY > 40); bar.style.setProperty('--sp', scrollY / (document.documentElement.scrollHeight - innerHeight)); }, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
+
+</script>
+</body>
+</html>
