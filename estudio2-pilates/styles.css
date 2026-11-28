@@ -146,3 +146,7 @@ section{padding:6rem 6vw;position:relative}
 @media(prefers-reduced-motion:reduce){.halo,.halo::after,.mannequin img{animation:none}}
 
 .hero h1 em{display:block}
+
+.hero h1 em{line-height:.95}
+.hero h1 em + em{margin-top:-.25em}
+.hero h1 em{display:block}
