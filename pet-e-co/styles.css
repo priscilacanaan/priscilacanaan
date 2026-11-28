@@ -134,3 +134,10 @@ section{padding:6rem 6vw;position:relative}
 .tel{margin-top:.4rem;font-weight:700}
 .tel a{color:var(--orange)}
 .hours{margin-top:1.4rem;font-family:var(--display);font-weight:700;color:var(--brown);font-size:1.15rem}
+
+.recreacao{background:var(--cream)}
+.rec-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.rec-grid{grid-template-columns:1fr}}
+.rec-grid figure{margin:0;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(94,42,36,.6)}
+.rec-grid img{width:100%;display:block;transition:transform 1.2s var(--ease)}
+.rec-grid figure:hover img{transform:scale(1.04)}

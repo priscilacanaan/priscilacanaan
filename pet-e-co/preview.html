@@ -147,6 +147,13 @@ section{padding:6rem 6vw;position:relative}
 .tel a{color:var(--orange)}
 .hours{margin-top:1.4rem;font-family:var(--display);font-weight:700;color:var(--brown);font-size:1.15rem}
 
+.recreacao{background:var(--cream)}
+.rec-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;max-width:1100px;margin:auto}
+@media(max-width:860px){.rec-grid{grid-template-columns:1fr}}
+.rec-grid figure{margin:0;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(94,42,36,.6)}
+.rec-grid img{width:100%;display:block;transition:transform 1.2s var(--ease)}
+.rec-grid figure:hover img{transform:scale(1.04)}
+
 </style>
 </head>
 <body>
@@ -187,6 +194,17 @@ section{padding:6rem 6vw;position:relative}
   <div class="head reveal"><p class="kicker">Conheça os nossos serviços</p><h2>Clínica e <em>estética.</em></h2></div>
   <div class="chips reveal"><span>Consultas</span><span>Exames</span><span>Vacinas</span><span>Atestados</span><span>Curativos</span><span>Cirurgias eletivas</span><span>Hospedagem</span><span>Recreação</span><span>Estética</span></div>
   <p class="tagline reveal">Em todas as áreas, serviços de qualidade.</p>
+</section>
+
+<section class="recreacao">
+  <div class="rec-grid">
+    <figure class="reveal"><img src="fotos/recreacao.jpg" alt="Pet em atividade de recreação com a equipe" loading="lazy" /></figure>
+    <div class="reveal">
+      <p class="kicker">Recreação</p>
+      <h2>Brincar também <em>faz parte.</em></h2>
+      <p class="sub">Espaço de recreação com circuito e atividades para o seu pet se exercitar e se divertir com a equipe.</p>
+    </div>
+  </div>
 </section>
 
 <section id="precos" class="precos">
