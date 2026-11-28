@@ -144,3 +144,5 @@ section{padding:6rem 6vw;position:relative}
 @keyframes sway{50%{transform:translateY(-10px) rotate(-1.2deg)}}
 @media(max-width:900px){.mannequin{opacity:.45;width:56vw;right:-6vw}}
 @media(prefers-reduced-motion:reduce){.halo,.halo::after,.mannequin img{animation:none}}
+
+.hero h1 em{display:block}
